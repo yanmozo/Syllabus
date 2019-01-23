@@ -322,6 +322,9 @@
     <Content Include="Syllabus.edmx.diagram">
       <DependentUpon>Syllabus.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\SoftwareUsed\SoftwareUsed.cshtml" />
+    <Content Include="Views\Teacher\Bibliography.cshtml" />
+    <Content Include="Views\Chairman\ProgramObj.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
