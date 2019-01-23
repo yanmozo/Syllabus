@@ -29,5 +29,10 @@ namespace DCIS_Syllabus.Controllers
         {
             return View();
         }
+
+        public ActionResult Bibliography()
+        {
+            return View();
+        }
     }
 }
