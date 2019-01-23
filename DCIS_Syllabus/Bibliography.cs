@@ -18,6 +18,7 @@ namespace DCIS_Syllabus
         public int syllabus_id_fk { get; set; }
         public int sources_fk { get; set; }
     
+        public virtual Source Source { get; set; }
         public virtual Syllabu Syllabu { get; set; }
     }
 }
