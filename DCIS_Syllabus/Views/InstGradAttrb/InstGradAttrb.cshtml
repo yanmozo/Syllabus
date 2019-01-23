@@ -2,59 +2,74 @@
 @{
     ViewBag.Title = "InstGradAttrb";
     var core_valueList = (List<Core_Value>)(ViewData["CoreValueList"]);
+
+    var scientia = 1;
+    var virtus = 1;
+    var devotio = 1;
+
+    foreach (var cv_attr in core_valueList)
+    {
+        if(cv_attr.name == "Scientia")
+        {
+            scientia++;
+        }
+        else if (cv_attr.name == "Virtus")
+        {
+            virtus++;
+        }
+        else if (cv_attr.name == "Devotio")
+        {
+            devotio++;
+        }
+    }
 }
 
 <h2>Institutional Graduate Attributes</h2>
-<table class="table table-hover">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th class="text-center">Core Values</th>
             <th class="text-center">Attributes</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td class="text-center core_value_name">Scientia</td>
-            <td>
-                <ol type="a">
-                    @foreach (var cv_attr in core_valueList)
-                    {
-                        if (cv_attr.core_value_name == "Scientia")
-                        {
-                            <li>@cv_attr.core_value_attribute</li>
-                        }
-                    }
-                </ol>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-center core_value_name">Virtus</td>
-            <td>
-                <ol type="a">
-                    @foreach (var cv_attr in core_valueList)
-                    {
-                        if (cv_attr.core_value_name == "Virtus")
-                        {
-                            <li>@cv_attr.core_value_attribute</li>
-                        }
-                    }
-                </ol>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-center core_value_name">Devotio</td>
-            <td>
-                <ol type="a">
-                    @foreach (var cv_attr in core_valueList)
-                    {
-                        if (cv_attr.core_value_name == "Devotio")
-                        {
-                            <li>@cv_attr.core_value_attribute</li>
-                        }
-                    }
-                </ol>
-            </td>
-        </tr>
-    </tbody>
+    <tr>
+        <td rowspan="@scientia" class="text-center core_value_name">Scientia</td>
+    </tr>
+
+    @foreach (var cv_attr in core_valueList)
+    {
+        if (cv_attr.name == "Scientia")
+        {
+            <tr><td>@cv_attr.description</td></tr>
+
+        }
+    }
+
+    <tr>
+        <td rowspan="@virtus" class="text-center core_value_name">Virtus</td>
+    </tr>
+
+    @foreach (var cv_attr in core_valueList)
+    {
+        if (cv_attr.name == "Virtus")
+        {
+            <tr><td>@cv_attr.description</td></tr>
+
+        }
+    }
+
+    <tr>
+        <td rowspan="@devotio" class="text-center core_value_name">Devotio</td>
+    </tr>
+
+    @foreach (var cv_attr in core_valueList)
+    {
+        if (cv_attr.name == "Devotio")
+        {
+            <tr><td>@cv_attr.description</td></tr>
+
+        }
+    }
+
 </table>
 

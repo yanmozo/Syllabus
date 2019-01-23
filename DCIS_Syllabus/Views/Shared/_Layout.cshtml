@@ -9,42 +9,47 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        DCIS Management
-                    </a>
-                </li>
-                <li>Account</li>
-                <li>@Html.ActionLink("Syllabus - T", "ViewAllTSyllabus", "Teacher")</li>
-                <li>@Html.ActionLink("Syllabus - Ch", "ViewAllChSyllabus", "Chairman")</li>
-                <li>@Html.ActionLink("Create Syllabus", "Creation", "Teacher")</li>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-        <!-- Page Content -->
-        <div class="page-content-wrapper">
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
-            @RenderBody()
-        </div>
-        <!-- /#page-content-wrapper -->
-    </div>
-    <!-- /#wrapper -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Syllabus - T", "ViewAllTSyllabus", "Teacher")</li>
+                    <li>@Html.ActionLink("Syllabus - Ch", "ViewAllChSyllabus", "Chairman")</li>
+                    <li>@Html.ActionLink("Bibliography", "Bibliography", "Teacher")</li>
+                    <li>@Html.ActionLink("Add Classroom Policy", "ClassroomPolicy", "Teacher")</li>
+                    <li>@Html.ActionLink("Institutional Graduate Attributes", "InstGradAttrb", "InstGradAttrb")</li>
+                    <li>@Html.ActionLink("Software Used", "SoftwareUsed", "SoftwareUsed")</li>
+                    <li>@Html.ActionLink("Learning Plan", "LearningPlan", "LearningPlan")</li>
+                    <li>@Html.ActionLink("Testing test Plan", "LearningPlan", "LearningPlan")</li>
+                    <li>@Html.ActionLink("Revision History", "revision_history", "Teacher")</li>
+                    <li>@Html.ActionLink("Course Outcomes", "course_outcomes", "Teacher")</li>
+                    <li>@Html.ActionLink("Grading System", "grading_system", "Teacher")</li>
+                    <li>@Html.ActionLink("Title of Syllabus", "title_syllabus", "Teacher")</li>
+                    <li>@Html.ActionLink("Deliverable O and R", "outputs_requirements", "Teacher")</li>
 
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/Scripts/jquery.js")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/TeacherScript.js")
     @RenderSection("scripts", required: false)
-    <script>
-
-        $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-        });
-
-    </script>
 </body>
 </html>

@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "LearningPlan";
+}
+
+<h2>Learning Plan</h2>
+
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="callNumber" placeholder="Call Number">
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="bookTitle" placeholder="Title">
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="bookAuthors" placeholder="Author/s">
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="bookYear" placeholder="Year">
+            </div>
+            <div class="col-md-2">
+                <input type="button" class="add-book-row btn btn-success" onclick="addBookRow" value="Add Row">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</form>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="text-center learningPlan" rowspan="2">Learning Outcome</th>
+            <th class="text-center learningPlan" rowspan="2">No. of Hours and Covered Date(s)</th>
+            <th class="text-center learningPlan" rowspan="2">CO Addressed</th>
+            <th class="text-center learningPlan" rowspan="2">Topics</th>
+            <th class="text-center learningPlan" colspan="2">Teaching-Learning Activities</th>
+            <th class="text-center learningPlan" rowspan="2">Assessment Activities</th>
+            <th class="text-center learningPlan" rowspan="2">Status</th>
+        </tr>
+        <tr>
+            <th>Teacher Activity</th>
+            <th>Learner Activity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="learningPlan">-Familiarize the USC VMG, department’s PEO and PO and course details.</td>
+            <td class="text-center learningPlan">1 hour</td>
+            <td class="text-center learningPlan">N/A</td>
+            <td class="learningPlan">
+                -About USC
+                -About Dept. of Computer Science<br />
+                -Program Outcomes<br />
+                -Course Information
+            </td>
+            <td class="learningPlan">
+                -Present through PowerPoint and set of videos<br />
+                -Encourage an open-discussion environment
+            </td>
+            <td class="learningPlan">-Interaction with the Instructor</td>
+            <td class="text-center learningPlan">N/A</td>
+            <td class="text-center learningPlan">
+                <button class="btn btn-primary">!</button><button class="btn btn-danger">E</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

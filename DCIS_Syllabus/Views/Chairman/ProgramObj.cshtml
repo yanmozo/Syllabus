@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "ProgramObj";
+}
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 5px solid #dddddd;
+        text-align: left;
+        padding: 5px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<h2>ProgramObj</h2>
+<h2>ProgramObj</h2>
+<h2>ProgramObj</h2>
+<table>
+    <tr>
+        <th>Code</th>
+        <th>Objectives</th>
+        <th>Core Value Activated</th>
+        <th>Operations</th>
+    </tr>
+    <tr>
+        <td>PEO1 </td>
+        <td>A Computer Science graduate will demonstrate computing competency, leadership and lifelong-learning throughout their profession.A Computer Science graduate will demonstrate asd asd, leadership and adad add their profession.</td>
+        <td>Scientia</td>
+        <td><button class="btn btn-warning" id="EditBookBtn"><span class="glyphicon glyphicon-edit"></span></button></td>
+    </tr>
+    <tr>
+        <td>PEO2 </td>
+        <td>A Computer Science graduate will demonstrate asd asd, leadership and adad add their profession.</td>
+        <td>Scientia</td>
+        <td><button class="btn btn-warning" id="EditBookBtn"><span class="glyphicon glyphicon-edit"></span></button></td>
+    </tr>
+    <tr>
+        <td>PEO2 </td>
+        <td>A Computer Science graduate will demonstrate asd asd, leadership and adad add their profession.</td>
+        <td>Scientia</td>
+        <td><button class="btn btn-warning" id="EditBookBtn"><span class="glyphicon glyphicon-edit"></span></button></td>
+    </tr>
+</table>
+
+<h2>Add Objectives</h2>
+
+
+<script>
+    $(document).ready(function () {
+        var counter = 0;
+
+        $("#addrow").on("click", function () {
+            var newRow = $("<tr>");
+            var cols = "";
+
+            cols += '<td><input type="text" class="form-control" name="name' + counter + '"/></td>';
+            cols += '<td><textarea name="message" rows="5" cols="50"' + counter + '"/></td>';
+            cols += '<td><input type="text" class="form-control" name="phone' + counter + '"/></td>';
+            cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
+            cols += '<td><input type="button" class="ibtnAdd btn btn-md btn-danger "  value="Add"></td>';
+            
+            newRow.append(cols);
+            $("table.order-list").append(newRow);
+            counter++;
+        });
+
+
+
+        $("table.order-list").on("click", ".ibtnDel", function (event) {
+            $(this).closest("tr").remove();
+            counter -= 1
+        });
+
+
+
+
+    });
+
+    
+
+    function calculateRow(row) {
+        var price = +row.find('input[name^="price"]').val();
+
+    }
+
+    function calculateGrandTotal() {
+        var grandTotal = 0;
+        $("table.order-list").find('input[name^="price"]').each(function () {
+            grandTotal += +$(this).val();
+        });
+        $("#grandtotal").text(grandTotal.toFixed(2));
+    }
+</script>

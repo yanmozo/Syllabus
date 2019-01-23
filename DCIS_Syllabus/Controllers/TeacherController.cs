@@ -39,5 +39,29 @@ namespace DCIS_Syllabus.Controllers
         {
             return View();
         }
+
+        public ActionResult revision_history()
+        {
+            return View();
+        }
+
+        public ActionResult course_outcomes()
+        {
+            return View();
+        }
+        public ActionResult grading_system()
+        {
+            return View();
+        }
+
+        public ActionResult title_syllabus()
+        {
+            return View();
+        }
+
+        public ActionResult outputs_requirements()
+        {
+            return View();
+        }
     }
 }
