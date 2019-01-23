@@ -14,10 +14,10 @@ namespace DCIS_Syllabus
     
     public partial class Grading_System
     {
-        public int grading_system_id { get; set; }
-        public int cd_id_fk { get; set; }
-        public int syllabus_id_fk { get; set; }
-        public string type_grading_system { get; set; }
+        public int gradingSystem_ID { get; set; }
+        public int courseDescription_FK { get; set; }
+        public int syllabus_FK { get; set; }
+        public string typeOfGrading { get; set; }
         public double weight { get; set; }
     
         public virtual Course_Deliverable Course_Deliverable { get; set; }

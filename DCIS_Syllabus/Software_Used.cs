@@ -14,9 +14,9 @@ namespace DCIS_Syllabus
     
     public partial class Software_Used
     {
-        public int softwareUsed_id { get; set; }
-        public int course_fk { get; set; }
-        public int syllabus_id_fk { get; set; }
+        public int softwareUsed_ID { get; set; }
+        public int course_FK { get; set; }
+        public int syllabus_FK { get; set; }
         public string software { get; set; }
     
         public virtual Syllabu Syllabu { get; set; }

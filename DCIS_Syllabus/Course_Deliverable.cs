@@ -20,14 +20,15 @@ namespace DCIS_Syllabus
             this.Grading_System = new HashSet<Grading_System>();
         }
     
-        public int cd_id { get; set; }
-        public int co_id_fk { get; set; }
-        public int syllabus_id_fk { get; set; }
-        public string cd_name { get; set; }
-        public string cd_description { get; set; }
-        public string assessment_type_a { get; set; }
-        public string assessment_type_b { get; set; }
+        public int courseDeliverables_ID { get; set; }
+        public int courseOutcomeAdd_FK { get; set; }
+        public int syllabus_FK { get; set; }
+        public string outputName { get; set; }
+        public string output_description { get; set; }
+        public string assessmentTypeA { get; set; }
+        public string assessmentTypeB { get; set; }
     
+        public virtual Course_Outcome_Addressed Course_Outcome_Addressed { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Grading_System> Grading_System { get; set; }
         public virtual Syllabu Syllabu { get; set; }

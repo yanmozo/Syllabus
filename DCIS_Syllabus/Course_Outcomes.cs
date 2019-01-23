@@ -12,23 +12,24 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Revision
+    public partial class Course_Outcomes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Revision()
+        public Course_Outcomes()
         {
-            this.Revisions_Log = new HashSet<Revisions_Log>();
+            this.Course_Outcome_Addressed = new HashSet<Course_Outcome_Addressed>();
         }
     
-        public int revision_ID { get; set; }
+        public int courseOutcomes_ID { get; set; }
+        public int activeValues_FK { get; set; }
         public int syllabus_FK { get; set; }
-        public int versionNum { get; set; }
-        public string fieldsRevised { get; set; }
-        public System.DateTime dateRevised { get; set; }
-        public System.DateTime approvedDate { get; set; }
+        public string codeName { get; set; }
+        public string outcomeDescription { get; set; }
+        public string domainLearningLVL { get; set; }
     
+        public virtual Active_Values Active_Values { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Revisions_Log> Revisions_Log { get; set; }
+        public virtual ICollection<Course_Outcome_Addressed> Course_Outcome_Addressed { get; set; }
         public virtual Syllabu Syllabu { get; set; }
     }
 }

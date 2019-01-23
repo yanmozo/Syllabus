@@ -17,16 +17,16 @@ namespace DCIS_Syllabus
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Core_Value()
         {
-            this.Program_EO = new HashSet<Program_EO>();
+            this.Program_Educational_Objs = new HashSet<Program_Educational_Objs>();
             this.Program_Outcomes = new HashSet<Program_Outcomes>();
         }
     
-        public int core_value_id { get; set; }
-        public string core_value_name { get; set; }
-        public string core_value_attribute { get; set; }
+        public int coreValue_ID { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Program_EO> Program_EO { get; set; }
+        public virtual ICollection<Program_Educational_Objs> Program_Educational_Objs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Program_Outcomes> Program_Outcomes { get; set; }
     }

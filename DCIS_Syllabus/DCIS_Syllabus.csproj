@@ -147,6 +147,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Active_Values.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -166,12 +169,22 @@
     <Compile Include="Controllers\ChairmanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstGradAttrbController.cs" />
+    <Compile Include="Controllers\LearningPlanController.cs" />
     <Compile Include="Controllers\SoftwareUsedController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Core_Value.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Course_Deliverable.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Course_Information.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Course_Outcomes.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Course_Outcome_Addressed.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -189,7 +202,7 @@
     <Compile Include="Online_Sources.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Program_EO.cs">
+    <Compile Include="Program_Educational_Objs.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Program_Outcomes.cs">
@@ -209,6 +222,9 @@
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Software_Used.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Source.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Syllabu.cs">
@@ -240,6 +256,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\InstGradAttrb\IGA.css" />
+    <Content Include="Content\LearningPlan\LP.css" />
     <Content Include="Content\SyllabusIndex.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -296,6 +313,8 @@
     <Content Include="Views\Chairman\ViewSyllabus_Draft.cshtml" />
     <Content Include="Views\Teacher\ClassroomPolicy.cshtml" />
     <Content Include="Views\InstGradAttrb\InstGradAttrb.cshtml" />
+    <Content Include="Views\SoftwareUsed\SoftwareUsed.cshtml" />
+    <Content Include="Views\LearningPlan\LearningPlan.cshtml" />
     <EntityDeploy Include="Syllabus.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Syllabus.Designer.cs</LastGenOutput>
@@ -303,7 +322,6 @@
     <Content Include="Syllabus.edmx.diagram">
       <DependentUpon>Syllabus.edmx</DependentUpon>
     </Content>
-    <Content Include="Views\SoftwareUsed\SoftwareUsed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

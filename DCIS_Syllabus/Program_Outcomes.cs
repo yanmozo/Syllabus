@@ -14,11 +14,11 @@ namespace DCIS_Syllabus
     
     public partial class Program_Outcomes
     {
-        public int po_id { get; set; }
-        public int core_value_id_fk { get; set; }
-        public int syllabus_id_fk { get; set; }
-        public string attribute_name { get; set; }
-        public string program_outcome { get; set; }
+        public int programOutcomes_ID { get; set; }
+        public int coreValue_FK { get; set; }
+        public int syllabus_FK { get; set; }
+        public string attributeName { get; set; }
+        public string outcomeDesc { get; set; }
     
         public virtual Core_Value Core_Value { get; set; }
         public virtual Syllabu Syllabu { get; set; }

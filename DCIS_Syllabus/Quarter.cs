@@ -20,8 +20,8 @@ namespace DCIS_Syllabus
             this.Learning_Plan = new HashSet<Learning_Plan>();
         }
     
-        public int quarter_id { get; set; }
-        public byte[] quarter_name { get; set; }
+        public int quarter_ID { get; set; }
+        public string quarter_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Learning_Plan> Learning_Plan { get; set; }
