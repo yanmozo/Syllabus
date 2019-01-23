@@ -21,19 +21,25 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Syllabus - T", "ViewAllTSyllabus", "Teacher")</li>
                     <li>@Html.ActionLink("Syllabus - Ch", "ViewAllChSyllabus", "Chairman")</li>
-                    <li>@Html.ActionLink("Classroom Policy", "ClassroomPolicy", "Teacher")</li>
-                    <li>@Html.ActionLink("Bibliography", "Bibliography", "Teacher")</li>
+                    <li>@Html.ActionLink("Add Classroom Policy", "ClassroomPolicy", "Teacher")</li>
                     <li>@Html.ActionLink("Institutional Graduate Attributes", "InstGradAttrb", "InstGradAttrb")</li>
                     <li>@Html.ActionLink("Software Used", "SoftwareUsed", "SoftwareUsed")</li>
-                    <li>@Html.ActionLink("Program Education Objectives - Ch", "ProgramObj", "Chairman")</li>
+                    <li>@Html.ActionLink("Learning Plan", "LearningPlan", "LearningPlan")</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

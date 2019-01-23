@@ -18,7 +18,7 @@ namespace DCIS_Syllabus.Controllers
         public ActionResult InstGradAttrb()
         {
             //connect to db
-            Syllabus_ManagementEntities1 syllabus = new Syllabus_ManagementEntities1();
+            Syllabus_ManagementEntities3 syllabus = new Syllabus_ManagementEntities3();
             //retrieve table details (firstName, lastName, etc.) -- what table?
             Core_Value value = new Core_Value();
 

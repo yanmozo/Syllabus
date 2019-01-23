@@ -16,11 +16,9 @@ namespace DCIS_Syllabus
     {
         public int bibliography_id { get; set; }
         public int syllabus_id_fk { get; set; }
-        public int course_fk { get; set; }
-        public int sourceType_fk { get; set; }
+        public int sources_fk { get; set; }
     
-        public virtual Book Book { get; set; }
-        public virtual Online_Sources Online_Sources { get; set; }
+        public virtual Source Source { get; set; }
         public virtual Syllabu Syllabu { get; set; }
     }
 }
