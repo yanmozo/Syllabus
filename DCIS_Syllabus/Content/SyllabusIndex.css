@@ -1,0 +1,41 @@
+﻿
+.col-md-10, .col-lg-offset-1 {
+    border: 1px solid black;
+}
+
+#searchSyllabusInput {
+    width: 105%;
+    margin-top: 15px;
+    margin-left: 28%;
+}
+
+.SyllabusContent {
+    height: 650px;
+    overflow-x: auto;
+}
+
+.SyllabusName {
+    margin-left: 95px;
+}
+
+.FeedbackWell {
+    margin-left: 10px;
+    padding: 10px;
+}
+
+#comment {
+    width: 300%;
+}
+
+.ReviseButton {
+    padding-top: 10px;
+    margin-left: 55px;
+}
+
+.ApproveButton {
+    padding-top: 10px;
+}
+
+.col {
+    border: 1px solid black;
+}

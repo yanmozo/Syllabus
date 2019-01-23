@@ -151,7 +151,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AddNewSyllabusController.cs" />
+    <Compile Include="Controllers\ChairmanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -175,6 +177,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\SyllabusIndex.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -195,6 +198,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\TeacherScript.js" />
     <Content Include="Syllabus.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Syllabus.Context.cs</LastGenOutput>
@@ -228,10 +232,18 @@
     <Content Include="Syllabus.edmx.diagram">
       <DependentUpon>Syllabus.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Teacher\ViewAllTSyllabus.cshtml" />
+    <Content Include="Views\Teacher\ViewSyllabus.cshtml" />
+    <Content Include="Views\Chairman\ViewAllChSyllabus.cshtml" />
+    <Content Include="Views\Teacher\ViewSyllabus_Draft.cshtml" />
+    <Content Include="Views\Chairman\ViewSyllabus.cshtml" />
+    <Content Include="Views\Chairman\ViewSyllabus_Draft.cshtml" />
+    <Content Include="Views\Teacher\ClassroomPolicy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\ViewAllCh\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
