@@ -32,6 +32,12 @@
                     <li>@Html.ActionLink("Software Used", "SoftwareUsed", "SoftwareUsed")</li>
                     <li>@Html.ActionLink("Learning Plan", "LearningPlan", "LearningPlan")</li>
                     <li>@Html.ActionLink("Testing test Plan", "LearningPlan", "LearningPlan")</li>
+                    <li>@Html.ActionLink("Revision History", "revision_history", "Teacher")</li>
+                    <li>@Html.ActionLink("Course Outcomes", "course_outcomes", "Teacher")</li>
+                    <li>@Html.ActionLink("Grading System", "grading_system", "Teacher")</li>
+                    <li>@Html.ActionLink("Title of Syllabus", "title_syllabus", "Teacher")</li>
+                    <li>@Html.ActionLink("Deliverable O and R", "outputs_requirements", "Teacher")</li>
+
                 </ul>
             </div>
         </div>
@@ -43,7 +49,7 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
+    @Scripts.Render("~/Scripts/jquery.js")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/TeacherScript.js")

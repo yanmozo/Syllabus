@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "outputs_requirements";
+}
+
+<h2>outputs_requirements</h2>
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="container">
+    <table id="myTable" class=" table deliverables-requirements">
+
+        <thead>
+            <tr>
+                <td>Output Requirement</td>
+                <td>Output Requirement Description</td>
+                <td>CO Addressed</td>
+                <td colspan="2">Type of Assessment</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+
+                <td class="col-sm-2">
+                    <br />
+                    <input type="text" name="requirement" class="form-control" />
+                </td>
+                <td class="col-sm-2">
+                    <textarea name="requirement_description" cols="30" rows="3" form="usrform" style="border:none;"></textarea>
+                </td>
+                <td class="col-sm-2">
+                    1 - <input type="checkbox" name="CO_1" value="1"> <br />
+                    2 - <input type="checkbox" name="CO_2" value="2"><br />
+                    3 - <input type="checkbox" name="CO_3" value="3">
+                </td>
+                <td class="col-sm-2">
+                    <br />
+                    <select>
+                        <option value="rubric_based">Rubric-Based</option>
+                        <option value="non_rubric_based">Non-Rubric-Based</option>
+                    </select>
+                </td>
+                <td class="col-sm-2">
+                    <br />
+                    <select>
+                        <option value="formative">Formative</option>
+                        <option value="summative">Summative</option>
+                    </select>
+                </td>
+
+            </tr>
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+    <input type="button" class="btn btn-default" id="add_deliverables_requirements" value="Add Row" />
+    <br />
+    <br />
+    <input type="button" class="btn btn-success" value="Save Changes" />
+
+
+</div>
