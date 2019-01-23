@@ -25,34 +25,28 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Syllabus - T", "ViewAllTSyllabus", "Teacher")</li>
                     <li>@Html.ActionLink("Syllabus - Ch", "ViewAllChSyllabus", "Chairman")</li>
-                    <li>@Html.ActionLink("Bibliography", "Bibliography", "Teacher")</li>
-                    <li>@Html.ActionLink("Add Classroom Policy", "ClassroomPolicy", "Teacher")</li>
-                    <li>@Html.ActionLink("Institutional Graduate Attributes", "InstGradAttrb", "InstGradAttrb")</li>
-                    <li>@Html.ActionLink("Software Used", "SoftwareUsed", "SoftwareUsed")</li>
-                    <li>@Html.ActionLink("Learning Plan", "LearningPlan", "LearningPlan")</li>
-                    <li>@Html.ActionLink("Testing test Plan", "LearningPlan", "LearningPlan")</li>
-                    <li>@Html.ActionLink("Revision History", "revision_history", "Teacher")</li>
-                    <li>@Html.ActionLink("Course Outcomes", "course_outcomes", "Teacher")</li>
-                    <li>@Html.ActionLink("Grading System", "grading_system", "Teacher")</li>
-                    <li>@Html.ActionLink("Title of Syllabus", "title_syllabus", "Teacher")</li>
-                    <li>@Html.ActionLink("Deliverable O and R", "outputs_requirements", "Teacher")</li>
-
+                    <li>@Html.ActionLink("Create Syllabus", "title_syllabus", "Teacher")</li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+
+    <div class="main">
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
+
     @Scripts.Render("~/Scripts/jquery.js")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/TeacherScript.js")
     @Scripts.Render("~/Scripts/learningplan.js")
     @RenderSection("scripts", required: false)
+
+
+
 </body>
 </html>

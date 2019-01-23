@@ -171,6 +171,7 @@
     <Compile Include="Controllers\InstGradAttrbController.cs" />
     <Compile Include="Controllers\LearningPlanController.cs" />
     <Compile Include="Controllers\SoftwareUsedController.cs" />
+    <Compile Include="Controllers\SyllabusController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Core_Value.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
@@ -330,10 +331,15 @@
     <Content Include="Views\Teacher\grading_system.cshtml" />
     <Content Include="Views\Teacher\title_syllabus.cshtml" />
     <Content Include="Views\Teacher\outputs_requirements.cshtml" />
+    <Content Include="Views\Teacher\Creation.cshtml">
+      <BrowseToURL>~/Teacher/Creation</BrowseToURL>
+    </Content>
+    <Content Include="Views\Shared\_SideBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Syllabus\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
