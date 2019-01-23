@@ -25,9 +25,7 @@ namespace DCIS_Syllabus
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/InstGradAttrb/IGA.css",
-                      "~/Content/LearningPlan/LP.css"));
+                      "~/Content/site.css"));
         }
     }
 }

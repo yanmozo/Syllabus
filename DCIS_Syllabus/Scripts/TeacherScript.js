@@ -23,7 +23,7 @@
             "</tr>";
         $("#BooksBibTable").append(markup);
     });
-    // Find and remove selected table rows
+     //Find and remove selected table rows
     $(".DelBookBtn").click(function () {
         $("table tbody").find('input[name="record"]').each(function () {
             if ($(this).is(":checked")) {
@@ -49,8 +49,28 @@
         
     });
 
-    $('#tableid').on('click', buttonSelector, function () {
-        $(this).closest('tr').remove();
+    //$('#tableid').on('click', buttonSelector, function () {
+    //    $(this).closest('tr').remove();
+    //});
+
+    //Adds a new row to the table Learning Plan
+    $(".add-learning-plan-row").click(function () {
+        var lpMarkup = "<tr class='delLP'>" +
+            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
+            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
+            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
+            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
+            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
+            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
+            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
+            "<td class='LPTD'>" +
+            "<div class='btn-group' role = 'group' aria-label='...'>" +
+            "<button type='button' class='btn btn-warning editLPbtn'><span class='glyphicon glyphicon-edit'></span></button>" +
+            "<button type='button' class='btn btn-danger delLPbtn'><span class='glyphicon glyphicon-trash'></span></button>" +
+            "</div >" +
+            "</td >" +
+            "</tr>";
+        $("#LearningPlanBody").append(lpMarkup);
     });
 
 });
