@@ -17,7 +17,7 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult Creation()
         {
-            return View();
+            return View("Creation");
         }
 
         public ActionResult ViewSyllabus()
