@@ -1,4 +1,5 @@
 ﻿jQuery(document).ready(function ($) {
+    // Change window when an item from the list of syllab
     $(".clickable-row").click(function () {
         window.location = $(this).data("href");
     });
