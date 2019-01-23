@@ -1,5 +1,5 @@
 ﻿
-.col-md-10, .col-lg-offset-1 {
+.col-lg-offset-1 {
     border: 1px solid black;
 }
 
@@ -42,4 +42,8 @@
 
 .StaticPolicies {
     margin-left: 20px;
+}
+
+#NewInputFields {
+    display: inline-block
 }
