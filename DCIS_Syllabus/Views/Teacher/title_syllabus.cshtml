@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "title_syllabus";
+
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+}
+
+<h2>title_syllabus</h2>
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <br />
+    <p>Please place the necessary details: </p>
+    <form>
+        <div class="form-group">
+            <label>Course Code:</label>
+            <input type="text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Course Description:</label>
+            <input type="text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Title:</label>
+            <input type="text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Date Created:</label>
+            <input type="date" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success" value="Save Changes">Submit</button>
+        <button type="submit" class="btn btn-success" value="Save Changes">Next</button>
+    </form>
+
+</div>
+
+

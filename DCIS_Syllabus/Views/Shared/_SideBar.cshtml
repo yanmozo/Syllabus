@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/SyllabusIndex.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <h2>_SideBar</h2>
+
+    <div class="sidenav">
+        <ul>
+
+            <li>@Html.ActionLink("Add Classroom Policy", "ClassroomPolicy", "Teacher")</li>
+            <li>@Html.ActionLink("Institutional Graduate Attributes", "InstGradAttrb", "InstGradAttrb")</li>
+
+            <li>@Html.ActionLink("Learning Plan", "LearningPlan", "LearningPlan")</li>
+            <li>@Html.ActionLink("Testing test Plan", "LearningPlan", "LearningPlan")</li>
+            <li>@Html.ActionLink("Revision History", "revision_history", "Teacher")</li>
+            <li>@Html.ActionLink("Course Outcomes", "course_outcomes", "Teacher")</li>
+            <li>@Html.ActionLink("Grading System", "grading_system", "Teacher")</li>
+            <li>@Html.ActionLink("Deliverable O and R", "outputs_requirements", "Teacher")</li>
+            <li>@Html.ActionLink("Bibliography", "Bibliography", "Teacher")</li>
+            <li>@Html.ActionLink("Software Used", "SoftwareUsed", "SoftwareUsed")</li>
+        </ul>
+        <a>@Html.ActionLink("Back", "Index", "Home")</a>
+
+
+    </div>
+
+    <div class="main">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/Scripts/jquery.js")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/TeacherScript.js")
+    @RenderSection("scripts", required: false)
+
+
+
+</body>
+</html>

@@ -159,9 +159,6 @@
     <Compile Include="Bibliography.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Book.cs">
-      <DependentUpon>Syllabus.tt</DependentUpon>
-    </Compile>
     <Compile Include="Class_Policy.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
@@ -171,14 +168,12 @@
     <Compile Include="Controllers\InstGradAttrbController.cs" />
     <Compile Include="Controllers\LearningPlanController.cs" />
     <Compile Include="Controllers\SoftwareUsedController.cs" />
+    <Compile Include="Controllers\SyllabusController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Core_Value.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Course_Deliverable.cs">
-      <DependentUpon>Syllabus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Course_Information.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Course_Outcomes.cs">
@@ -245,9 +240,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Syllabus.edmx</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>Syllabus.tt</DependentUpon>
-    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
@@ -271,6 +263,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -323,10 +316,20 @@
       <DependentUpon>Syllabus.edmx</DependentUpon>
     </Content>
     <Content Include="Views\Teacher\Bibliography.cshtml" />
+    <Content Include="Views\Teacher\revision_history.cshtml" />
+    <Content Include="Views\Teacher\course_outcomes.cshtml" />
+    <Content Include="Views\Teacher\grading_system.cshtml" />
+    <Content Include="Views\Teacher\title_syllabus.cshtml" />
+    <Content Include="Views\Teacher\outputs_requirements.cshtml" />
+    <Content Include="Views\Teacher\Creation.cshtml">
+      <BrowseToURL>~/Teacher/Creation</BrowseToURL>
+    </Content>
+    <Content Include="Views\Shared\_SideBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Syllabus\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
