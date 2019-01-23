@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Syllabus_ManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Syllabus_ManagementModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Active_Values">
           <Key>
             <PropertyRef Name="activeValues_ID" />
@@ -290,6 +290,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Bibliography_Sources">
+          <End Role="Sources" Type="Self.Sources" Multiplicity="1" />
+          <End Role="Bibliography" Type="Self.Bibliography" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sources">
+              <PropertyRef Name="sources_ID" />
+            </Principal>
+            <Dependent Role="Bibliography">
+              <PropertyRef Name="sources_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Course_Deliverable_TO_CourseOutcomeAdd">
           <End Role="Course_Outcome_Addressed" Type="Self.Course_Outcome_Addressed" Multiplicity="1" />
           <End Role="Course_Deliverable" Type="Self.Course_Deliverable" Multiplicity="*" />
@@ -359,18 +371,6 @@
             </Principal>
             <Dependent Role="Role">
               <PropertyRef Name="users_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sources_Book">
-          <End Role="Book" Type="Self.Book" Multiplicity="1" />
-          <End Role="Sources" Type="Self.Sources" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Book">
-              <PropertyRef Name="book_id" />
-            </Principal>
-            <Dependent Role="Sources">
-              <PropertyRef Name="book_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -542,7 +542,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Syllabus_ManagementModelStoreContainer">
+        <EntityContainer Name="Syllabus_ManagementModel1StoreContainer">
           <EntitySet Name="Active_Values" EntityType="Self.Active_Values" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Assessment_Criteria" EntityType="Self.Assessment_Criteria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bibliography" EntityType="Self.Bibliography" Schema="dbo" store:Type="Tables" />
@@ -580,6 +580,10 @@
             <End Role="Core_Value" EntitySet="Core_Value" />
             <End Role="Program_Outcomes" EntitySet="Program_Outcomes" />
           </AssociationSet>
+          <AssociationSet Name="FK_Bibliography_Sources" Association="Self.FK_Bibliography_Sources">
+            <End Role="Sources" EntitySet="Sources" />
+            <End Role="Bibliography" EntitySet="Bibliography" />
+          </AssociationSet>
           <AssociationSet Name="FK_Course_Deliverable_TO_CourseOutcomeAdd" Association="Self.FK_Course_Deliverable_TO_CourseOutcomeAdd">
             <End Role="Course_Outcome_Addressed" EntitySet="Course_Outcome_Addressed" />
             <End Role="Course_Deliverable" EntitySet="Course_Deliverable" />
@@ -603,10 +607,6 @@
           <AssociationSet Name="FK_Role_TO_Users" Association="Self.FK_Role_TO_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Role" EntitySet="Role" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sources_Book" Association="Self.FK_Sources_Book">
-            <End Role="Book" EntitySet="Book" />
-            <End Role="Sources" EntitySet="Sources" />
           </AssociationSet>
           <AssociationSet Name="FK_Sources_OnlineSources" Association="Self.FK_Sources_OnlineSources">
             <End Role="Online_Sources" EntitySet="Online_Sources" />
@@ -665,10 +665,11 @@
             <End Role="Software_Used" EntitySet="Software_Used" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Syllabus_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Syllabus_ManagementModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Active_Values">
           <Key>
             <PropertyRef Name="activeValues_ID" />
@@ -709,7 +710,6 @@
           <Property Name="callNumber" Type="Int32" Nullable="false" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Sources" Relationship="Syllabus_ManagementModel.FK_Sources_Book" FromRole="Book" ToRole="Source" />
         </EntityType>
         <EntityType Name="Class_Policy">
           <Key>
@@ -919,7 +919,6 @@
           <Property Name="onlineSources_FK" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Bibliographies" Relationship="Self.FK_Bibliography_Sources" FromRole="Sources" ToRole="Bibliography" />
           <NavigationProperty Name="Online_Sources" Relationship="Self.FK_Sources_OnlineSources" FromRole="Sources" ToRole="Online_Sources" />
-          <NavigationProperty Name="Book" Relationship="Syllabus_ManagementModel.FK_Sources_Book" FromRole="Source" ToRole="Book" />
         </EntityType>
         <EntityType Name="Syllabu">
           <Key>
@@ -1256,7 +1255,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Syllabus_ManagementEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Syllabus_ManagementEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Active_Values" EntityType="Self.Active_Values" />
           <EntitySet Name="Assessment_Criteria" EntityType="Self.Assessment_Criteria" />
           <EntitySet Name="Bibliographies" EntityType="Self.Bibliography" />
@@ -1378,31 +1377,15 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Syllabus" EntitySet="Syllabus" />
           </AssociationSet>
-          <AssociationSet Name="FK_Sources_Book" Association="Syllabus_ManagementModel.FK_Sources_Book">
-            <End Role="Book" EntitySet="Books" />
-            <End Role="Source" EntitySet="Sources" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_Sources_Book">
-          <End Type="Syllabus_ManagementModel.Book" Role="Book" Multiplicity="1" />
-          <End Type="Syllabus_ManagementModel.Source" Role="Source" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Book">
-              <PropertyRef Name="book_id" />
-            </Principal>
-            <Dependent Role="Source">
-              <PropertyRef Name="book_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Syllabus_ManagementModelStoreContainer" CdmEntityContainer="Syllabus_ManagementEntities3">
+        <EntityContainerMapping StorageEntityContainer="Syllabus_ManagementModel1StoreContainer" CdmEntityContainer="Syllabus_ManagementEntities2">
           <EntitySetMapping Name="Active_Values">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Active_Values">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Active_Values">
               <MappingFragment StoreEntitySet="Active_Values">
                 <ScalarProperty Name="activeValues_ID" ColumnName="activeValues_ID" />
                 <ScalarProperty Name="columnName" ColumnName="columnName" />
@@ -1412,7 +1395,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Assessment_Criteria">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Assessment_Criteria">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Assessment_Criteria">
               <MappingFragment StoreEntitySet="Assessment_Criteria">
                 <ScalarProperty Name="assesmentCriteria_ID" ColumnName="assesmentCriteria_ID" />
                 <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
@@ -1422,7 +1405,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Bibliographies">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Bibliography">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Bibliography">
               <MappingFragment StoreEntitySet="Bibliography">
                 <ScalarProperty Name="bibliography_id" ColumnName="bibliography_id" />
                 <ScalarProperty Name="syllabus_id_fk" ColumnName="syllabus_id_fk" />
@@ -1431,7 +1414,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Books">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Book">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Book">
               <MappingFragment StoreEntitySet="Book">
                 <ScalarProperty Name="book_id" ColumnName="book_id" />
                 <ScalarProperty Name="course_fk" ColumnName="course_fk" />
@@ -1442,7 +1425,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Class_Policy">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Class_Policy">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Class_Policy">
               <MappingFragment StoreEntitySet="Class_Policy">
                 <ScalarProperty Name="policy_ID" ColumnName="policy_ID" />
                 <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
@@ -1451,7 +1434,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Core_Value">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Core_Value">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Core_Value">
               <MappingFragment StoreEntitySet="Core_Value">
                 <ScalarProperty Name="coreValue_ID" ColumnName="coreValue_ID" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1460,7 +1443,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Course_Deliverable">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Course_Deliverable">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Course_Deliverable">
               <MappingFragment StoreEntitySet="Course_Deliverable">
                 <ScalarProperty Name="courseDeliverables_ID" ColumnName="courseDeliverables_ID" />
                 <ScalarProperty Name="courseOutcomeAdd_FK" ColumnName="courseOutcomeAdd_FK" />
@@ -1473,7 +1456,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Course_Information">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Course_Information">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Course_Information">
               <MappingFragment StoreEntitySet="Course_Information">
                 <ScalarProperty Name="course_ID" ColumnName="course_ID" />
                 <ScalarProperty Name="courseCode" ColumnName="courseCode" />
@@ -1490,7 +1473,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Course_Outcome_Addressed">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Course_Outcome_Addressed">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Course_Outcome_Addressed">
               <MappingFragment StoreEntitySet="Course_Outcome_Addressed">
                 <ScalarProperty Name="courseOutcomeAddressed_ID" ColumnName="courseOutcomeAddressed_ID" />
                 <ScalarProperty Name="courseOutcome_FK" ColumnName="courseOutcome_FK" />
@@ -1499,7 +1482,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Course_Outcomes">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Course_Outcomes">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Course_Outcomes">
               <MappingFragment StoreEntitySet="Course_Outcomes">
                 <ScalarProperty Name="courseOutcomes_ID" ColumnName="courseOutcomes_ID" />
                 <ScalarProperty Name="activeValues_FK" ColumnName="activeValues_FK" />
@@ -1511,7 +1494,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Grading_Rubrics">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Grading_Rubrics">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Grading_Rubrics">
               <MappingFragment StoreEntitySet="Grading_Rubrics">
                 <ScalarProperty Name="gradingRubrics_ID" ColumnName="gradingRubrics_ID" />
                 <ScalarProperty Name="assessmentCriteria_FK" ColumnName="assessmentCriteria_FK" />
@@ -1522,7 +1505,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Grading_System">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Grading_System">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Grading_System">
               <MappingFragment StoreEntitySet="Grading_System">
                 <ScalarProperty Name="gradingSystem_ID" ColumnName="gradingSystem_ID" />
                 <ScalarProperty Name="courseDescription_FK" ColumnName="courseDescription_FK" />
@@ -1533,7 +1516,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Learning_Plan">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Learning_Plan">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Learning_Plan">
               <MappingFragment StoreEntitySet="Learning_Plan">
                 <ScalarProperty Name="learning_ID" ColumnName="learning_ID" />
                 <ScalarProperty Name="courseOutcome_FK" ColumnName="courseOutcome_FK" />
@@ -1550,7 +1533,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Online_Sources">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Online_Sources">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Online_Sources">
               <MappingFragment StoreEntitySet="Online_Sources">
                 <ScalarProperty Name="onlineSource_ID" ColumnName="onlineSource_ID" />
                 <ScalarProperty Name="course_FK" ColumnName="course_FK" />
@@ -1560,7 +1543,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Program_Educational_Objs">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Program_Educational_Objs">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Program_Educational_Objs">
               <MappingFragment StoreEntitySet="Program_Educational_Objs">
                 <ScalarProperty Name="programEduOutcome_ID" ColumnName="programEduOutcome_ID" />
                 <ScalarProperty Name="coreValue_FK" ColumnName="coreValue_FK" />
@@ -1571,7 +1554,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Program_Outcomes">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Program_Outcomes">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Program_Outcomes">
               <MappingFragment StoreEntitySet="Program_Outcomes">
                 <ScalarProperty Name="programOutcomes_ID" ColumnName="programOutcomes_ID" />
                 <ScalarProperty Name="coreValue_FK" ColumnName="coreValue_FK" />
@@ -1582,7 +1565,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Quarters">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Quarter">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Quarter">
               <MappingFragment StoreEntitySet="Quarter">
                 <ScalarProperty Name="quarter_ID" ColumnName="quarter_ID" />
                 <ScalarProperty Name="quarter_name" ColumnName="quarter_name" />
@@ -1590,7 +1573,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Revisions">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Revision">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Revision">
               <MappingFragment StoreEntitySet="Revision">
                 <ScalarProperty Name="revision_ID" ColumnName="revision_ID" />
                 <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
@@ -1602,7 +1585,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Revisions_Log">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Revisions_Log">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Revisions_Log">
               <MappingFragment StoreEntitySet="Revisions_Log">
                 <ScalarProperty Name="log_ID" ColumnName="log_ID" />
                 <ScalarProperty Name="revision_id_fk" ColumnName="revision_id_fk" />
@@ -1612,7 +1595,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Role">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="role_ID" ColumnName="role_ID" />
                 <ScalarProperty Name="users_FK" ColumnName="users_FK" />
@@ -1621,7 +1604,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Software_Used">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Software_Used">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Software_Used">
               <MappingFragment StoreEntitySet="Software_Used">
                 <ScalarProperty Name="softwareUsed_ID" ColumnName="softwareUsed_ID" />
                 <ScalarProperty Name="course_FK" ColumnName="course_FK" />
@@ -1631,7 +1614,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sources">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Source">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Source">
               <MappingFragment StoreEntitySet="Sources">
                 <ScalarProperty Name="sources_ID" ColumnName="sources_ID" />
                 <ScalarProperty Name="book_FK" ColumnName="book_FK" />
@@ -1640,7 +1623,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Syllabus">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Syllabu">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.Syllabu">
               <MappingFragment StoreEntitySet="Syllabus">
                 <ScalarProperty Name="syllabus_ID" ColumnName="syllabus_ID" />
                 <ScalarProperty Name="madeBy_FK" ColumnName="madeBy_FK" />
@@ -1653,7 +1636,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.sysdiagram">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -1664,7 +1647,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.User">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel1.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="user_ID" ColumnName="user_ID" />
                 <ScalarProperty Name="username" ColumnName="username" />

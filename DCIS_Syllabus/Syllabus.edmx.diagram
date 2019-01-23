@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Active_Values" Width="1.5" PointX="3" PointY="24.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Assessment_Criteria" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Bibliography" Width="1.5" PointX="8.25" PointY="19.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Book" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Book" Width="1.5" PointX="4" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Class_Policy" Width="1.5" PointX="5.25" PointY="20.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Core_Value" Width="1.5" PointX="9" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Course_Deliverable" Width="1.5" PointX="8.25" PointY="23.125" IsExpanded="true" />
@@ -54,6 +54,7 @@
         <AssociationConnector Association="Syllabus_ManagementModel.FK_Role_TO_Users" ManuallyRouted="false" />
         <AssociationConnector Association="Syllabus_ManagementModel.syllabus_id_fk_IN_Software_Used" ManuallyRouted="false" />
         <AssociationConnector Association="Syllabus_ManagementModel.made_by_fk_IN_Syllabus" ManuallyRouted="false" />
+        <AssociationConnector Association="Syllabus_ManagementModel.FK_Sources_Book" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

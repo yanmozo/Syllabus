@@ -27,5 +27,6 @@ namespace DCIS_Syllabus
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bibliography> Bibliographies { get; set; }
         public virtual Online_Sources Online_Sources { get; set; }
+        public virtual Book Book { get; set; }
     }
 }
