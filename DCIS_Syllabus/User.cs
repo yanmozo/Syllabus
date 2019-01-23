@@ -17,18 +17,19 @@ namespace DCIS_Syllabus
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            this.Roles = new HashSet<Role>();
             this.Syllabus = new HashSet<Syllabu>();
         }
     
-        public int user_id { get; set; }
+        public int user_ID { get; set; }
         public string username { get; set; }
         public string email { get; set; }
         public string password { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public int role_fk { get; set; }
     
-        public virtual Role Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Role> Roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Syllabu> Syllabus { get; set; }
     }

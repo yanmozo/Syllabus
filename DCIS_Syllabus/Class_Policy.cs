@@ -14,8 +14,8 @@ namespace DCIS_Syllabus
     
     public partial class Class_Policy
     {
-        public int policy_id { get; set; }
-        public int syllabus_id_fk { get; set; }
+        public int policy_ID { get; set; }
+        public int syllabus_FK { get; set; }
         public string policyItem { get; set; }
     
         public virtual Syllabu Syllabu { get; set; }

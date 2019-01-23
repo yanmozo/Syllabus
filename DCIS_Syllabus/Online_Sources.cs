@@ -17,15 +17,15 @@ namespace DCIS_Syllabus
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Online_Sources()
         {
-            this.Bibliographies = new HashSet<Bibliography>();
+            this.Sources = new HashSet<Source>();
         }
     
-        public int onlineSource_id { get; set; }
-        public int course_fk { get; set; }
+        public int onlineSource_ID { get; set; }
+        public int course_FK { get; set; }
         public string webpageName { get; set; }
         public string weblink { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bibliography> Bibliographies { get; set; }
+        public virtual ICollection<Source> Sources { get; set; }
     }
 }

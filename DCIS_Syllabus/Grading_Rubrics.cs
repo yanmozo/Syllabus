@@ -14,8 +14,8 @@ namespace DCIS_Syllabus
     
     public partial class Grading_Rubrics
     {
-        public int gradingRubrics_id { get; set; }
-        public int assessmentCriteria_fk { get; set; }
+        public int gradingRubrics_ID { get; set; }
+        public int assessmentCriteria_FK { get; set; }
         public string rubricStatus { get; set; }
         public string points { get; set; }
         public string description { get; set; }

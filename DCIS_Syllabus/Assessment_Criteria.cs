@@ -20,10 +20,10 @@ namespace DCIS_Syllabus
             this.Grading_Rubrics = new HashSet<Grading_Rubrics>();
         }
     
-        public int ac_id { get; set; }
-        public int syllabus_id_fk { get; set; }
-        public byte[] criteria_name { get; set; }
-        public byte[] highest_points { get; set; }
+        public int assesmentCriteria_ID { get; set; }
+        public int syllabus_FK { get; set; }
+        public byte[] criteriaName { get; set; }
+        public byte[] highestPoints { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Grading_Rubrics> Grading_Rubrics { get; set; }

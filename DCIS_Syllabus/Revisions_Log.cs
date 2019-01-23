@@ -14,7 +14,7 @@ namespace DCIS_Syllabus
     
     public partial class Revisions_Log
     {
-        public int log_id { get; set; }
+        public int log_ID { get; set; }
         public int revision_id_fk { get; set; }
         public int who_revised { get; set; }
         public int who_next { get; set; }

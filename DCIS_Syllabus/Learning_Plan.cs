@@ -14,17 +14,17 @@ namespace DCIS_Syllabus
     
     public partial class Learning_Plan
     {
-        public int learning_id { get; set; }
-        public int co_id_fk { get; set; }
-        public int course_id_fk { get; set; }
-        public int quarter_id_fk { get; set; }
-        public int syllabus_id_fk { get; set; }
-        public string learning_outcome { get; set; }
+        public int learning_ID { get; set; }
+        public Nullable<int> courseOutcome_FK { get; set; }
+        public Nullable<int> course_id_fk { get; set; }
+        public int quarter_FK { get; set; }
+        public int syllabus_FK { get; set; }
+        public string learningOutcomeDesc { get; set; }
         public string hours { get; set; }
         public string topics { get; set; }
-        public string teacher_activity { get; set; }
-        public string learner_activity { get; set; }
-        public string assessment_activity { get; set; }
+        public string teacherActivity { get; set; }
+        public string learnerActivity { get; set; }
+        public string assessmentActivity { get; set; }
     
         public virtual Quarter Quarter { get; set; }
         public virtual Syllabu Syllabu { get; set; }

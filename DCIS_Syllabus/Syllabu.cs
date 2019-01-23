@@ -21,17 +21,18 @@ namespace DCIS_Syllabus
             this.Bibliographies = new HashSet<Bibliography>();
             this.Class_Policy = new HashSet<Class_Policy>();
             this.Course_Deliverable = new HashSet<Course_Deliverable>();
+            this.Course_Outcomes = new HashSet<Course_Outcomes>();
             this.Grading_System = new HashSet<Grading_System>();
             this.Learning_Plan = new HashSet<Learning_Plan>();
-            this.Program_EO = new HashSet<Program_EO>();
+            this.Program_Educational_Objs = new HashSet<Program_Educational_Objs>();
             this.Program_Outcomes = new HashSet<Program_Outcomes>();
             this.Revisions = new HashSet<Revision>();
             this.Software_Used = new HashSet<Software_Used>();
         }
     
-        public int syllabus_id { get; set; }
-        public int made_by_fk { get; set; }
-        public int course_id_fk { get; set; }
+        public int syllabus_ID { get; set; }
+        public int madeBy_FK { get; set; }
+        public int course_FK { get; set; }
         public string title { get; set; }
         public string academicYear { get; set; }
         public string academicPeriod { get; set; }
@@ -46,11 +47,13 @@ namespace DCIS_Syllabus
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course_Deliverable> Course_Deliverable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Course_Outcomes> Course_Outcomes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Grading_System> Grading_System { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Learning_Plan> Learning_Plan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Program_EO> Program_EO { get; set; }
+        public virtual ICollection<Program_Educational_Objs> Program_Educational_Objs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Program_Outcomes> Program_Outcomes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

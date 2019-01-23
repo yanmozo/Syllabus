@@ -12,13 +12,13 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Program_Outcomes
+    public partial class Program_Educational_Objs
     {
-        public int programOutcomes_ID { get; set; }
+        public int programEduOutcome_ID { get; set; }
         public int coreValue_FK { get; set; }
         public int syllabus_FK { get; set; }
-        public string attributeName { get; set; }
-        public string outcomeDesc { get; set; }
+        public string objectives { get; set; }
+        public string codeName { get; set; }
     
         public virtual Core_Value Core_Value { get; set; }
         public virtual Syllabu Syllabu { get; set; }
