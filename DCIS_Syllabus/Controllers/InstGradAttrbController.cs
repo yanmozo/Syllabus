@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DCIS_Syllabus.Models;
 
 namespace DCIS_Syllabus.Controllers
 {
@@ -20,15 +21,16 @@ namespace DCIS_Syllabus.Controllers
             //connect to db
             Syllabus_ManagementEntities3 syllabus = new Syllabus_ManagementEntities3();
             //retrieve table details (firstName, lastName, etc.) -- what table?
-            Core_Value value = new Core_Value();
+            //Core_Value value = new Core_Value();
 
             //from the table friends, select all in descending order by age
-            var core_valueList = (from u in syllabus.Core_Value
-                                  select u);
+            var core_valueList = (from cv in syllabus.Core_Value
+                                  join cva in syllabus.Core_Value_Attribute on cv.coreValue_ID equals cva.coreValue_FK
+                                  select new CoreValue{  CoreValueName = cv.name, Attribute = cva.description }).ToList();
 
             //converting all the retrieved data (friends) into a list object
-            ViewData["CoreValueList"] = core_valueList.ToList();
-            return View();
+            ViewData["CoreValueList"] = core_valueList;
+            return View(core_valueList);
         }
     }
 }

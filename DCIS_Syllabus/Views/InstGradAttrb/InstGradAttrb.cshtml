@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "InstGradAttrb";
     Layout = "~/Views/Shared/_SideBar.cshtml";
-    var core_valueList = (List<Core_Value>)(ViewData["CoreValueList"]);
+    var core_valueList = (List<DCIS_Syllabus.Models.CoreValue>)ViewData["CoreValueList"];
 
     var scientia = 1;
     var virtus = 1;
@@ -10,15 +10,15 @@
 
     foreach (var cv_attr in core_valueList)
     {
-        if(cv_attr.name == "Scientia")
+        if(cv_attr.CoreValueName == "Scientia")
         {
             scientia++;
         }
-        else if (cv_attr.name == "Virtus")
+        else if (cv_attr.CoreValueName == "Virtus")
         {
             virtus++;
         }
-        else if (cv_attr.name == "Devotio")
+        else if (cv_attr.CoreValueName == "Devotio")
         {
             devotio++;
         }
@@ -39,9 +39,9 @@
 
     @foreach (var cv_attr in core_valueList)
     {
-        if (cv_attr.name == "Scientia")
+        if (cv_attr.CoreValueName == "Scientia")
         {
-            <tr><td>@cv_attr.description</td></tr>
+            <tr><td>@cv_attr.Attribute</td></tr>
 
         }
     }
@@ -52,9 +52,9 @@
 
     @foreach (var cv_attr in core_valueList)
     {
-        if (cv_attr.name == "Virtus")
+        if (cv_attr.CoreValueName == "Virtus")
         {
-            <tr><td>@cv_attr.description</td></tr>
+            <tr><td>@cv_attr.Attribute</td></tr>
 
         }
     }
@@ -65,9 +65,9 @@
 
     @foreach (var cv_attr in core_valueList)
     {
-        if (cv_attr.name == "Devotio")
+        if (cv_attr.CoreValueName == "Devotio")
         {
-            <tr><td>@cv_attr.description</td></tr>
+            <tr><td>@cv_attr.Attribute</td></tr>
 
         }
     }

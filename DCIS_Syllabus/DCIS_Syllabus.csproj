@@ -159,6 +159,9 @@
     <Compile Include="Bibliography.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
+    <Compile Include="Book.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
     <Compile Include="Class_Policy.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
@@ -173,7 +176,13 @@
     <Compile Include="Core_Value.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
+    <Compile Include="Core_Value_Attribute.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
     <Compile Include="Course_Deliverable.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Course_Information.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Course_Outcomes.cs">
@@ -194,6 +203,7 @@
     <Compile Include="Learning_Plan.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CoreValue.cs" />
     <Compile Include="Online_Sources.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
@@ -328,7 +338,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Syllabus\" />
   </ItemGroup>
   <ItemGroup>

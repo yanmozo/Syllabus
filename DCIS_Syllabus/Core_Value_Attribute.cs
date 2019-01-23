@@ -12,13 +12,12 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Grading_System
+    public partial class Core_Value_Attribute
     {
-        public int gradingSystem_ID { get; set; }
-        public int syllabus_FK { get; set; }
-        public string typeOfGrading { get; set; }
-        public double weight { get; set; }
+        public int coreValueAttrib_ID { get; set; }
+        public int coreValue_FK { get; set; }
+        public string description { get; set; }
     
-        public virtual Syllabu Syllabu { get; set; }
+        public virtual Core_Value Core_Value { get; set; }
     }
 }
