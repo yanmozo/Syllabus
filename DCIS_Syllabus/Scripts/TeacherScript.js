@@ -21,6 +21,8 @@
 function AddNewField() {
     var field = 
         "<div class='input-group' id='newfield'>" +
+        "<input type='text' class='form-control' id='newPolicyInput' placeholder='Type new policy...'><br>" +
+        "<input type='text' class='form-control' id='newPolicyInput1' placeholder='Type new policy...'>" +
         "<input type='text' class='form-control' id='newPolicyInput' placeholder='Type new policy...'>" +
         "<span class='input-group-btn'>" +
         "<button class='btn btn-default' onclick='AddNewPolicy()' type='button'>Add</button>" +

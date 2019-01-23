@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7789c8382b3e4e6dbdda6ff569b15c7c" Name="Diagram1">
+      <Diagram DiagramId="7789c8382b3e4e6dbdda6ff569b15c7c" Name="Diagram1" ZoomLevel="86">
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Assessment_Criteria" Width="1.5" PointX="7.5" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Bibliography" Width="1.5" PointX="7.5" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Book" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
