@@ -19,15 +19,17 @@ namespace DCIS_Syllabus
         {
             this.Program_Educational_Objs = new HashSet<Program_Educational_Objs>();
             this.Program_Outcomes = new HashSet<Program_Outcomes>();
+            this.Core_Value_Attribute = new HashSet<Core_Value_Attribute>();
         }
     
         public int coreValue_ID { get; set; }
         public string name { get; set; }
-        public string description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Program_Educational_Objs> Program_Educational_Objs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Program_Outcomes> Program_Outcomes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Core_Value_Attribute> Core_Value_Attribute { get; set; }
     }
 }

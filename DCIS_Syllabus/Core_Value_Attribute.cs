@@ -12,13 +12,12 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Source
+    public partial class Core_Value_Attribute
     {
-        public int sources_ID { get; set; }
-        public int book_FK { get; set; }
-        public int onlineSources_FK { get; set; }
+        public int coreValueAttrib_ID { get; set; }
+        public int coreValue_FK { get; set; }
+        public string description { get; set; }
     
-        public virtual Book Book { get; set; }
-        public virtual Online_Sources Online_Sources { get; set; }
+        public virtual Core_Value Core_Value { get; set; }
     }
 }

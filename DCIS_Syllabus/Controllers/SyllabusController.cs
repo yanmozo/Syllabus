@@ -13,5 +13,16 @@ namespace DCIS_Syllabus.Controllers
         {
             return View();
         }
+
+        public ActionResult AddNewPolicyToDB(FormCollection fc)
+        {
+            string policy = fc["PolicyString"].ToString();
+            Syllabus_ManagementEntities3 s = new Syllabus_ManagementEntities3();
+            Class_Policy cp = new Class_Policy();
+            cp.policyItem = policy;
+
+
+            return RedirectToAction("ClassroomPolicy", "Teacher");
+        }
     }
 }

@@ -98,13 +98,13 @@
 
 function AddNewField() {
     var field = 
-        "<div class='input-group' id='newfield'>" +
-        "<input type='text' class='form-control' id='newPolicyInput' placeholder='Type new policy...'><br>" +
+        "<form method='post' action='AddNewPolicyToDB'><div class='input-group' id='newfield'>" +
+        "<input type='text' class='form-control' name='PolicyString' id='newPolicyInput' placeholder='Type new policy...'><br>" +
         "<span class='input-group-btn'>" +
         "<button class='btn btn-default' onclick='AddNewPolicy()' type='button'>Add</button>" +
         "</span>" +
-        "</div><br>";
-    document.getElementById("NewInputFields").innerHTML += field;
+        "</div></form><br>";
+    document.getElementById("NewInputFields").innerHTML = field;
 
 }
 
