@@ -14,7 +14,12 @@
             "<td class='BibTD' contenteditable='false'>" + bookTitle + "</td>" +
             "<td class='BibTD' contenteditable='false'>" + bookAuthors + "</td>" +
             "<td class='BibTD' contenteditable='false'>" + bookYear + "</td>" +
-            "<td class='BibTD' ><button class='btn btn-warning EditBookBtn'>Edit</button></td>" +
+            "<td class='BibTD'>" +
+                "<div class='btn-group' role = 'group' aria-label='...'>" + 
+                    "<button type='button' class='btn btn-warning editbtn'><span class='glyphicon glyphicon-edit'></span></button>" +
+                    "<button type='button' class='btn btn-danger delbtn'><span class='glyphicon glyphicon-trash'></span></button>" +
+                "</div >" +
+            "</td >" +
             "</tr>";
         $("#BooksBibTable").append(markup);
     });
@@ -29,7 +34,7 @@
     //Edit the row !! THIS IS WORKING BUT DOESNT WORK WITH MICROSOFT EDGE (OPEN WITH GCHROME)
     $('.editbtn').click(function () {
         var currentTD = $(this).parents('tr').find('td');
-        if ($(this).html() === 'Edit') {
+        if ($(this).html() === '<span class="glyphicon glyphicon-edit"></span>') {
             currentTD = $(this).parents('tr').find('td');
             $.each(currentTD, function () {
                 $(this).prop('contenteditable', true);
@@ -40,7 +45,7 @@
             });
         }
         
-        $(this).html($(this).html() === 'Edit' ? 'Save' : 'Edit');
+        $(this).html($(this).html() === '<span class="glyphicon glyphicon-edit"></span>' ? '<span class="glyphicon glyphicon-ok"></span>' : '<span class="glyphicon glyphicon-edit"></span>');
         
     });
 
