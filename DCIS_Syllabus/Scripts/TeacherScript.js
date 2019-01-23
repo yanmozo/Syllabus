@@ -2,6 +2,19 @@
     $(".clickable-row").click(function () {
         window.location = $(this).data("href");
     });
+    $(".add-book-row").click(function () {
+        var callNumber = $("#callNumber").val();
+        var bookTitle = $("#bookTitle").val();
+        var bookAuthors = $("#bookAuthors").val();
+        var bookYear = $("#bookYear").val();
+        var markup = "<tr>" +
+            "<td class='BibTD'>" + callNumber + "</td>" +
+            "<td class='BibTD'>" + bookTitle + "</td>" +
+            "<td class='BibTD'>" + bookAuthors + "</td>" +
+            "<td class='BibTD'>" + bookYear + "</td>" +
+            "</tr>";
+        $("#BooksBibTable").append(markup);
+    });
 });
 
 function AddNewField() {

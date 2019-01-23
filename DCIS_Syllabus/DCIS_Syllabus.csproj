@@ -304,6 +304,7 @@
       <DependentUpon>Syllabus.edmx</DependentUpon>
     </Content>
     <Content Include="Views\SoftwareUsed\SoftwareUsed.cshtml" />
+    <Content Include="Views\Teacher\Bibliography.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

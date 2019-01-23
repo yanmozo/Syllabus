@@ -47,3 +47,14 @@
 #NewInputFields {
     display: inline-block
 }
+
+#BooksBibTable, .BibTD {
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.BibTH {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
