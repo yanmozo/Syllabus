@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Syllabus_ManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Syllabus_ManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Active_Values">
           <Key>
             <PropertyRef Name="activeValues_ID" />
@@ -30,16 +30,6 @@
           <Property Name="bibliography_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="syllabus_id_fk" Type="int" Nullable="false" />
           <Property Name="sources_fk" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Book">
-          <Key>
-            <PropertyRef Name="book_id" />
-          </Key>
-          <Property Name="book_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="course_fk" Type="int" Nullable="false" />
-          <Property Name="callNumber" Type="int" Nullable="false" />
-          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="author" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Class_Policy">
           <Key>
@@ -68,22 +58,6 @@
           <Property Name="output_description" Type="varchar(max)" Nullable="false" />
           <Property Name="assessmentTypeA" Type="varchar(max)" Nullable="false" />
           <Property Name="assessmentTypeB" Type="varchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Course_Information">
-          <Key>
-            <PropertyRef Name="course_ID" />
-          </Key>
-          <Property Name="course_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="courseCode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="credits" Type="varchar(max)" Nullable="false" />
-          <Property Name="equivalent" Type="varchar(max)" Nullable="false" />
-          <Property Name="preRequisites" Type="varchar(max)" Nullable="false" />
-          <Property Name="coRequisites" Type="varchar(max)" Nullable="false" />
-          <Property Name="term" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="room" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="time" Type="time" Precision="7" Nullable="false" />
-          <Property Name="day" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Course_Outcome_Addressed">
           <Key>
@@ -232,16 +206,6 @@
           <Property Name="academicYear" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="academicPeriod" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -546,11 +510,9 @@
           <EntitySet Name="Active_Values" EntityType="Self.Active_Values" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Assessment_Criteria" EntityType="Self.Assessment_Criteria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bibliography" EntityType="Self.Bibliography" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Class_Policy" EntityType="Self.Class_Policy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Core_Value" EntityType="Self.Core_Value" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course_Deliverable" EntityType="Self.Course_Deliverable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Course_Information" EntityType="Self.Course_Information" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course_Outcome_Addressed" EntityType="Self.Course_Outcome_Addressed" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course_Outcomes" EntityType="Self.Course_Outcomes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grading_Rubrics" EntityType="Self.Grading_Rubrics" Schema="dbo" store:Type="Tables" />
@@ -566,7 +528,6 @@
           <EntitySet Name="Software_Used" EntityType="Self.Software_Used" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sources" EntityType="Self.Sources" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Syllabus" EntityType="Self.Syllabus" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="assessment_Criteria_fk_IN_Grading_Rubrics" Association="Self.assessment_Criteria_fk_IN_Grading_Rubrics">
             <End Role="Assessment_Criteria" EntitySet="Assessment_Criteria" />
@@ -665,8 +626,7 @@
             <End Role="Software_Used" EntitySet="Software_Used" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Syllabus_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -701,16 +661,6 @@
           <NavigationProperty Name="Source" Relationship="Self.FK_Bibliography_Sources" FromRole="Bibliography" ToRole="Sources" />
           <NavigationProperty Name="Syllabu" Relationship="Self.syllabus_id_fk_IN_Bibliography" FromRole="Bibliography" ToRole="Syllabus" />
         </EntityType>
-        <EntityType Name="Book">
-          <Key>
-            <PropertyRef Name="book_id" />
-          </Key>
-          <Property Name="book_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="course_fk" Type="Int32" Nullable="false" />
-          <Property Name="callNumber" Type="Int32" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
         <EntityType Name="Class_Policy">
           <Key>
             <PropertyRef Name="policy_ID" />
@@ -744,22 +694,6 @@
           <NavigationProperty Name="Course_Outcome_Addressed" Relationship="Self.FK_Course_Deliverable_TO_CourseOutcomeAdd" FromRole="Course_Deliverable" ToRole="Course_Outcome_Addressed" />
           <NavigationProperty Name="Grading_System" Relationship="Self.FK_Grading_System_Course_Deliverable" FromRole="Course_Deliverable" ToRole="Grading_System" />
           <NavigationProperty Name="Syllabu" Relationship="Self.syllabus_FK_IN_Course_Deliverable" FromRole="Course_Deliverable" ToRole="Syllabus" />
-        </EntityType>
-        <EntityType Name="Course_Information">
-          <Key>
-            <PropertyRef Name="course_ID" />
-          </Key>
-          <Property Name="course_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="courseCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="credits" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="equivalent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="preRequisites" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="coRequisites" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="term" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="room" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="time" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Course_Outcome_Addressed">
           <Key>
@@ -943,16 +877,6 @@
           <NavigationProperty Name="Revisions" Relationship="Self.syllabus_id_fk_IN_Revision" FromRole="Syllabus" ToRole="Revision" />
           <NavigationProperty Name="Software_Used" Relationship="Self.syllabus_id_fk_IN_Software_Used" FromRole="Syllabus" ToRole="Software_Used" />
           <NavigationProperty Name="User" Relationship="Self.made_by_fk_IN_Syllabus" FromRole="Syllabus" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -1259,11 +1183,9 @@
           <EntitySet Name="Active_Values" EntityType="Self.Active_Values" />
           <EntitySet Name="Assessment_Criteria" EntityType="Self.Assessment_Criteria" />
           <EntitySet Name="Bibliographies" EntityType="Self.Bibliography" />
-          <EntitySet Name="Books" EntityType="Self.Book" />
           <EntitySet Name="Class_Policy" EntityType="Self.Class_Policy" />
           <EntitySet Name="Core_Value" EntityType="Self.Core_Value" />
           <EntitySet Name="Course_Deliverable" EntityType="Self.Course_Deliverable" />
-          <EntitySet Name="Course_Information" EntityType="Self.Course_Information" />
           <EntitySet Name="Course_Outcome_Addressed" EntityType="Self.Course_Outcome_Addressed" />
           <EntitySet Name="Course_Outcomes" EntityType="Self.Course_Outcomes" />
           <EntitySet Name="Grading_Rubrics" EntityType="Self.Grading_Rubrics" />
@@ -1279,7 +1201,6 @@
           <EntitySet Name="Software_Used" EntityType="Self.Software_Used" />
           <EntitySet Name="Sources" EntityType="Self.Source" />
           <EntitySet Name="Syllabus" EntityType="Self.Syllabu" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_Course_Outcomes_TO_ActiveValues" Association="Self.FK_Course_Outcomes_TO_ActiveValues">
             <End Role="Active_Values" EntitySet="Active_Values" />
@@ -1413,17 +1334,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Books">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Book">
-              <MappingFragment StoreEntitySet="Book">
-                <ScalarProperty Name="book_id" ColumnName="book_id" />
-                <ScalarProperty Name="course_fk" ColumnName="course_fk" />
-                <ScalarProperty Name="callNumber" ColumnName="callNumber" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="author" ColumnName="author" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Class_Policy">
             <EntityTypeMapping TypeName="Syllabus_ManagementModel.Class_Policy">
               <MappingFragment StoreEntitySet="Class_Policy">
@@ -1452,23 +1362,6 @@
                 <ScalarProperty Name="output_description" ColumnName="output_description" />
                 <ScalarProperty Name="assessmentTypeA" ColumnName="assessmentTypeA" />
                 <ScalarProperty Name="assessmentTypeB" ColumnName="assessmentTypeB" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Course_Information">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Course_Information">
-              <MappingFragment StoreEntitySet="Course_Information">
-                <ScalarProperty Name="course_ID" ColumnName="course_ID" />
-                <ScalarProperty Name="courseCode" ColumnName="courseCode" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="credits" ColumnName="credits" />
-                <ScalarProperty Name="equivalent" ColumnName="equivalent" />
-                <ScalarProperty Name="preRequisites" ColumnName="preRequisites" />
-                <ScalarProperty Name="coRequisites" ColumnName="coRequisites" />
-                <ScalarProperty Name="term" ColumnName="term" />
-                <ScalarProperty Name="room" ColumnName="room" />
-                <ScalarProperty Name="time" ColumnName="time" />
-                <ScalarProperty Name="day" ColumnName="day" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1632,17 +1525,6 @@
                 <ScalarProperty Name="academicYear" ColumnName="academicYear" />
                 <ScalarProperty Name="academicPeriod" ColumnName="academicPeriod" />
                 <ScalarProperty Name="status" ColumnName="status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
