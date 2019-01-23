@@ -159,9 +159,6 @@
     <Compile Include="Bibliography.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Book.cs">
-      <DependentUpon>Syllabus.tt</DependentUpon>
-    </Compile>
     <Compile Include="Class_Policy.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
@@ -177,9 +174,6 @@
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Course_Deliverable.cs">
-      <DependentUpon>Syllabus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Course_Information.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Course_Outcomes.cs">
@@ -245,9 +239,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Syllabus.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
