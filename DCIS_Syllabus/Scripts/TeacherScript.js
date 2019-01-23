@@ -49,6 +49,10 @@
         
     });
 
+    $('#tableid').on('click', buttonSelector, function () {
+        $(this).closest('tr').remove();
+    });
+
 });
 
 function AddNewField() {
