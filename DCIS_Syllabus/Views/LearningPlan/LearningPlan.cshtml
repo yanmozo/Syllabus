@@ -5,106 +5,66 @@
 
 <h2>Learning Plan</h2>
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th class="text-center learningPlan" rowspan="2">Learning Outcome</th>
-                <th class="text-center learningPlan" rowspan="2">No. of Hours and Covered Date(s)</th>
-                <th class="text-center learningPlan" rowspan="2">CO Addressed</th>
-                <th class="text-center learningPlan" rowspan="2">Topics</th>
-                <th class="text-center learningPlan" colspan="2">Teaching-Learning Activities</th>
-                <th class="text-center learningPlan" rowspan="2">Assessment Activities</th>
-                <th class="text-center learningPlan" rowspan="2">Status</th>
-            </tr>
-            <tr>
-                <th>Teacher Activity</th>
-                <th>Learner Activity</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="learningPlan">-Familiarize the USC VMG, department’s PEO and PO and course details.</td>
-                <td class="text-center learningPlan">1 hour</td>
-                <td class="text-center learningPlan">N/A</td>
-                <td class="learningPlan">
-                    -About USC
-                    -About Dept. of Computer Science<br />
-                    -Program Outcomes<br />
-                    -Course Information
-                </td>
-                <td class="learningPlan">
-                    -Present through PowerPoint and set of videos<br />
-                    -Encourage an open-discussion environment
-                </td>
-                <td class="learningPlan">-Interaction with the Instructor</td>
-                <td class="text-center learningPlan">N/A</td>
-                <td class="text-center learningPlan">
-                    <button class="btn btn-primary">!</button><button class="btn btn-danger">E</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <button class="btn btn-primary">Add</button>
-
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#AddItem">Add</button>
-
-    <!-- Modal -->
-  <div class="modal fade" id="AddItem" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>This is a large modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-    
+<form>
     <div class="container">
-        <form action="/action_page.php">
-            <div class="row col-md-4">
-                <div class="form-group">
-                    <label for="email">Learning Outcome</label>
-                    <textarea class="form-control" rows="5"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="pwd">No. of Hours and Covered Date(s):</label>
-                    <textarea class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Topics:</label>
-                    <textarea class="form-control" rows="5"></textarea>
-                </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="callNumber" placeholder="Call Number">
             </div>
-            <div class="row col-md-4">
-                <p>Teaching-Learning Activities</p>
-                <div class="form-group">
-                    <label for="pwd">Teacher Activity</label>
-                    <textarea class="form-control" rows="5"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Learner Activity</label>
-                    <textarea class="form-control" rows="5"></textarea>
-                </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="bookTitle" placeholder="Title">
             </div>
-            <div class="form-group col-md-4">
-                <label for="pwd">Assessment Activities</label>
-                <textarea class="form-control" rows="5"></textarea>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="bookAuthors" placeholder="Author/s">
             </div>
-            @*<div class="checkbox">
-            <label><input type="checkbox"> Remember me</label>
-        </div>*@
-            <div class="row col-md-4 text-center">
-                <button type="submit" class="btn btn-default">Submit</button>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="bookYear" placeholder="Year">
             </div>
-        </form>
+            <div class="col-md-2">
+                <input type="button" class="add-book-row btn btn-success" onclick="addBookRow" value="Add Row">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
     </div>
+</form>
 
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="text-center learningPlan" rowspan="2">Learning Outcome</th>
+            <th class="text-center learningPlan" rowspan="2">No. of Hours and Covered Date(s)</th>
+            <th class="text-center learningPlan" rowspan="2">CO Addressed</th>
+            <th class="text-center learningPlan" rowspan="2">Topics</th>
+            <th class="text-center learningPlan" colspan="2">Teaching-Learning Activities</th>
+            <th class="text-center learningPlan" rowspan="2">Assessment Activities</th>
+            <th class="text-center learningPlan" rowspan="2">Status</th>
+        </tr>
+        <tr>
+            <th>Teacher Activity</th>
+            <th>Learner Activity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="learningPlan">-Familiarize the USC VMG, department’s PEO and PO and course details.</td>
+            <td class="text-center learningPlan">1 hour</td>
+            <td class="text-center learningPlan">N/A</td>
+            <td class="learningPlan">
+                -About USC
+                -About Dept. of Computer Science<br />
+                -Program Outcomes<br />
+                -Course Information
+            </td>
+            <td class="learningPlan">
+                -Present through PowerPoint and set of videos<br />
+                -Encourage an open-discussion environment
+            </td>
+            <td class="learningPlan">-Interaction with the Instructor</td>
+            <td class="text-center learningPlan">N/A</td>
+            <td class="text-center learningPlan">
+                <button class="btn btn-primary">!</button><button class="btn btn-danger">E</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
