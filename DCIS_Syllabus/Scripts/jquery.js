@@ -7,7 +7,7 @@ $(document).ready(function () {
         var newRow = $("<tr>");
         var cols = "";
 
-        cols += '<td><input type="number" class="form-control" name="version_no"/></td>';
+        cols += '<td><input type="text" class="form-control" name="version_no"/></td>';
         cols += '<td><input type="text" class="form-control" name="description"/></td>';
         cols += '<td><input type="text" class="form-control" name="revised_by"/></td>';
         cols += '<td><input type="date" class="form-control" name="revision_date"/></td>';
