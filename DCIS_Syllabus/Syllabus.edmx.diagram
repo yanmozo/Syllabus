@@ -54,6 +54,7 @@
         <AssociationConnector Association="Syllabus_ManagementModel.FK_Role_TO_Users" ManuallyRouted="false" />
         <AssociationConnector Association="Syllabus_ManagementModel.syllabus_id_fk_IN_Software_Used" ManuallyRouted="false" />
         <AssociationConnector Association="Syllabus_ManagementModel.made_by_fk_IN_Syllabus" ManuallyRouted="false" />
+        <AssociationConnector Association="Syllabus_ManagementModel.FK_Sources_Book" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Syllabus_ManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Syllabus_ManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Active_Values">
           <Key>
             <PropertyRef Name="activeValues_ID" />
@@ -290,18 +290,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Bibliography_Sources">
-          <End Role="Sources" Type="Self.Sources" Multiplicity="1" />
-          <End Role="Bibliography" Type="Self.Bibliography" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sources">
-              <PropertyRef Name="sources_ID" />
-            </Principal>
-            <Dependent Role="Bibliography">
-              <PropertyRef Name="sources_fk" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Course_Deliverable_TO_CourseOutcomeAdd">
           <End Role="Course_Outcome_Addressed" Type="Self.Course_Outcome_Addressed" Multiplicity="1" />
           <End Role="Course_Deliverable" Type="Self.Course_Deliverable" Multiplicity="*" />
@@ -371,6 +359,18 @@
             </Principal>
             <Dependent Role="Role">
               <PropertyRef Name="users_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sources_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="Sources" Type="Self.Sources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="book_id" />
+            </Principal>
+            <Dependent Role="Sources">
+              <PropertyRef Name="book_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -580,10 +580,6 @@
             <End Role="Core_Value" EntitySet="Core_Value" />
             <End Role="Program_Outcomes" EntitySet="Program_Outcomes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Bibliography_Sources" Association="Self.FK_Bibliography_Sources">
-            <End Role="Sources" EntitySet="Sources" />
-            <End Role="Bibliography" EntitySet="Bibliography" />
-          </AssociationSet>
           <AssociationSet Name="FK_Course_Deliverable_TO_CourseOutcomeAdd" Association="Self.FK_Course_Deliverable_TO_CourseOutcomeAdd">
             <End Role="Course_Outcome_Addressed" EntitySet="Course_Outcome_Addressed" />
             <End Role="Course_Deliverable" EntitySet="Course_Deliverable" />
@@ -607,6 +603,10 @@
           <AssociationSet Name="FK_Role_TO_Users" Association="Self.FK_Role_TO_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sources_Book" Association="Self.FK_Sources_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Sources" EntitySet="Sources" />
           </AssociationSet>
           <AssociationSet Name="FK_Sources_OnlineSources" Association="Self.FK_Sources_OnlineSources">
             <End Role="Online_Sources" EntitySet="Online_Sources" />
@@ -665,8 +665,7 @@
             <End Role="Software_Used" EntitySet="Software_Used" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Syllabus_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -710,6 +709,7 @@
           <Property Name="callNumber" Type="Int32" Nullable="false" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Sources" Relationship="Syllabus_ManagementModel.FK_Sources_Book" FromRole="Book" ToRole="Source" />
         </EntityType>
         <EntityType Name="Class_Policy">
           <Key>
@@ -919,6 +919,7 @@
           <Property Name="onlineSources_FK" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Bibliographies" Relationship="Self.FK_Bibliography_Sources" FromRole="Sources" ToRole="Bibliography" />
           <NavigationProperty Name="Online_Sources" Relationship="Self.FK_Sources_OnlineSources" FromRole="Sources" ToRole="Online_Sources" />
+          <NavigationProperty Name="Book" Relationship="Syllabus_ManagementModel.FK_Sources_Book" FromRole="Source" ToRole="Book" />
         </EntityType>
         <EntityType Name="Syllabu">
           <Key>
@@ -1377,7 +1378,23 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Syllabus" EntitySet="Syllabus" />
           </AssociationSet>
+          <AssociationSet Name="FK_Sources_Book" Association="Syllabus_ManagementModel.FK_Sources_Book">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="Source" EntitySet="Sources" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Sources_Book">
+          <End Type="Syllabus_ManagementModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="Syllabus_ManagementModel.Source" Role="Source" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="book_id" />
+            </Principal>
+            <Dependent Role="Source">
+              <PropertyRef Name="book_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
