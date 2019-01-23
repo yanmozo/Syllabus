@@ -165,7 +165,8 @@
     <Compile Include="Controllers\AddNewSyllabusController.cs" />
     <Compile Include="Controllers\ChairmanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\TeacherAndCoordinatorView\InstGradAttrbController.cs" />
+    <Compile Include="Controllers\InstGradAttrbController.cs" />
+    <Compile Include="Controllers\SoftwareUsedController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Core_Value.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
@@ -302,6 +303,7 @@
     <Content Include="Syllabus.edmx.diagram">
       <DependentUpon>Syllabus.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\SoftwareUsed\SoftwareUsed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
