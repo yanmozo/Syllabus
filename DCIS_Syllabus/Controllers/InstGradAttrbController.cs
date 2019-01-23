@@ -14,6 +14,7 @@ namespace DCIS_Syllabus.Controllers
             return View();
         }
 
+        // Teacher and Coordinator View
         public ActionResult InstGradAttrb()
         {
             //connect to db
