@@ -3,7 +3,7 @@
     $(".clickable-row").click(function () {
         window.location = $(this).data("href");
     });
-    // Adds a new row to the table
+    // Adds a new row to the Book source table
     $(".add-book-row").click(function () {
         var callNumber = $("#callNumber").val();
         var bookTitle = $("#bookTitle").val();
@@ -22,16 +22,34 @@
             "</td >" +
             "</tr>";
         $("#BooksBibTable").append(markup);
+
+        $("#callNumber").val("");
+        $("#bookTitle").val("");
+        $("#bookAuthors").val("");
+        $("#bookYear").val("");
     });
-     //Find and remove selected table rows
-    $(".DelBookBtn").click(function () {
-        $("table tbody").find('input[name="record"]').each(function () {
-            if ($(this).is(":checked")) {
-                $(this).parents("tr").remove();
-            }
-        });
+
+    // Adds a new row to the Websource table
+    $(".add-online-row").click(function () {
+        var webpageName = $("#webpageName").val();
+        var webpageLink = $("#webpageLink").val();
+        var webmarkup = "<tr>" +
+            "<td class='BibTD' contenteditable='false'>" + webpageName + "</td>" +
+            "<td class='BibTD' contenteditable='false'>" + webpageLink + "</td>" +
+            "<td class='BibTD'>" +
+            "<div class='btn-group' role = 'group' aria-label='...'>" +
+            "<button type='button' class='btn btn-warning editbtn'><span class='glyphicon glyphicon-edit'></span></button>" +
+            "<button type='button' class='btn btn-danger delbtn'><span class='glyphicon glyphicon-trash'></span></button>" +
+            "</div >" +
+            "</td >" +
+            "</tr>";
+        $("#OnlineBibTable").append(webmarkup);
+
+        $("#webpageName").val("");
+        $("#webpageLink").val("");
     });
-    //Edit the row !! THIS IS WORKING BUT DOESNT WORK WITH MICROSOFT EDGE (OPEN WITH GCHROME)
+    
+    //Edit the row in books!! THIS IS WORKING BUT DOESNT WORK WITH MICROSOFT EDGE (OPEN WITH GCHROME)
     $('.editbtn').click(function () {
         var currentTD = $(this).parents('tr').find('td');
         if ($(this).html() === '<span class="glyphicon glyphicon-edit"></span>') {
@@ -49,41 +67,44 @@
         
     });
 
-    //$('#tableid').on('click', buttonSelector, function () {
-    //    $(this).closest('tr').remove();
-    //});
+    //Edit the row in online!! THIS IS WORKING BUT DOESNT WORK WITH MICROSOFT EDGE (OPEN WITH GCHROME)
+    $('.editbtn_web').click(function () {
+        var currentTD = $(this).parents('tr').find('td');
+        if ($(this).html() === '<span class="glyphicon glyphicon-edit"></span>') {
+            currentTD = $(this).parents('tr').find('td');
+            $.each(currentTD, function () {
+                $(this).prop('contenteditable', true);
+            });
+        } else {
+            $.each(currentTD, function () {
+                $(this).prop('contenteditable', false);
+            });
+        }
 
-    //Adds a new row to the table Learning Plan
-    $(".add-learning-plan-row").click(function () {
-        var lpMarkup = "<tr class='delLP'>" +
-            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
-            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
-            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
-            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
-            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
-            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
-            "<td class='LPTD' contenteditable='false'><textarea class='form-control'></textarea></td>" +
-            "<td class='LPTD'>" +
-            "<div class='btn-group' role = 'group' aria-label='...'>" +
-            "<button type='button' class='btn btn-warning editLPbtn'><span class='glyphicon glyphicon-edit'></span></button>" +
-            "<button type='button' class='btn btn-danger delLPbtn'><span class='glyphicon glyphicon-trash'></span></button>" +
-            "</div >" +
-            "</td >" +
-            "</tr>";
-        $("#LearningPlanBody").append(lpMarkup);
+        $(this).html($(this).html() === '<span class="glyphicon glyphicon-edit"></span>' ? '<span class="glyphicon glyphicon-ok"></span>' : '<span class="glyphicon glyphicon-edit"></span>');
+
     });
 
+    //Delete's table row - Book
+    $("#BooksBibTable").on('click', '.delbtn', function () {
+        $(this).closest('tr').remove();
+    });
+
+    //Delete's table row - Online
+    $("#OnlineBibTable").on('click', '.delbtn_web', function () {
+        $(this).closest('tr').remove();
+    });
 });
 
 function AddNewField() {
     var field = 
-        "<div class='input-group' id='newfield'>" +
-        "<input type='text' class='form-control' id='newPolicyInput' placeholder='Type new policy...'><br>" +
+        "<form method='post' action='AddNewPolicyToDB'><div class='input-group' id='newfield'>" +
+        "<input type='text' class='form-control' name='PolicyString' id='newPolicyInput' placeholder='Type new policy...'><br>" +
         "<span class='input-group-btn'>" +
         "<button class='btn btn-default' onclick='AddNewPolicy()' type='button'>Add</button>" +
         "</span>" +
-        "</div><br>";
-    document.getElementById("NewInputFields").innerHTML += field;
+        "</div></form><br>";
+    document.getElementById("NewInputFields").innerHTML = field;
 
 }
 
@@ -98,16 +119,16 @@ function AddNewPolicy() {
    this.style.display = "none";
 }
 
-function editRow() {
-    var $this = $(this);
-    var tds = $this.closest('tr').find('td').filter(function () {
-        return $(this).find('.EditBookBtn').length === 0;
-    });
-    if ($this.html() === 'Edit') {
-        $this.html('Save');
-        tds.prop('contenteditable', true);
-    } else {
-        $this.html('Edit');
-        tds.prop('contenteditable', false);
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
     }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
 }

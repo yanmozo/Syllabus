@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Bibliography";
     Layout = "~/Views/Shared/_SideBar.cshtml";
 }
@@ -8,59 +7,105 @@
 <br />
 <h2>Bibliography</h2>
 
-<form>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-2">
-                <input type="text" class="form-control" id="callNumber" placeholder="Call Number">
-            </div>
-            <div class="col-md-2">
-                <input type="text" class="form-control" id="bookTitle" placeholder="Title">
-            </div>
-            <div class="col-md-2">
-                <input type="text" class="form-control" id="bookAuthors" placeholder="Author/s">
-            </div>
-            <div class="col-md-2">
-                <input type="text" class="form-control" id="bookYear" placeholder="Year">
-            </div>
-            <div class="col-md-2">
-                <input type="button" class="add-book-row btn btn-success" onclick="addBookRow" value="Add Row">
-            </div>
-            <div class="col-md-1"></div>
+<div class="row">
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'Books')">Books</button>
+        <button class="tablinks" onclick="openCity(event, 'OnlineSources')">Online Resources</button>
+    </div>
+</div>
+
+
+<div id="Books" class="tabcontent">
+    <h2 style="text-align:left; margin-left:80px">Book Information</h2>
+    <div class="row">
+        <div class="col-md-5">
+            <input type="text" class="form-control bookInput" id="callNumber" placeholder="Call Number">
+            <input type="text" class="form-control bookInput" id="bookTitle" placeholder="Title">
+        </div>
+        <div class="col-md-5">
+            <input type="text" class="form-control bookInput" id="bookAuthors" placeholder="Author/s">
+            <input type="text" class="form-control bookInput" id="bookYear" placeholder="Year">
+        </div>
+        <div class="col-md-2">
+            <input type="button" class="add-book-row btn btn-success" onclick="addBookRow" value="Add Row">
         </div>
     </div>
-</form>
-<br />
-<div class="wrapper">
-    <div class="col-md-1"></div>
-    <div class="col-md-10 text-center">
-        <table id="BooksBibTable">
-            <tr>
-                <th colspan="5" class="text-center">Books</th>
-            </tr>
-            <tr>
-                <th class="BibTH" style="width:150px">Call Number</th>
-                <th class="BibTH" style="width:300px">Title</th>
-                <th class="BibTH" style="width:200px">Author/s</th>
-                <th class="BibTH">Year</th>
-                <th class="BibTH" style="width:150px">Options</th>
-            </tr>
-            <tr class="del">
-                <td class="BibTD" contenteditable="true">006.74 F33</td>
-                <td class="BibTD" contenteditable="false">Web development and design foundations with HTML5 (6th Edition)</td>
-                <td class="BibTD" contenteditable="false">Felke-Morris, Terry</td>
-                <td class="BibTD" contenteditable="false">2010</td>
-                <td class="BibTD">
-                    <div class="btn-group" role="group" aria-label="...">
-                        <button type="button" class="btn btn-warning editbtn"><span class="glyphicon glyphicon-edit"></span></button>
-                        <button type="button" class="btn btn-danger delbtn"><span class="glyphicon glyphicon-trash"></span></button>
-                   </div>
-                </td>
-            </tr>
-        </table>
+    <br /><br />
+    <div class="wrapper">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 text-center">
+            <table id="BooksBibTable">
+                <tr>
+                    <th colspan="5" class="text-center">Books</th>
+                </tr>
+                <tr>
+                    <th class="BibTH" style="width:150px">Call Number</th>
+                    <th class="BibTH" style="width:300px">Title</th>
+                    <th class="BibTH" style="width:200px">Author/s</th>
+                    <th class="BibTH">Year</th>
+                    <th class="BibTH" style="width:150px">Options</th>
+                </tr>
+                <tr class="del">
+                    <td class="BibTD" contenteditable="true">006.74 F33</td>
+                    <td class="BibTD" contenteditable="false">Web development and design foundations with HTML5 (6th Edition)</td>
+                    <td class="BibTD" contenteditable="false">Felke-Morris, Terry</td>
+                    <td class="BibTD" contenteditable="false">2010</td>
+                    <td class="BibTD">
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button type="button" class="btn btn-warning editbtn"><span class="glyphicon glyphicon-edit"></span></button>
+                            <button type="button" class="btn btn-danger delbtn"><span class="glyphicon glyphicon-trash"></span></button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
     </div>
-    <div class="col-md-1"></div>
 </div>
+
+<div id="OnlineSources" class="tabcontent">
+    <h2 style="text-align:left; margin-left:80px">Web Source</h2>
+    <div class="row">
+        <div class="col-md-5">
+            <input type="text" class="form-control bookInput" id="webpageName" placeholder="Webpage">
+        </div>
+        <div class="col-md-5">
+            <input type="text" class="form-control bookInput" id="webpageLink" placeholder="Link">
+        </div>
+        <div class="col-md-2">
+            <input type="button" class="add-online-row btn btn-success" value="Add Row">
+        </div>
+    </div>
+    <br /><br />
+    <div class="wrapper text-center">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 text-center">
+            <table id="OnlineBibTable">
+                <tr>
+                    <th colspan="3" class="text-center BibTH">Online Sources</th>
+                </tr>
+                <tr>
+                    <th class="BibTH" style="width:150px">Webpage</th>
+                    <th class="BibTH" style="width:300px">Link</th>
+                    <th class="BibTH" style="width:150px">Options</th>
+                </tr>
+                <tr class="del">
+                    <td class="BibTD" contenteditable="true">006.74 F33</td>
+                    <td class="BibTD" contenteditable="false">2010</td>
+                    <td class="BibTD">
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button type="button" class="btn btn-warning editbtn_web"><span class="glyphicon glyphicon-edit"></span></button>
+                            <button type="button" class="btn btn-danger delbtn_web"><span class="glyphicon glyphicon-trash"></span></button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+
 
 

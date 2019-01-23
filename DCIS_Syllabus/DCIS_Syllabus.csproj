@@ -250,6 +250,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Syllabus.edmx</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>

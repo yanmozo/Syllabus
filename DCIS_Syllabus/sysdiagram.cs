@@ -12,12 +12,12 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Bibliography
+    public partial class sysdiagram
     {
-        public int bibliography_id { get; set; }
-        public int syllabus_id_fk { get; set; }
-        public int sources_fk { get; set; }
-    
-        public virtual Syllabu Syllabu { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

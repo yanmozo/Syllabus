@@ -49,6 +49,7 @@ namespace DCIS_Syllabus
         public virtual DbSet<Software_Used> Software_Used { get; set; }
         public virtual DbSet<Source> Sources { get; set; }
         public virtual DbSet<Syllabu> Syllabus { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }
