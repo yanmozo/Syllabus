@@ -1,7 +1,54 @@
 ﻿
 @{
     ViewBag.Title = "AssessmentCriteria";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
 }
 
 <h2>Assessment Criteria</h2>
+<br /><br />
+<div class="row">
+    <div class="col-md-2">
+        <label for="criteria">Criteria</label>
+        <input type="text" class="form-control" id="criteria" />
+    </div>
+    <div class="col-md-2">
+        <label for="poor">Poor</label>
+        <input type="text" placeholder="Points" class="form-control" id="poor" style="width:40%" /><br />
+        <textarea type="text" placeholder="Description" class="form-control" id="poordesc"></textarea><br />
+    </div>
+    <div class="col-md-2">
+        <label for="fair">Fair</label>
+        <input type="text" placeholder="Points" class="form-control" id="fair" style="width:40%"/><br />
+        <textarea type="text" placeholder="Description" class="form-control" id="fairdesc"></textarea><br />
+    </div>
+    <div class="col-md-2">
+        <label for="satisfactory">Satisfactory</label>
+        <input type="text" placeholder="Points" class="form-control" id="satisfactory" style="width:40%" /><br />
+        <textarea type="text" placeholder="Description" class="form-control" id="satisfactorydesc"></textarea><br />
+    </div>
+    <div class="col-md-2">
+        <label for="excellent">Excellent</label>
+        <input type="text" placeholder="Points" class="form-control" id="excellent" style="width:40%" /><br />
+        <textarea type="text" placeholder="Description" class="form-control" id="excellentdesc"></textarea><br />
+    </div>
+    <div class="col-md-2">
+        <label for="maxpoints">Points</label>
+        <input type="text" placeholder="Points" class="form-control" id="maxpoints" style="width:40%" /><br />
+        <button class="btn btn-success">Add Criteria</button>
+    </div>
+</div>
+<br />
+<table style="border:1px solid black">
+    <tr style="border:1px solid black">
+        <th colspan="6" style="border:1px solid black">Grading Rubrics</th>
+    </tr>
+    <tr style="border:1px solid black">
+        <th style="border:1px solid black">Criteria</th>
+        <th style="border:1px solid black">Poor</th>
+        <th style="border:1px solid black">Fair</th>
+        <th style="border:1px solid black">Satisfactory</th>
+        <th style="border:1px solid black">Excellent</th>
+        <th style="border:1px solid black">Points</th>
+    </tr>
+</table>
 
