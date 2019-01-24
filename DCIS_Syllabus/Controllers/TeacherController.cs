@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -68,7 +70,7 @@ namespace DCIS_Syllabus.Controllers
         public ActionResult revision_history()
         {
 
-            Syllabus_ManagementEntities3 fe = new Syllabus_ManagementEntities3();
+            Syllabus_ManagementEntities4 fe = new Syllabus_ManagementEntities4();
             Revision d = new Revision();
 
            //var detailList = (from u in fe.Details
@@ -182,7 +184,7 @@ namespace DCIS_Syllabus.Controllers
             string revisionDate = getRevisionDetails["revision_revisionDate"].ToString();
             string approvedBy = getRevisionDetails["revision_approvedBy"].ToString();
             string approvedDate = getRevisionDetails["revision_approvedDate"].ToString();
-            Syllabus_ManagementEntities3 fe = new Syllabus_ManagementEntities3();
+            Syllabus_ManagementEntities4 fe = new Syllabus_ManagementEntities4();
 
             Revision getTable = new Revision();
             getTable.syllabus_FK = 1;

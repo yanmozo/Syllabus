@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0e9a2e1e266a4375b3a3f0335d2b6c9e" Name="Diagram1" ZoomLevel="84">
+      <Diagram DiagramId="0e9a2e1e266a4375b3a3f0335d2b6c9e" Name="Diagram1">
 <<<<<<< HEAD
 <<<<<<< HEAD
         
@@ -82,6 +82,7 @@
 =======
         <AssociationConnector Association="Syllabus_ManagementModel.FK_Grading_System_Course_Deliverable" />
         <AssociationConnector Association="Syllabus_ManagementModel.FK_Course_Outcomes_TO_Syllabus" />
+<<<<<<< HEAD
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Active_Values" Width="1.5" PointX="6.1979856184674365" PointY="3.7195998000537975" />
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Assessment_Criteria" Width="1.5" PointX="2.1076497873792657" PointY="15.069159917099942" />
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Bibliography" Width="1.5" PointX="9.8201926042419814" PointY="13.589147246251416" />
@@ -108,6 +109,34 @@
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Source" Width="1.5" PointX="9.8137129069369813" PointY="1.3483300066312449" />
         <EntityTypeShape EntityType="Syllabus_ManagementModel.Syllabu" Width="1.5" PointX="10.230079689170271" PointY="8.56671457391545" />
         <EntityTypeShape EntityType="Syllabus_ManagementModel.User" Width="1.5" PointX="4.347887816069596" PointY="27.791927201576495" />
+=======
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2e272329e69985f7c68cca6d2ef191182c66dbfe
         <AssociationConnector Association="Syllabus_ManagementModel.FK_Course_Outcomes_TO_ActiveValues" />
         <AssociationConnector Association="Syllabus_ManagementModel.assessment_Criteria_fk_IN_Grading_Rubrics" />
         <AssociationConnector Association="Syllabus_ManagementModel.syllabus_id_fk_IN_Assessment_Criteria" />
@@ -133,6 +162,7 @@
         <AssociationConnector Association="Syllabus_ManagementModel.syllabus_id_fk_IN_Software_Used" />
         <AssociationConnector Association="Syllabus_ManagementModel.FK_Sources_Sources" />
         <AssociationConnector Association="Syllabus_ManagementModel.made_by_fk_IN_Syllabus" />
+<<<<<<< HEAD
         
         
         
@@ -252,94 +282,8 @@
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+=======
+>>>>>>> 2e272329e69985f7c68cca6d2ef191182c66dbfe
         
         
         
@@ -444,6 +388,96 @@
         
         
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; 5ec38fc9335961ae3563d00004838f5d72889082
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 053dc39ab1a26782cc4b602e2f233f3dd5aa9a3f
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      &gt;&gt;&gt;&gt;&gt;&gt;&gt; 5ec38fc9335961ae3563d00004838f5d72889082
         
         
         
