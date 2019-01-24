@@ -52,6 +52,7 @@ namespace DCIS_Syllabus.Controllers
                                 where u.syllabus_FK == syllabusID
                                 select u);
             ViewData["ListofPolicies"] = policyList.ToList();
+            ViewBag.syllabusID = syllabusID;
             return View();
         }
 
