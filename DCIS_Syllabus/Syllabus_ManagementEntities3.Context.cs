@@ -51,6 +51,5 @@ namespace DCIS_Syllabus
         public virtual DbSet<Source> Sources { get; set; }
         public virtual DbSet<Syllabu> Syllabus { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Hello> Helloes { get; set; }
     }
 }
