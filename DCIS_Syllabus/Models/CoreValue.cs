@@ -9,5 +9,6 @@ namespace DCIS_Syllabus.Models
     {
         public string CoreValueName { get; set; }
         public string Attribute { get; set; }
+        public int CoreValueAttrb_Id { get; set; }
     }
 }
