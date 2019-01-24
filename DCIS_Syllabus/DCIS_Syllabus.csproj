@@ -200,9 +200,6 @@
     <Compile Include="Grading_System.cs">
       <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
     </Compile>
-    <Compile Include="Here.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
-    </Compile>
     <Compile Include="Learning_Plan.cs">
       <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
     </Compile>
@@ -341,10 +338,11 @@
     <Content Include="Views\Chairman\ProgramObj2.cshtml" />
     <Content Include="Views\Chairman\PassToUpdate.cshtml" />
     <Content Include="Views\LearningPlan\LearningPlanAdd.cshtml" />
+    <Content Include="Views\Syllabus\AddNewBookSource.cshtml" />
+    <Content Include="Views\Syllabus\UpdateBooks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Syllabus\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

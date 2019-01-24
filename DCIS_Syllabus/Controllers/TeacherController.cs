@@ -58,6 +58,10 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult Bibliography()
         {
+            var bookList = (from u in sm.Books
+                              select u);
+            ViewData["ListofBooks"] = bookList.ToList();
+
             return View();
         }
 

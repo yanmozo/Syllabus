@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0e9a2e1e266a4375b3a3f0335d2b6c9e" Name="Diagram1">
+      <Diagram DiagramId="0e9a2e1e266a4375b3a3f0335d2b6c9e" Name="Diagram1" ZoomLevel="65">
 <<<<<<< HEAD
 <<<<<<< HEAD
         
@@ -82,32 +82,31 @@
 =======
         <AssociationConnector Association="Syllabus_ManagementModel.FK_Grading_System_Course_Deliverable" />
         <AssociationConnector Association="Syllabus_ManagementModel.FK_Course_Outcomes_TO_Syllabus" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Active_Values" Width="1.5" PointX="2.4081284713037912" PointY="0.096048101827524657" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Assessment_Criteria" Width="1.5" PointX="7.81189853316727" PointY="25.483934712355925" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Bibliography" Width="1.5" PointX="5.4848436571121422" PointY="16.335936896659405" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Book" Width="1.5" PointX="6.048967209667417" PointY="7.5544982289683533" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Class_Policy" Width="1.5" PointX="0.22430928434445957" PointY="24.997876670676227" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Core_Value" Width="1.5" PointX="3.3283860810698878" PointY="7.6659976428681977" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Core_Value_Attribute" Width="1.5" PointX="6.2662378578755256" PointY="13.665705910728176" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Course_Deliverable" Width="1.5" PointX="4.1558576208333751" PointY="23.076241042034813" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Course_Information" Width="1.5" PointX="10.756997225227298" PointY="28.000558702275416" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Course_Outcome_Addressed" Width="1.5" PointX="7.0677203345427841" PointY="31.222664013143007" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Course_Outcomes" Width="1.5" PointX="8.5427961538279416" PointY="20.106909358923748" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Grading_Rubrics" Width="1.5" PointX="4.59973123883816" PointY="8.468878496656604" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Grading_System" Width="1.5" PointX="11.007208412050833" PointY="21.138371090003464" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Here" Width="1.5" PointX="8.44905168584038" PointY="14.083555332423913" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Learning_Plan" Width="1.5" PointX="6.2110550115867778" PointY="24.855478909265006" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Online_Sources" Width="1.5" PointX="1.4898717559361232" PointY="22.642267610245508" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Program_Educational_Objs" Width="1.5" PointX="3.0798751241899449" PointY="18.153192647804129" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Program_Outcomes" Width="1.5" PointX="11.541855945969864" PointY="30.953141971935118" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Quarter" Width="1.5" PointX="1.2041770113651533" PointY="25.207777154263006" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Revision" Width="1.5" PointX="8.2649335601669431" PointY="28.30618426031721" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Revisions_Log" Width="1.5" PointX="2.2448849334590535" PointY="14.605837441331632" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Role" Width="1.5" PointX="5.6647981506142759" PointY="3.5798105465154211" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Software_Used" Width="1.5" PointX="6.1753800782260395" PointY="9.5022586032293077" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Source" Width="1.5" PointX="2.98118783113602" PointY="21.797078232186418" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.Syllabu" Width="1.5" PointX="7.80890859654588" PointY="8.70787015962781" />
-        <EntityTypeShape EntityType="Syllabus_ManagementModel.User" Width="1.5" PointX="5.2772719269978214" PointY="12.886768645088546" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Active_Values" Width="1.5" PointX="0.56906875808214241" PointY="12.609942784816932" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Assessment_Criteria" Width="1.5" PointX="5.9781814226779071" PointY="29.496575101044296" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Bibliography" Width="1.5" PointX="0.26580594119886214" PointY="29.385372995112732" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Book" Width="1.5" PointX="8.4914651552641125" PointY="2.5131788116475469" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Class_Policy" Width="1.5" PointX="5.757319151310865" PointY="13.185707411349615" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Core_Value" Width="1.5" PointX="11.485228461905024" PointY="5.2902818495828106" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Core_Value_Attribute" Width="1.5" PointX="4.3182992005340282" PointY="29.199607445485707" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Course_Deliverable" Width="1.5" PointX="7.8754095825717823" PointY="3.6194956021474187" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Course_Information" Width="1.5" PointX="11.193588260185713" PointY="0.014187574393203284" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Course_Outcome_Addressed" Width="1.5" PointX="2.4848869845666397" PointY="3.1074672355817015" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Course_Outcomes" Width="1.5" PointX="1.7826776233421069" PointY="27.31977700969194" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Grading_Rubrics" Width="1.5" PointX="9.12347824551327" PointY="27.127948773618762" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Grading_System" Width="1.5" PointX="7.8500535710947847" PointY="25.306329232317548" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Learning_Plan" Width="1.5" PointX="10.44227736370744" PointY="3.1941411212059396" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Online_Sources" Width="1.5" PointX="5.7602424294502672" PointY="23.528084646690676" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Program_Educational_Objs" Width="1.5" PointX="10.495284379690553" PointY="30.438489928114457" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Program_Outcomes" Width="1.5" PointX="10.3858048275047" PointY="7.3030469898614321" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Quarter" Width="1.5" PointX="9.2281212719288277" PointY="11.318068703318978" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Revision" Width="1.5" PointX="8.21594503531975" PointY="16.27394878131987" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Revisions_Log" Width="1.5" PointX="8.2870949657108142" PointY="30.432546838388102" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Role" Width="1.5" PointX="1.4475490792875874" PointY="6.2706617593162983" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Software_Used" Width="1.5" PointX="11.472809822984416" PointY="31.874245867074581" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Source" Width="1.5" PointX="11.12695850018736" PointY="17.533288412510085" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.Syllabu" Width="1.5" PointX="9.009903027214996" PointY="19.724863150960235" />
+        <EntityTypeShape EntityType="Syllabus_ManagementModel.User" Width="1.5" PointX="0.476892907394512" PointY="30.019337846906549" />
         <AssociationConnector Association="Syllabus_ManagementModel.FK_Course_Outcomes_TO_ActiveValues" />
         <AssociationConnector Association="Syllabus_ManagementModel.assessment_Criteria_fk_IN_Grading_Rubrics" />
         <AssociationConnector Association="Syllabus_ManagementModel.syllabus_id_fk_IN_Assessment_Criteria" />
@@ -134,6 +133,58 @@
         <AssociationConnector Association="Syllabus_ManagementModel.FK_Role_TO_Users" />
         <AssociationConnector Association="Syllabus_ManagementModel.syllabus_id_fk_IN_Software_Used" />
         <AssociationConnector Association="Syllabus_ManagementModel.made_by_fk_IN_Syllabus" />
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
