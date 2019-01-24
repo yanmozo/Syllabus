@@ -17,18 +17,18 @@
 </div>
 
 
-<div id="Books" class="tabcontent">
+<div id="Books" class="tabcontent" style="height:800px;overflow-y:auto">
     <h2 style="text-align:left; margin-left:80px">Book Information</h2>
     <div class="row" style="margin-left: 20%;margin-right: 20%;">
         <form method="post" action="../Syllabus/UpdateBooks">
             <input type="hidden" class="form-control bookInput" id="bookID" name="BookID" readonly>
             <div class="col-md-5">
-                <input type="text" class="form-control bookInput" id="callNumber" name="CallNumber" placeholder="Call Number"><br />
-                <input type="text" class="form-control bookInput" id="bookTitle" name="Title" placeholder="Title">
+                <input type="text" class="form-control bookInput" id="callNumber" name="CallNumber" placeholder="Call Number" required><br />
+                <input type="text" class="form-control bookInput" id="bookTitle" name="Title" placeholder="Title" required>
             </div>
             <div class="col-md-5">
-                <input type="text" class="form-control bookInput" id="bookAuthors" name="Author" placeholder="Author/s"><br />
-                <input type="text" class="form-control bookInput" id="bookYear" name="Year" placeholder="Year">
+                <input type="text" class="form-control bookInput" id="bookAuthors" name="Author" placeholder="Author/s" required><br />
+                <input type="text" class="form-control bookInput" id="bookYear" name="Year" placeholder="Year" required>
             </div>
             <div class="col-md-2" style="margin-top:25px;">
                 <input type="submit" id="bookBtn" class="btn btn-success" value="Add Row">
@@ -62,7 +62,7 @@
                             <td class="BibTD">
                                 <div class="btn-group" role="group" aria-label="...">
                                     <button type="button" class="btn btn-warning editbtn"><span class="glyphicon glyphicon-edit"></span></button>
-                                    <button type="button" class="btn btn-danger delbtn"><span class="glyphicon glyphicon-trash"></span></button>
+                                    <a type="submit" href="../Syllabus/DeleteBook?BookID=@item.book_id" class="btn btn-danger delbtn"><span class="glyphicon glyphicon-trash"></span></a>
                                 </div>
                             </td>
                         </tr>
@@ -75,11 +75,11 @@
     </div>
 </div>
 
-<div id="OnlineSources" class="tabcontent">
+<div id="OnlineSources" class="tabcontent" style="height:800px;overflow-y:auto">
     <h2 style="text-align:left; margin-left:80px">Web Source</h2>
     <div class="row" style="margin-left: 20%;margin-right: 20%;">
         <form method="post" action="../Syllabus/UpdateWebResources">
-            <input type="text" class="form-control bookInput" id="webID" name="WebID" readonly hidden>
+            <input type="hidden" class="form-control bookInput" id="webID" name="WebID" readonly>
             <div class="col-md-5">
                 <input type="text" class="form-control bookInput" id="webpageName" placeholder="Webpage">
             </div>
@@ -114,7 +114,7 @@
                             <td class="BibTD">
                                 <div class="btn-group" role="group" aria-label="...">
                                     <button type="button" class="btn btn-warning editbtn_web"><span class="glyphicon glyphicon-edit"></span></button>
-                                    <button type="button" class="btn btn-danger delbtn_web"><span class="glyphicon glyphicon-trash"></span></button>
+                                    <a type="submit" href="../Syllabus/DeleteOnlineResource?WebID=@web.onlineSource_ID" class="btn btn-danger delbtn_web"><span class="glyphicon glyphicon-trash"></span></a>
                                 </div>
                             </td>
                         </tr>

@@ -35,10 +35,10 @@
           <Key>
             <PropertyRef Name="book_id" />
           </Key>
-          <Property Name="book_id" Type="int" Nullable="false" />
+          <Property Name="book_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="course_fk" Type="int" Nullable="false" />
           <Property Name="callNumber" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
           <Property Name="author" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="year" Type="int" Nullable="false" />
         </EntityType>
@@ -239,7 +239,7 @@
           </Key>
           <Property Name="sources_ID" Type="int" Nullable="false" />
           <Property Name="type_of_resource" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="resource_fk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="resource_fk" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="Syllabus">
           <Key>
@@ -862,7 +862,7 @@
           <Property Name="book_id" Type="Int32" Nullable="false" />
           <Property Name="course_fk" Type="Int32" Nullable="false" />
           <Property Name="callNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="author" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="year" Type="Int32" Nullable="false" />
         </EntityType>
