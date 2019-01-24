@@ -203,9 +203,6 @@
     <Compile Include="Hello.cs">
       <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
     </Compile>
-    <Compile Include="Here.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
-    </Compile>
     <Compile Include="Learning_Plan.cs">
       <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
     </Compile>
@@ -345,6 +342,8 @@
     <Content Include="Views\Chairman\PassToUpdate.cshtml" />
     <Content Include="Views\LearningPlan\LearningPlanAdd.cshtml" />
     <Content Include="Views\InstGradAttrb\UpdateCoreValue.cshtml" />
+    <Content Include="Views\Teacher\CourseDelidummy.cshtml" />
+    <Content Include="Views\Chairman\AddDeli.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

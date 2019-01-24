@@ -35,7 +35,7 @@
           <Key>
             <PropertyRef Name="book_id" />
           </Key>
-          <Property Name="book_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="book_id" Type="int" Nullable="false" />
           <Property Name="course_fk" Type="int" Nullable="false" />
           <Property Name="callNumber" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -148,7 +148,7 @@
           </Key>
           <Property Name="learning_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="courseOutcome_FK" Type="int" />
-          <Property Name="course_id_fk" Type="int" />
+          <Property Name="course_id_fk" Type="int" Nullable="false" />
           <Property Name="quarter_FK" Type="int" Nullable="false" />
           <Property Name="syllabus_FK" Type="int" Nullable="false" />
           <Property Name="learningOutcomeDesc" Type="varchar(max)" Nullable="false" />
@@ -235,9 +235,9 @@
           <Key>
             <PropertyRef Name="sources_ID" />
           </Key>
-          <Property Name="sources_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="book_FK" Type="int" Nullable="false" />
-          <Property Name="onlineSources_FK" Type="int" Nullable="false" />
+          <Property Name="sources_ID" Type="int" Nullable="false" />
+          <Property Name="type_of_resource" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="resource_fk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Syllabus">
           <Key>
@@ -382,27 +382,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Sources_Book">
-          <End Role="Book" Type="Self.Book" Multiplicity="1" />
-          <End Role="Sources" Type="Self.Sources" Multiplicity="*" />
+        <Association Name="FK_Sources_Sources">
+          <End Role="Sources" Type="Self.Sources" Multiplicity="1" />
+          <End Role="Sources1" Type="Self.Sources" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Book">
-              <PropertyRef Name="book_id" />
+            <Principal Role="Sources">
+              <PropertyRef Name="sources_ID" />
             </Principal>
-            <Dependent Role="Sources">
-              <PropertyRef Name="book_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sources_OnlineSources">
-          <End Role="Online_Sources" Type="Self.Online_Sources" Multiplicity="1" />
-          <End Role="Sources" Type="Self.Sources" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Online_Sources">
-              <PropertyRef Name="onlineSource_ID" />
-            </Principal>
-            <Dependent Role="Sources">
-              <PropertyRef Name="onlineSources_FK" />
+            <Dependent Role="Sources1">
+              <PropertyRef Name="sources_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -641,13 +629,9 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Role" EntitySet="Role" />
           </AssociationSet>
-          <AssociationSet Name="FK_Sources_Book" Association="Self.FK_Sources_Book">
-            <End Role="Book" EntitySet="Book" />
+          <AssociationSet Name="FK_Sources_Sources" Association="Self.FK_Sources_Sources">
             <End Role="Sources" EntitySet="Sources" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sources_OnlineSources" Association="Self.FK_Sources_OnlineSources">
-            <End Role="Online_Sources" EntitySet="Online_Sources" />
-            <End Role="Sources" EntitySet="Sources" />
+            <End Role="Sources1" EntitySet="Sources" />
           </AssociationSet>
           <AssociationSet Name="FK_Syllabus_Course_Information" Association="Self.FK_Syllabus_Course_Information">
             <End Role="Course_Information" EntitySet="Course_Information" />
@@ -711,6 +695,7 @@
     <edmx:ConceptualModels>
       <Schema Namespace="Syllabus_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Syllabus_ManagementEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Helloes" EntityType="Syllabus_ManagementModel.Hello" />
           <EntitySet Name="Active_Values" EntityType="Syllabus_ManagementModel.Active_Values" />
           <EntitySet Name="Assessment_Criteria" EntityType="Syllabus_ManagementModel.Assessment_Criteria" />
           <EntitySet Name="Bibliographies" EntityType="Syllabus_ManagementModel.Bibliography" />
@@ -724,7 +709,6 @@
           <EntitySet Name="Course_Outcomes" EntityType="Syllabus_ManagementModel.Course_Outcomes" />
           <EntitySet Name="Grading_Rubrics" EntityType="Syllabus_ManagementModel.Grading_Rubrics" />
           <EntitySet Name="Grading_System" EntityType="Syllabus_ManagementModel.Grading_System" />
-          <EntitySet Name="Heres" EntityType="Syllabus_ManagementModel.Here" />
           <EntitySet Name="Learning_Plan" EntityType="Syllabus_ManagementModel.Learning_Plan" />
           <EntitySet Name="Online_Sources" EntityType="Syllabus_ManagementModel.Online_Sources" />
           <EntitySet Name="Program_Educational_Objs" EntityType="Syllabus_ManagementModel.Program_Educational_Objs" />
@@ -756,10 +740,6 @@
           <AssociationSet Name="syllabus_id_fk_IN_Bibliography" Association="Syllabus_ManagementModel.syllabus_id_fk_IN_Bibliography">
             <End Role="Syllabu" EntitySet="Syllabus" />
             <End Role="Bibliography" EntitySet="Bibliographies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sources_Book" Association="Syllabus_ManagementModel.FK_Sources_Book">
-            <End Role="Book" EntitySet="Books" />
-            <End Role="Source" EntitySet="Sources" />
           </AssociationSet>
           <AssociationSet Name="syllabus_id_fk_IN_Class_Policy" Association="Syllabus_ManagementModel.syllabus_id_fk_IN_Class_Policy">
             <End Role="Syllabu" EntitySet="Syllabus" />
@@ -809,10 +789,6 @@
             <End Role="Syllabu" EntitySet="Syllabus" />
             <End Role="Learning_Plan" EntitySet="Learning_Plan" />
           </AssociationSet>
-          <AssociationSet Name="FK_Sources_OnlineSources" Association="Syllabus_ManagementModel.FK_Sources_OnlineSources">
-            <End Role="Online_Sources" EntitySet="Online_Sources" />
-            <End Role="Source" EntitySet="Sources" />
-          </AssociationSet>
           <AssociationSet Name="syllabus_id_fk_IN_Program_EO" Association="Syllabus_ManagementModel.syllabus_id_fk_IN_Program_EO">
             <End Role="Syllabu" EntitySet="Syllabus" />
             <End Role="Program_Educational_Objs" EntitySet="Program_Educational_Objs" />
@@ -837,12 +813,25 @@
             <End Role="Syllabu" EntitySet="Syllabus" />
             <End Role="Software_Used" EntitySet="Software_Used" />
           </AssociationSet>
+          <AssociationSet Name="FK_Sources_Sources" Association="Syllabus_ManagementModel.FK_Sources_Sources">
+            <End Role="Source" EntitySet="Sources" />
+            <End Role="Source1" EntitySet="Sources" />
+          </AssociationSet>
           <AssociationSet Name="made_by_fk_IN_Syllabus" Association="Syllabus_ManagementModel.made_by_fk_IN_Syllabus">
             <End Role="User" EntitySet="Users" />
             <End Role="Syllabu" EntitySet="Syllabus" />
           </AssociationSet>
-          <EntitySet Name="Helloes" EntityType="Syllabus_ManagementModel.Hello" />
         </EntityContainer>
+        <EntityType Name="Hello">
+          <Key>
+            <PropertyRef Name="gradingSystem_ID1" />
+          </Key>
+          <Property Name="gradingSystem_ID1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="syllabus_FK1" Type="Int32" Nullable="false" />
+          <Property Name="typeOfGrading1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="weight1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="requirementsName1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Active_Values">
           <Key>
             <PropertyRef Name="activeValues_ID" />
@@ -878,12 +867,11 @@
           <Key>
             <PropertyRef Name="book_id" />
           </Key>
-          <Property Name="book_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_id" Type="Int32" Nullable="false" />
           <Property Name="course_fk" Type="Int32" Nullable="false" />
-          <Property Name="callNumber" Type="Int32" Nullable="false" />
+          <Property Name="callNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="author" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Sources" Relationship="Syllabus_ManagementModel.FK_Sources_Book" FromRole="Book" ToRole="Source" />
           <Property Name="year" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Class_Policy">
@@ -991,27 +979,17 @@
           <Property Name="requirementsName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Syllabu" Relationship="Syllabus_ManagementModel.syllabus_FK_IN_Grading_System" FromRole="Grading_System" ToRole="Syllabu" />
         </EntityType>
-        <EntityType Name="Here">
-          <Key>
-            <PropertyRef Name="grading_system1" />
-          </Key>
-          <Property Name="grading_system1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="syllabus_FK1" Type="Int32" />
-          <Property Name="typeOfGrading1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="weight1" Type="Int32" />
-          <Property Name="requirementsName1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Learning_Plan">
           <Key>
             <PropertyRef Name="learning_ID" />
           </Key>
           <Property Name="learning_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="courseOutcome_FK" Type="Int32" />
-          <Property Name="course_id_fk" Type="Int32" />
+          <Property Name="course_id_fk" Type="Int32" Nullable="false" />
           <Property Name="quarter_FK" Type="Int32" Nullable="false" />
           <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
           <Property Name="learningOutcomeDesc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="hours" Type="String" Nullable="false" />
+          <Property Name="hours" Type="Int32" Nullable="false" />
           <Property Name="topics" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="teacherActivity" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="learnerActivity" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1027,7 +1005,6 @@
           <Property Name="course_FK" Type="Int32" Nullable="false" />
           <Property Name="webpageName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="weblink" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Sources" Relationship="Syllabus_ManagementModel.FK_Sources_OnlineSources" FromRole="Online_Sources" ToRole="Source" />
         </EntityType>
         <EntityType Name="Program_Educational_Objs">
           <Key>
@@ -1107,12 +1084,12 @@
           <Key>
             <PropertyRef Name="sources_ID" />
           </Key>
-          <Property Name="sources_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="book_FK" Type="Int32" Nullable="false" />
-          <Property Name="onlineSources_FK" Type="Int32" Nullable="false" />
+          <Property Name="sources_ID" Type="Int32" Nullable="false" />
+          <Property Name="type_of_resource" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="resource_fk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Bibliographies" Relationship="Syllabus_ManagementModel.FK_Bibliography_Sources" FromRole="Source" ToRole="Bibliography" />
-          <NavigationProperty Name="Book" Relationship="Syllabus_ManagementModel.FK_Sources_Book" FromRole="Source" ToRole="Book" />
-          <NavigationProperty Name="Online_Sources" Relationship="Syllabus_ManagementModel.FK_Sources_OnlineSources" FromRole="Source" ToRole="Online_Sources" />
+          <NavigationProperty Name="Sources1" Relationship="Syllabus_ManagementModel.FK_Sources_Sources" FromRole="Source" ToRole="Source1" />
+          <NavigationProperty Name="Source1" Relationship="Syllabus_ManagementModel.FK_Sources_Sources" FromRole="Source1" ToRole="Source" />
         </EntityType>
         <EntityType Name="Syllabu">
           <Key>
@@ -1209,18 +1186,6 @@
             </Principal>
             <Dependent Role="Bibliography">
               <PropertyRef Name="syllabus_id_fk" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sources_Book">
-          <End Type="Syllabus_ManagementModel.Book" Role="Book" Multiplicity="1" />
-          <End Type="Syllabus_ManagementModel.Source" Role="Source" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Book">
-              <PropertyRef Name="book_id" />
-            </Principal>
-            <Dependent Role="Source">
-              <PropertyRef Name="book_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1368,18 +1333,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Sources_OnlineSources">
-          <End Type="Syllabus_ManagementModel.Online_Sources" Role="Online_Sources" Multiplicity="1" />
-          <End Type="Syllabus_ManagementModel.Source" Role="Source" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Online_Sources">
-              <PropertyRef Name="onlineSource_ID" />
-            </Principal>
-            <Dependent Role="Source">
-              <PropertyRef Name="onlineSources_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="syllabus_id_fk_IN_Program_EO">
           <End Type="Syllabus_ManagementModel.Syllabu" Role="Syllabu" Multiplicity="1" />
           <End Type="Syllabus_ManagementModel.Program_Educational_Objs" Role="Program_Educational_Objs" Multiplicity="*" />
@@ -1452,6 +1405,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Sources_Sources">
+          <End Type="Syllabus_ManagementModel.Source" Role="Source" Multiplicity="1" />
+          <End Type="Syllabus_ManagementModel.Source" Role="Source1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Source">
+              <PropertyRef Name="sources_ID" />
+            </Principal>
+            <Dependent Role="Source1">
+              <PropertyRef Name="sources_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="made_by_fk_IN_Syllabus">
           <End Type="Syllabus_ManagementModel.User" Role="User" Multiplicity="1" />
           <End Type="Syllabus_ManagementModel.Syllabu" Role="Syllabu" Multiplicity="*" />
@@ -1464,22 +1429,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Hello">
-          <Key>
-            <PropertyRef Name="gradingSystem_ID1" />
-          </Key>
-          <Property Name="gradingSystem_ID1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="syllabus_FK1" Type="Int32" Nullable="false" />
-          <Property Name="typeOfGrading1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="weight1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="requirementsName1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Syllabus_ManagementModelStoreContainer" CdmEntityContainer="Syllabus_ManagementEntities4">
+          <EntitySetMapping Name="Helloes">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Hello">
+              <MappingFragment StoreEntitySet="Hello">
+                <ScalarProperty Name="requirementsName1" ColumnName="requirementsName1" />
+                <ScalarProperty Name="weight1" ColumnName="weight1" />
+                <ScalarProperty Name="typeOfGrading1" ColumnName="typeOfGrading1" />
+                <ScalarProperty Name="syllabus_FK1" ColumnName="syllabus_FK1" />
+                <ScalarProperty Name="gradingSystem_ID1" ColumnName="gradingSystem_ID1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Active_Values">
             <EntityTypeMapping TypeName="Syllabus_ManagementModel.Active_Values">
               <MappingFragment StoreEntitySet="Active_Values">
@@ -1721,8 +1687,8 @@
           <EntitySetMapping Name="Sources">
             <EntityTypeMapping TypeName="Syllabus_ManagementModel.Source">
               <MappingFragment StoreEntitySet="Sources">
-                <ScalarProperty Name="onlineSources_FK" ColumnName="onlineSources_FK" />
-                <ScalarProperty Name="book_FK" ColumnName="book_FK" />
+                <ScalarProperty Name="resource_fk" ColumnName="resource_fk" />
+                <ScalarProperty Name="type_of_resource" ColumnName="type_of_resource" />
                 <ScalarProperty Name="sources_ID" ColumnName="sources_ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1749,17 +1715,6 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="user_ID" ColumnName="user_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Helloes">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Hello">
-              <MappingFragment StoreEntitySet="Hello">
-                <ScalarProperty Name="requirementsName1" ColumnName="requirementsName1" />
-                <ScalarProperty Name="weight1" ColumnName="weight1" />
-                <ScalarProperty Name="typeOfGrading1" ColumnName="typeOfGrading1" />
-                <ScalarProperty Name="syllabus_FK1" ColumnName="syllabus_FK1" />
-                <ScalarProperty Name="gradingSystem_ID1" ColumnName="gradingSystem_ID1" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

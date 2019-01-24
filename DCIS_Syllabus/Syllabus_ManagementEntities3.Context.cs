@@ -25,6 +25,7 @@ namespace DCIS_Syllabus
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Hello> Helloes { get; set; }
         public virtual DbSet<Active_Values> Active_Values { get; set; }
         public virtual DbSet<Assessment_Criteria> Assessment_Criteria { get; set; }
         public virtual DbSet<Bibliography> Bibliographies { get; set; }
@@ -50,6 +51,5 @@ namespace DCIS_Syllabus
         public virtual DbSet<Source> Sources { get; set; }
         public virtual DbSet<Syllabu> Syllabus { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Hello> Helloes { get; set; }
     }
 }

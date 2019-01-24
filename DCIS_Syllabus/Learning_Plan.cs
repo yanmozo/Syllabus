@@ -16,11 +16,11 @@ namespace DCIS_Syllabus
     {
         public int learning_ID { get; set; }
         public Nullable<int> courseOutcome_FK { get; set; }
-        public Nullable<int> course_id_fk { get; set; }
+        public int course_id_fk { get; set; }
         public int quarter_FK { get; set; }
         public int syllabus_FK { get; set; }
         public string learningOutcomeDesc { get; set; }
-        public string hours { get; set; }
+        public int hours { get; set; }
         public string topics { get; set; }
         public string teacherActivity { get; set; }
         public string learnerActivity { get; set; }

@@ -136,5 +136,38 @@ namespace DCIS_Syllabus.Controllers
             f.SaveChanges();
             return RedirectToAction("ProgramObj2", "Chairman");
         }
+
+        public ActionResult AddDeli(FormCollection fc)
+        {
+            string code = fc["code"].ToString();
+            string desc = fc["desc"].ToString();
+            int co = Convert.ToInt32(fc["co"]);
+            string ass1 = fc["ass1"].ToString();
+            string ass2 = fc["ass2"].ToString();
+            int syllabus = 1;
+
+            Syllabus_ManagementEntities4 f = new Syllabus_ManagementEntities4();
+            Course_Deliverable d = new Course_Deliverable();
+
+            d.outputName = code;
+            d.output_description = desc;
+            d.courseOutcomeAdd_FK = co;
+            d.assessmentTypeA = ass1;
+            d.assessmentTypeB = ass2;
+            d.syllabus_FK = syllabus;
+
+            try
+            {
+                f.Course_Deliverable.Add(d);
+                f.SaveChanges();
+                ViewBag.Result = "Saved";
+            }
+            catch (Exception e)
+            {
+                ViewBag.Result = e;
+            }
+            return View();
+            //return View("../teacher/outputs_requirements");
+        }
     }
 }
