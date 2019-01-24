@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "ProgramObj";
+    var details = (List<Core_Value>)ViewData["cores"];
+    var proEdu = (List<Program_Educational_Objs>)ViewData["listOfProEdu"];
+}
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 5px solid #dddddd;
+        text-align: left;
+        padding: 5px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<h2>Add Program Objectives</h2>
+
+
+<form method="post" action="../Chairman/ProgramEduObj">
+    <table>
+        <tr>
+            <th><input type="text" name="code" placeholder="Code" required="required" /></th>
+            <th>
+                <textarea rows="4" cols="50" name="desc" placeholder="Description here..."></textarea>
+            </th>
+            <th>
+                <select name="status">
+                    @foreach (var names in details)
+                    {
+                        int count = 0;
+                        count++;
+                        <option>@names.name</option>
+                    }
+                </select>
+            </th>
+
+        </tr>
+    </table>
+    <input type="submit" value="Submit">
+</form>
+
+<table>
+    <tr>
+        <th>Code</th>
+        <th>Objectives</th>
+        <th>Core Value</th>
+        <th>Option</th>
+    </tr>
+    @foreach (var names in proEdu)
+    {
+        int count = 0;
+        count++;
+    <tr id="unique">
+        <th>@names.codeName</th>
+        <th>@names.objectives</th>
+
+        @foreach (var styles in details)
+    {
+        int count2 = 0;
+        count++;
+        if (@names.coreValue_FK == styles.coreValue_ID)
+        {
+            <th>@styles.name</th>
+    }
+}
+            <th id="unique2">
+                <a href="DeleteThings?ids=@names.programEduOutcome_ID">
+                    <button type="button"><span class="glyphicon glyphicon-trash"></span></button>
+                </a>
+                <a href="PassToUpdate?ids=@names.programEduOutcome_ID">
+                    <button type="button"><span class="glyphicon glyphicon-minus"></span></button>
+                </a>
+            </th>
+        
+    </tr>
+    }
+</table>
+
+
+
+
+
+
+

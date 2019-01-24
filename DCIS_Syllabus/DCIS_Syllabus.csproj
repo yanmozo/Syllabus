@@ -335,6 +335,8 @@
     <Content Include="Syllabus_ManagementEntities3.edmx.diagram">
       <DependentUpon>Syllabus_ManagementEntities3.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Chairman\ProgramObj2.cshtml" />
+    <Content Include="Views\Chairman\PassToUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

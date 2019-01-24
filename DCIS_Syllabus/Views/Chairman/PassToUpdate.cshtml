@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "PassToUpdate";
+    var details = (List<Core_Value>)ViewData["cores"];
+}
+
+<h2>PassToUpdate</h2>
+
+@ViewBag.objective
+@ViewBag.codename
+@ViewBag.id
+
+<form method="post" action="../Chairman/UpdateNow?id=@ViewBag.id">
+    <input type="text" name="code" placeholder="@ViewBag.codename" required="required" />
+    <textarea rows="4" cols="50" name="desc" placeholder="@ViewBag.objective"></textarea>
+    <select name="status">
+        @foreach (var names in details)
+        {
+            int count = 0;
+            count++;
+            <option>@names.name</option>
+        }
+    </select>
+    <input type="submit" value="Submit">
+</form>
