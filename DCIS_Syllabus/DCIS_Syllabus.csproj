@@ -335,6 +335,7 @@
       <BrowseToURL>~/Teacher/Creation</BrowseToURL>
     </Content>
     <Content Include="Views\Shared\_SideBar.cshtml" />
+    <Content Include="Views\LearningPlan\LearningPlanAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

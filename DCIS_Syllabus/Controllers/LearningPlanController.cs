@@ -19,5 +19,22 @@ namespace DCIS_Syllabus.Controllers
         {
             return View();
         }
+
+        // Teacher and Coordinator Learning Plan
+        public ActionResult LearningPlanAdd()
+        {
+            //connect to db
+            Syllabus_ManagementEntities3 term = new Syllabus_ManagementEntities3();
+            //retrieve table details (firstName, lastName, etc.)
+            Quarter q = new Quarter();
+
+            //from the table friends, select all in descending order by age
+            var quarterList = (from u in term.Quarters
+                              select u);
+
+            //converting all the retrieved data (friends) into a list object
+            ViewData["QuarterList"] = quarterList.ToList();
+            return View();
+        }
     }
 }
