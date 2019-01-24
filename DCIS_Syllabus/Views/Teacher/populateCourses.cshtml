@@ -1,0 +1,22 @@
+﻿@model DCIS_Syllabus.Syllabu
+
+@{
+    var courses = (List<Course_Information>)(ViewData["ListofCourses"]);
+}
+
+@using (Html.BeginForm("Creation", "Teacher", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.course_FK, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select class="form-control" id="course_FK" name="academicTerm" required>
+                @foreach (var item in courses)
+                {
+                    <option value="@item.course_ID">@item.courseCode</option>
+                }
+            </select>
+            @Html.ValidationMessageFor(model => model.madeBy_FK, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+}

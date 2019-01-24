@@ -2,6 +2,17 @@
 
 @{
     ViewBag.Title = "Creation";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+    var courses = (List<Course_Information>)(ViewData["ListofCourses"]);
+
+    List<SelectListItem> li = new List<SelectListItem>();
+
+
+    foreach (Course_Information i in courses)
+    {
+        li.Add(new SelectListItem { Text = i.courseCode , Value = i.course_ID.ToString() });
+    }
+
 }
 
 <h2>Creation</h2>
@@ -11,24 +22,23 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>Syllabu</h4>
-        <hr />
-        <div class="form-group">
-            @Html.LabelFor(model => model.madeBy_FK, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.madeBy_FK, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.madeBy_FK, "", new { @class = "text-danger" })
-            </div>
+<div class="form-horizontal">
+    <h4>Syllabu</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.madeBy_FK, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.madeBy_FK, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.madeBy_FK, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.course_FK, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.course_FK, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.course_FK, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.course_FK, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.course_FK, li as List<SelectListItem>, new { @class = "form-control" })
         </div>
+   </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -57,8 +67,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.status, new { htmlAttributes = new { @Value="draft", @class = "form-control", @readonly ="readonly" } })
+                
             </div>
         </div>
 
@@ -68,12 +78,12 @@
             </div>
         </div>
     </div>
-}
+    }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

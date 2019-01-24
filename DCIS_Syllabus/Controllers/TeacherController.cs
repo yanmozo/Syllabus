@@ -40,6 +40,18 @@ namespace DCIS_Syllabus.Controllers
             return View("Creation");
         }
 
+        public ActionResult populateCourses()
+        {
+
+            //List<Course_Information> listCourses = new List<Course_Information>();
+            var getData = (from courses in sm.Course_Information
+                           select courses);
+            
+
+            ViewData["ListofCourses"] = getData.ToList();
+            return View();
+        }
+
         public ActionResult ViewSyllabus()
         {
 
@@ -106,6 +118,11 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult Creation()
         {
+            var getData = (from courses in sm.Course_Information
+                           select courses);
+
+
+            ViewData["ListofCourses"] = getData.ToList();
             return View();
         }
 
