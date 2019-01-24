@@ -64,6 +64,10 @@ namespace DCIS_Syllabus.Controllers
                               select u);
             ViewData["ListofBooks"] = bookList.ToList();
 
+            var weblinkList = (from u in sm.Online_Sources
+                               select u);
+            ViewData["ListofOS"] = weblinkList.ToList();
+
             return View();
         }
 
