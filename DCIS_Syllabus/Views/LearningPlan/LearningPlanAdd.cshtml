@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "LearningPlanAdd";
     Layout = "~/Views/Shared/_SideBar.cshtml";
     var quarters = (List<Quarter>)(ViewData["QuarterList"]);
@@ -13,7 +12,7 @@
         </a>
         Add Row from Learning Plan
     </h2>
-    @*static syllabusIdFK and courseIdFK*@
+    
     <form method="post" class="form-horizontal" action="LearningPlanAddData?syllabusIdFK=1&&courseIdFK=1">
         <div class="form-group">
             <label class="control-label col-sm-2">Academic Term:</label>

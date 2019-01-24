@@ -165,7 +165,6 @@
     <Compile Include="Class_Policy.cs">
       <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\AddNewSyllabusController.cs" />
     <Compile Include="Controllers\ChairmanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstGradAttrbController.cs" />
