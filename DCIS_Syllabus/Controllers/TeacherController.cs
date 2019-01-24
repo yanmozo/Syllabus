@@ -12,11 +12,25 @@ namespace DCIS_Syllabus.Controllers
         public ActionResult ViewAllTSyllabus()
         {
             // Get all syllabus of all handled courses here.
+            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+            Syllabu s = new Syllabu();
+
+            var syllabusList = (from u in sm.Syllabus
+                                where u.madeBy_FK == 1
+                                select u);
+            ViewData["ListofSyllabus"] = syllabusList.ToList();
+
             return View();
+        }
+
+        public ActionResult Creation()
+        {
+            return View("Creation");
         }
 
         public ActionResult ViewSyllabus()
         {
+
             return View();
         }
 

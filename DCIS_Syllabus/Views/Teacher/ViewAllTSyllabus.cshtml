@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "ViewAllSyllabus";
+    var syllabus = (List<Syllabu>)ViewData["ListofSyllabus"];
 }
 
 <h2>Syllabus</h2>
@@ -29,7 +30,18 @@
             </thead>
             <tbody>
                 @* Create a loop here for the list of all syllabus *@
-                <tr class="clickable-row" data-href="ViewSyllabus" title="Click to view">
+
+                @foreach(var item in syllabus)
+                {
+                   <tr class="clickable-row" data-href="ViewSyllabus?SyllabusID=@item.syllabus_ID" title="Click to view">
+                    <td>@item.course_FK</td>
+                    <td>@item.title</td>
+                    <td class="text-center"><span class="label label-success">@item.status</span></td>
+                </tr>
+    
+                }
+
+                @*<tr class="clickable-row" data-href="ViewSyllabus" title="Click to view">
                     <td>IT5008</td>
                     <td>Platform Technologies</td>
                     <td class="text-center"><span class="label label-success">Ready to Print</span></td>
@@ -38,7 +50,7 @@
                     <td>IT2101</td>
                     <td>Data Structures</td>
                     <td class="text-center"><span class="label label-info">Draft</span></td>
-                </tr>
+                </tr>*@
             </tbody>
         </table>
     </div>

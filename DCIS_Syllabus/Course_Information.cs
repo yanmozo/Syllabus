@@ -14,6 +14,12 @@ namespace DCIS_Syllabus
     
     public partial class Course_Information
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Course_Information()
+        {
+            this.Syllabus = new HashSet<Syllabu>();
+        }
+    
         public int course_ID { get; set; }
         public string courseCode { get; set; }
         public string title { get; set; }
@@ -25,5 +31,8 @@ namespace DCIS_Syllabus
         public string room { get; set; }
         public System.TimeSpan time { get; set; }
         public string day { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Syllabu> Syllabus { get; set; }
     }
 }
