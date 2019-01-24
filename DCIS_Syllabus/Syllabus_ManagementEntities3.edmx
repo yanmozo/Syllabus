@@ -37,9 +37,10 @@
           </Key>
           <Property Name="book_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="course_fk" Type="int" Nullable="false" />
-          <Property Name="callNumber" Type="int" Nullable="false" />
+          <Property Name="callNumber" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="author" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Class_Policy">
           <Key>
@@ -131,14 +132,14 @@
           <Property Name="weight" Type="float" Nullable="false" />
           <Property Name="requirementsName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Here">
+        <EntityType Name="Hello">
           <Key>
-            <PropertyRef Name="grading_system1" />
+            <PropertyRef Name="gradingSystem_ID1" />
           </Key>
-          <Property Name="grading_system1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="syllabus_FK1" Type="int" />
+          <Property Name="gradingSystem_ID1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="syllabus_FK1" Type="int" Nullable="false" />
           <Property Name="typeOfGrading1" Type="nvarchar" MaxLength="50" />
-          <Property Name="weight1" Type="int" />
+          <Property Name="weight1" Type="nvarchar" MaxLength="50" />
           <Property Name="requirementsName1" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Learning_Plan">
@@ -151,7 +152,7 @@
           <Property Name="quarter_FK" Type="int" Nullable="false" />
           <Property Name="syllabus_FK" Type="int" Nullable="false" />
           <Property Name="learningOutcomeDesc" Type="varchar(max)" Nullable="false" />
-          <Property Name="hours" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="hours" Type="int" Nullable="false" />
           <Property Name="topics" Type="varchar(max)" Nullable="false" />
           <Property Name="teacherActivity" Type="varchar(max)" Nullable="false" />
           <Property Name="learnerActivity" Type="varchar(max)" Nullable="false" />
@@ -587,7 +588,7 @@
           <EntitySet Name="Course_Outcomes" EntityType="Self.Course_Outcomes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grading_Rubrics" EntityType="Self.Grading_Rubrics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grading_System" EntityType="Self.Grading_System" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Here" EntityType="Self.Here" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hello" EntityType="Self.Hello" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Learning_Plan" EntityType="Self.Learning_Plan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Online_Sources" EntityType="Self.Online_Sources" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Program_Educational_Objs" EntityType="Self.Program_Educational_Objs" Schema="dbo" store:Type="Tables" />
@@ -840,6 +841,7 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Syllabu" EntitySet="Syllabus" />
           </AssociationSet>
+          <EntitySet Name="Helloes" EntityType="Syllabus_ManagementModel.Hello" />
         </EntityContainer>
         <EntityType Name="Active_Values">
           <Key>
@@ -882,6 +884,7 @@
           <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="author" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Sources" Relationship="Syllabus_ManagementModel.FK_Sources_Book" FromRole="Book" ToRole="Source" />
+          <Property Name="year" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Class_Policy">
           <Key>
@@ -1008,7 +1011,7 @@
           <Property Name="quarter_FK" Type="Int32" Nullable="false" />
           <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
           <Property Name="learningOutcomeDesc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="hours" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hours" Type="String" Nullable="false" />
           <Property Name="topics" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="teacherActivity" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="learnerActivity" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1461,6 +1464,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Hello">
+          <Key>
+            <PropertyRef Name="gradingSystem_ID1" />
+          </Key>
+          <Property Name="gradingSystem_ID1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="syllabus_FK1" Type="Int32" Nullable="false" />
+          <Property Name="typeOfGrading1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="weight1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="requirementsName1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1499,6 +1512,7 @@
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="Syllabus_ManagementModel.Book">
               <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="year" ColumnName="year" />
                 <ScalarProperty Name="author" ColumnName="author" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="callNumber" ColumnName="callNumber" />
@@ -1603,17 +1617,6 @@
                 <ScalarProperty Name="typeOfGrading" ColumnName="typeOfGrading" />
                 <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
                 <ScalarProperty Name="gradingSystem_ID" ColumnName="gradingSystem_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Heres">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Here">
-              <MappingFragment StoreEntitySet="Here">
-                <ScalarProperty Name="requirementsName1" ColumnName="requirementsName1" />
-                <ScalarProperty Name="weight1" ColumnName="weight1" />
-                <ScalarProperty Name="typeOfGrading1" ColumnName="typeOfGrading1" />
-                <ScalarProperty Name="syllabus_FK1" ColumnName="syllabus_FK1" />
-                <ScalarProperty Name="grading_system1" ColumnName="grading_system1" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1746,6 +1749,17 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Helloes">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Hello">
+              <MappingFragment StoreEntitySet="Hello">
+                <ScalarProperty Name="requirementsName1" ColumnName="requirementsName1" />
+                <ScalarProperty Name="weight1" ColumnName="weight1" />
+                <ScalarProperty Name="typeOfGrading1" ColumnName="typeOfGrading1" />
+                <ScalarProperty Name="syllabus_FK1" ColumnName="syllabus_FK1" />
+                <ScalarProperty Name="gradingSystem_ID1" ColumnName="gradingSystem_ID1" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

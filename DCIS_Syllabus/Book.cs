@@ -25,6 +25,7 @@ namespace DCIS_Syllabus
         public int callNumber { get; set; }
         public string title { get; set; }
         public string author { get; set; }
+        public int year { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Source> Sources { get; set; }
