@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "EditClassroomPolicies";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+    var policyList = (List<Class_Policy>)ViewData["ListofPolicies"];
+    var syllabusID = ViewBag.syllabusID;
+}
+
+<h2>Edit Classroom Policies</h2>
+
+<div class="row" style="margin-left: 20%;margin-right: 20%;">
+    <p hidden>@ViewBag.syllabusID</p>
+    
+    <div class="row" style="margin-left: 20%;margin-right: 20%;">
+        <form method="post" id="editForm">
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <input class="form-control" name="policyID_uneditable" id="policy_id_edit" readonly />
+            </div>
+            <div class="col-md-5">
+                <input class="form-control" name="policyName" id="policy_item_edit" />
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-default" formaction="../Syllabus/EditPolicy"><span class="glyphicon glyphicon-saved"></span></button>
+            </div>
+            <div class="col-md-2"></div>
+        </form>
+    </div>
+
+    <table id="editpoliciestable" class="table table-hover table-bordered" style="margin-top:20px;">
+        <thead>
+            <tr>
+                <th>Policy #</th>
+                <th>Policy Item</th>
+                <th class="text-center">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var item in policyList)
+                {
+
+                    <tr title="Click to edit">
+                        <td id="policy_id_db">@item.policy_ID</td>
+                        <td id="policy_item_db">@item.policyItem</td>
+                        <td class="text-center">
+                            <a class="btn btn-danger" href="../Syllabus/DeletePolicy?PolicyID=@item.policy_ID"><span class="glyphicon glyphicon-trash"></span></a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

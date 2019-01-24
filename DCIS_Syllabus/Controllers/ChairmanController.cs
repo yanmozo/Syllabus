@@ -26,7 +26,7 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult ProgramObj()
         {
-            Syllabus_ManagementEntities3 f = new Syllabus_ManagementEntities3();
+            Syllabus_ManagementEntities4 f = new Syllabus_ManagementEntities4();
             Program_Educational_Objs d = new Program_Educational_Objs();
 
             var detailList = (from u in f.Core_Value select u);
@@ -46,7 +46,7 @@ namespace DCIS_Syllabus.Controllers
 
             
 
-            Syllabus_ManagementEntities3 f = new Syllabus_ManagementEntities3();
+            Syllabus_ManagementEntities4 f = new Syllabus_ManagementEntities4();
             Program_Educational_Objs d = new Program_Educational_Objs();
 
             var coreid = (from u in f.Core_Value where u.name == status select u.coreValue_ID).FirstOrDefault();

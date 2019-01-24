@@ -335,7 +335,8 @@
     <Content Include="Syllabus_ManagementEntities3.edmx.diagram">
       <DependentUpon>Syllabus_ManagementEntities3.edmx</DependentUpon>
     </Content>
-    <Content Include="Views\Syllabus\AddNewPolicyToDB.cshtml" />
+    <Content Include="Views\Syllabus\EditClassroomPolicies.cshtml" />
+    <Content Include="Views\Syllabus\DeletePolicy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
