@@ -12,12 +12,12 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Here
+    public partial class Hello
     {
-        public int grading_system1 { get; set; }
-        public Nullable<int> syllabus_FK1 { get; set; }
+        public int gradingSystem_ID1 { get; set; }
+        public int syllabus_FK1 { get; set; }
         public string typeOfGrading1 { get; set; }
-        public Nullable<int> weight1 { get; set; }
+        public string weight1 { get; set; }
         public string requirementsName1 { get; set; }
     }
 }

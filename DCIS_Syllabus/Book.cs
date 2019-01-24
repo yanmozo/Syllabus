@@ -14,19 +14,11 @@ namespace DCIS_Syllabus
     
     public partial class Book
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Book()
-        {
-            this.Sources = new HashSet<Source>();
-        }
-    
         public int book_id { get; set; }
         public int course_fk { get; set; }
-        public int callNumber { get; set; }
+        public string callNumber { get; set; }
         public string title { get; set; }
         public string author { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Source> Sources { get; set; }
+        public int year { get; set; }
     }
 }

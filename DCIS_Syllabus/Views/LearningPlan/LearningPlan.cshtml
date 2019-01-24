@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "LearningPlan";
     Layout = "~/Views/Shared/_SideBar.cshtml";
+    var core_LearningPList = (List<DCIS_Syllabus.Models.LearningPlan>)ViewData["LearningPlanList"];
 }
 
 <h2>Learning Plan</h2>
@@ -20,7 +21,7 @@
         <thead>
             <tr>
                 <th class="text-center learningPlan" rowspan="2">Learning Outcome</th>
-                <th class="text-center learningPlan" rowspan="2">No. of Hours and Covered Date(s)</th>
+                <th class="text-center learningPlan" rowspan="2">No. of Hours</th>
                 <th class="text-center learningPlan" rowspan="2">CO Addressed</th>
                 <th class="text-center learningPlan" rowspan="2">Topics</th>
                 <th class="text-center learningPlan" colspan="2">Teaching-Learning Activities</th>
@@ -32,27 +33,129 @@
                 <th>Learner Activity</th>
             </tr>
         </thead>
-        <tbody id="LearningPlanBody">
-            <tr class="delLP">
-                <td class="learningPlan">-Familiarize the USC VMG, department’s PEO and PO and course details.</td>
-                <td class="text-center learningPlan">1 hour</td>
-                <td class="text-center learningPlan">N/A</td>
-                <td class="learningPlan">
-                    -About USC
-                    -About Dept. of Computer Science<br />
-                    -Program Outcomes<br />
-                    -Course Information
-                </td>
-                <td class="learningPlan">
-                    -Present through PowerPoint and set of videos<br />
-                    -Encourage an open-discussion environment
-                </td>
-                <td class="learningPlan">-Interaction with the Instructor</td>
-                <td class="text-center learningPlan">N/A</td>
-                <td class="text-center learningPlan">
-                    <button class="btn btn-primary">!</button><button class="btn btn-danger">E</button>
-                </td>
-            </tr>
+        <tbody>
+            @{ 
+                var totalHrs = 0;
+                <tr>
+                    <td class="text-center" colspan="8">Pre-Midterm</td>
+                </tr>
+                foreach (var lp in core_LearningPList)
+                {
+                    if (lp.QuarterName == "Pre-Midterm")
+                    {
+                        totalHrs += @lp.hrs;
+                    <tr>
+                        <td class="learningPlan">@lp.LODesc</td>
+                        <td class="text-center learningPlan">@lp.hrs hr/s.</td>
+                        <td class="text-center learningPlan">N/A</td>
+                        <td class="learningPlan">@lp.topics</td>
+                        <td class="learningPlan">@lp.teacherAct</td>
+                        <td class="learningPlan">@lp.learnerAct</td>
+                        <td class="text-center learningPlan">N/A</td>
+                        <td class="text-center learningPlan">
+                            <a href="../LearningPlan/LearningPlanUpdate?lpId=@lp.LearningId">
+                                <button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>
+                            </a>
+                            <a href="../LearningPlan/LearningPlanDelete?lpId=@lp.LearningId">
+                                <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                }
+                <tr>
+                    <td class="text-center" colspan="8">Midterm</td>
+                </tr>
+                foreach (var lp in core_LearningPList)
+                {
+                    if (lp.QuarterName == "Midterm")
+                    {
+                        totalHrs += @lp.hrs;
+                    <tr>
+                        <td class="learningPlan">@lp.LODesc</td>
+                        <td class="text-center learningPlan">@lp.hrs hr/s.</td>
+                        <td class="text-center learningPlan">N/A</td>
+                        <td class="learningPlan">@lp.topics</td>
+                        <td class="learningPlan">@lp.teacherAct</td>
+                        <td class="learningPlan">@lp.learnerAct</td>
+                        <td class="text-center learningPlan">N/A</td>
+                        <td class="text-center learningPlan">
+                            <a href="../LearningPlan/LearningPlanUpdate?lpId=@lp.LearningId">
+                                <button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>
+                            </a>
+                            <a href="../LearningPlan/LearningPlanDelete?lpId=@lp.LearningId">
+                                <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                }
+                <tr>
+                    <td class="text-center" colspan="8">Pre-Finals</td>
+                </tr>
+                foreach (var lp in core_LearningPList)
+                {
+                    if (lp.QuarterName == "Pre-Finals")
+                    {
+                        totalHrs += @lp.hrs;
+                    <tr>
+                        <td class="learningPlan">@lp.LODesc</td>
+                        <td class="text-center learningPlan">@lp.hrs hr/s.</td>
+                        <td class="text-center learningPlan">N/A</td>
+                        <td class="learningPlan">@lp.topics</td>
+                        <td class="learningPlan">@lp.teacherAct</td>
+                        <td class="learningPlan">@lp.learnerAct</td>
+                        <td class="text-center learningPlan">N/A</td>
+                        <td class="text-center learningPlan">
+                            <a href="../LearningPlan/LearningPlanUpdate?lpId=@lp.LearningId">
+                                <button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>
+                            </a>
+                            <a href="../LearningPlan/LearningPlanDelete?lpId=@lp.LearningId">
+                                <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                }
+                <tr>
+                    <td class="text-center" colspan="8">Finals</td>
+                </tr>
+                foreach (var lp in core_LearningPList)
+                {
+                    if (lp.QuarterName == "Finals")
+                    {
+                        totalHrs += @lp.hrs;
+                    <tr>
+                        <td class="learningPlan">@lp.LODesc</td>
+                        <td class="text-center learningPlan">@lp.hrs hr/s.</td>
+                        <td class="text-center learningPlan">N/A</td>
+                        <td class="learningPlan">@lp.topics</td>
+                        <td class="learningPlan">@lp.teacherAct</td>
+                        <td class="learningPlan">@lp.learnerAct</td>
+                        <td class="text-center learningPlan">N/A</td>
+                        <td class="text-center learningPlan">
+                            <a href="../LearningPlan/LearningPlanUpdate?lpId=@lp.LearningId">
+                                <button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>
+                            </a>
+                            <a href="../LearningPlan/LearningPlanDelete?lpId=@lp.LearningId">
+                                <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                }
+                <tr>
+                    <th>Total</th>
+                    <th class="text-center">@totalHrs hr/s.</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+             }
         </tbody>
     </table>
+    <p><i></i>* 10.0 hours are allotted for major exams and output periodic assessments.</p>
 </div>
