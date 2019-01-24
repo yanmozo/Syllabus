@@ -31,10 +31,25 @@
         $('#bookYear').val(year);
         $('#bookBtn').val("Update");
     });
+
+    // ------ WEB - BIBLIOGRAPHY ------- //
+    $("#OnlineBibTable").on("click", ".editbtn_web", function () {
+        var currentRow = $(this).closest("tr");
+
+        var web_id = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+        var wname = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+        var wlink = currentRow.find("td:eq(2)").text(); // get current row 3rd TD
+
+        $('#webID').val(web_id);
+        $('#webpageName').val(wname);
+        $('#webpageLink').val(wlink);
+        $('#webBtn').val("Update");
+    });
+
 });
 
 
-function openCity(evt, cityName) {
+function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -44,7 +59,7 @@ function openCity(evt, cityName) {
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-    document.getElementById(cityName).style.display = "block";
+    document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
 }
 

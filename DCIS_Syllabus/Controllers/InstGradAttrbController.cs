@@ -37,7 +37,7 @@ namespace DCIS_Syllabus.Controllers
         public ActionResult AddCoreValue(FormCollection cv_info)
         {
             //retrieve data from URL because passed through form
-            string cv_desc = Convert.ToString(Request.QueryString["cvAttrib"]);
+            string cv_desc = Convert.ToString(Request.QueryString["cvAttrib"]).Replace(System.Environment.NewLine, "<br />");
             string cv_CoreValueName = Convert.ToString(Request.QueryString["cvCoreValue"]);
 
             //connect to db
@@ -89,7 +89,7 @@ namespace DCIS_Syllabus.Controllers
         {
             //retrieve the Id passed from the update page (Method = "GET")
             int cv_attrbId = Convert.ToInt32(Request.QueryString["CoreValueAttrbId"]);
-            string cv_desc = cv_info["cvCoreAttrbU"];
+            string cv_desc = cv_info["cvCoreAttrbU"].Replace(System.Environment.NewLine, "<br />");
             string cv_CoreValueName = cv_info["cvCoreValueU"];
 
 

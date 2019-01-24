@@ -22,10 +22,12 @@ namespace DCIS_Syllabus
     
         public int revision_ID { get; set; }
         public int syllabus_FK { get; set; }
-        public int versionNum { get; set; }
+        public double versionNum { get; set; }
         public string fieldsRevised { get; set; }
-        public System.DateTime dateRevised { get; set; }
-        public System.DateTime approvedDate { get; set; }
+        public string dateRevised { get; set; }
+        public string approvedDate { get; set; }
+        public string revisedBy { get; set; }
+        public string approvedBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Revisions_Log> Revisions_Log { get; set; }
