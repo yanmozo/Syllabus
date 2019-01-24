@@ -175,6 +175,9 @@
     <Compile Include="Core_Value.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
+    <Compile Include="Core_Value_Attribute.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
     <Compile Include="Course_Deliverable.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
@@ -277,6 +280,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\PEOScripts.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\TeacherScript.js" />
@@ -329,6 +333,8 @@
     <Content Include="Views\Teacher\grading_system.cshtml" />
     <Content Include="Views\Teacher\title_syllabus.cshtml" />
     <Content Include="Views\Teacher\outputs_requirements.cshtml" />
+    <Content Include="Views\Chairman\ProgramObj.cshtml" />
+    <Content Include="Views\Chairman\Want.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

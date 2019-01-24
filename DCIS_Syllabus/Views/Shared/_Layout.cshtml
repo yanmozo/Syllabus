@@ -34,6 +34,7 @@
                     <li>@Html.ActionLink("Grading System", "grading_system", "Teacher")</li>
                     <li>@Html.ActionLink("Title of Syllabus", "title_syllabus", "Teacher")</li>
                     <li>@Html.ActionLink("Deliverable O and R", "outputs_requirements", "Teacher")</li>
+                    <li>@Html.ActionLink("Program Educational Objectives", "ProgramObj", "Chairman")</li>
 
                 </ul>
             </div>
@@ -50,6 +51,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/TeacherScript.js")
+    @Scripts.Render("~/Scripts/PEOScripts.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>
