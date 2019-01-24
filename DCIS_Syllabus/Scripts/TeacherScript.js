@@ -85,6 +85,7 @@
 
     });
 
+
     //Delete's table row - Book
     $("#BooksBibTable").on('click', '.delbtn', function () {
         $(this).closest('tr').remove();
@@ -94,6 +95,17 @@
     $("#OnlineBibTable").on('click', '.delbtn_web', function () {
         $(this).closest('tr').remove();
     });
+
+    //
+    $("#editpoliciestable").on("click", "td", function () {
+        var pID = $(this).parent("tr").find("td:first").text();
+        var pItem = $(this).parent("tr").find("td:nth-child(2)").text();
+
+        $('#policy_id_edit').val(pID);
+        $('#policy_id_edit_1').val(pID);
+        $('#policy_item_edit').val(pItem);
+    });
+
 });
 
 
@@ -110,3 +122,8 @@ function openCity(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+// Edit policy - datatable
+$(document).ready(function () {
+    $('#editpoliciestable').DataTable();
+});
