@@ -11,8 +11,9 @@ namespace DCIS_Syllabus
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class Syllabus_ManagementEntities4 : DbContext
     {
         public Syllabus_ManagementEntities4()

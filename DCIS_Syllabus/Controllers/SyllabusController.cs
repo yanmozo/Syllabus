@@ -154,27 +154,22 @@ namespace DCIS_Syllabus.Controllers
             if(wID == "")
             {
                 ViewBag.Result = "add";
-                string cnum = fc["CallNumber"].ToString();
-                string title = fc["Title"].ToString();
-                string author = fc["Author"].ToString();
-                int year = Convert.ToInt32(fc["Year"].ToString());
+                string wname = fc["CallNumber"].ToString();
+                string wlink = fc["Title"].ToString();
 
 
-                Book b = new Book();
-                b.course_fk = 1;
-                b.callNumber = cnum;
-                b.title = title;
-                b.author = author;
-                b.year = year;
+                Online_Sources b = new Online_Sources();
+                b.webpageName = wname;
+                b.weblink = wlink;
 
-                Source s = new Source();
-                s.type_of_resource = "book";
-                s.resource_fk = b.book_id;
+                //Source s = new Source();
+                //s.type_of_resource = "book";
+                //s.resource_fk = b.book_id;
 
                 try
                 {
-                    sm.Books.Add(b);
-                    sm.Sources.Add(s);
+                    sm.Online_Sources.Add(b);
+                    //sm.Sources.Add(s);
                     sm.SaveChanges();
                     ViewBag.Result = "Saved";
                 }
