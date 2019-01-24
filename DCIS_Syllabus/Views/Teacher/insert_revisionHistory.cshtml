@@ -2,44 +2,45 @@
 @{
     ViewBag.Title = "insert_revisionHistory";
 }
-<br />
-<br />
-<br />
-<br />
-<h2>Revision History Details</h2>
+
+<h2>insert_revisionHistory</h2>
 
 <div class="container">
     <br />
-    <p>Please enter the following details: </p>
+    <p>Please place the necessary details: </p>
     <form method="post" action="insert_revision">
         <div class="form-group">
-            <label>Items: </label>
-            <input type="text" name="revision_items" class="form-control" required>
+            <label>Version Number:</label>
+            <input type="text"  name="revision_number" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Items:</label>
+            <input type="text"name="revision_items" class="form-control" required>
         </div>
 
         <div class="form-group">
             <label>Revised By:</label>
-            <input type="text" name="revision_revisedBy" class="form-control" required>
+            <input type="text"name="revision_revisedBy" class="form-control" required>
         </div>
 
         <div class="form-group">
-            <label>Revision Date:</label>
-            <input type="date" name="revision_revisionDate" class="form-control" required>
+            <label>Date Revised:</label>
+            <input type="date" name="revision_revisionDate"class="form-control" required>
         </div>
 
         <div class="form-group">
             <label>Approved By:</label>
-            <input type="text" name="revision_approvedBy" class="form-control" required>
+            <input type="text" name="revision_approvedBy"class="form-control" required>
         </div>
 
         <div class="form-group">
-            <label>Approved Date:</label>
-            <input type="date" name="revision_approvedDate" class="form-control" required>
+            <label>Date Approved:</label>
+            <input type="date"name="revision_approvedDate" class="form-control" required>
         </div>
 
         <button type="submit" class="btn btn-danger" value="Save Changes">Back</button>
-        <button type="submit" class="btn btn-success" value="Save Changes">Save</button>
+        <button type="submit" class="btn btn-success" value="Save Changes">Submit</button>
     </form>
 
 </div>
-

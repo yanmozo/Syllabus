@@ -89,6 +89,40 @@ namespace DCIS_Syllabus.Controllers
             return View();
         }
 
-        
+        public ActionResult insert_revisionHistory()
+        {
+            return View(); 
+        }
+
+        public ActionResult insert_revision(FormCollection getRevisionDetails)
+        {
+            int number = Convert.ToInt32(getRevisionDetails["revision_number"]);
+            string items = getRevisionDetails["revision_items"].ToString();
+            string revisedBy = getRevisionDetails["revision_revisedBy"].ToString();
+            string revisionDate = getRevisionDetails["revision_revisionDate"].ToString();
+            string approvedBy = getRevisionDetails["revision_approvedBy"].ToString();
+            string approvedDate = getRevisionDetails["revision_approvedDate"].ToString();
+            Syllabus_ManagementEntities4 fe = new Syllabus_ManagementEntities4();
+
+            Revision getTable = new Revision();
+            getTable.syllabus_FK = 1;
+            getTable.versionNum = number;
+            getTable.fieldsRevised = items;
+            getTable.dateRevised = revisionDate;
+            getTable.approvedDate = approvedDate;
+            getTable.revisedBy = revisedBy;
+            getTable.approvedBy = approvedBy;
+            try
+            {
+                fe.Revisions.Add(getTable);
+                fe.SaveChanges();
+                ViewBag.Result = "Save Changes";
+            }
+            catch (Exception e)
+            {
+                ViewBag.Result = "Error! ";
+            }
+            return RedirectToAction("revision_history", "Teacher");
+        }
     }
 }
