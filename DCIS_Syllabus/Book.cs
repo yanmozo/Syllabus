@@ -22,7 +22,7 @@ namespace DCIS_Syllabus
     
         public int book_id { get; set; }
         public int course_fk { get; set; }
-        public int callNumber { get; set; }
+        public string callNumber { get; set; }
         public string title { get; set; }
         public string author { get; set; }
         public int year { get; set; }

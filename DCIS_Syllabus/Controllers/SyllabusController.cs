@@ -80,5 +80,48 @@ namespace DCIS_Syllabus.Controllers
             return RedirectToAction("EditClassroomPolicies", "Syllabus");
 
         }
+        
+        // --------------- BOOKS ---------------- //
+
+        public ActionResult UpdateBooks(FormCollection fc)
+        {
+            //int courseID = Convert.ToInt32(Request.QueryString["CourseID"]);
+            string bID = fc["BookID"].ToString();
+            
+            if (bID == "")
+            {
+                ViewBag.res = "add";
+                string cnum = fc["CallNumber"].ToString();
+                string title = fc["Title"].ToString();
+                string author = fc["Author"].ToString();
+                int year = Convert.ToInt32(fc["Year"].ToString());
+
+                Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+                Book b = new Book();
+                b.course_fk = 1;
+                b.callNumber = cnum;
+                b.title = title;
+                b.author = author;
+                b.year = year;
+
+                try
+                {
+                    sm.Books.Add(b);
+                    sm.SaveChanges();
+                    ViewBag.Result = "Saved";
+                }
+                catch
+                {
+                    ViewBag.Result = "Not saved";
+                }
+            
+            }
+            else
+            {
+                ViewBag.res = "update";
+            }
+
+            return View();
+        }
     }
 }

@@ -34,9 +34,10 @@
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
-    height: 500px;
+    height: auto;
     width: 90%;
     margin-left: 5%;
+    padding-bottom: 15%;
 }
 
 .col-lg-offset-1 {
@@ -229,4 +230,8 @@
 
 .PolicyDiv {
     margin: 20%;
+}
+
+.bookInput {
+    margin: 5px;
 }
