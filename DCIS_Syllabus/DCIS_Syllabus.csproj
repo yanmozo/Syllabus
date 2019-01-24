@@ -340,6 +340,7 @@
     </Content>
     <Content Include="Views\Chairman\ProgramObj2.cshtml" />
     <Content Include="Views\Chairman\PassToUpdate.cshtml" />
+    <Content Include="Views\LearningPlan\LearningPlanAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
