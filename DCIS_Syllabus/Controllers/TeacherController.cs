@@ -27,8 +27,16 @@ namespace DCIS_Syllabus.Controllers
             return View();
         }
 
-        public ActionResult Creation()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "madeBy_FK, course_FK, title, academicYear, academicPeriod, status")]Syllabu newSyllabus)
         {
+            if (ModelState.IsValid)
+            {
+                sm.Syllabus.Add(newSyllabus);
+                sm.SaveChanges();
+                return RedirectToAction("Creation");
+            }
             return View("Creation");
         }
 
@@ -58,6 +66,8 @@ namespace DCIS_Syllabus.Controllers
             return View();
         }
 
+
+
         public ActionResult Bibliography()
         {
             var bookList = (from u in sm.Books
@@ -74,14 +84,13 @@ namespace DCIS_Syllabus.Controllers
         public ActionResult revision_history()
         {
 
-            Syllabus_ManagementEntities4 fe = new Syllabus_ManagementEntities4();
-            Revision d = new Revision();
+            Syllabus_ManagementEntities4 revise = new Syllabus_ManagementEntities4();
+            Revision revised = new Revision();
 
-           //var detailList = (from u in fe.Details
-           //                       select u).OrderByDescending(x => x.Age);
-           //ViewData["ListOfFriends"] = detailList.ToList();
+            var reviseList = (from u in revise.Revisions select u);
+            ViewData["ListOfRevisions"] = reviseList.ToList();
 
-           return View();
+            return View();
         }
 
         public ActionResult course_outcomes()
@@ -93,7 +102,8 @@ namespace DCIS_Syllabus.Controllers
             return View();
         }
 
-        public ActionResult title_syllabus()
+
+        public ActionResult Creation()
         {
             return View();
         }
@@ -214,11 +224,7 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult insert_revisionHistory()
         {
-            
             return View();
         }
-
-
-    
     }
 }
