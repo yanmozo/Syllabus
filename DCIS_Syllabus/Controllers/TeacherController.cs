@@ -25,8 +25,16 @@ namespace DCIS_Syllabus.Controllers
             return View();
         }
 
-        public ActionResult Creation()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "madeBy_FK, course_FK, title, academicYear, academicPeriod, status")]Syllabu newSyllabus)
         {
+            if (ModelState.IsValid)
+            {
+                sm.Syllabus.Add(newSyllabus);
+                sm.SaveChanges();
+                return RedirectToAction("Creation");
+            }
             return View("Creation");
         }
 
@@ -56,6 +64,8 @@ namespace DCIS_Syllabus.Controllers
             return View();
         }
 
+
+
         public ActionResult Bibliography()
         {
             var bookList = (from u in sm.Books
@@ -79,7 +89,8 @@ namespace DCIS_Syllabus.Controllers
             return View();
         }
 
-        public ActionResult title_syllabus()
+
+        public ActionResult Creation()
         {
             return View();
         }
