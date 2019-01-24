@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "revision_history";
     Layout = "~/Views/Shared/_SideBar.cshtml";
+    var revisions = (List<Revision>)ViewData["ListOfRevisions"];
 }
 <h2>revision_history</h2>
 <style>
@@ -15,50 +16,58 @@
 </style>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<div class="container">
-    <form method="post" action="insert_revisionHistory">
-        <table id="myTable" class=" table revision-list">
 
-            <thead>
-                <tr>
-                    <td>Version</td>
-                    <td>Items</td>
-                    <td>Revised By</td>
-                    <td>Revision Date</td>
-                    <td>Approved By</td>
-                    <td>Approved Date</td>
-                </tr>
-            </thead>
-            <tbody>
+
+
+    <div class="container">
+        <form method="post" action="insert_revisionHistory">
+            <table id="myTable" class=" table revision-list">
+
+                <thead>
+                    <tr>
+                        <td>Version</td>
+                        <td>Items</td>
+                        <td>Revised By</td>
+                        <td>Revision Date</td>
+                        <td>Approved By</td>
+                        <td>Approved Date</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in revisions)
+                     {
                 <tr>
                     <td class="col-sm-1">
-                        <input type="text" name="version_no" class="form-control" />
+                        @item.versionNum
                     </td>
                     <td class="col-sm-2">
-                        <input type="text" name="description" class="form-control" />
+                        @item.fieldsRevised
                     </td>
                     <td class="col-sm-2">
-                        <input type="text" name="revised_by" class="form-control" />
+                        @item.revisedBy
                     </td>
                     <td class="col-sm-2">
-                        <input type="date" name="revision_date" class="form-control" />
+                        @item.dateRevised
                     </td>
                     <td class="col-sm-2">
-                        <input type="text" name="approved_by" class="form-control" />
+                        @item.approvedBy
                     </td>
                     <td class="col-sm-2">
-                        <input type="date" name="approved_date" class="form-control" />
+                        @item.approvedDate
                     </td>
-
                 </tr>
-            </tbody>
-            <tfoot>
+                        }
+                </tbody>
+                <tfoot>
 
-            </tfoot>
-        </table>
-        <br />
-        <br />
-        <button type="submit" class="btn btn-default" value="Add Row">Add Row</button>
-    </form>
-</div>
+                </tfoot>
+            </table>
+            <br />
+            <br />
+            <button type="submit" class="btn btn-default" value="Add Row">Add Row</button>
+        </form>
+    </div>
+
+
 

@@ -112,17 +112,20 @@ namespace DCIS_Syllabus.Controllers
 
                     //Book fb = new Book();
                     //var d = sm.Books.SingleOrDefault(newBook => fb.title == title);
+                    //ViewBag.bID = d.book_id;
                     //Source s = new Source();
                     //s.type_of_resource = "book";
                     //s.resource_fk = d.book_id;
                     //sm.Sources.Add(s);
                     ViewBag.Result = "Saved";
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     ViewBag.Result = e;
                 }
-            
+
+
+
             }
             else
             {
@@ -144,7 +147,23 @@ namespace DCIS_Syllabus.Controllers
                 sm.SaveChanges();
             }
 
-            return View();
+            return RedirectToAction("Bibliography", "Teacher");
+            //return View();
+        }
+
+        public ActionResult DeleteBook()
+        {
+            int bookID = Convert.ToInt32(Request.QueryString["BookID"]);
+            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+            var c = (from p in sm.Books
+                     where p.book_id == bookID
+                     select p).FirstOrDefault();
+
+
+            sm.Books.Remove(c);
+            sm.SaveChanges();
+
+            return RedirectToAction("Bibliography", "Teacher");
         }
 
         // --------------- ONLINE RESOURCES ---------------- //
@@ -161,15 +180,11 @@ namespace DCIS_Syllabus.Controllers
                 Online_Sources b = new Online_Sources();
                 b.webpageName = wname;
                 b.weblink = wlink;
-
-                //Source s = new Source();
-                //s.type_of_resource = "book";
-                //s.resource_fk = b.book_id;
+                
 
                 try
                 {
                     sm.Online_Sources.Add(b);
-                    //sm.Sources.Add(s);
                     sm.SaveChanges();
                     ViewBag.Result = "Saved";
                 }
@@ -182,7 +197,23 @@ namespace DCIS_Syllabus.Controllers
             {
                 ViewBag.Result = "update";
             }
-            return View();
+
+            return RedirectToAction("Bibliography", "Teacher");
+        }
+
+        public ActionResult DeleteOnlineResource()
+        {
+            int webID = Convert.ToInt32(Request.QueryString["WebID"]);
+            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+            var webrow = (from p in sm.Online_Sources
+                     where p.onlineSource_ID == webID
+                     select p).FirstOrDefault();
+
+
+            sm.Online_Sources.Remove(webrow);
+            sm.SaveChanges();
+
+            return RedirectToAction("Bibliography", "Teacher");
         }
     }
 }

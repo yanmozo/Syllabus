@@ -1,4 +1,15 @@
-﻿
+﻿<style>
+    pre {
+        background-color: #ffffff;
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height:1.5;
+    }
+    .quarterName {
+        background-color: #fbc02d;
+    }
+</style>
 @{
     ViewBag.Title = "LearningPlan";
     Layout = "~/Views/Shared/_SideBar.cshtml";
@@ -6,13 +17,11 @@
 }
 
 <h2>Learning Plan</h2>
-<div class="container">
-    <div class="row">
-        <div>
-            <a href="LearningPlanAdd">
-                <input type="button" class=" btn btn-success" value="Add Row">
-            </a>
-        </div>
+<div class="row">
+    <div class="text-center">
+        <a href="LearningPlanAdd">
+            <input type="button" class=" btn btn-success" value="Add Row">
+        </a>
     </div>
 </div>
 <br />
@@ -37,7 +46,7 @@
             @{ 
                 var totalHrs = 0;
                 <tr>
-                    <td class="text-center" colspan="8">Pre-Midterm</td>
+                    <td class="quarterName text-center" colspan="8">Pre-Midterm</td>
                 </tr>
                 foreach (var lp in core_LearningPList)
                 {
@@ -45,13 +54,22 @@
                     {
                         totalHrs += @lp.hrs;
                     <tr>
-                        <td class="learningPlan">@lp.LODesc</td>
+                        <td class="learningPlan"><pre>@lp.LODesc.Replace("<br />", System.Environment.NewLine)</pre></td>
                         <td class="text-center learningPlan">@lp.hrs hr/s.</td>
                         <td class="text-center learningPlan">N/A</td>
-                        <td class="learningPlan">@lp.topics</td>
-                        <td class="learningPlan">@lp.teacherAct</td>
-                        <td class="learningPlan">@lp.learnerAct</td>
-                        <td class="text-center learningPlan">N/A</td>
+                        <td class="learningPlan"><pre>@lp.topics.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td class="learningPlan"><pre>@lp.teacherAct.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td class="learningPlan"><pre>@lp.learnerAct.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td class="text-center learningPlan">
+                            @{ 
+                                if (@lp.assessAct == null || @lp.assessAct == ""){
+                                    <pre>N/A</pre>
+                                }else{
+                                    <pre>@lp.assessAct.Replace("<br />", System.Environment.NewLine)</pre>
+                                }
+                            }
+
+                        </td>
                         <td class="text-center learningPlan">
                             <a href="../LearningPlan/LearningPlanUpdate?lpId=@lp.LearningId">
                                 <button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -64,7 +82,7 @@
                     }
                 }
                 <tr>
-                    <td class="text-center" colspan="8">Midterm</td>
+                    <td class="quarterName text-center" colspan="8">Midterm</td>
                 </tr>
                 foreach (var lp in core_LearningPList)
                 {
@@ -72,13 +90,22 @@
                     {
                         totalHrs += @lp.hrs;
                     <tr>
-                        <td class="learningPlan">@lp.LODesc</td>
+                        <td class="learningPlan"><pre>@lp.LODesc.Replace("<br />", System.Environment.NewLine)</pre></td>
                         <td class="text-center learningPlan">@lp.hrs hr/s.</td>
                         <td class="text-center learningPlan">N/A</td>
-                        <td class="learningPlan">@lp.topics</td>
-                        <td class="learningPlan">@lp.teacherAct</td>
-                        <td class="learningPlan">@lp.learnerAct</td>
-                        <td class="text-center learningPlan">N/A</td>
+                        <td class="learningPlan"><pre>@lp.topics.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td class="learningPlan"><pre>@lp.teacherAct.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td class="learningPlan"><pre>@lp.learnerAct.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td class="text-center learningPlan">
+                            @{ 
+                                if (@lp.assessAct == null || @lp.assessAct == ""){
+                                    <pre>N/A</pre>
+                                }else{
+                                    <pre>@lp.assessAct.Replace("<br />", System.Environment.NewLine)</pre>
+                                }
+                            }
+
+                        </td>
                         <td class="text-center learningPlan">
                             <a href="../LearningPlan/LearningPlanUpdate?lpId=@lp.LearningId">
                                 <button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -91,7 +118,7 @@
                     }
                 }
                 <tr>
-                    <td class="text-center" colspan="8">Pre-Finals</td>
+                    <td class="quarterName text-center" colspan="8">Pre-Finals</td>
                 </tr>
                 foreach (var lp in core_LearningPList)
                 {
@@ -99,13 +126,22 @@
                     {
                         totalHrs += @lp.hrs;
                     <tr>
-                        <td class="learningPlan">@lp.LODesc</td>
+                        <td class="learningPlan"><pre>@lp.LODesc.Replace("<br />", System.Environment.NewLine)</pre></td>
                         <td class="text-center learningPlan">@lp.hrs hr/s.</td>
                         <td class="text-center learningPlan">N/A</td>
-                        <td class="learningPlan">@lp.topics</td>
-                        <td class="learningPlan">@lp.teacherAct</td>
-                        <td class="learningPlan">@lp.learnerAct</td>
-                        <td class="text-center learningPlan">N/A</td>
+                        <td class="learningPlan"><pre>@lp.topics.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td class="learningPlan"><pre>@lp.teacherAct.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td class="learningPlan"><pre>@lp.learnerAct.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td class="text-center learningPlan">
+                            @{ 
+                                if (@lp.assessAct == null || @lp.assessAct == ""){
+                                    <pre>N/A</pre>
+                                }else{
+                                    <pre>@lp.assessAct.Replace("<br />", System.Environment.NewLine)</pre>
+                                }
+                            }
+
+                        </td>
                         <td class="text-center learningPlan">
                             <a href="../LearningPlan/LearningPlanUpdate?lpId=@lp.LearningId">
                                 <button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -118,7 +154,7 @@
                     }
                 }
                 <tr>
-                    <td class="text-center" colspan="8">Finals</td>
+                    <td class="quarterName text-center" colspan="8">Finals</td>
                 </tr>
                 foreach (var lp in core_LearningPList)
                 {
@@ -126,13 +162,23 @@
                     {
                         totalHrs += @lp.hrs;
                     <tr>
-                        <td class="learningPlan">@lp.LODesc</td>
-                        <td class="text-center learningPlan">@lp.hrs hr/s.</td>
+                        <td class="learningPlan"><pre>@lp.LODesc.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td class="text-center learningPlan"><pre>@lp.hrs hr/s.</pre></td>
+                        @*retrieve CO*@
                         <td class="text-center learningPlan">N/A</td>
-                        <td class="learningPlan">@lp.topics</td>
-                        <td class="learningPlan">@lp.teacherAct</td>
-                        <td class="learningPlan">@lp.learnerAct</td>
-                        <td class="text-center learningPlan">N/A</td>
+                        <td class="learningPlan"><pre>@lp.topics.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td class="learningPlan"><pre>@lp.teacherAct.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td class="learningPlan"><pre>@lp.learnerAct.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td class="text-center learningPlan">
+                            @{ 
+                                if (@lp.assessAct == null || @lp.assessAct == ""){
+                                    <pre>N/A</pre>
+                                }else{
+                                    <pre>@lp.assessAct.Replace("<br />", System.Environment.NewLine)</pre>
+                                }
+                            }
+
+                        </td>
                         <td class="text-center learningPlan">
                             <a href="../LearningPlan/LearningPlanUpdate?lpId=@lp.LearningId">
                                 <button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -157,5 +203,5 @@
              }
         </tbody>
     </table>
-    <p><i></i>* 10.0 hours are allotted for major exams and output periodic assessments.</p>
+    <p><i>* 10.0 hours are allotted for major exams and output periodic assessments.</i></p>
 </div>
