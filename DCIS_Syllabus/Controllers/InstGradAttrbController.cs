@@ -64,7 +64,7 @@ namespace DCIS_Syllabus.Controllers
                 //save data to db
                 syllabus.SaveChanges();
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
             return RedirectToAction("InstGradAttrb", "InstGradAttrb");
