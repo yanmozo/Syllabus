@@ -13,10 +13,10 @@ namespace DCIS_Syllabus
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Syllabus_ManagementEntities3 : DbContext
+    public partial class Syllabus_ManagementEntities4 : DbContext
     {
-        public Syllabus_ManagementEntities3()
-            : base("name=Syllabus_ManagementEntities3")
+        public Syllabus_ManagementEntities4()
+            : base("name=Syllabus_ManagementEntities4")
         {
         }
     
