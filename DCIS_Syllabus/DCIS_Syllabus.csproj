@@ -343,10 +343,10 @@
     <Content Include="Views\Chairman\PassToUpdate.cshtml" />
     <Content Include="Views\LearningPlan\LearningPlanAdd.cshtml" />
     <Content Include="Views\InstGradAttrb\UpdateCoreValue.cshtml" />
+    <Content Include="Views\Syllabus\UpdateWebResources.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Syllabus\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

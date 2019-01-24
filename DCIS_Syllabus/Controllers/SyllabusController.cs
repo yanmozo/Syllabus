@@ -80,5 +80,114 @@ namespace DCIS_Syllabus.Controllers
             return RedirectToAction("EditClassroomPolicies", "Syllabus");
 
         }
+        
+        // --------------- BOOKS ---------------- //
+
+        public ActionResult UpdateBooks(FormCollection fc)
+        {
+            //int courseID = Convert.ToInt32(Request.QueryString["CourseID"]);
+            string bID = fc["BookID"].ToString();
+            
+
+            if (bID == "")
+            {
+                ViewBag.res = "add";
+                string cnum = fc["CallNumber"].ToString();
+                string title = fc["Title"].ToString();
+                string author = fc["Author"].ToString();
+                int year = Convert.ToInt32(fc["Year"].ToString());
+
+                Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+                Book b = new Book();
+                b.course_fk = 1;
+                b.callNumber = cnum;
+                b.title = title;
+                b.author = author;
+                b.year = year;
+                
+                try
+                {
+                    sm.Books.Add(b);
+                    sm.SaveChanges();
+
+                    //Book fb = new Book();
+                    //var d = sm.Books.SingleOrDefault(newBook => fb.title == title);
+                    //Source s = new Source();
+                    //s.type_of_resource = "book";
+                    //s.resource_fk = d.book_id;
+                    //sm.Sources.Add(s);
+                    ViewBag.Result = "Saved";
+                }
+                catch(Exception e)
+                {
+                    ViewBag.Result = e;
+                }
+            
+            }
+            else
+            {
+                Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+                ViewBag.res = "update";
+                int bookID = Convert.ToInt32(bID);
+                var book = sm.Books.SingleOrDefault(b => b.book_id == bookID);
+                string cnum = fc["CallNumber"].ToString();
+                string title = fc["Title"].ToString();
+                string author = fc["Author"].ToString();
+                int year = Convert.ToInt32(fc["Year"].ToString());
+
+                book.callNumber = cnum;
+                book.title = title;
+                book.author = author;
+                book.year = year;
+                book.course_fk = 1;
+
+                sm.SaveChanges();
+            }
+
+            return View();
+        }
+
+        // --------------- ONLINE RESOURCES ---------------- //
+        public ActionResult UpdateWebResources(FormCollection fc)
+        {
+            string wID = fc["WebID"].ToString();
+            if(wID == "")
+            {
+                ViewBag.Result = "add";
+                string cnum = fc["CallNumber"].ToString();
+                string title = fc["Title"].ToString();
+                string author = fc["Author"].ToString();
+                int year = Convert.ToInt32(fc["Year"].ToString());
+
+
+                Book b = new Book();
+                b.course_fk = 1;
+                b.callNumber = cnum;
+                b.title = title;
+                b.author = author;
+                b.year = year;
+
+                Source s = new Source();
+                s.type_of_resource = "book";
+                s.resource_fk = b.book_id;
+
+                try
+                {
+                    sm.Books.Add(b);
+                    sm.Sources.Add(s);
+                    sm.SaveChanges();
+                    ViewBag.Result = "Saved";
+                }
+                catch(Exception e)
+                {
+                    ViewBag.Result = e;
+                }
+            }
+            else
+            {
+                ViewBag.Result = "update";
+            }
+            return View();
+        }
     }
 }
