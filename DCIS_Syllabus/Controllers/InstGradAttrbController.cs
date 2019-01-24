@@ -64,9 +64,68 @@ namespace DCIS_Syllabus.Controllers
                 //save data to db
                 syllabus.SaveChanges();
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
+            return RedirectToAction("InstGradAttrb", "InstGradAttrb");
+        }
+
+        public ActionResult UpdateCoreValue(FormCollection cv_info)
+        {
+            //connect to db
+            Syllabus_ManagementEntities4 syllabus = new Syllabus_ManagementEntities4();
+            int cv_attr_id = Convert.ToInt32(Request.QueryString["coreValAttrIdU"]);
+
+            var retOneData = (from u in syllabus.Core_Value_Attribute
+                              where u.coreValueAttrib_ID == cv_attr_id
+                              select u).FirstOrDefault();
+
+
+            ViewData["OneDetailCVA"] = retOneData;
+            return View();
+        }
+
+        public ActionResult UpdatedCoreValue(FormCollection cv_info)
+        {
+            //retrieve the Id passed from the update page (Method = "GET")
+            int cv_attrbId = Convert.ToInt32(Request.QueryString["CoreValueAttrbId"]);
+            string cv_desc = cv_info["cvCoreAttrbU"];
+            string cv_CoreValueName = cv_info["cvCoreValueU"];
+
+
+            //connect to db
+            Syllabus_ManagementEntities4 syllabus = new Syllabus_ManagementEntities4();
+            //retrieve specific table data based from the detail Id (firstName, lastName, etc.)
+            //retrieve table details (firstName, lastName, etc.)
+
+            //find the id base from the selected
+            var coreValue_FKRet = (from u in syllabus.Core_Value
+                                   where u.name == cv_CoreValueName
+                                   select u.coreValue_ID).FirstOrDefault();
+            var cvaDetail = syllabus.Core_Value_Attribute.SingleOrDefault(b => b.coreValueAttrib_ID == cv_attrbId);
+
+            //assigning the table data through the input
+            cvaDetail.coreValue_FK = coreValue_FKRet;
+            cvaDetail.description = cv_desc;
+
+            syllabus.SaveChanges();
+            return RedirectToAction("InstGradAttrb", "InstGradAttrb");
+            //ViewBag.Result = cv_desc;
+            //return View();
+        }
+
+        public ActionResult DeleteCoreValue(FormCollection cv_info)
+        {
+            //connect to db
+            Syllabus_ManagementEntities4 syllabus = new Syllabus_ManagementEntities4();
+            int cv_attr_id = Convert.ToInt32(Request.QueryString["coreValAttrIdD"]);
+            var delData = (from u in syllabus.Core_Value_Attribute
+                           where u.coreValueAttrib_ID == cv_attr_id
+                           select u).FirstOrDefault();
+
+
+            syllabus.Core_Value_Attribute.Remove(delData);
+            syllabus.SaveChanges();
             return RedirectToAction("InstGradAttrb", "InstGradAttrb");
         }
     }
