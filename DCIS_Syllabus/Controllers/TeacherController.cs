@@ -226,5 +226,10 @@ namespace DCIS_Syllabus.Controllers
         {
             return View();
         }
+
+        public ActionResult AssessmentCriteria()
+        {
+            return View();
+        }
     }
 }
