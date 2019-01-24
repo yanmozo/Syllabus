@@ -14,18 +14,9 @@ namespace DCIS_Syllabus
     
     public partial class Online_Sources
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Online_Sources()
-        {
-            this.Sources = new HashSet<Source>();
-        }
-    
         public int onlineSource_ID { get; set; }
         public int course_FK { get; set; }
         public string webpageName { get; set; }
         public string weblink { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Source> Sources { get; set; }
     }
 }

@@ -141,15 +141,12 @@ var HTMLtbl =
                 var cols = [];
                 $(this).find('td').each(function (colIndex, c) {
 
-                    if ($(this).children(':text,:hidden,textarea,select').length > 0)
-                        cols.push($(this).children('input,textarea,select').val().trim());
+                    if ($(this).children(':text,:hidden').length > 0)
+                        cols.push($(this).children('input').val().trim());
 
                     // if dropdown text is needed then uncomment it and remove SELECT from above IF condition//
                     // else if ($(this).children('select').length > 0)
                     // cols.push($(this).find('option:selected').text());
-
-                    else if ($(this).children(':checkbox').length > 0)
-                        cols.push($(this).children(':checkbox').is(':checked') ? 1 : 0);
                     else
                         cols.push($(this).text().trim());
                 });
@@ -159,8 +156,25 @@ var HTMLtbl =
         }
     }
 
+
+/*$(document).on('click', '#grading_btn_id', function () {
+    var oTable = document.getElementById('grading_table');
+    var rowLength = oTable.rows.length;
+    for (i = 0; i < rowLength; i++) {
+        var oCells = oTable.rows.item(i).cells;
+        var cellLength = oCells.length;
+        for (var j = 0; j < cellLength; j++) {
+            var cellVal = oCells.item(j).innerHTML;
+            alert("Current data: " + cellVal);
+        }
+    }
+});*/
+
+
 $(document).on('click', '#grading_btn_id', function () {
     var data = HTMLtbl.getData($('#grading_table'));  // passing that table's ID //
+  
+    //Mmakuha na ang data diri
     var parameters = {};
     parameters.array = data;
 
@@ -170,10 +184,11 @@ $(document).on('click', '#grading_btn_id', function () {
         dataType: "json",
         type: "POST",
         contentType: "application/json; charset=utf-8",
-        url: "Teacher/insert_data_here",
+        url: "Teacher/SaveData",
         data: JSON.stringify(parameters)
     });
 
+    alert(data);
     request.done(function (msg) {
         alert("Row saved " + msg.d);
     });
@@ -183,3 +198,4 @@ $(document).on('click', '#grading_btn_id', function () {
     });
 
 });
+

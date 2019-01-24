@@ -199,6 +199,9 @@
     <Compile Include="Grading_System.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
+    <Compile Include="Hello.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
     <Compile Include="Learning_Plan.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
@@ -332,6 +335,8 @@
     <Content Include="Views\Teacher\insert_grading.cshtml" />
     <Content Include="Views\Teacher\add_revision.cshtml" />
     <Content Include="Views\Teacher\insert_grading_system.cshtml" />
+    <Content Include="Views\Teacher\insert_revisionHistory.cshtml" />
+    <Content Include="Views\Teacher\insert_revision.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

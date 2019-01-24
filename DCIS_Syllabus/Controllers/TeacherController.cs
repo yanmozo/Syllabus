@@ -41,7 +41,15 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult revision_history()
         {
-            return View();
+
+            Syllabus_ManagementEntities3 fe = new Syllabus_ManagementEntities3();
+            Revision d = new Revision();
+
+           var detailList = (from u in fe.Details
+                                  select u).OrderByDescending(x => x.Age);
+           ViewData["ListOfFriends"] = detailList.ToList();
+
+           return View();
         }
 
         public ActionResult course_outcomes()
@@ -87,11 +95,11 @@ namespace DCIS_Syllabus.Controllers
             {
                 ViewBag.Result = "Error! ";
             }
-            // return View();
-            return RedirectToAction("grading_system", "Teacher");
+             return View();
+           // return RedirectToAction("grading_system", "Teacher");
         }
 
-        public ActionResult insert_data_here(string[][] array)
+        public static string SaveData(string[][] array)
         {
             string result = string.Empty;
             try
@@ -118,40 +126,67 @@ namespace DCIS_Syllabus.Controllers
                     dt.Rows.Add(dr);
                 }
 
-             //   Syllabus_ManagementEntities3 fe = new Syllabus_ManagementEntities3(); //db
+            // Syllabus_ManagementEntities3 fe = new Syllabus_ManagementEntities3(); //db
+             // Grading_System d = new Grading_System(); //table
 
-              //  Grading_System d = new Grading_System(); //table
-
-                SqlConnection cnn = new SqlConnection();
-                cnn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings
+              SqlConnection cnn = new SqlConnection();
+               cnn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings
                 ["Syllabus_ManagementEntities3"].ToString();
                 cnn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "SaveGradingDetails";
                 cmd.Connection = cnn;
-                cmd.Parameters.Add("@Grading_System", SqlDbType.Structured).SqlValue = dt;
+                cmd.Parameters.Add("@TableType", SqlDbType.Structured).SqlValue = dt;
 
-                ViewBag.Result = cmd.ExecuteNonQuery().ToString();
+                result = cmd.ExecuteNonQuery().ToString();
             }
             catch (Exception ex)
             {
-               ViewBag.Result = ex.Message;
+                result = ex.Message;
             }
-            //return result;
-            return View(); 
+            return result;
+            //return View(); 
         }
       
-        public ActionResult add_revision()
+         public ActionResult insert_revision(FormCollection getRevisionDetails)
         {
+            string items = getRevisionDetails["revision_items"].ToString();
+            string revisedBy = getRevisionDetails["revision_revisedBy"].ToString();
+            string revisionDate = getRevisionDetails["revision_revisionDate"].ToString();
+            string approvedBy = getRevisionDetails["revision_approvedBy"].ToString();
+            string approvedDate = getRevisionDetails["revision_approvedDate"].ToString();
+            Syllabus_ManagementEntities3 fe = new Syllabus_ManagementEntities3();
+
+            Revision getTable = new Revision();
+            getTable.syllabus_FK = 1;
+            getTable.versionNum = 1.0;
+            getTable.fieldsRevised = items;
+            getTable.dateRevised =  revisionDate;
+            getTable.approvedDate = approvedDate;
+            getTable.revisedBy = revisedBy;
+            getTable.approvedBy = approvedBy;
+
+            try
+            {
+                fe.Revisions.Add(getTable); 
+                fe.SaveChanges();
+                ViewBag.Result = "Save Changes";
+            }
+            catch (Exception e)
+            {
+                ViewBag.Result = "Error! ";
+            }
+            return RedirectToAction("revision_history", "Teacher");
+        }
+
+        public ActionResult insert_revisionHistory()
+        {
+            
             return View();
         }
 
-        public ActionResult insert_revison_history(FormCollection getGradingSystem)
-        {
-           
 
-            return View(); 
-        }
+    
     }
 }
