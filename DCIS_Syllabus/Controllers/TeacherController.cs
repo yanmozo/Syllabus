@@ -71,12 +71,12 @@ namespace DCIS_Syllabus.Controllers
         public ActionResult revision_history()
         {
 
-            Syllabus_ManagementEntities3 fe = new Syllabus_ManagementEntities3();
+            Syllabus_ManagementEntities4 fe = new Syllabus_ManagementEntities4();
             Revision d = new Revision();
 
-           var detailList = (from u in fe.Details
-                                  select u).OrderByDescending(x => x.Age);
-           ViewData["ListOfFriends"] = detailList.ToList();
+           //var detailList = (from u in fe.Details
+           //                       select u).OrderByDescending(x => x.Age);
+           //ViewData["ListOfFriends"] = detailList.ToList();
 
            return View();
         }
@@ -105,7 +105,7 @@ namespace DCIS_Syllabus.Controllers
         {
             //can insert to database using static data ONLY 
 
-            Syllabus_ManagementEntities3 fe = new Syllabus_ManagementEntities3();
+            Syllabus_ManagementEntities4 fe = new Syllabus_ManagementEntities4();
 
             Grading_System d = new Grading_System();
             // d.gradingSystem_ID = 1;
@@ -185,7 +185,7 @@ namespace DCIS_Syllabus.Controllers
             string revisionDate = getRevisionDetails["revision_revisionDate"].ToString();
             string approvedBy = getRevisionDetails["revision_approvedBy"].ToString();
             string approvedDate = getRevisionDetails["revision_approvedDate"].ToString();
-            Syllabus_ManagementEntities3 fe = new Syllabus_ManagementEntities3();
+            Syllabus_ManagementEntities4 fe = new Syllabus_ManagementEntities4();
 
             Revision getTable = new Revision();
             getTable.syllabus_FK = 1;
