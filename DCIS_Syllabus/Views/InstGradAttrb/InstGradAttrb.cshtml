@@ -30,7 +30,7 @@
     <form class="form-horizontal" action="../InstGradAttrb/AddCoreValue">
         <div class="form-group col-md-4">
             <label for="email">Core Value:</label>
-            <select class="form-control" name="cvCoreValue">
+            <select class="form-control" name="cvCoreValue" required>
                 @foreach (var cv_attr in core_valueList.Select(x=>x.CoreValueName).Distinct())
                 {
                     <option>@cv_attr</option>
@@ -39,7 +39,7 @@
         </div>
         <div class="form-group col-md-4">
             <label for="pwd">Attribute:</label>
-            <textarea class="form-control" name="cvAttrib"></textarea>
+            <textarea class="form-control" name="cvAttrib" required></textarea>
         </div>
         <div class="form-group col-md-1"><button type="submit" class="btn btn-default">Submit</button></div>
     </form>
@@ -61,7 +61,7 @@
         if (cv_attr.CoreValueName == "Scientia")
         {
             <tr>
-                <td>@cv_attr.Attribute</td>
+                <td><pre>@cv_attr.Attribute.Replace("<br />", System.Environment.NewLine)</pre></td>
                 <td class="text-center">
                     <a href="../InstGradAttrb/UpdateCoreValue?coreValAttrIdU=@cv_attr.CoreValueAttrb_Id">
                         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -84,7 +84,7 @@
         if (cv_attr.CoreValueName == "Virtus")
         {
             <tr>
-                <td>@cv_attr.Attribute</td>
+                <td><pre>@cv_attr.Attribute.Replace("<br />", System.Environment.NewLine)</pre></td>
                 <td class="text-center">
                     <a href="../InstGradAttrb/UpdateCoreValue?coreValAttrIdU=@cv_attr.CoreValueAttrb_Id">
                         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -107,7 +107,7 @@
         if (cv_attr.CoreValueName == "Devotio")
         {
             <tr>
-                <td>@cv_attr.Attribute</td>
+                <td><pre>@cv_attr.Attribute.Replace("<br />", System.Environment.NewLine)</pre></td>
                 <td class="text-center">
                     <a href="../InstGradAttrb/UpdateCoreValue?coreValAttrIdU=@cv_attr.CoreValueAttrb_Id">
                         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>

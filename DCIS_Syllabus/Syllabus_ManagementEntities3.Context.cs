@@ -39,6 +39,7 @@ namespace DCIS_Syllabus
         public virtual DbSet<Course_Outcomes> Course_Outcomes { get; set; }
         public virtual DbSet<Grading_Rubrics> Grading_Rubrics { get; set; }
         public virtual DbSet<Grading_System> Grading_System { get; set; }
+        public virtual DbSet<Hello> Helloes { get; set; }
         public virtual DbSet<Learning_Plan> Learning_Plan { get; set; }
         public virtual DbSet<Online_Sources> Online_Sources { get; set; }
         public virtual DbSet<Program_Educational_Objs> Program_Educational_Objs { get; set; }

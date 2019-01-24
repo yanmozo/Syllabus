@@ -108,9 +108,9 @@
           <Property Name="courseOutcomes_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="activeValues_FK" Type="int" Nullable="false" />
           <Property Name="syllabus_FK" Type="int" Nullable="false" />
-          <Property Name="codeName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="outcomeDescription" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="domainLearningLVL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="codeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="outcomeDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="domainLearningLVL" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Grading_Rubrics">
           <Key>
@@ -165,7 +165,7 @@
           <Property Name="onlineSource_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="course_FK" Type="int" Nullable="false" />
           <Property Name="webpageName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="weblink" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="weblink" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Program_Educational_Objs">
           <Key>
@@ -200,10 +200,12 @@
           </Key>
           <Property Name="revision_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="syllabus_FK" Type="int" Nullable="false" />
-          <Property Name="versionNum" Type="int" Nullable="false" />
+          <Property Name="versionNum" Type="float" Nullable="false" />
           <Property Name="fieldsRevised" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="dateRevised" Type="date" Nullable="false" />
-          <Property Name="approvedDate" Type="date" Nullable="false" />
+          <Property Name="dateRevised" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="approvedDate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="revisedBy" Type="varchar" MaxLength="50" />
+          <Property Name="approvedBy" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Revisions_Log">
           <Key>
@@ -695,7 +697,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="Syllabus_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Syllabus_ManagementEntities4" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Helloes" EntityType="Syllabus_ManagementModel.Hello" />
           <EntitySet Name="Active_Values" EntityType="Syllabus_ManagementModel.Active_Values" />
           <EntitySet Name="Assessment_Criteria" EntityType="Syllabus_ManagementModel.Assessment_Criteria" />
           <EntitySet Name="Bibliographies" EntityType="Syllabus_ManagementModel.Bibliography" />
@@ -709,6 +710,7 @@
           <EntitySet Name="Course_Outcomes" EntityType="Syllabus_ManagementModel.Course_Outcomes" />
           <EntitySet Name="Grading_Rubrics" EntityType="Syllabus_ManagementModel.Grading_Rubrics" />
           <EntitySet Name="Grading_System" EntityType="Syllabus_ManagementModel.Grading_System" />
+          <EntitySet Name="Helloes" EntityType="Syllabus_ManagementModel.Hello" />
           <EntitySet Name="Learning_Plan" EntityType="Syllabus_ManagementModel.Learning_Plan" />
           <EntitySet Name="Online_Sources" EntityType="Syllabus_ManagementModel.Online_Sources" />
           <EntitySet Name="Program_Educational_Objs" EntityType="Syllabus_ManagementModel.Program_Educational_Objs" />
@@ -822,16 +824,6 @@
             <End Role="Syllabu" EntitySet="Syllabus" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Hello">
-          <Key>
-            <PropertyRef Name="gradingSystem_ID1" />
-          </Key>
-          <Property Name="gradingSystem_ID1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="syllabus_FK1" Type="Int32" Nullable="false" />
-          <Property Name="typeOfGrading1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="weight1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="requirementsName1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Active_Values">
           <Key>
             <PropertyRef Name="activeValues_ID" />
@@ -950,9 +942,9 @@
           <Property Name="courseOutcomes_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="activeValues_FK" Type="Int32" Nullable="false" />
           <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
-          <Property Name="codeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="outcomeDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="domainLearningLVL" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="outcomeDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="domainLearningLVL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Active_Values" Relationship="Syllabus_ManagementModel.FK_Course_Outcomes_TO_ActiveValues" FromRole="Course_Outcomes" ToRole="Active_Values" />
           <NavigationProperty Name="Course_Outcome_Addressed" Relationship="Syllabus_ManagementModel.FK_courseOutcomeAddressed_TO_courseOutcome" FromRole="Course_Outcomes" ToRole="Course_Outcome_Addressed" />
           <NavigationProperty Name="Syllabu" Relationship="Syllabus_ManagementModel.FK_CourseOutcome_TO_Syllabus" FromRole="Course_Outcomes" ToRole="Syllabu" />
@@ -979,6 +971,16 @@
           <Property Name="requirementsName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Syllabu" Relationship="Syllabus_ManagementModel.syllabus_FK_IN_Grading_System" FromRole="Grading_System" ToRole="Syllabu" />
         </EntityType>
+        <EntityType Name="Hello">
+          <Key>
+            <PropertyRef Name="gradingSystem_ID1" />
+          </Key>
+          <Property Name="gradingSystem_ID1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="syllabus_FK1" Type="Int32" Nullable="false" />
+          <Property Name="typeOfGrading1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="weight1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="requirementsName1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Learning_Plan">
           <Key>
             <PropertyRef Name="learning_ID" />
@@ -1004,7 +1006,7 @@
           <Property Name="onlineSource_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="course_FK" Type="Int32" Nullable="false" />
           <Property Name="webpageName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="weblink" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="weblink" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Program_Educational_Objs">
           <Key>
@@ -1044,10 +1046,12 @@
           </Key>
           <Property Name="revision_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
-          <Property Name="versionNum" Type="Int32" Nullable="false" />
+          <Property Name="versionNum" Type="Double" Nullable="false" />
           <Property Name="fieldsRevised" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="dateRevised" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="approvedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dateRevised" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="approvedDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="revisedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="approvedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Revisions_Log" Relationship="Syllabus_ManagementModel.revision_id_fk_IN_Revision_Log" FromRole="Revision" ToRole="Revisions_Log" />
           <NavigationProperty Name="Syllabu" Relationship="Syllabus_ManagementModel.syllabus_id_fk_IN_Revision" FromRole="Revision" ToRole="Syllabu" />
         </EntityType>
@@ -1429,23 +1433,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Syllabus_ManagementModelStoreContainer" CdmEntityContainer="Syllabus_ManagementEntities4">
-          <EntitySetMapping Name="Helloes">
-            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Hello">
-              <MappingFragment StoreEntitySet="Hello">
-                <ScalarProperty Name="requirementsName1" ColumnName="requirementsName1" />
-                <ScalarProperty Name="weight1" ColumnName="weight1" />
-                <ScalarProperty Name="typeOfGrading1" ColumnName="typeOfGrading1" />
-                <ScalarProperty Name="syllabus_FK1" ColumnName="syllabus_FK1" />
-                <ScalarProperty Name="gradingSystem_ID1" ColumnName="gradingSystem_ID1" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Active_Values">
             <EntityTypeMapping TypeName="Syllabus_ManagementModel.Active_Values">
               <MappingFragment StoreEntitySet="Active_Values">
@@ -1586,6 +1579,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Helloes">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Hello">
+              <MappingFragment StoreEntitySet="Hello">
+                <ScalarProperty Name="requirementsName1" ColumnName="requirementsName1" />
+                <ScalarProperty Name="weight1" ColumnName="weight1" />
+                <ScalarProperty Name="typeOfGrading1" ColumnName="typeOfGrading1" />
+                <ScalarProperty Name="syllabus_FK1" ColumnName="syllabus_FK1" />
+                <ScalarProperty Name="gradingSystem_ID1" ColumnName="gradingSystem_ID1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Learning_Plan">
             <EntityTypeMapping TypeName="Syllabus_ManagementModel.Learning_Plan">
               <MappingFragment StoreEntitySet="Learning_Plan">
@@ -1646,6 +1650,8 @@
           <EntitySetMapping Name="Revisions">
             <EntityTypeMapping TypeName="Syllabus_ManagementModel.Revision">
               <MappingFragment StoreEntitySet="Revision">
+                <ScalarProperty Name="approvedBy" ColumnName="approvedBy" />
+                <ScalarProperty Name="revisedBy" ColumnName="revisedBy" />
                 <ScalarProperty Name="approvedDate" ColumnName="approvedDate" />
                 <ScalarProperty Name="dateRevised" ColumnName="dateRevised" />
                 <ScalarProperty Name="fieldsRevised" ColumnName="fieldsRevised" />
