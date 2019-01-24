@@ -9,10 +9,12 @@ namespace DCIS_Syllabus.Controllers
     public class TeacherController : Controller
     {
         // GET: ViewAllSyllabus
+
+        Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+
         public ActionResult ViewAllTSyllabus()
         {
             // Get all syllabus of all handled courses here.
-            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
             Syllabu s = new Syllabu();
 
             var syllabusList = (from u in sm.Syllabus
@@ -41,6 +43,15 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult ClassroomPolicy()
         {
+            // Get all classroom policies this courses here.
+            //int syllabusID = Convert.ToInt32(Request.QueryString["SyllabusID"]);
+            int syllabusID = 1;
+            Syllabu s = new Syllabu();
+
+            var policyList = (from u in sm.Class_Policy
+                                where u.syllabus_FK == syllabusID
+                                select u);
+            ViewData["ListofPolicies"] = policyList.ToList();
             return View();
         }
 

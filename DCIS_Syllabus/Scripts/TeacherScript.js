@@ -96,28 +96,6 @@
     });
 });
 
-function AddNewField() {
-    var field = 
-        "<form method='post' action='AddNewPolicyToDB'><div class='input-group' id='newfield'>" +
-        "<input type='text' class='form-control' name='PolicyString' id='newPolicyInput' placeholder='Type new policy...'><br>" +
-        "<span class='input-group-btn'>" +
-        "<button class='btn btn-default' onclick='AddNewPolicy()' type='button'>Add</button>" +
-        "</span>" +
-        "</div></form><br>";
-    document.getElementById("NewInputFields").innerHTML = field;
-
-}
-
-function AddNewPolicy() {
-    var newPol = document.getElementById("newPolicyInput").value;
-    
-    var node = document.createElement("LI");
-    var textnode = document.createTextNode(newPol);
-    node.appendChild(textnode);
-    document.getElementById("PolicyList").appendChild(node);
-
-   this.style.display = "none";
-}
 
 function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
