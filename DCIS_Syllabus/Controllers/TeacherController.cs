@@ -84,14 +84,13 @@ namespace DCIS_Syllabus.Controllers
         public ActionResult revision_history()
         {
 
-            Syllabus_ManagementEntities4 fe = new Syllabus_ManagementEntities4();
-            Revision d = new Revision();
+            Syllabus_ManagementEntities4 revise = new Syllabus_ManagementEntities4();
+            Revision revised = new Revision();
 
-           //var detailList = (from u in fe.Details
-           //                       select u).OrderByDescending(x => x.Age);
-           //ViewData["ListOfFriends"] = detailList.ToList();
+            var reviseList = (from u in revise.Revisions select u);
+            ViewData["ListOfRevisions"] = reviseList.ToList();
 
-           return View();
+            return View();
         }
 
         public ActionResult course_outcomes()
@@ -225,11 +224,7 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult insert_revisionHistory()
         {
-            
             return View();
         }
-
-
-    
     }
 }
