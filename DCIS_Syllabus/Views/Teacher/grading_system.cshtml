@@ -23,81 +23,85 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <div class="container">
-    <table id="myTable" class=" table grading-list">
+    <form method="post" action="insert_grading">
+        <table id="grading_table" class=" table grading-list">
 
-        <thead>
-            <tr>
-                <th colspan="1">Requirements</th>
-                <th rowspan="4">Type</th>
-                <th colspan="1">Weight  </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="col-sm-2">
-                    <center><input type="text" id="styleText" name="requirements" value="Web Project" class="form-control" /></center>
-                </td>
-                <td class="col-sm-2">
-                    <center><input type="text" id="styleText" name="type" value="Outputs (Rubric-Based / Summative) " class="form-control" /></center>
-                </td>
-                <td class="col-sm-2">
-                    <center><input type="text" id="styleText" name="weight" class="form-control" value="36%" /></center>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-sm-2">
-                    <center><input type="text" id="styleText" name="requirements" value="Seatworks and Quizzes" class="form-control" /></center>
-                </td>
-                <td class="col-sm-2" rowspan="4">
-                    <center><input type="text" id="styleText" name="type" class="form-control" value="Other Assessments" /></center>
-                </td>
-                <td class="col-sm-2">
-                    <center><input type="text" id="styleText" name="weight" class="form-control" value="12%" /></center>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-sm-2">
-                    <center><input type="text" id="styleText" name="requirements" value="Lab Activities" class="form-control" /></center>
-                </td>
+            <thead>
+                <tr>
+                    <th colspan="1">Requirements</th>
+                    <th rowspan="4">Type</th>
+                    <th colspan="1">Weight  </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-sm-2">
+                        <center><input type="text" id="styleText" name="requirements" value="Web Project" class="form-control" /></center>
+                    </td>
+                    <td class="col-sm-2">
+                        <center><input type="text" id="styleText" name="type" value="Outputs (Rubric-Based / Summative) " class="form-control" /></center>
+                    </td>
+                    <td class="col-sm-2">
+                        <center><input type="text" id="styleText" name="weight" class="form-control" value="36%" /></center>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-2">
+                        <center><input type="text" id="styleText" name="requirements" value="Seatworks and Quizzes" class="form-control" /></center>
+                    </td>
+                    <td class="col-sm-2" rowspan="4">
+                        <center><input type="text" id="styleText" name="type" class="form-control" value="Other Assessments" /></center>
+                    </td>
+                    <td class="col-sm-2">
+                        <center><input type="text" id="styleText" name="weight" class="form-control" value="12%" /></center>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-2">
+                        <center><input type="text" id="styleText" name="requirements" value="Lab Activities" class="form-control" /></center>
+                    </td>
 
-                <td class="col-sm-2">
-                    <center><input type="text" id="styleText" name="weight" class="form-control" value="24%" /></center>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-sm-2">
-                    <center><input type="text" id="styleText" name="requirements" value="Homeworks" class="form-control" /></center>
-                </td>
+                    <td class="col-sm-2">
+                        <center><input type="text" id="styleText" name="weight" class="form-control" value="24%" /></center>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-2">
+                        <center><input type="text" id="styleText" name="requirements" value="Homeworks" class="form-control" /></center>
+                    </td>
 
-                <td class="col-sm-2">
-                    <center><input type="text" id="styleText" name="weight" class="form-control" value="8%" /></center>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-sm-2">
-                    <center><input type="text" id="styleText" name="requirements" value="Exams" class="form-control" /></center>
-                </td>
+                    <td class="col-sm-2">
+                        <center><input type="text" id="styleText" name="weight" class="form-control" value="8%" /></center>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-2">
+                        <center><input type="text" id="styleText" name="requirements" value="Exams" class="form-control" /></center>
+                    </td>
 
-                <td class="col-sm-2">
-                    <center><input type="text" id="styleText" name="weight" class="form-control" value="20%" /></center>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-sm-2" colspan="2">
-                    <center><input type="text" id="styleText" name="requirements" value="Total" class="form-control" readonly /></center>
-                </td>
+                    <td class="col-sm-2">
+                        <center><input type="text" id="styleText" name="weight" class="form-control" value="20%" /></center>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-2" colspan="2">
+                        <center><input type="text" id="styleText" name="requirements" value="Total" class="form-control" readonly /></center>
+                    </td>
 
-                <td class="col-sm-2">
-                    <center><input type="text" id="styleText" name="weight" class="form-control" value="100%" /></center>
-                </td>
-            </tr>
+                    <td class="col-sm-2">
+                        <center><input type="text" id="styleText" name="weight" class="form-control" value="100%" /></center>
+                    </td>
+                </tr>
 
-        </tbody>
-        <tfoot>
+            </tbody>
+            <tfoot>
 
-        </tfoot>
-    </table>
-    <input type="button" class="btn btn-success" value="Save Changes" />
+            </tfoot>
+        </table>
+        <button type="submit" class="btn btn-success" id="grading_btn_id" value="Save Changes">Submit</button>
+        
+    </form>
+
 </div>
 
 

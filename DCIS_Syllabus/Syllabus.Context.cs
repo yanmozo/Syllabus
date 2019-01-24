@@ -28,9 +28,12 @@ namespace DCIS_Syllabus
         public virtual DbSet<Active_Values> Active_Values { get; set; }
         public virtual DbSet<Assessment_Criteria> Assessment_Criteria { get; set; }
         public virtual DbSet<Bibliography> Bibliographies { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Class_Policy> Class_Policy { get; set; }
         public virtual DbSet<Core_Value> Core_Value { get; set; }
+        public virtual DbSet<Core_Value_Attribute> Core_Value_Attribute { get; set; }
         public virtual DbSet<Course_Deliverable> Course_Deliverable { get; set; }
+        public virtual DbSet<Course_Information> Course_Information { get; set; }
         public virtual DbSet<Course_Outcome_Addressed> Course_Outcome_Addressed { get; set; }
         public virtual DbSet<Course_Outcomes> Course_Outcomes { get; set; }
         public virtual DbSet<Grading_Rubrics> Grading_Rubrics { get; set; }

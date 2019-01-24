@@ -131,3 +131,55 @@ $(document).ready(function () {
         });
     }
 // End of Course Deliverables Outputs and Requirements 
+
+// getting data from the grading_system table 
+var HTMLtbl =
+    {
+        getData: function (table) {
+            var data = [];
+            table.find('tr').not(':first').each(function (rowIndex, r) {
+                var cols = [];
+                $(this).find('td').each(function (colIndex, c) {
+
+                    if ($(this).children(':text,:hidden,textarea,select').length > 0)
+                        cols.push($(this).children('input,textarea,select').val().trim());
+
+                    // if dropdown text is needed then uncomment it and remove SELECT from above IF condition//
+                    // else if ($(this).children('select').length > 0)
+                    // cols.push($(this).find('option:selected').text());
+
+                    else if ($(this).children(':checkbox').length > 0)
+                        cols.push($(this).children(':checkbox').is(':checked') ? 1 : 0);
+                    else
+                        cols.push($(this).text().trim());
+                });
+                data.push(cols);
+            });
+            return data;
+        }
+    }
+
+$(document).on('click', '#grading_btn_id', function () {
+    var data = HTMLtbl.getData($('#grading_table'));  // passing that table's ID //
+    var parameters = {};
+    parameters.array = data;
+
+    var request = $.ajax({
+        async: true,
+        cache: false,
+        dataType: "json",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "Teacher/insert_data_here",
+        data: JSON.stringify(parameters)
+    });
+
+    request.done(function (msg) {
+        alert("Row saved " + msg.d);
+    });
+
+    request.fail(function (jqXHR, textStatus) {
+        alert("Request failed: " + textStatus);
+    });
+
+});

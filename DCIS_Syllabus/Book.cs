@@ -12,21 +12,21 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Source
+    public partial class Book
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Source()
+        public Book()
         {
-            this.Bibliographies = new HashSet<Bibliography>();
+            this.Sources = new HashSet<Source>();
         }
     
-        public int sources_ID { get; set; }
-        public int book_FK { get; set; }
-        public int onlineSources_FK { get; set; }
+        public int book_id { get; set; }
+        public int course_fk { get; set; }
+        public int callNumber { get; set; }
+        public string title { get; set; }
+        public string author { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bibliography> Bibliographies { get; set; }
-        public virtual Book Book { get; set; }
-        public virtual Online_Sources Online_Sources { get; set; }
+        public virtual ICollection<Source> Sources { get; set; }
     }
 }

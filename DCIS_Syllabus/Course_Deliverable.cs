@@ -14,12 +14,6 @@ namespace DCIS_Syllabus
     
     public partial class Course_Deliverable
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Course_Deliverable()
-        {
-            this.Grading_System = new HashSet<Grading_System>();
-        }
-    
         public int courseDeliverables_ID { get; set; }
         public int courseOutcomeAdd_FK { get; set; }
         public int syllabus_FK { get; set; }
@@ -29,8 +23,6 @@ namespace DCIS_Syllabus
         public string assessmentTypeB { get; set; }
     
         public virtual Course_Outcome_Addressed Course_Outcome_Addressed { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Grading_System> Grading_System { get; set; }
         public virtual Syllabu Syllabu { get; set; }
     }
 }
