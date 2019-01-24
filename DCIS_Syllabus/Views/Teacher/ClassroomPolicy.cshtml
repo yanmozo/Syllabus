@@ -2,12 +2,16 @@
 @{
     ViewBag.Title = "ClassroomPolicy";
     Layout = "~/Views/Shared/_SideBar.cshtml";
+    var policies = (List<Class_Policy>)ViewData["ListofPolicies"];
 }
 
 <h2>Classroom and Laboratory Policies</h2>
 
 <div id="LabPoliciesDIV" class="wrapper">
     <div class="LabPolicies well">
+        <form class="get" action="../Syllabus/EditClassroomPolicies">
+            <button class="btn btn-warning pull-right">Edit</button>
+        </form>
         <p>This course will adhere to all class policies stipulated in the USC Student Manual.</p>
         <p>The students are expected to observe the following specific policies during class sessions:</p>
         <div class="StaticPolicies">
@@ -18,23 +22,32 @@
                 <li>Cellular phones, tablets, laptops and other similar devices must be switched off or put into silent mode. Usage of such devices will only be allowed if the teacher deemed it necessary for the students’ learning.</li>
                 <li>No food and drinks are permitted inside the laboratory to avoid spillage and to prevent insects and other pests.</li>
                 <li>Each student will be assigned with a date to lead the class in prayer before the start of the session. Students may solicit in advance to his/her classmates, prayer intentions like birthday celebrations or any other important events.</li>
+                @{
+                    foreach (var item in policies)
+                    {
+                        <li>@item.policyItem</li>
+                    }
+                }
             </ol>
         </div>
     </div>
-    <div class="pull-right">
-        <button class="btn btn-default" id="AddNewPolicy" onclick="AddNewField()">
-            <span class="glyphicon glyphicon-plus"></span>
-            Another Policy
-        </button>
-    </div>
-    <br /><br />
-    <div class="wrapper">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10" id="NewInputFields"></div>
-            <div class="col-md-1"></div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-4 text-center">
+            <form method="post" action="../Syllabus/AddNewPolicyToDB">
+                <label for="feedbackInput">Type your additional class policy below:</label>
+                <textarea style="display:inline-block" class="form-control" id="feedbackInput" name="PolicyString"></textarea>
+                <br><button type="submit" class="btn btn-success text-center" data-dismiss="modal" style="margin-top:10px;">Add</button>
+            </form>
         </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
     </div>
+
+   
+
 </div>
 
 

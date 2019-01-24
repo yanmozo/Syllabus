@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "InstGradAttrb";
     Layout = "~/Views/Shared/_SideBar.cshtml";
-    var core_valueList = (List<Core_Value>)(ViewData["CoreValueList"]);
+    var core_valueList = (List<DCIS_Syllabus.Models.CoreValue>)ViewData["CoreValueList"];
 
     var scientia = 1;
     var virtus = 1;
@@ -10,15 +10,15 @@
 
     foreach (var cv_attr in core_valueList)
     {
-        if(cv_attr.name == "Scientia")
+        if(cv_attr.CoreValueName == "Scientia")
         {
             scientia++;
         }
-        else if (cv_attr.name == "Virtus")
+        else if (cv_attr.CoreValueName == "Virtus")
         {
             virtus++;
         }
-        else if (cv_attr.name == "Devotio")
+        else if (cv_attr.CoreValueName == "Devotio")
         {
             devotio++;
         }
@@ -26,48 +26,97 @@
 }
 
 <h2>Institutional Graduate Attributes</h2>
+<div class="container" style="margin-bottom:10px">
+    <form class="form-horizontal" action="../InstGradAttrb/AddCoreValue">
+        <div class="form-group col-md-4">
+            <label for="email">Core Value:</label>
+            <select class="form-control" name="cvCoreValue">
+                @foreach (var cv_attr in core_valueList.Select(x=>x.CoreValueName).Distinct())
+                {
+                    <option>@cv_attr</option>
+                }
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="pwd">Attribute:</label>
+            <textarea class="form-control" name="cvAttrib"></textarea>
+        </div>
+        <div class="form-group col-md-1"><button type="submit" class="btn btn-default">Submit</button></div>
+    </form>
+</div>
 <table class="table table-bordered">
     <thead>
         <tr>
             <th class="text-center">Core Values</th>
             <th class="text-center">Attributes</th>
+            <th class="text-center">Options</th>
         </tr>
     </thead>
     <tr>
-        <td rowspan="@scientia" class="text-center core_value_name">Scientia</td>
+        <td style="vertical-align: middle" rowspan="@scientia" class="text-center core_value_name">Scientia</td>
     </tr>
 
     @foreach (var cv_attr in core_valueList)
     {
-        if (cv_attr.name == "Scientia")
+        if (cv_attr.CoreValueName == "Scientia")
         {
-            <tr><td>@cv_attr.description</td></tr>
+            <tr>
+                <td>@cv_attr.Attribute</td>
+                <td class="text-center">
+                    <a href="../InstGradAttrb/UpdateCoreValue?coreValAttrIdU=@cv_attr.CoreValueAttrb_Id">
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
+                    </a>
+                    <a href="../InstGradAttrb/DeleteCoreValue?coreValAttrIdD=@cv_attr.CoreValueAttrb_Id">
+                        <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                    </a>
+                </td>
+            </tr>
 
         }
     }
 
     <tr>
-        <td rowspan="@virtus" class="text-center core_value_name">Virtus</td>
+        <td style="vertical-align: middle"  rowspan="@virtus" class="text-center core_value_name">Virtus</td>
     </tr>
 
     @foreach (var cv_attr in core_valueList)
     {
-        if (cv_attr.name == "Virtus")
+        if (cv_attr.CoreValueName == "Virtus")
         {
-            <tr><td>@cv_attr.description</td></tr>
+            <tr>
+                <td>@cv_attr.Attribute</td>
+                <td class="text-center">
+                    <a href="../InstGradAttrb/UpdateCoreValue?coreValAttrIdU=@cv_attr.CoreValueAttrb_Id">
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
+                    </a>
+                    <a href="../InstGradAttrb/DeleteCoreValue?coreValAttrIdD=@cv_attr.CoreValueAttrb_Id">
+                        <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                    </a>
+                </td>
+            </tr>
 
         }
     }
 
     <tr>
-        <td rowspan="@devotio" class="text-center core_value_name">Devotio</td>
+        <td style="vertical-align: middle"  rowspan="@devotio" class="text-center core_value_name">Devotio</td>
     </tr>
 
     @foreach (var cv_attr in core_valueList)
     {
-        if (cv_attr.name == "Devotio")
+        if (cv_attr.CoreValueName == "Devotio")
         {
-            <tr><td>@cv_attr.description</td></tr>
+            <tr>
+                <td>@cv_attr.Attribute</td>
+                <td class="text-center">
+                    <a href="../InstGradAttrb/UpdateCoreValue?coreValAttrIdU=@cv_attr.CoreValueAttrb_Id">
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
+                    </a>
+                    <a href="../InstGradAttrb/DeleteCoreValue?coreValAttrIdD=@cv_attr.CoreValueAttrb_Id">
+                        <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                    </a>
+                </td>
+            </tr>
 
         }
     }

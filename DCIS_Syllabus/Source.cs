@@ -21,12 +21,12 @@ namespace DCIS_Syllabus
         }
     
         public int sources_ID { get; set; }
-        public string type_of_resource { get; set; }
-        public int resource_fk { get; set; }
+        public int book_FK { get; set; }
+        public int onlineSources_FK { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bibliography> Bibliographies { get; set; }
-        public virtual Source Sources1 { get; set; }
-        public virtual Source Source1 { get; set; }
+        public virtual Book Book { get; set; }
+        public virtual Online_Sources Online_Sources { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 ﻿@{
-ViewBag.Title = "Bibliography";
+    ViewBag.Title = "Bibliography";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+    var books = (List<Book>)ViewData["ListofBooks"];
 }
 
 <br />
@@ -16,18 +18,21 @@ ViewBag.Title = "Bibliography";
 
 <div id="Books" class="tabcontent">
     <h2 style="text-align:left; margin-left:80px">Book Information</h2>
-    <div class="row">
-        <div class="col-md-5">
-            <input type="text" class="form-control bookInput" id="callNumber" placeholder="Call Number">
-            <input type="text" class="form-control bookInput" id="bookTitle" placeholder="Title">
-        </div>
-        <div class="col-md-5">
-            <input type="text" class="form-control bookInput" id="bookAuthors" placeholder="Author/s">
-            <input type="text" class="form-control bookInput" id="bookYear" placeholder="Year">
-        </div>
-        <div class="col-md-2">
-            <input type="button" class="add-book-row btn btn-success" onclick="addBookRow" value="Add Row">
-        </div>
+    <div class="row" style="margin-left: 20%;margin-right: 20%;">
+        <form method="post" action="../Syllabus/UpdateBooks">
+            <input type="hidden" class="form-control bookInput" id="bookID" name="BookID" readonly>
+            <div class="col-md-5">
+                <input type="text" class="form-control bookInput" id="callNumber" name="CallNumber" placeholder="Call Number"><br />
+                <input type="text" class="form-control bookInput" id="bookTitle" name="Title" placeholder="Title">
+            </div>
+            <div class="col-md-5">
+                <input type="text" class="form-control bookInput" id="bookAuthors" name="Author" placeholder="Author/s"><br />
+                <input type="text" class="form-control bookInput" id="bookYear" name="Year" placeholder="Year">
+            </div>
+            <div class="col-md-2" style="margin-top:25px;">
+                <input type="submit" id="bookBtn" class="btn btn-success" value="Add Row">
+            </div>
+        </form>
     </div>
     <br /><br />
     <div class="wrapper">
@@ -44,18 +49,25 @@ ViewBag.Title = "Bibliography";
                     <th class="BibTH">Year</th>
                     <th class="BibTH" style="width:150px">Options</th>
                 </tr>
-                <tr class="del">
-                    <td class="BibTD" contenteditable="true">006.74 F33</td>
-                    <td class="BibTD" contenteditable="false">Web development and design foundations with HTML5 (6th Edition)</td>
-                    <td class="BibTD" contenteditable="false">Felke-Morris, Terry</td>
-                    <td class="BibTD" contenteditable="false">2010</td>
-                    <td class="BibTD">
-                        <div class="btn-group" role="group" aria-label="...">
-                            <button type="button" class="btn btn-warning editbtn"><span class="glyphicon glyphicon-edit"></span></button>
-                            <button type="button" class="btn btn-danger delbtn"><span class="glyphicon glyphicon-trash"></span></button>
-                        </div>
-                    </td>
-                </tr>
+                @{
+                    foreach (var item in books)
+                    {
+                        <tr class="del">
+                            <td class="BibTD" hidden>@item.book_id</td>
+                            <td class="BibTD">@item.callNumber</td>
+                            <td class="BibTD">@item.title</td>
+                            <td class="BibTD">@item.author</td>
+                            <td class="BibTD">@item.year</td>
+                            <td class="BibTD">
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <button type="button" class="btn btn-warning editbtn"><span class="glyphicon glyphicon-edit"></span></button>
+                                    <button type="button" class="btn btn-danger delbtn"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+
             </table>
         </div>
         <div class="col-md-1"></div>
@@ -103,6 +115,8 @@ ViewBag.Title = "Bibliography";
         <div class="col-md-2"></div>
     </div>
 </div>
+
+
 
 
 
