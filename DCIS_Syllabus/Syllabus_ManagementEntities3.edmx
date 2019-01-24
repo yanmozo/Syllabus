@@ -108,9 +108,9 @@
           <Property Name="courseOutcomes_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="activeValues_FK" Type="int" Nullable="false" />
           <Property Name="syllabus_FK" Type="int" Nullable="false" />
-          <Property Name="codeName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="outcomeDescription" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="domainLearningLVL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="codeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="outcomeDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="domainLearningLVL" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Grading_Rubrics">
           <Key>
@@ -942,9 +942,9 @@
           <Property Name="courseOutcomes_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="activeValues_FK" Type="Int32" Nullable="false" />
           <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
-          <Property Name="codeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="outcomeDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="domainLearningLVL" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="outcomeDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="domainLearningLVL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Active_Values" Relationship="Syllabus_ManagementModel.FK_Course_Outcomes_TO_ActiveValues" FromRole="Course_Outcomes" ToRole="Active_Values" />
           <NavigationProperty Name="Course_Outcome_Addressed" Relationship="Syllabus_ManagementModel.FK_courseOutcomeAddressed_TO_courseOutcome" FromRole="Course_Outcomes" ToRole="Course_Outcome_Addressed" />
           <NavigationProperty Name="Syllabu" Relationship="Syllabus_ManagementModel.FK_CourseOutcome_TO_Syllabus" FromRole="Course_Outcomes" ToRole="Syllabu" />
