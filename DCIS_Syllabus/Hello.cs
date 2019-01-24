@@ -12,13 +12,12 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Book
+    public partial class Hello
     {
-        public int book_id { get; set; }
-        public int course_fk { get; set; }
-        public string callNumber { get; set; }
-        public string title { get; set; }
-        public string author { get; set; }
-        public int year { get; set; }
+        public int gradingSystem_ID1 { get; set; }
+        public int syllabus_FK1 { get; set; }
+        public string typeOfGrading1 { get; set; }
+        public string weight1 { get; set; }
+        public string requirementsName1 { get; set; }
     }
 }

@@ -2,6 +2,7 @@
     ViewBag.Title = "Bibliography";
     Layout = "~/Views/Shared/_SideBar.cshtml";
     var books = (List<Book>)ViewData["ListofBooks"];
+    var webs = (List<Online_Sources>)ViewData["ListofOS"];
 }
 
 <br />
@@ -10,8 +11,8 @@
 
 <div class="row">
     <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'Books')">Books</button>
-        <button class="tablinks" onclick="openCity(event, 'OnlineSources')">Online Resources</button>
+        <button class="tablinks" onclick="openTab(event, 'Books')">Books</button>
+        <button class="tablinks" onclick="openTab(event, 'OnlineSources')">Online Resources</button>
     </div>
 </div>
 
@@ -76,16 +77,19 @@
 
 <div id="OnlineSources" class="tabcontent">
     <h2 style="text-align:left; margin-left:80px">Web Source</h2>
-    <div class="row">
-        <div class="col-md-5">
-            <input type="text" class="form-control bookInput" id="webpageName" placeholder="Webpage">
-        </div>
-        <div class="col-md-5">
-            <input type="text" class="form-control bookInput" id="webpageLink" placeholder="Link">
-        </div>
-        <div class="col-md-2">
-            <input type="button" class="add-online-row btn btn-success" value="Add Row">
-        </div>
+    <div class="row" style="margin-left: 20%;margin-right: 20%;">
+        <form method="post" action="../Syllabus/UpdateWebResources">
+            <input type="text" class="form-control bookInput" id="webID" name="WebID" readonly hidden>
+            <div class="col-md-5">
+                <input type="text" class="form-control bookInput" id="webpageName" placeholder="Webpage">
+            </div>
+            <div class="col-md-5">
+                <input type="text" class="form-control bookInput" id="webpageLink" placeholder="Link">
+            </div>
+            <div class="col-md-2">
+                <input type="submit" id="webBtn" class="btn btn-success" value="Add Row">
+            </div>
+        </form>
     </div>
     <br /><br />
     <div class="wrapper text-center">
@@ -100,16 +104,23 @@
                     <th class="BibTH" style="width:300px">Link</th>
                     <th class="BibTH" style="width:150px">Options</th>
                 </tr>
-                <tr class="del">
-                    <td class="BibTD" contenteditable="true">006.74 F33</td>
-                    <td class="BibTD" contenteditable="false">2010</td>
-                    <td class="BibTD">
-                        <div class="btn-group" role="group" aria-label="...">
-                            <button type="button" class="btn btn-warning editbtn_web"><span class="glyphicon glyphicon-edit"></span></button>
-                            <button type="button" class="btn btn-danger delbtn_web"><span class="glyphicon glyphicon-trash"></span></button>
-                        </div>
-                    </td>
-                </tr>
+                @{
+                    foreach (var web in webs)
+                    {
+                        <tr class="del">
+                            <td class="BibTD" hidden>@web.onlineSource_ID</td>
+                            <td class="BibTD">@web.webpageName</td>
+                            <td class="BibTD">@web.weblink</td>
+                            <td class="BibTD">
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <button type="button" class="btn btn-warning editbtn_web"><span class="glyphicon glyphicon-edit"></span></button>
+                                    <button type="button" class="btn btn-danger delbtn_web"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+
             </table>
         </div>
         <div class="col-md-2"></div>
