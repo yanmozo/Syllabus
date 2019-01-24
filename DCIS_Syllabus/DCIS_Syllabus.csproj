@@ -200,6 +200,9 @@
     <Compile Include="Grading_System.cs">
       <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
     </Compile>
+    <Compile Include="Here.cs">
+      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+    </Compile>
     <Compile Include="Learning_Plan.cs">
       <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
     </Compile>

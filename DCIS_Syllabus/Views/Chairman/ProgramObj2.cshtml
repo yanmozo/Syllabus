@@ -23,17 +23,14 @@
     }
 </style>
 <h2>Add Program Objectives</h2>
+<h2>Add Program Objectives</h2>
 
 
-<form method="post" action="../Chairman/ProgramEduObj">
-    <table>
-        <tr>
-            <th><input type="text" name="code" placeholder="Code" required="required" /></th>
-            <th>
-                <textarea rows="4" cols="50" name="desc" placeholder="Description here..."></textarea>
-            </th>
-            <th>
-                <select name="status">
+<form method="post" class="form-inline" action="../Chairman/ProgramEduObj">
+    
+           <input type="text" class="form-control" name="code" placeholder="Code" required="required" />
+            <textarea rows="4" cols="50"class="form-control" name="desc" placeholder="Description here..."></textarea>
+             <select name="status" class="form-control">
                     @foreach (var names in details)
                     {
                         int count = 0;
@@ -41,12 +38,12 @@
                         <option>@names.name</option>
                     }
                 </select>
-            </th>
 
-        </tr>
-    </table>
-    <input type="submit" value="Submit">
+    <input type="submit" class="btn btn-success" value="Submit">
 </form>
+
+<br>
+<br>
 
 <table>
     <tr>
@@ -74,10 +71,10 @@
 }
             <th id="unique2">
                 <a href="DeleteThings?ids=@names.programEduOutcome_ID">
-                    <button type="button"><span class="glyphicon glyphicon-trash"></span></button>
+                    <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
                 </a>
                 <a href="PassToUpdate?ids=@names.programEduOutcome_ID">
-                    <button type="button"><span class="glyphicon glyphicon-minus"></span></button>
+                    <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>
                 </a>
             </th>
         
