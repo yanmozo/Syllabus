@@ -11,8 +11,9 @@ namespace DCIS_Syllabus
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class Syllabus_ManagementEntities4 : DbContext
     {
         public Syllabus_ManagementEntities4()
@@ -51,6 +52,5 @@ namespace DCIS_Syllabus
         public virtual DbSet<Source> Sources { get; set; }
         public virtual DbSet<Syllabu> Syllabus { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Hello> Helloes { get; set; }
     }
 }
