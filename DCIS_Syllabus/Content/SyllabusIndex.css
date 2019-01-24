@@ -34,10 +34,11 @@
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
-    height: auto;
+    height: 800px;
     width: 90%;
     margin-left: 5%;
     padding-bottom: 15%;
+    overflow-y: scroll;
 }
 
 .col-lg-offset-1 {
