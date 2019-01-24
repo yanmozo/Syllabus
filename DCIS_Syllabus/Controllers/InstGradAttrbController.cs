@@ -41,7 +41,7 @@ namespace DCIS_Syllabus.Controllers
             string cv_CoreValueName = Convert.ToString(Request.QueryString["cvCoreValue"]);
 
             //connect to db
-            Syllabus_ManagementEntities3 syllabus = new Syllabus_ManagementEntities3();
+            Syllabus_ManagementEntities4 syllabus = new Syllabus_ManagementEntities4();
 
             //retrieve table details (firstName, lastName, etc.)
             Core_Value_Attribute cv_a = new Core_Value_Attribute();

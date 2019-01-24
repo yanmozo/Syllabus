@@ -24,7 +24,7 @@ namespace DCIS_Syllabus.Controllers
         public ActionResult LearningPlanAdd()
         {
             //connect to db
-            Syllabus_ManagementEntities3 term = new Syllabus_ManagementEntities3();
+            Syllabus_ManagementEntities4 term = new Syllabus_ManagementEntities4();
             //retrieve table details (firstName, lastName, etc.)
             Quarter q = new Quarter();
 
