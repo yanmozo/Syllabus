@@ -22,8 +22,16 @@ namespace DCIS_Syllabus
     
         public int assesmentCriteria_ID { get; set; }
         public int syllabus_FK { get; set; }
-        public byte[] criteriaName { get; set; }
-        public byte[] highestPoints { get; set; }
+        public string criteriaName { get; set; }
+        public int highestPoints { get; set; }
+        public int poor_pts { get; set; }
+        public string poor_desc { get; set; }
+        public int fair_pts { get; set; }
+        public string fair_desc { get; set; }
+        public int satisfactory_pts { get; set; }
+        public string satisfactory_desc { get; set; }
+        public int excellent_pts { get; set; }
+        public string excellent_desc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Grading_Rubrics> Grading_Rubrics { get; set; }

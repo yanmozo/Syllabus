@@ -215,5 +215,109 @@ namespace DCIS_Syllabus.Controllers
 
             return RedirectToAction("Bibliography", "Teacher");
         }
+
+         //------- ASSESSMENT CRITERIA ------- 
+
+        public ActionResult AddNewCriteria(FormCollection fc)
+        {
+            string criterianame = fc["n_criterianame"].ToString();
+            int poorpts = Convert.ToInt32(fc["n_poorpts"]);
+            string poordesc = fc["n_poordesc"].ToString();
+            int fairpts = Convert.ToInt32(fc["n_fairpts"]);
+            string fairdesc = fc["n_fairdesc"].ToString();
+            int epts = Convert.ToInt32(fc["n_epts"]);
+            string edesc = fc["n_edesc"].ToString();
+            int spts = Convert.ToInt32(fc["n_spts"]);
+            string sdesc = fc["n_sdesc"].ToString();
+            int hpoints = Convert.ToInt32(fc["n_hpoints"]);
+
+            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+            Assessment_Criteria ac = new Assessment_Criteria();
+            ac.syllabus_FK = 1; // static
+            ac.criteriaName = criterianame;
+            ac.poor_pts = poorpts;
+            ac.poor_desc = poordesc.Replace(System.Environment.NewLine, "<br />");
+            ac.fair_pts = fairpts;
+            ac.fair_desc = fairdesc.Replace(System.Environment.NewLine, "<br />");
+            ac.satisfactory_pts = spts;
+            ac.satisfactory_desc = sdesc.Replace(System.Environment.NewLine, "<br />");
+            ac.excellent_pts = epts;
+            ac.excellent_desc = edesc.Replace(System.Environment.NewLine, "<br />");
+            ac.highestPoints = hpoints;
+
+            try
+            {
+                sm.Assessment_Criteria.Add(ac);
+                sm.SaveChanges();
+                ViewBag.Result = "Saved";
+            }
+            catch (Exception e)
+            {
+                ViewBag.Result = e;
+            }
+
+            return RedirectToAction("AssessmentCriteria", "Teacher");
+            
+        }
+        
+        public ActionResult UpdateCriteria()
+        {
+            int webID = Convert.ToInt32(Request.QueryString["WebID"]);
+            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+            
+            var ac = (from p in sm.Assessment_Criteria
+                          where p.assesmentCriteria_ID == webID
+                          select p).FirstOrDefault();
+            ViewData["ACInfo"] = ac;
+            return View();
+        }
+
+        public ActionResult SubmitUpdatedCriteria(FormCollection fc)
+        {
+            string criterianame = fc["criterianame"].ToString();
+            int poorpts = Convert.ToInt32(fc["poorpts"]);
+            string poordesc = fc["poordesc"].ToString();
+            int fairpts = Convert.ToInt32(fc["fairpts"]);
+            string fairdesc = fc["fairdesc"].ToString();
+            int epts = Convert.ToInt32(fc["epts"]);
+            string edesc = fc["edesc"].ToString();
+            int spts = Convert.ToInt32(fc["spts"]);
+            string sdesc = fc["sdesc"].ToString();
+            int hpoints = Convert.ToInt32(fc["hpoints"]);
+
+
+            int webID = Convert.ToInt32(Request.QueryString["WebID"]);
+            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+            var ac = sm.Assessment_Criteria.SingleOrDefault(b => b.assesmentCriteria_ID == webID);
+
+            ac.criteriaName = criterianame;
+            ac.poor_pts = poorpts;
+            ac.poor_desc = poordesc.Replace(System.Environment.NewLine, "<br />");
+            ac.fair_pts = fairpts;
+            ac.fair_desc = fairdesc.Replace(System.Environment.NewLine, "<br />");
+            ac.satisfactory_pts = spts;
+            ac.satisfactory_desc = sdesc.Replace(System.Environment.NewLine, "<br />");
+            ac.excellent_pts = epts;
+            ac.excellent_desc = edesc.Replace(System.Environment.NewLine, "<br />");
+            ac.highestPoints = hpoints;
+
+            sm.SaveChanges();
+            return RedirectToAction("AssessmentCriteria", "Teacher");
+        }
+
+        public ActionResult DeleteCriteria()
+        {
+            int webID = Convert.ToInt32(Request.QueryString["WebID"]);
+            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+            var ac = (from p in sm.Assessment_Criteria
+                     where p.assesmentCriteria_ID == webID
+                     select p).FirstOrDefault();
+
+
+            sm.Assessment_Criteria.Remove(ac);
+            sm.SaveChanges();
+
+            return RedirectToAction("AssessmentCriteria", "Teacher");
+        }
     }
 }

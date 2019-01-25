@@ -20,8 +20,16 @@
           </Key>
           <Property Name="assesmentCriteria_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="syllabus_FK" Type="int" Nullable="false" />
-          <Property Name="criteriaName" Type="varbinary(max)" Nullable="false" />
-          <Property Name="highestPoints" Type="varbinary(max)" Nullable="false" />
+          <Property Name="criteriaName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="highestPoints" Type="int" Nullable="false" />
+          <Property Name="poor_pts" Type="int" Nullable="false" />
+          <Property Name="poor_desc" Type="varchar(max)" Nullable="false" />
+          <Property Name="fair_pts" Type="int" Nullable="false" />
+          <Property Name="fair_desc" Type="varchar(max)" Nullable="false" />
+          <Property Name="satisfactory_pts" Type="int" Nullable="false" />
+          <Property Name="satisfactory_desc" Type="varchar(max)" Nullable="false" />
+          <Property Name="excellent_pts" Type="int" Nullable="false" />
+          <Property Name="excellent_desc" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Bibliography">
           <Key>
@@ -151,11 +159,11 @@
           <Property Name="course_id_fk" Type="int" Nullable="false" />
           <Property Name="quarter_FK" Type="int" Nullable="false" />
           <Property Name="syllabus_FK" Type="int" Nullable="false" />
-          <Property Name="learningOutcomeDesc" Type="varchar(max)" Nullable="false" />
+          <Property Name="learningOutcomeDesc" Type="varchar(max)" />
           <Property Name="hours" Type="int" Nullable="false" />
           <Property Name="topics" Type="varchar(max)" Nullable="false" />
-          <Property Name="teacherActivity" Type="varchar(max)" Nullable="false" />
-          <Property Name="learnerActivity" Type="varchar(max)" Nullable="false" />
+          <Property Name="teacherActivity" Type="varchar(max)" />
+          <Property Name="learnerActivity" Type="varchar(max)" />
           <Property Name="assessmentActivity" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Online_Sources">
@@ -239,7 +247,7 @@
           </Key>
           <Property Name="sources_ID" Type="int" Nullable="false" />
           <Property Name="type_of_resource" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="resource_fk" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="resource_fk" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Syllabus">
           <Key>
@@ -840,8 +848,16 @@
           </Key>
           <Property Name="assesmentCriteria_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
-          <Property Name="criteriaName" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="highestPoints" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="criteriaName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="highestPoints" Type="Int32" Nullable="false" />
+          <Property Name="poor_pts" Type="Int32" Nullable="false" />
+          <Property Name="poor_desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fair_pts" Type="Int32" Nullable="false" />
+          <Property Name="fair_desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="satisfactory_pts" Type="Int32" Nullable="false" />
+          <Property Name="satisfactory_desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="excellent_pts" Type="Int32" Nullable="false" />
+          <Property Name="excellent_desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Grading_Rubrics" Relationship="Syllabus_ManagementModel.assessment_Criteria_fk_IN_Grading_Rubrics" FromRole="Assessment_Criteria" ToRole="Grading_Rubrics" />
           <NavigationProperty Name="Syllabu" Relationship="Syllabus_ManagementModel.syllabus_id_fk_IN_Assessment_Criteria" FromRole="Assessment_Criteria" ToRole="Syllabu" />
         </EntityType>
@@ -859,7 +875,7 @@
           <Key>
             <PropertyRef Name="book_id" />
           </Key>
-          <Property Name="book_id" Type="Int32" Nullable="false" />
+          <Property Name="book_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="course_fk" Type="Int32" Nullable="false" />
           <Property Name="callNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -990,11 +1006,11 @@
           <Property Name="course_id_fk" Type="Int32" Nullable="false" />
           <Property Name="quarter_FK" Type="Int32" Nullable="false" />
           <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
-          <Property Name="learningOutcomeDesc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="learningOutcomeDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="hours" Type="Int32" Nullable="false" />
           <Property Name="topics" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="teacherActivity" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="learnerActivity" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="teacherActivity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="learnerActivity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="assessmentActivity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Quarter" Relationship="Syllabus_ManagementModel.quarter_id_fk_IN_Learning_Plan" FromRole="Learning_Plan" ToRole="Quarter" />
           <NavigationProperty Name="Syllabu" Relationship="Syllabus_ManagementModel.syllabus_id_fk_IN_Learning_Plan" FromRole="Learning_Plan" ToRole="Syllabu" />
@@ -1090,7 +1106,7 @@
           </Key>
           <Property Name="sources_ID" Type="Int32" Nullable="false" />
           <Property Name="type_of_resource" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="resource_fk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="resource_fk" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Bibliographies" Relationship="Syllabus_ManagementModel.FK_Bibliography_Sources" FromRole="Source" ToRole="Bibliography" />
           <NavigationProperty Name="Sources1" Relationship="Syllabus_ManagementModel.FK_Sources_Sources" FromRole="Source" ToRole="Source1" />
           <NavigationProperty Name="Source1" Relationship="Syllabus_ManagementModel.FK_Sources_Sources" FromRole="Source1" ToRole="Source" />
@@ -1452,6 +1468,14 @@
           <EntitySetMapping Name="Assessment_Criteria">
             <EntityTypeMapping TypeName="Syllabus_ManagementModel.Assessment_Criteria">
               <MappingFragment StoreEntitySet="Assessment_Criteria">
+                <ScalarProperty Name="excellent_desc" ColumnName="excellent_desc" />
+                <ScalarProperty Name="excellent_pts" ColumnName="excellent_pts" />
+                <ScalarProperty Name="satisfactory_desc" ColumnName="satisfactory_desc" />
+                <ScalarProperty Name="satisfactory_pts" ColumnName="satisfactory_pts" />
+                <ScalarProperty Name="fair_desc" ColumnName="fair_desc" />
+                <ScalarProperty Name="fair_pts" ColumnName="fair_pts" />
+                <ScalarProperty Name="poor_desc" ColumnName="poor_desc" />
+                <ScalarProperty Name="poor_pts" ColumnName="poor_pts" />
                 <ScalarProperty Name="highestPoints" ColumnName="highestPoints" />
                 <ScalarProperty Name="criteriaName" ColumnName="criteriaName" />
                 <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
