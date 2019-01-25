@@ -245,10 +245,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
     </Compile>
-    <Compile Include="Syllabus_ManagementEntities3.Designer.cs">
+    <Compile Include="SyllabusManagement.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Syllabus_ManagementEntities3.edmx</DependentUpon>
+      <DependentUpon>SyllabusManagement.edmx</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
       <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
@@ -284,12 +284,12 @@
     <Content Include="Scripts\TeacherScript.js" />
     <Content Include="Syllabus_ManagementEntities3.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Syllabus_ManagementEntities3.edmx</DependentUpon>
+      <DependentUpon>SyllabusManagement.edmx</DependentUpon>
       <LastGenOutput>Syllabus_ManagementEntities3.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Syllabus_ManagementEntities3.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Syllabus_ManagementEntities3.edmx</DependentUpon>
+      <DependentUpon>SyllabusManagement.edmx</DependentUpon>
       <LastGenOutput>Syllabus_ManagementEntities3.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
@@ -345,12 +345,12 @@
     <Content Include="Views\SoftwareUsed\SoftwareUsedUpdate.cshtml" />
     <Content Include="Views\Syllabus\DeleteDeliverablesAndRequirements.cshtml" />
     <Content Include="Views\Syllabus\UpdateDeliverablesAndRequirements.cshtml" />
-    <EntityDeploy Include="Syllabus_ManagementEntities3.edmx">
+    <EntityDeploy Include="SyllabusManagement.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Syllabus_ManagementEntities3.Designer.cs</LastGenOutput>
+      <LastGenOutput>SyllabusManagement.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Syllabus_ManagementEntities3.edmx.diagram">
-      <DependentUpon>Syllabus_ManagementEntities3.edmx</DependentUpon>
+    <Content Include="SyllabusManagement.edmx.diagram">
+      <DependentUpon>SyllabusManagement.edmx</DependentUpon>
     </Content>
     <Content Include="Views\Syllabus\AddNewCriteria.cshtml" />
   </ItemGroup>
