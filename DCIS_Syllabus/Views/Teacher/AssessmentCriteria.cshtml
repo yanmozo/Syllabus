@@ -1,4 +1,13 @@
-﻿
+﻿<style>
+    pre {
+        background-color: #ffffff;
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+</style>
+
 @{
     ViewBag.Title = "AssessmentCriteria";
     Layout = "~/Views/Shared/_SideBar.cshtml";
@@ -9,7 +18,7 @@
 <br /><br />
 <div class="row">
     <form method="post" action="../Syllabus/AddNewCriteria">
-        <input type="text" class="form-control" id="criteriaID" readonly/>
+        <input type="hidden" class="form-control" id="criteriaID" readonly/>
         <div class="col-md-2">
             <label for="criteria">Criteria</label>
             <input name="n_criterianame" type="text" class="form-control" id="criteria" />
@@ -79,10 +88,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="border:1px solid black">@c_item.poor_desc.Replace("<br />", System.Environment.NewLine)</td>
-                        <td style="border:1px solid black">@c_item.fair_desc.Replace("<br />", System.Environment.NewLine)</td>
-                        <td style="border:1px solid black">@c_item.satisfactory_desc.Replace("<br />", System.Environment.NewLine)</td>
-                        <td style="border:1px solid black">@c_item.excellent_desc.Replace("<br />", System.Environment.NewLine)</td>
+                        <td style="border:1px solid black"><pre>@c_item.poor_desc.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td style="border:1px solid black"><pre>@c_item.fair_desc.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td style="border:1px solid black"><pre>@c_item.satisfactory_desc.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td style="border:1px solid black"><pre>@c_item.excellent_desc.Replace("<br />", System.Environment.NewLine)</pre></td>
                     </tr>
                 }
                 }
