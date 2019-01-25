@@ -352,6 +352,7 @@
     <Content Include="Syllabus_ManagementEntities3.edmx.diagram">
       <DependentUpon>Syllabus_ManagementEntities3.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Syllabus\AddNewCriteria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
