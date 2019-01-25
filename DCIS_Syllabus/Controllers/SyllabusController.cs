@@ -319,5 +319,26 @@ namespace DCIS_Syllabus.Controllers
 
             return RedirectToAction("AssessmentCriteria", "Teacher");
         }
+
+        public ActionResult DeleteDeliverablesAndRequirements() {
+            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+            Course_Deliverable d = new Course_Deliverable();
+
+            int id = Convert.ToInt32(Request.QueryString["DRID"]);
+
+            var c = (from u in sm.Course_Deliverable
+                     where u.courseDeliverables_ID == id
+                     select u).FirstOrDefault();
+
+            try
+            {
+                sm.Course_Deliverable.Remove(c);
+                sm.SaveChanges();
+            }
+            catch (Exception e) {
+                ViewBag.Result = e;
+            }
+            return RedirectToAction("outputs_requirements", "Teacher");
+        }
     }
 }
