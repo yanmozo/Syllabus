@@ -231,5 +231,15 @@ namespace DCIS_Syllabus.Controllers
         {
             return View();
         }
+
+        public ActionResult insert_course_outcomes()
+        {
+            return View(); 
+        }
+        public ActionResult add_course_outcomes()
+        {
+
+            return RedirectToAction("course_outcomes", "Teacher");
+        }
     }
 }
