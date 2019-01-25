@@ -288,7 +288,7 @@ namespace DCIS_Syllabus.Controllers
                 get_PO.syllabus_FK = 1;
                 get_PO.attributeName = attribute;
                 get_PO.outcomeDesc = program_outcomes;
-                get_PO.code = code;
+                get_PO.code_outcome = code;
 
                 try
                 {

@@ -199,9 +199,6 @@
     <Compile Include="Grading_System.cs">
       <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
     </Compile>
-    <Compile Include="Hello.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
-    </Compile>
     <Compile Include="Learning_Plan.cs">
       <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
     </Compile>
@@ -331,13 +328,6 @@
       <BrowseToURL>~/Teacher/Creation</BrowseToURL>
     </Content>
     <Content Include="Views\Shared\_SideBar.cshtml" />
-    <EntityDeploy Include="Syllabus_ManagementEntities3.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Syllabus_ManagementEntities3.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Syllabus_ManagementEntities3.edmx.diagram">
-      <DependentUpon>Syllabus_ManagementEntities3.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Chairman\ProgramObj2.cshtml" />
     <Content Include="Views\Chairman\PassToUpdate.cshtml" />
     <Content Include="Views\LearningPlan\LearningPlanAdd.cshtml" />
@@ -355,6 +345,13 @@
     <Content Include="Views\SoftwareUsed\SoftwareUsedUpdate.cshtml" />
     <Content Include="Views\Syllabus\DeleteDeliverablesAndRequirements.cshtml" />
     <Content Include="Views\Syllabus\UpdateDeliverablesAndRequirements.cshtml" />
+    <EntityDeploy Include="Syllabus_ManagementEntities3.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Syllabus_ManagementEntities3.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Syllabus_ManagementEntities3.edmx.diagram">
+      <DependentUpon>Syllabus_ManagementEntities3.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
