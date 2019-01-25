@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "grading_system";
     Layout = "~/Views/Shared/_SideBar.cshtml";
+    var gradSys = (List<Grading_System>)ViewData["GradingSystem"];
 }
 
 <h2>grading_system</h2>
@@ -15,90 +16,50 @@
     td, th {
         text-align: center;
     }
-
-    #styleText {
-        text-align: center;
-    }
 </style>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <div class="container">
-    <form method="post" action="insert_grading">
+    <form method="post" action="add_grading">
         <table id="grading_table" class=" table grading-list">
 
             <thead>
                 <tr>
                     <th colspan="1">Requirements</th>
-                    <th rowspan="4">Type</th>
+                    <th rowspan="1">Type</th>
                     <th colspan="1">Weight  </th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="col-sm-2">
-                      <input type="text" id="styleText" name="requirements" value="Web Project" class="form-control" />
-                    </td>
-                    <td class="col-sm-2">
-                 <input type="text" id="styleText" name="type" value="Outputs (Rubric-Based / Summative) " class="form-control" />
-                    </td>
-                    <td class="col-sm-2">
-                        <input type="text" id="styleText" name="weight" class="form-control" value="36%" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-sm-2">
-                        <input type="text" id="styleText" name="requirements" value="Seatworks and Quizzes" class="form-control" />
-                    </td>
-                    <td class="col-sm-2" rowspan="4">
-                        <input type="text" id="styleText" name="type" class="form-control" value="Other Assessments" />
-                    </td>
-                    <td class="col-sm-2">
-                       <input type="text" id="styleText" name="weight" class="form-control" value="12%" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-sm-2">
-                      <input type="text" id="styleText" name="requirements" value="Lab Activities" class="form-control" />
-                    </td>
+                @foreach (var item in gradSys)
+                {
+                    <tr>
+                        <td class="col-sm-2">
+                            @item.requirementsName
+                        </td>
+                        <td class="col-sm-2">
+                            @item.typeOfGrading
+                        </td>
+                        <td class="col-sm-2">
+                            @item.weight%
+                        </td>
+                    </tr>
+                }
+                    <tr>
+                        <td class="col-sm-2" colspan="2">
+                                <center>Total</center>
+                        </td>
 
-                    <td class="col-sm-2">
-                 <input type="text" id="styleText" name="weight" class="form-control" value="24%" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-sm-2">
-                    <input type="text" id="styleText" name="requirements" value="Homeworks" class="form-control" />
-                    </td>
-
-                    <td class="col-sm-2">
-                   <input type="text" id="styleText" name="weight" class="form-control" value="8%" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-sm-2">
-                        <input type="text" id="styleText" name="requirements" value="Exams" class="form-control" /></>
-                    </td>
-
-                    <td class="col-sm-2">
-                     <input type="text" id="styleText" name="weight" class="form-control" value="20%" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-sm-2" colspan="2">
-                   <input type="text" id="styleText" name="requirements" value="Total" class="form-control" readonly />
-                    </td>
-
-                    <td class="col-sm-2">
-                      <input type="text" id="styleText" name="weight" class="form-control" value="100%" />
-                    </td>
-                </tr>
-
+                        <td class="col-sm-2">
+                            <input type="text" id="styleText" name="weight" class="form-control" value="@ViewBag.Result" />
+                        </td>
+                    </tr>
             </tbody>
             <tfoot>
 
             </tfoot>
         </table>
-        <button type="submit" class="btn btn-success" id="grading_btn_id" value="Save Changes">Submit</button>
+        <button type="submit" class="btn btn-success" value="Add Row">Add Row</button>
 
     </form>
 
