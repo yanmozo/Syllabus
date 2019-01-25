@@ -1,4 +1,12 @@
-﻿
+﻿<style>
+    pre {
+        background-color: #ffffff;
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+</style>
 @{
     ViewBag.Title = "SoftwareUsed";
     Layout = "~/Views/Shared/_SideBar.cshtml";
@@ -19,7 +27,7 @@
 }
 else
 {
-    <p>@softwareUsed.software</p>
+    <p><pre>@softwareUsed.software.Replace("<br />", System.Environment.NewLine)</pre></p>
     <a href="../SoftwareUsed/SoftwareUsedUpdate?softUId=@softwareUsed.softwareUsed_ID">
         <button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>
     </a>
