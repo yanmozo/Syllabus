@@ -203,7 +203,9 @@
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CoreValue.cs" />
+    <Compile Include="Models\CoreValuePO.cs" />
     <Compile Include="Models\LearningPlan.cs" />
+    <Compile Include="Models\ProgramOutcome.cs" />
     <Compile Include="Online_Sources.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
@@ -347,6 +349,7 @@
     <Content Include="Syllabus.edmx.diagram">
       <DependentUpon>Syllabus.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Teacher\program_outcomes.cshtml" />
     <Content Include="Views\Teacher\add_grading.cshtml" />
   </ItemGroup>
   <ItemGroup>

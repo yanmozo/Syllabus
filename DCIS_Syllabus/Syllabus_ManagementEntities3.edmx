@@ -21,7 +21,7 @@
           </Key>
           <Property Name="assesmentCriteria_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="syllabus_FK" Type="int" Nullable="false" />
-          <Property Name="criteriaName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="criteriaName" Type="varchar(max)" Nullable="false" />
           <Property Name="highestPoints" Type="int" Nullable="false" />
           <Property Name="poor_pts" Type="int" Nullable="false" />
           <Property Name="poor_desc" Type="varchar(max)" Nullable="false" />
@@ -838,7 +838,7 @@
           </Key>
           <Property Name="assesmentCriteria_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
-          <Property Name="criteriaName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="criteriaName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="highestPoints" Type="Int32" Nullable="false" />
           <Property Name="poor_pts" Type="Int32" Nullable="false" />
           <Property Name="poor_desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
