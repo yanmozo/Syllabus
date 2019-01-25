@@ -166,9 +166,40 @@ namespace DCIS_Syllabus.Controllers
         }
 
         // Teacher and Coordinator Learning Plan
-        public ActionResult LearningPlanUpdated()
+        //Note CO Addressed and Academic Term updated yet because no value
+        public ActionResult LearningPlanUpdated(FormCollection fc)
         {
-            
+            Syllabus_ManagementEntities4 syllabus = new Syllabus_ManagementEntities4();
+            Learning_Plan p = new Learning_Plan();
+
+
+            //string topics = lp_info["topics"];
+            //int hrs = Convert.ToInt32(lp_info["noOfHrs"]);
+            int learningPlanId = Convert.ToInt32(Request.QueryString["learn_id"]);
+            string learning_outcome = fc["learningOutcome"];
+            int hours =Convert.ToInt32(fc["noOfHrs"]);
+            string topics = fc["topics"];
+            string teacher_act = fc["teacherAct"];
+            string learner_act = fc["learnAct"];
+            string ass_act = fc["assessAct"];
+
+            var d = syllabus.Learning_Plan.SingleOrDefault(b => b.learning_ID == learningPlanId);
+
+            d.learningOutcomeDesc = learning_outcome;
+            d.hours = hours;
+            d.topics = topics.Replace(System.Environment.NewLine, "<br />");
+            d.teacherActivity = teacher_act.Replace(System.Environment.NewLine, "<br />");
+            d.learnerActivity = learner_act.Replace(System.Environment.NewLine, "<br />");
+            d.assessmentActivity = ass_act.Replace(System.Environment.NewLine, "<br />");
+
+            try
+            {
+                syllabus.SaveChanges();
+            }
+            catch (Exception e) {
+                ViewBag.Result = e;
+            }
+
             return RedirectToAction("LearningPlan", "LearningPlan");
         }
     }

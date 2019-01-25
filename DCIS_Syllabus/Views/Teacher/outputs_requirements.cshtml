@@ -2,9 +2,10 @@
 @{
     ViewBag.Title = "outputs_requirements";
     Layout = "~/Views/Shared/_SideBar.cshtml";
+    var deliverables = (List<Course_Deliverable>)ViewData["ListOfDeliverables"];
 }
 
-<h2>outputs_requirements</h2>
+<h2>Course Deliverable Outputs and Requirements</h2>
 
 
 <style>
@@ -15,27 +16,74 @@
     td {
         text-align: center;
     }
+    .OR_table {
+        margin: 40px;
+    }
 </style>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-<form method="post" class="form-inline" action="../Chairman/AddDeli">
-
-    <input type="text" class="form-control" name="code" placeholder="Output Name" required="required" />
-    <textarea rows="4" cols="50" class="form-control" name="desc" placeholder="Description here..." required="required"></textarea>
-    <select name="co">
-        <option>1</option>
-    </select>
-    <select name="ass1" class="form-control">
-        <option>Rubric-Based</option>
-        <option>Non-Rubric-Based</option>
-    </select>
-    <select name="ass2" class="form-control">
-        <option>Summative</option>
-        <option>Formative</option>
-    </select>
-
-    <input type="submit" class="btn btn-success" value="Submit">
-</form>
+<div class="row">
+    <form method="post" class="form-inline" action="../Chairman/AddDeli">
+        <div class="col-md-2">
+            <h2>Name</h2>
+            <input type="text" class="form-control" name="code" placeholder="Output Name" required="required" />
+        </div>
+        <div class="col-md-2">
+            <h2>Description</h2>
+            <textarea rows="4" cols="50" class="form-control" name="desc" placeholder="Description here..." required="required"></textarea>
+        </div>
+        <div class="col-md-2">
+            <h2>Course Outcome</h2>
+            <select name="co" class="form-control">
+                <option>1</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <h2>Assessment Type</h2>
+            <select name="ass1" class="form-control">
+                <option>Rubric-Based</option>
+                <option>Non-Rubric-Based</option>
+            </select><br>
+            <select name="ass2" class="form-control">
+                <option>Summative</option>
+                <option>Formative</option>
+            </select>
+        </div>
+        <div class="col-md-5">
+            <input type="submit" class="btn btn-success" value="Submit">
+        </div>
+    </form>
+</div>
+<div class="row OR_table">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Outout/Requirement</th>
+                <th>Description</th>
+                <th>CO Addressed</th>
+                <th colspan="2" class="text-center">Type of Assessment</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ 
+                foreach (var item in deliverables)
+                {
+                    <tr>
+                        <td>@item.outputName</td>
+                        <td>@item.output_description</td>
+                        <td>@item.courseOutcomeAddressed_FK</td>
+                        <td>@item.assessmentTypeA</td>
+                        <td>@item.assessmentTypeB</td>
+                        <td>
+                            <a href="../Syllabus/UpdateDeliverablesAndRequirements?DRID=@item.courseDeliverables_ID" class="btn btn-warning" type="submit"><span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="../Syllabus/DeleteDeliverablesAndRequirements?DRID=@item.courseDeliverables_ID" class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-trash"></span></a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
 
 
 

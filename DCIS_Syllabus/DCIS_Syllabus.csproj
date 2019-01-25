@@ -346,10 +346,15 @@
     <Content Include="Views\Syllabus\UpdateBooks.cshtml" />
     <Content Include="Views\Teacher\insert_revisionHistory.cshtml" />
     <Content Include="Views\Teacher\AssessmentCriteria.cshtml" />
+    <Content Include="Views\Syllabus\UpdateCriteria.cshtml" />
     <Content Include="Views\Teacher\insert_course_outcomes.cshtml" />
     <Content Include="Views\LearningPlan\LearningPlanUpdate.cshtml" />
     <Content Include="Views\Teacher\program_outcomes.cshtml" />
     <Content Include="Views\Teacher\add_programOutcomes.cshtml" />
+    <Content Include="Views\Chairman\Want.cshtml" />
+    <Content Include="Views\SoftwareUsed\SoftwareUsedUpdate.cshtml" />
+    <Content Include="Views\Syllabus\DeleteDeliverablesAndRequirements.cshtml" />
+    <Content Include="Views\Syllabus\UpdateDeliverablesAndRequirements.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

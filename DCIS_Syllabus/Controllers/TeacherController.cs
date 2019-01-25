@@ -110,6 +110,12 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult outputs_requirements()
         {
+            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+            Course_Deliverable D = new Course_Deliverable();
+            var deliverableList = (from u in sm.Course_Deliverable
+                              select u);
+            ViewData["ListOfDeliverables"] = deliverableList.ToList();
+
             return View();
         }
 
@@ -229,6 +235,9 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult AssessmentCriteria()
         {
+            var criteriaList = (from u in sm.Assessment_Criteria
+                            select u);
+            ViewData["ListofCriteria"] = criteriaList.ToList();
             return View();
         }
 
