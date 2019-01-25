@@ -19,6 +19,7 @@ namespace DCIS_Syllabus
         public int syllabus_FK { get; set; }
         public string attributeName { get; set; }
         public string outcomeDesc { get; set; }
+        public string code_outcome { get; set; }
     
         public virtual Core_Value Core_Value { get; set; }
         public virtual Syllabu Syllabu { get; set; }

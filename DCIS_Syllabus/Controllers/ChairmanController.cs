@@ -151,7 +151,7 @@ namespace DCIS_Syllabus.Controllers
 
             d.outputName = code;
             d.output_description = desc;
-            d.courseOutcomeAdd_FK = co;
+            d.courseOutcomeAddressed_FK = co;
             d.assessmentTypeA = ass1;
             d.assessmentTypeB = ass2;
             d.syllabus_FK = syllabus;

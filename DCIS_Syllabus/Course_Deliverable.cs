@@ -15,7 +15,7 @@ namespace DCIS_Syllabus
     public partial class Course_Deliverable
     {
         public int courseDeliverables_ID { get; set; }
-        public int courseOutcomeAdd_FK { get; set; }
+        public int courseOutcomeAddressed_FK { get; set; }
         public int syllabus_FK { get; set; }
         public string outputName { get; set; }
         public string output_description { get; set; }
