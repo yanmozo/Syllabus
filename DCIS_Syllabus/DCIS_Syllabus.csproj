@@ -346,6 +346,7 @@
     <Content Include="Views\Syllabus\UpdateBooks.cshtml" />
     <Content Include="Views\Teacher\insert_revisionHistory.cshtml" />
     <Content Include="Views\Teacher\AssessmentCriteria.cshtml" />
+    <Content Include="Views\Teacher\insert_course_outcomes.cshtml" />
     <Content Include="Views\LearningPlan\LearningPlanUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
