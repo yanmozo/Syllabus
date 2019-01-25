@@ -216,20 +216,19 @@ namespace DCIS_Syllabus.Controllers
             return RedirectToAction("Bibliography", "Teacher");
         }
 
-         //------- ASSESSMENT CRITERIA ------- 
+         //------- ASSESSMENT CRITERIA ------- //
 
         public ActionResult AddNewCriteria(FormCollection fc)
         {
             string criterianame = fc["n_criterianame"].ToString();
-            int poorpts = Convert.ToInt32(fc["n_poorpts"]);
             string poordesc = fc["n_poordesc"].ToString();
-            int fairpts = Convert.ToInt32(fc["n_fairpts"]);
             string fairdesc = fc["n_fairdesc"].ToString();
-            int epts = Convert.ToInt32(fc["n_epts"]);
             string edesc = fc["n_edesc"].ToString();
-            int spts = Convert.ToInt32(fc["n_spts"]);
             string sdesc = fc["n_sdesc"].ToString();
-            int hpoints = Convert.ToInt32(fc["n_hpoints"]);
+            int poorpts = Convert.ToInt32(fc["n_poorpts"]);
+            int fairpts = Convert.ToInt32(fc["n_fairpts"]);
+            int epts = Convert.ToInt32(fc["n_epts"]);
+            int spts = Convert.ToInt32(fc["n_spts"]);
 
             Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
             Assessment_Criteria ac = new Assessment_Criteria();
@@ -243,7 +242,7 @@ namespace DCIS_Syllabus.Controllers
             ac.satisfactory_desc = sdesc.Replace(System.Environment.NewLine, "<br />");
             ac.excellent_pts = epts;
             ac.excellent_desc = edesc.Replace(System.Environment.NewLine, "<br />");
-            ac.highestPoints = hpoints;
+            ac.highestPoints = epts;
 
             try
             {
@@ -257,6 +256,8 @@ namespace DCIS_Syllabus.Controllers
             }
 
             return RedirectToAction("AssessmentCriteria", "Teacher");
+            /*return View()*/
+            ;
             
         }
         
@@ -283,7 +284,6 @@ namespace DCIS_Syllabus.Controllers
             string edesc = fc["edesc"].ToString();
             int spts = Convert.ToInt32(fc["spts"]);
             string sdesc = fc["sdesc"].ToString();
-            int hpoints = Convert.ToInt32(fc["hpoints"]);
 
 
             int webID = Convert.ToInt32(Request.QueryString["WebID"]);
@@ -299,7 +299,7 @@ namespace DCIS_Syllabus.Controllers
             ac.satisfactory_desc = sdesc.Replace(System.Environment.NewLine, "<br />");
             ac.excellent_pts = epts;
             ac.excellent_desc = edesc.Replace(System.Environment.NewLine, "<br />");
-            ac.highestPoints = hpoints;
+            ac.highestPoints = epts;
 
             sm.SaveChanges();
             return RedirectToAction("AssessmentCriteria", "Teacher");

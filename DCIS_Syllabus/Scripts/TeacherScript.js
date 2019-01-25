@@ -63,6 +63,7 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
+
 // Edit policy - datatable
 $(document).ready(function () {
     $('#editpoliciestable').DataTable();
