@@ -17,20 +17,29 @@ namespace DCIS_Syllabus
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Roles = new HashSet<Role>();
-            this.Syllabus = new HashSet<Syllabu>();
+            this.Topic_Discussion_Entry = new HashSet<Topic_Discussion_Entry>();
         }
     
-        public int user_ID { get; set; }
+        public int schoolId { get; set; }
         public string username { get; set; }
-        public string email { get; set; }
         public string password { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
+        public string userType { get; set; }
+        public string fname { get; set; }
+        public string mname { get; set; }
+        public string lname { get; set; }
+        public Nullable<int> yearLevel { get; set; }
+        public string gender { get; set; }
+        public string birthday { get; set; }
+        public string address { get; set; }
+        public string guardian { get; set; }
+        public string guardianAddress { get; set; }
+        public string relationshipToGuardian { get; set; }
+        public string contactNumber { get; set; }
+        public string emergencyNumber { get; set; }
+        public string email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Role> Roles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Syllabu> Syllabus { get; set; }
+        public virtual ICollection<Topic_Discussion_Entry> Topic_Discussion_Entry { get; set; }
+        public virtual Topic_Discussion_Reply Topic_Discussion_Reply { get; set; }
     }
 }
