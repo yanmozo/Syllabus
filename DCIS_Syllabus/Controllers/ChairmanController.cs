@@ -141,7 +141,7 @@ namespace DCIS_Syllabus.Controllers
         {
             string code = fc["code"].ToString();
             string desc = fc["desc"].ToString();
-            int co = Convert.ToInt32(fc["co"]);
+            int co = 7;
             string ass1 = fc["ass1"].ToString();
             string ass2 = fc["ass2"].ToString();
             int syllabus = 1;
@@ -151,7 +151,7 @@ namespace DCIS_Syllabus.Controllers
 
             d.outputName = code;
             d.output_description = desc;
-            d.courseOutcomeAdd_FK = co;
+            d.courseOutcomeAddressed_FK = co;
             d.assessmentTypeA = ass1;
             d.assessmentTypeB = ass2;
             d.syllabus_FK = syllabus;

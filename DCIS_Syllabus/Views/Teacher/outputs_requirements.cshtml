@@ -17,25 +17,38 @@
     }
 </style>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
+<div class="row">
 <form method="post" class="form-inline" action="../Chairman/AddDeli">
-
-    <input type="text" class="form-control" name="code" placeholder="Output Name" required="required" />
-    <textarea rows="4" cols="50" class="form-control" name="desc" placeholder="Description here..." required="required"></textarea>
-    <select name="co">
-        <option>1</option>
-    </select>
-    <select name="ass1" class="form-control">
-        <option>Rubric-Based</option>
-        <option>Non-Rubric-Based</option>
-    </select>
-    <select name="ass2" class="form-control">
-        <option>Summative</option>
-        <option>Formative</option>
-    </select>
-
-    <input type="submit" class="btn btn-success" value="Submit">
+    <div class="col-md-2">
+        <h2>Name</h2>
+        <input type="text" class="form-control" name="code" placeholder="Output Name" required="required" />
+    </div>
+    <div class="col-md-2">
+        <h2>Description</h2>
+        <textarea rows="4" cols="50" class="form-control" name="desc" placeholder="Description here..." required="required"></textarea>
+    </div>
+    <div class="col-md-2">
+        <h2>Course Outcome</h2>
+        <select name="co" class="form-control">
+            <option>1</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <h2>Assessment Type</h2>
+        <select name="ass1" class="form-control">
+            <option>Rubric-Based</option>
+            <option>Non-Rubric-Based</option>
+        </select><br>
+        <select name="ass2" class="form-control">
+            <option>Summative</option>
+            <option>Formative</option>
+        </select>
+    </div>
+    <div class="col-md-5">
+        <input type="submit" class="btn btn-success" value="Submit">
+    </div>
 </form>
+</div>
 
 
 
