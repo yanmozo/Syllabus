@@ -229,6 +229,9 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult AssessmentCriteria()
         {
+            var criteriaList = (from u in sm.Assessment_Criteria
+                            select u);
+            ViewData["ListofCriteria"] = criteriaList.ToList();
             return View();
         }
 
