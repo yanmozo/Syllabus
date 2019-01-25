@@ -99,6 +99,21 @@ namespace DCIS_Syllabus.Controllers
         }
         public ActionResult grading_system()
         {
+
+            Syllabus_ManagementEntities4 grading_system = new Syllabus_ManagementEntities4();
+            Grading_System grad_sys = new Grading_System();
+
+            var gradSysList = (from u in grading_system.Grading_System
+                               where u.syllabus_FK == 1
+                               select u);
+
+            var weight = (from x in grading_system.Grading_System
+                          select x).Sum(x => x.weight); 
+                        
+            ViewBag.Result = weight; 
+            ViewData["GradingSystem"] = gradSysList.ToList();
+
+
             return View();
         }
 
@@ -120,18 +135,24 @@ namespace DCIS_Syllabus.Controllers
         }
 
 
+        public ActionResult add_grading(FormCollection fc)
+        {
+            return View(); 
+        }
+
         public ActionResult insert_grading(FormCollection fc)
         {
-            //can insert to database using static data ONLY 
+            string require_grading = fc["requirements"].ToString();
+            string type_grading = fc["type"].ToString();
+            double weight_grading = Convert.ToDouble(fc["weight"]); 
 
             Syllabus_ManagementEntities4 fe = new Syllabus_ManagementEntities4();
-
             Grading_System d = new Grading_System();
-            // d.gradingSystem_ID = 1;
+
             d.syllabus_FK = 1;
-            d.typeOfGrading = "Outputs";
-            d.weight = 1.0;
-            d.requirementsName = "Lectures";
+            d.typeOfGrading = type_grading;
+            d.weight = weight_grading;
+            d.requirementsName = require_grading;  ;
 
             try
             {
@@ -143,8 +164,7 @@ namespace DCIS_Syllabus.Controllers
             {
                 ViewBag.Result = "Error! ";
             }
-             return View();
-           // return RedirectToAction("grading_system", "Teacher");
+            return RedirectToAction("grading_system", "Teacher");
         }
 
         public static string SaveData(string[][] array)
@@ -288,7 +308,7 @@ namespace DCIS_Syllabus.Controllers
                 get_PO.syllabus_FK = 1;
                 get_PO.attributeName = attribute;
                 get_PO.outcomeDesc = program_outcomes;
-                get_PO.code = code;
+                get_PO.code_outcome = code;
 
                 try
                 {
