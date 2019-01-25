@@ -166,7 +166,7 @@ namespace DCIS_Syllabus.Controllers
             {
                 ViewBag.Result = e;
             }
-            return View();
+            return RedirectToAction("outputs_requirements", "Teacher");
             //return View("../teacher/outputs_requirements");
         }
     }

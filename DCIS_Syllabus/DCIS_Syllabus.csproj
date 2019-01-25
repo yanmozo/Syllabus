@@ -352,6 +352,7 @@
     <Content Include="Views\Chairman\Want.cshtml" />
     <Content Include="Views\SoftwareUsed\SoftwareUsedUpdate.cshtml" />
     <Content Include="Views\Syllabus\DeleteDeliverablesAndRequirements.cshtml" />
+    <Content Include="Views\Syllabus\UpdateDeliverablesAndRequirements.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "UpdateDeliverablesAndRequirements";
+}
+
+<h2>UpdateDeliverablesAndRequirements</h2>
+<div class="row">
+    <form method="post" class="form-inline" action="../Syllabus/UpdateNow2?id=@ViewBag.id">
+        <div class="col-md-2">
+            <h2>Name</h2>
+            <input type="text" class="form-control" name="name" placeholder="@ViewBag.name" required="required" />
+        </div>
+        <div class="col-md-2">
+            <h2>Description</h2>
+            <textarea rows="4" cols="50" class="form-control" name="desc" placeholder="@ViewBag.desc" required="required"></textarea>
+        </div>
+        <div class="col-md-2">
+            <h2>Course Outcome</h2>
+            <select name="co" class="form-control">
+                <option>1</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <h2>Assessment Type</h2>
+            <select name="ass1" class="form-control">
+            @if(ViewBag.ass1 == "Rubric-Based") { 
+                <option selected>Rubric-Based</option>
+                <option>Non-Rubric-Based</option>
+            }else if(ViewBag.ass1 == "Non-Rubric-Based"){
+                <option >Rubric-Based</option>
+                <option selected>Non-Rubric-Based</option>
+            }
+            </select><br>
+            <select name="ass2" class="form-control">
+            @if (ViewBag.ass2 == "Summative")
+            {
+                <option selected>Summative</option>
+                <option>Formative</option>
+            } else if (ViewBag.ass2 == "Formative")
+            {
+                <option >Summative</option>
+                <option selected>Formative</option>
+            }
+            </select>
+        </div>
+        <div class="col-md-5">
+            <input type="submit" class="btn btn-success" value="Submit">
+        </div>
+    </form>
+</div>
+

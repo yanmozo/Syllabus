@@ -340,5 +340,46 @@ namespace DCIS_Syllabus.Controllers
             }
             return RedirectToAction("outputs_requirements", "Teacher");
         }
+
+        public ActionResult UpdateDeliverablesAndRequirements() {
+            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+            Course_Deliverable d = new Course_Deliverable();
+            int id = Convert.ToInt32(Request.QueryString["DRID"]);
+
+            var c = (from u in sm.Course_Deliverable
+                     where u.courseDeliverables_ID == id
+                     select u).FirstOrDefault();
+
+            ViewBag.id = c.courseDeliverables_ID;
+            ViewBag.name = c.outputName;
+            ViewBag.desc = c.output_description;
+            ViewBag.ass1 = c.assessmentTypeA;
+            ViewBag.ass2 = c.assessmentTypeB;
+            return View();
+        }
+
+        public ActionResult UpdateNow2(FormCollection fc) {
+            int id = Convert.ToInt32(Request.QueryString["id"]);
+            string name = fc["name"].ToString();
+            string desc = fc["desc"].ToString();
+            string ass1 = fc["ass1"].ToString();
+            string ass2 = fc["ass2"].ToString();
+
+            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+            Course_Deliverable d = new Course_Deliverable();
+
+            var c = (from u in sm.Course_Deliverable
+                     where u.courseDeliverables_ID == id
+                     select u).FirstOrDefault();
+
+            c.outputName = name;
+            c.output_description = desc;
+            c.assessmentTypeA = ass1;
+            c.assessmentTypeB = ass2;
+
+            sm.SaveChanges();
+
+            return RedirectToAction("outputs_requirements", "Teacher");
+        }
     }
 }
