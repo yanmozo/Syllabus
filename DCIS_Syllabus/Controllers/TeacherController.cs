@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DCIS_Syllabus.Models;
 
 namespace DCIS_Syllabus.Controllers
 {
@@ -253,13 +254,29 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult program_outcomes()
         {
+            int syllabusFK = 1;
+            Syllabus_ManagementEntities4 syllabus = new Syllabus_ManagementEntities4();
+            Program_Outcomes prog_out = new Program_Outcomes();
+            var POCV = (from u in syllabus.Program_Outcomes
+                        join cv in syllabus.Core_Value on u.coreValue_FK equals cv.coreValue_ID
+                        select new CoreValuePO{ CodeOutcome = u.code_outcome, CoreValueName = cv.name}).ToList();
+
+
+            var PO = (from u in syllabus.Program_Outcomes
+                      where u.syllabus_FK == syllabusFK
+                      select new ProgramOutcome { CodeO = u.code_outcome, SyllabusFK = u.syllabus_FK, AttributeName = u.attributeName, OutcomeDesc = u.outcomeDesc}).Distinct().OrderBy(u => u.CodeO).ToList() ;
+
+            ViewData["POCoreValue"] = POCV;
+            ViewData["PO"] = PO;
+
+
             return View(); 
         }
         public ActionResult add_programOutcomes()
         {
             return View(); 
         }
-        
+
         public ActionResult insert_programOutcomes(FormCollection detailsPO)
         {
             int i = 0;
@@ -268,27 +285,26 @@ namespace DCIS_Syllabus.Controllers
             string attribute = detailsPO["attribute_programOutcomes"].ToString();
             string program_outcomes = detailsPO["desc_programOutcomes"].ToString();
             string[] arrCoreValues = coreValuesScientia.Split(',');
-            int[] id = new int[3]; 
             Syllabus_ManagementEntities4 db = new Syllabus_ManagementEntities4();
 
             Core_Value get_coreValue = new Core_Value(); //gets the core value table 
             Program_Outcomes get_PO = new Program_Outcomes(); //gets the program outcomes table 
 
 
-            for (i = 0; i < arrCoreValues.Length ; i++)
+            for (i = 0; i < arrCoreValues.Length; i++)
             {
                 //get the id of the name core value 
                 string coreValueName = arrCoreValues[i];
                 var getID = (from p in db.Core_Value
                              where p.name == coreValueName
                              select p.coreValue_ID).FirstOrDefault();
-               
+
 
                 get_PO.coreValue_FK = getID;
                 get_PO.syllabus_FK = 1;
                 get_PO.attributeName = attribute;
                 get_PO.outcomeDesc = program_outcomes;
-                get_PO.code = code;
+                get_PO.code_outcome = code;
 
                 try
                 {
@@ -303,6 +319,6 @@ namespace DCIS_Syllabus.Controllers
             }
             return RedirectToAction("program_outcomes", "Teacher");
         }
-      
+
     }
 }
