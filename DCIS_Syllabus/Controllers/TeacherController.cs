@@ -250,5 +250,61 @@ namespace DCIS_Syllabus.Controllers
 
             return RedirectToAction("course_outcomes", "Teacher");
         }
+
+
+
+        public ActionResult program_outcomes()
+        {
+            return View();
+        }
+        public ActionResult add_programOutcomes()
+        {
+            return View();
+        }
+
+
+        public ActionResult insert_programOutcomes(FormCollection detailsPO)
+        {
+            int i = 0;
+            string coreValuesScientia = detailsPO["_PO"].ToString(); //get the core values names 
+            string code = detailsPO["code_programOutcomes"].ToString();
+            string attribute = detailsPO["attribute_programOutcomes"].ToString();
+            string program_outcomes = detailsPO["desc_programOutcomes"].ToString();
+            string[] arrCoreValues = coreValuesScientia.Split(',');
+            int[] id = new int[3];
+            Syllabus_ManagementEntities4 db = new Syllabus_ManagementEntities4();
+
+            Core_Value get_coreValue = new Core_Value(); //gets the core value table 
+            Program_Outcomes get_PO = new Program_Outcomes(); //gets the program outcomes table 
+
+
+            for (i = 0; i < arrCoreValues.Length; i++)
+            {
+                //get the id of the name core value 
+                string coreValueName = arrCoreValues[i];
+                var getID = (from p in db.Core_Value
+                             where p.name == coreValueName
+                             select p.coreValue_ID).FirstOrDefault();
+
+
+                get_PO.coreValue_FK = getID;
+                get_PO.syllabus_FK = 1;
+                get_PO.attributeName = attribute;
+                get_PO.outcomeDesc = program_outcomes;
+                get_PO.code_outcome = code;
+
+                try
+                {
+                    db.Program_Outcomes.Add(get_PO);
+                    db.SaveChanges();
+                    ViewBag.Result = "Save Changes";
+                }
+                catch (Exception e)
+                {
+                    ViewBag.Result = "Error! ";
+                }
+            }
+            return RedirectToAction("program_outcomes", "Teacher");
+        }
     }
 }

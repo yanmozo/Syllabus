@@ -148,22 +148,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Active_Values.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Assessment_Criteria.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Bibliography.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Book.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Class_Policy.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ChairmanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -173,88 +173,85 @@
     <Compile Include="Controllers\SyllabusController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Core_Value.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Core_Value_Attribute.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Course_Deliverable.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Course_Information.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Course_Outcomes.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Course_Outcome_Addressed.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Grading_Rubrics.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Grading_System.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Hello.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Learning_Plan.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CoreValue.cs" />
     <Compile Include="Models\LearningPlan.cs" />
     <Compile Include="Online_Sources.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Program_Educational_Objs.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Program_Outcomes.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quarter.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Revision.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Revisions_Log.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Software_Used.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Source.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Syllabu.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="Syllabus_ManagementEntities3.Context.cs">
+    <Compile Include="SyllabusManagement.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Syllabus_ManagementEntities3.Context.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Syllabus_ManagementEntities3.cs">
+    <Compile Include="SyllabusManagement.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="Syllabus_ManagementEntities3.Designer.cs">
+    <Compile Include="SyllabusManagement.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Syllabus_ManagementEntities3.edmx</DependentUpon>
+      <DependentUpon>SyllabusManagement.edmx</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>Syllabus_ManagementEntities3.tt</DependentUpon>
+      <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -285,15 +282,15 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\TeacherScript.js" />
-    <Content Include="Syllabus_ManagementEntities3.Context.tt">
+    <Content Include="SyllabusManagement.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Syllabus_ManagementEntities3.edmx</DependentUpon>
-      <LastGenOutput>Syllabus_ManagementEntities3.Context.cs</LastGenOutput>
+      <DependentUpon>SyllabusManagement.edmx</DependentUpon>
+      <LastGenOutput>SyllabusManagement.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Syllabus_ManagementEntities3.tt">
+    <Content Include="SyllabusManagement.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Syllabus_ManagementEntities3.edmx</DependentUpon>
-      <LastGenOutput>Syllabus_ManagementEntities3.cs</LastGenOutput>
+      <DependentUpon>SyllabusManagement.edmx</DependentUpon>
+      <LastGenOutput>SyllabusManagement.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -331,13 +328,6 @@
       <BrowseToURL>~/Teacher/Creation</BrowseToURL>
     </Content>
     <Content Include="Views\Shared\_SideBar.cshtml" />
-    <EntityDeploy Include="Syllabus_ManagementEntities3.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Syllabus_ManagementEntities3.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Syllabus_ManagementEntities3.edmx.diagram">
-      <DependentUpon>Syllabus_ManagementEntities3.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Chairman\ProgramObj2.cshtml" />
     <Content Include="Views\Chairman\PassToUpdate.cshtml" />
     <Content Include="Views\LearningPlan\LearningPlanAdd.cshtml" />
@@ -353,6 +343,15 @@
     <Content Include="Views\SoftwareUsed\SoftwareUsedUpdate.cshtml" />
     <Content Include="Views\Syllabus\DeleteDeliverablesAndRequirements.cshtml" />
     <Content Include="Views\Syllabus\UpdateDeliverablesAndRequirements.cshtml" />
+    <Content Include="Views\Teacher\program_outcomes.cshtml" />
+    <Content Include="Views\Teacher\add_programOutcomes.cshtml" />
+    <EntityDeploy Include="SyllabusManagement.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SyllabusManagement.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="SyllabusManagement.edmx.diagram">
+      <DependentUpon>SyllabusManagement.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

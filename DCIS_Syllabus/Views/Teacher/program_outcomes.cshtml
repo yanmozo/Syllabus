@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "program_outcomes";
+}
+
+<br />
+<br />
+<br />
+<h2>Program Outcomes</h2>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <form method="post" action="add_programOutcomes">
+        <table id="myTable" class=" table revision-list">
+
+            <thead>
+                <tr>
+                    <td>Code</td>
+                    <td>P.O Attribute</td>
+                    <td>Program Outcomes</td>
+                    <td>Core Values Activated</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-sm-1">
+                        <input type="text" name="code_PO" class="form-control" />
+                    </td>
+                    <td class="col-sm-1">
+                        <input type="text" name="attribute_PO" class="form-control" />
+                    </td>
+                    <td class="col-sm-1">
+                        <input type="text" name="outcomes_PO" class="form-control" />
+                    </td>
+                    <td class="col-sm-1">
+                        <input type="text" name="scientia" class="form-control" />
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+        </table>
+        <br />
+        <br />
+        <button type="submit" class="btn btn-default" value="Add Row">Add Row</button>
+    </form>
+</div>
+
+
+
+
