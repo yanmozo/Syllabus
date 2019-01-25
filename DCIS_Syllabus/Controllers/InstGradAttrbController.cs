@@ -30,7 +30,7 @@ namespace DCIS_Syllabus.Controllers
 
             //converting all the retrieved data (friends) into a list object
             ViewData["CoreValueList"] = core_valueList;
-            return View(core_valueList);
+            return View();
         }
 
         // Teacher and Coordinator View
