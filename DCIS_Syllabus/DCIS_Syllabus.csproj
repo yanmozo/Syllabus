@@ -348,6 +348,7 @@
     <Content Include="Views\Teacher\AssessmentCriteria.cshtml" />
     <Content Include="Views\Teacher\insert_course_outcomes.cshtml" />
     <Content Include="Views\LearningPlan\LearningPlanUpdate.cshtml" />
+    <Content Include="Views\SoftwareUsed\SoftwareUsedUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

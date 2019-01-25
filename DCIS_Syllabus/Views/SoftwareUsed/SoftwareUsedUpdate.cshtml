@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "SoftwareUsedUpdate";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+    var softwareUsed = (Software_Used)ViewData["SoftwareUsed"];
+}
+
+<h2>Update Software Used</h2>
+
+<form method="POST" action="SoftwareUsedUpdated?syllabusId=1&&softUid=@softwareUsed.softwareUsed_ID">
+    <div class="form-group">
+        <textarea class="form-control" name="software" rows="3" id="softwareUsed">@softwareUsed.software.Replace("<br />", System.Environment.NewLine)</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+
