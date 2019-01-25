@@ -27,19 +27,21 @@ namespace DCIS_Syllabus.Controllers
             //from the table friends, select all in descending order by age
             var learningList = (from u in syllabus.Learning_Plan
                                 join qrter in syllabus.Quarters on u.quarter_FK equals qrter.quarter_ID
-                                select new LearningPlan { LearningId = u.learning_ID,
-                                                          CourseOutcomeFK = u.courseOutcome_FK.Value,
-                                                          CourseIdFK = u.course_id_fk,
-                                                          QuarterIdFK = u.quarter_FK,
-                                                          SyllabusIdFK = u.syllabus_FK,
-                                                          LODesc = u.learningOutcomeDesc,
-                                                          hrs = u.hours,
-                                                          topics = u.topics,
-                                                          teacherAct = u.teacherActivity,
-                                                          learnerAct = u.learnerActivity,
-                                                          assessAct = u.assessmentActivity,
-                                                          QuarterName = qrter.quarter_name
-                                                        }).ToList();
+                                select new LearningPlan
+                                {
+                                    LearningId = u.learning_ID,
+                                    CourseOutcomeFK = u.courseOutcome_FK.Value,
+                                    CourseIdFK = u.course_id_fk,
+                                    QuarterIdFK = u.quarter_FK,
+                                    SyllabusIdFK = u.syllabus_FK,
+                                    LODesc = u.learningOutcomeDesc,
+                                    hrs = u.hours,
+                                    topics = u.topics,
+                                    teacherAct = u.teacherActivity,
+                                    learnerAct = u.learnerActivity,
+                                    assessAct = u.assessmentActivity,
+                                    QuarterName = qrter.quarter_name
+                                }).ToList();
 
             //converting all the retrieved data (friends) into a list object
             ViewData["LearningPlanList"] = learningList;
@@ -56,7 +58,7 @@ namespace DCIS_Syllabus.Controllers
 
             //from the table friends, select all in descending order by age
             var quarterList = (from u in term.Quarters
-                              select u);
+                               select u);
 
             //converting all the retrieved data (friends) into a list object
             ViewData["QuarterList"] = quarterList.ToList();
@@ -72,7 +74,7 @@ namespace DCIS_Syllabus.Controllers
             int syllabusIdFK = Convert.ToInt32(Request.QueryString["syllabusIdFK"]);
             int courseIdFK = Convert.ToInt32(Request.QueryString["courseIdFK"]);
             string quarter = lp_info["academicTerm"];
-            
+
             //static as of the moment
             int co_IdFk = Convert.ToInt32("1");
 
@@ -85,7 +87,7 @@ namespace DCIS_Syllabus.Controllers
             string teachAct = lp_info["teacherAct"];
             string learnAct = lp_info["learnAct"];
             string assessAct = lp_info["assessAct"];
-            if(assessAct == " ")
+            if (assessAct == " ")
             {
                 assessAct = null;
             }
@@ -93,9 +95,9 @@ namespace DCIS_Syllabus.Controllers
             Learning_Plan lp = new Learning_Plan();
 
             //assigning the table data through the input
-            lp.courseOutcome_FK= co_IdFk;
+            lp.courseOutcome_FK = co_IdFk;
             lp.course_id_fk = courseIdFK;
-            lp.quarter_FK= quarterValue_FKRet;
+            lp.quarter_FK = quarterValue_FKRet;
             lp.syllabus_FK = syllabusIdFK;
             lp.learningOutcomeDesc = lOutcome.Replace(System.Environment.NewLine, "<br />");
             lp.hours = hrs;
@@ -119,6 +121,54 @@ namespace DCIS_Syllabus.Controllers
             }
 
 
+            return RedirectToAction("LearningPlan", "LearningPlan");
+        }
+
+        // Teacher and Coordinator Learning Plan
+        public ActionResult LearningPlanDelete()
+        {
+            int learningPlanId = Convert.ToInt32(Request.QueryString["lpId"]);
+
+            //connect to db
+            Syllabus_ManagementEntities4 syllabus = new Syllabus_ManagementEntities4();
+            var delData = (from u in syllabus.Learning_Plan
+                           where u.learning_ID == learningPlanId
+                           select u).FirstOrDefault();
+
+
+            syllabus.Learning_Plan.Remove(delData);
+            syllabus.SaveChanges();
+            return RedirectToAction("LearningPlan", "LearningPlan");
+        }
+
+        // Teacher and Coordinator Learning Plan
+        public ActionResult LearningPlanUpdate()
+        {
+            int learningPlanId = Convert.ToInt32(Request.QueryString["lpId"]);
+            //connect to db
+            Syllabus_ManagementEntities4 syllabus = new Syllabus_ManagementEntities4();
+
+            //retrieve data from Quarters to be passed to the LearningPlanUpdate to show
+            Quarter q = new Quarter();
+            var quarterList = (from u in syllabus.Quarters
+                               select u);
+            ViewData["QuarterList"] = quarterList.ToList();
+
+            //retrieve data from LearningPlan
+            var retOneData = (from u in syllabus.Learning_Plan
+                              where u.learning_ID == learningPlanId
+                              select u).FirstOrDefault();
+
+
+            ViewData["DetailOfLearningPlan"] = retOneData;
+
+            return View();
+        }
+
+        // Teacher and Coordinator Learning Plan
+        public ActionResult LearningPlanUpdated()
+        {
+            
             return RedirectToAction("LearningPlan", "LearningPlan");
         }
     }
