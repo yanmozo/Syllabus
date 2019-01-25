@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "insert_course_outcomes";
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    td, th {
+        text-align: center;
+    }
+</style>
+<br />
+<br />
+<br />
+<h2>Inserting Course Outcomes</h2>
+
+<div class="container">
+    <br />
+    <p>Please place the necessary details: </p>
+
+    <form method="post" action="add_course_outcomes">
+        <table id="myTable" class=" table course-list">
+            <thead>
+                <tr>
+                    <th colspan="1">Code</th>
+                    <th colspan="1">Course Outcomes</th>
+                    <th colspan="3">Core Values Activated</th>
+                    <th colspan="10">Program Outcomes (POs) Activated</th>
+                    <th colspan="1">Domain of Learning & Level</th>
+                </tr>
+                <tr>
+                    <td colspan="2">Upon completion of the course students should be able to:</td>
+
+                    <th>S</th>
+                    <th>V</th>
+                    <th>D</th>
+
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+
+                    <th> </th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-sm-1">
+                        <input type="text" name="code" class="form-control" />
+                    </td>
+                    <td class="col-sm-1">
+                        <input type="text" name="course_outcomes" class="form-control" />
+                    </td>
+                    <td class="col-sm">
+                        <input type="checkbox" name="cv_S" value="S">
+                    </td>
+                    <td class="col-sm">
+                        <input type="checkbox" name="cv_V" value="V">
+                    </td>
+                    <td class="col-sm">
+                        <input type="checkbox" name="cv_D" value="D">
+                    </td>
+                    <td class="col-sm">
+                        <input type="text" name="program_outcomes_1" class="form-control" />
+                    </td>
+                    <td class="col-sm">
+                        <input type="text" name="program_outcomes_2" class="form-control" />
+                    </td>
+                    <td class="col-sm">
+                        <input type="text" name="program_outcomes_3" class="form-control" />
+                    </td>
+                    <td class="col-sm">
+                        <input type="text" name="program_outcomes_4" class="form-control" />
+                    </td>
+                    <td class="col-sm">
+                        <input type="text" name="program_outcomes_5" class="form-control" />
+                    </td>
+                    <td class="col-sm">
+                        <input type="text" name="program_outcomes_6" class="form-control" />
+                    </td>
+                    <td class="col-sm">
+                        <input type="text" name="program_outcomes_7" class="form-control" />
+                    </td>
+                    <td class="col-sm">
+                        <input type="text" name="program_outcomes_8" class="form-control" />
+                    </td>
+                    <td class="col-sm">
+                        <input type="text" name="program_outcomes_9" class="form-control" />
+                    </td>
+                    <td class="col-sm">
+                        <input type="text" name="program_outcomes_10" class="form-control" />
+                    </td>
+                    <td class="col-sm">
+                        <input type="text" name="domain_learning_level" class="form-control" />
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+        <button type="submit" class="btn btn-danger" value="Save Changes">Back</button>
+        <button type="submit" class="btn btn-success" value="Save Changes">Submit</button>
+    </form>
+
+</div>
