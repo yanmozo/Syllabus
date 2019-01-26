@@ -30,16 +30,20 @@ namespace DCIS_Syllabus
         public virtual DbSet<Bibliography> Bibliographies { get; set; }
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Class_Policy> Class_Policy { get; set; }
+        public virtual DbSet<Consultation> Consultations { get; set; }
         public virtual DbSet<Core_Value> Core_Value { get; set; }
         public virtual DbSet<Core_Value_Attribute> Core_Value_Attribute { get; set; }
         public virtual DbSet<Course_Deliverable> Course_Deliverable { get; set; }
         public virtual DbSet<Course_Information> Course_Information { get; set; }
         public virtual DbSet<Course_Outcome_Addressed> Course_Outcome_Addressed { get; set; }
         public virtual DbSet<Course_Outcomes> Course_Outcomes { get; set; }
+        public virtual DbSet<Degree> Degrees { get; set; }
+        public virtual DbSet<Deliverable> Deliverables { get; set; }
         public virtual DbSet<Grading_Rubrics> Grading_Rubrics { get; set; }
         public virtual DbSet<Grading_System> Grading_System { get; set; }
-        public virtual DbSet<Hello> Helloes { get; set; }
+        public virtual DbSet<Grouping> Groupings { get; set; }
         public virtual DbSet<Learning_Plan> Learning_Plan { get; set; }
+        public virtual DbSet<Member> Members { get; set; }
         public virtual DbSet<Online_Sources> Online_Sources { get; set; }
         public virtual DbSet<Program_Educational_Objs> Program_Educational_Objs { get; set; }
         public virtual DbSet<Program_Outcomes> Program_Outcomes { get; set; }
@@ -50,6 +54,9 @@ namespace DCIS_Syllabus
         public virtual DbSet<Software_Used> Software_Used { get; set; }
         public virtual DbSet<Source> Sources { get; set; }
         public virtual DbSet<Syllabu> Syllabus { get; set; }
+        public virtual DbSet<tblFile> tblFiles { get; set; }
+        public virtual DbSet<Topic_Discussion_Entry> Topic_Discussion_Entry { get; set; }
+        public virtual DbSet<Topic_Discussion_Reply> Topic_Discussion_Reply { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

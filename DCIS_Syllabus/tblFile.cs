@@ -12,14 +12,12 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Active_Values
+    public partial class tblFile
     {
-        public int activeValues_ID { get; set; }
-        public string columnName { get; set; }
-        public string programOutcomeAbbr { get; set; }
-        public string activeStatus { get; set; }
-        public int courseOutcomes_FK { get; set; }
-    
-        public virtual Course_Outcomes Course_Outcomes { get; set; }
+        public int FileId { get; set; }
+        public string FileName { get; set; }
+        public string ContentType { get; set; }
+        public byte[] FileData { get; set; }
+        public int DeliverableId { get; set; }
     }
 }

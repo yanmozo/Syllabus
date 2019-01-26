@@ -22,6 +22,7 @@ namespace DCIS_Syllabus
         public string assessmentTypeA { get; set; }
         public string assessmentTypeB { get; set; }
     
+        public virtual Course_Outcome_Addressed Course_Outcome_Addressed { get; set; }
         public virtual Syllabu Syllabu { get; set; }
     }
 }

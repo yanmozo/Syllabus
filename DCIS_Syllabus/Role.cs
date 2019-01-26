@@ -18,6 +18,7 @@ namespace DCIS_Syllabus
         public int users_FK { get; set; }
         public string position { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual Role Role1 { get; set; }
+        public virtual Role Role2 { get; set; }
     }
 }

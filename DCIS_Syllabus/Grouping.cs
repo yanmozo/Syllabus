@@ -12,20 +12,18 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Course_Outcome_Addressed
+    public partial class Grouping
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Course_Outcome_Addressed()
+        public Grouping()
         {
-            this.Course_Deliverable = new HashSet<Course_Deliverable>();
+            this.Deliverables = new HashSet<Deliverable>();
         }
     
-        public int courseOutcomeAddressed_ID { get; set; }
-        public int courseOutcome_FK { get; set; }
-        public int addressedCO_Num { get; set; }
+        public int GroupId { get; set; }
+        public string GroupName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Course_Deliverable> Course_Deliverable { get; set; }
-        public virtual Course_Outcomes Course_Outcomes { get; set; }
+        public virtual ICollection<Deliverable> Deliverables { get; set; }
     }
 }

@@ -12,14 +12,11 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Active_Values
+    public partial class Degree
     {
-        public int activeValues_ID { get; set; }
-        public string columnName { get; set; }
-        public string programOutcomeAbbr { get; set; }
-        public string activeStatus { get; set; }
-        public int courseOutcomes_FK { get; set; }
-    
-        public virtual Course_Outcomes Course_Outcomes { get; set; }
+        public int degreeId { get; set; }
+        public int schoolId { get; set; }
+        public string school { get; set; }
+        public string degreeTitle { get; set; }
     }
 }

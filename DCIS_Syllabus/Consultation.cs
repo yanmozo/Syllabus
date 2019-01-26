@@ -12,12 +12,18 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Hello
+    public partial class Consultation
     {
-        public int gradingSystem_ID1 { get; set; }
-        public int syllabus_FK1 { get; set; }
-        public string typeOfGrading1 { get; set; }
-        public string weight1 { get; set; }
-        public string requirementsName1 { get; set; }
+        public int consultationId { get; set; }
+        public int schoolId { get; set; }
+        public string time { get; set; }
+        public string place { get; set; }
+        public string message { get; set; }
+        public string status { get; set; }
+        public string subject { get; set; }
+        public string date { get; set; }
+        public int memberId { get; set; }
+    
+        public virtual Member Member { get; set; }
     }
 }

@@ -11,9 +11,7 @@ namespace DCIS_Syllabus
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Course_Outcomes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,9 +20,8 @@ namespace DCIS_Syllabus
             this.Active_Values = new HashSet<Active_Values>();
             this.Course_Outcome_Addressed = new HashSet<Course_Outcome_Addressed>();
         }
-        [Key]
+    
         public int courseOutcomes_ID { get; set; }
-        [ForeignKey("FK_CourseOutcome_TO_Syllabus")]
         public int syllabus_FK { get; set; }
         public string codeName { get; set; }
         public string outcomeDescription { get; set; }
