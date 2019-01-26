@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DCIS_Syllabus.Course_Outcomes>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.outcomeDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.domainLearningLVL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Syllabu.title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.outcomeDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.domainLearningLVL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Syllabu.title)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.courseOutcomes_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.courseOutcomes_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.courseOutcomes_ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,51 @@
+﻿@model DCIS_Syllabus.Course_Outcomes
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Course_Outcomes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.codeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.outcomeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.outcomeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.domainLearningLVL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.domainLearningLVL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Syllabu.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Syllabu.title)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.courseOutcomes_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -11,21 +11,19 @@ namespace DCIS_Syllabus
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Active_Values
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Active_Values()
-        {
-            this.Course_Outcomes = new HashSet<Course_Outcomes>();
-        }
-    
+        [Key]
         public int activeValues_ID { get; set; }
         public string columnName { get; set; }
         public string programOutcomeAbbr { get; set; }
         public string activeStatus { get; set; }
+        [ForeignKey("FK_ActiveValues_TO_CourseOutcomes")]
+        public int courseOutcomes_FK { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Course_Outcomes> Course_Outcomes { get; set; }
+        public virtual Course_Outcomes Course_Outcomes { get; set; }
     }
 }

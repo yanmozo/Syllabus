@@ -1,0 +1,61 @@
+﻿@model DCIS_Syllabus.Active_Values
+
+@{
+    ViewBag.Title = "Create Core Values Activated";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+}
+
+<h2>Create</h2>
+
+
+        @using (Html.BeginForm("Create", "Active_Values", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Active_Values</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.columnName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <label class="control-label col-md-2" for="columnName">Core Value</label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("columnName", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.columnName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.programOutcomeAbbr, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.programOutcomeAbbr, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.programOutcomeAbbr, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.activeStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.activeStatus, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.activeStatus, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.courseOutcomes_FK, "courseOutcomes_FK", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.courseOutcomes_FK, new { htmlAttributes = new { @class = "form-control read-only", @Value = @ViewBag.courseOutcomes_FK } })
+                        @Html.ValidationMessageFor(model => model.courseOutcomes_FK, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
