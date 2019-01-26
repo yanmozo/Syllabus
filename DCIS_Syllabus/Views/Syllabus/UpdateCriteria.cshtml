@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "UpdateCriteria";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+    var acinfo = (Assessment_Criteria)ViewData["ACInfo"];
+}
+
+<h2>Update Criteria</h2>
+
+<div class="wrapper">
+    <div class="row">
+        <form method="post" action="../Syllabus/SubmitUpdatedCriteria?WebID=@acinfo.assesmentCriteria_ID">
+            <label style="margin-left:20px" for="criteriaID">Criteria ID</label>
+            <input style="margin-bottom:30px;margin-left:20px;width:5%" type="text" value="@acinfo.assesmentCriteria_ID" class="form-control text-center" id="criteriaID" readonly />
+
+            <div class="col-md-2">
+                <label for="criteria">Criteria</label>
+                <input type="text" class="form-control" id="criteria" name="criterianame" value="@acinfo.criteriaName" />
+            </div>
+            <div class="col-md-2">
+                <label for="poor">Poor</label>
+                <input name="poorpts" type="text" placeholder="Points" class="form-control" id="poor" style="width:20%" value="@acinfo.poor_pts" /><br />
+                <textarea name="poordesc" style="height:150px;" type="text" placeholder="Description" class="form-control" id="poordesc">@acinfo.poor_desc.Replace("<br />", System.Environment.NewLine)</textarea><br />
+            </div>
+            <div class="col-md-2">
+                <label for="fair">Fair</label>
+                <input name="fairpts" type="text" placeholder="Points" class="form-control" id="fair" style="width:20%" value="@acinfo.fair_pts" /><br />
+                <textarea name="fairdesc" style="height:150px;" type="text" placeholder="Description" class="form-control" id="fairdesc">@acinfo.fair_desc.Replace("<br />", System.Environment.NewLine)</textarea><br />
+            </div>
+            <div class="col-md-2">
+                <label for="satisfactory">Satisfactory</label>
+                <input name="spts" type="text" placeholder="Points" class="form-control" id="satisfactory" style="width:20%" value="@acinfo.satisfactory_pts" /><br />
+                <textarea name="sdesc" style="height:150px;" type="text" placeholder="Description" class="form-control" id="satisfactorydesc">@acinfo.satisfactory_desc.Replace("<br />", System.Environment.NewLine)</textarea><br />
+            </div>
+            <div class="col-md-2">
+                <label for="excellent">Excellent</label>
+                <input name="epts" type="text" placeholder="Points" class="form-control" id="excellent" style="width:20%" value="@acinfo.excellent_pts" /><br />
+                <textarea name="edesc" style="height:150px;" type="text" placeholder="Description" class="form-control" id="excellentdesc">@acinfo.excellent_desc.Replace("<br />", System.Environment.NewLine)</textarea><br />
+            </div>
+            <div class="col-md-2">
+                <label for="maxpoints">Points</label>
+                <input name="hpoints" type="text" placeholder="Points" class="form-control" id="maxpoints" style="width:20%" value="@acinfo.highestPoints" readonly/><br />
+                <button type="submit" class="btn btn-success">Update Criteria</button>
+            </div>
+        </form>
+    </div>
+</div>

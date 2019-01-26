@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DCIS_Syllabus.Models;
 
 namespace DCIS_Syllabus.Controllers
 {
@@ -111,6 +112,21 @@ namespace DCIS_Syllabus.Controllers
         }
         public ActionResult grading_system()
         {
+
+            Syllabus_ManagementEntities4 grading_system = new Syllabus_ManagementEntities4();
+            Grading_System grad_sys = new Grading_System();
+
+            var gradSysList = (from u in grading_system.Grading_System
+                               where u.syllabus_FK == 1
+                               select u);
+
+            var weight = (from x in grading_system.Grading_System
+                          select x).Sum(x => x.weight); 
+                        
+            ViewBag.Result = weight; 
+            ViewData["GradingSystem"] = gradSysList.ToList();
+
+
             return View();
         }
 
@@ -127,22 +143,34 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult outputs_requirements()
         {
+            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+            Course_Deliverable D = new Course_Deliverable();
+            var deliverableList = (from u in sm.Course_Deliverable
+                              select u);
+            ViewData["ListOfDeliverables"] = deliverableList.ToList();
+
             return View();
         }
 
 
+        public ActionResult add_grading(FormCollection fc)
+        {
+            return View(); 
+        }
+
         public ActionResult insert_grading(FormCollection fc)
         {
-            //can insert to database using static data ONLY 
+            string require_grading = fc["requirements"].ToString();
+            string type_grading = fc["type"].ToString();
+            double weight_grading = Convert.ToDouble(fc["weight"]); 
 
             Syllabus_ManagementEntities4 fe = new Syllabus_ManagementEntities4();
-
             Grading_System d = new Grading_System();
-            // d.gradingSystem_ID = 1;
+
             d.syllabus_FK = 1;
-            d.typeOfGrading = "Outputs";
-            d.weight = 1.0;
-            d.requirementsName = "Lectures";
+            d.typeOfGrading = type_grading;
+            d.weight = weight_grading;
+            d.requirementsName = require_grading;  ;
 
             try
             {
@@ -154,8 +182,7 @@ namespace DCIS_Syllabus.Controllers
             {
                 ViewBag.Result = "Error! ";
             }
-             return View();
-           // return RedirectToAction("grading_system", "Teacher");
+            return RedirectToAction("grading_system", "Teacher");
         }
 
         public static string SaveData(string[][] array)
@@ -232,7 +259,7 @@ namespace DCIS_Syllabus.Controllers
                 fe.SaveChanges();
                 ViewBag.Result = "Save Changes";
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ViewBag.Result = "Error! ";
             }
@@ -246,7 +273,145 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult AssessmentCriteria()
         {
+            var criteriaList = (from u in sm.Assessment_Criteria
+                            select u);
+            ViewData["ListofCriteria"] = criteriaList.ToList();
             return View();
+        }
+
+        public ActionResult insert_course_outcomes()
+        {
+            return View(); 
+        }
+        public ActionResult add_course_outcomes()
+        {
+
+            return RedirectToAction("course_outcomes", "Teacher");
+        }
+
+        public ActionResult program_outcomes()
+        {
+            int syllabusFK = 1;
+            Syllabus_ManagementEntities4 syllabus = new Syllabus_ManagementEntities4();
+            Program_Outcomes prog_out = new Program_Outcomes();
+            var POCV = (from u in syllabus.Program_Outcomes
+                        join cv in syllabus.Core_Value on u.coreValue_FK equals cv.coreValue_ID
+                        select new CoreValuePO{ CodeOutcome = u.code_outcome, CoreValueName = cv.name}).ToList();
+
+
+            var PO = (from u in syllabus.Program_Outcomes
+                      where u.syllabus_FK == syllabusFK
+                      select new ProgramOutcome { CodeO = u.code_outcome, SyllabusFK = u.syllabus_FK, AttributeName = u.attributeName, OutcomeDesc = u.outcomeDesc}).Distinct().OrderBy(u => u.CodeO).ToList() ;
+
+            ViewData["POCoreValue"] = POCV;
+            ViewData["PO"] = PO;
+
+
+            return View(); 
+        }
+        public ActionResult add_programOutcomes()
+        {
+            return View(); 
+        }
+
+        public ActionResult insert_programOutcomes(FormCollection detailsPO)
+        {
+            int i = 0;
+            string coreValuesScientia = detailsPO["_PO"].ToString(); //get the core values names 
+            string code = detailsPO["code_programOutcomes"].ToString();
+            string attribute = detailsPO["attribute_programOutcomes"].ToString();
+            string program_outcomes = detailsPO["desc_programOutcomes"].ToString();
+            string[] arrCoreValues = coreValuesScientia.Split(',');
+            Syllabus_ManagementEntities4 db = new Syllabus_ManagementEntities4();
+
+            Core_Value get_coreValue = new Core_Value(); //gets the core value table 
+            Program_Outcomes get_PO = new Program_Outcomes(); //gets the program outcomes table 
+
+
+            for (i = 0; i < arrCoreValues.Length; i++)
+            {
+                //get the id of the name core value 
+                string coreValueName = arrCoreValues[i];
+                var getID = (from p in db.Core_Value
+                             where p.name == coreValueName
+                             select p.coreValue_ID).FirstOrDefault();
+
+
+                get_PO.coreValue_FK = getID;
+                get_PO.syllabus_FK = 1;
+                get_PO.attributeName = attribute;
+                get_PO.outcomeDesc = program_outcomes;
+                get_PO.code_outcome = code;
+
+                try
+                {
+                    db.Program_Outcomes.Add(get_PO);
+                    db.SaveChanges();
+                    ViewBag.Result = "Save Changes";
+                }
+                catch (Exception e)
+                {
+                    ViewBag.Result = "Error! ";
+                }
+            }
+            return RedirectToAction("program_outcomes", "Teacher");
+        }
+
+
+
+
+        public ActionResult program_outcomes()
+        {
+            return View();
+        }
+        public ActionResult add_programOutcomes()
+        {
+            return View();
+        }
+
+
+        public ActionResult insert_programOutcomes(FormCollection detailsPO)
+        {
+            int i = 0;
+            string coreValuesScientia = detailsPO["_PO"].ToString(); //get the core values names 
+            string code = detailsPO["code_programOutcomes"].ToString();
+            string attribute = detailsPO["attribute_programOutcomes"].ToString();
+            string program_outcomes = detailsPO["desc_programOutcomes"].ToString();
+            string[] arrCoreValues = coreValuesScientia.Split(',');
+            int[] id = new int[3];
+            Syllabus_ManagementEntities4 db = new Syllabus_ManagementEntities4();
+
+            Core_Value get_coreValue = new Core_Value(); //gets the core value table 
+            Program_Outcomes get_PO = new Program_Outcomes(); //gets the program outcomes table 
+
+
+            for (i = 0; i < arrCoreValues.Length; i++)
+            {
+                //get the id of the name core value 
+                string coreValueName = arrCoreValues[i];
+                var getID = (from p in db.Core_Value
+                             where p.name == coreValueName
+                             select p.coreValue_ID).FirstOrDefault();
+
+
+                get_PO.coreValue_FK = getID;
+                get_PO.syllabus_FK = 1;
+                get_PO.attributeName = attribute;
+                get_PO.outcomeDesc = program_outcomes;
+                get_PO.code_outcome = code;
+
+                try
+                {
+                    db.Program_Outcomes.Add(get_PO);
+                    db.SaveChanges();
+                    ViewBag.Result = "Save Changes";
+                }
+                catch (Exception e)
+                {
+                    ViewBag.Result = "Error! ";
+                }
+            }
+            return RedirectToAction("program_outcomes", "Teacher");
         }
     }
 }

@@ -1,54 +1,101 @@
-﻿
+﻿<style>
+    pre {
+        background-color: #ffffff;
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+</style>
+
 @{
     ViewBag.Title = "AssessmentCriteria";
     Layout = "~/Views/Shared/_SideBar.cshtml";
+    var criterion = (List<Assessment_Criteria>)ViewData["ListofCriteria"];
 }
 
 <h2>Assessment Criteria</h2>
 <br /><br />
 <div class="row">
-    <div class="col-md-2">
-        <label for="criteria">Criteria</label>
-        <input type="text" class="form-control" id="criteria" />
-    </div>
-    <div class="col-md-2">
-        <label for="poor">Poor</label>
-        <input type="text" placeholder="Points" class="form-control" id="poor" style="width:40%" /><br />
-        <textarea type="text" placeholder="Description" class="form-control" id="poordesc"></textarea><br />
-    </div>
-    <div class="col-md-2">
-        <label for="fair">Fair</label>
-        <input type="text" placeholder="Points" class="form-control" id="fair" style="width:40%"/><br />
-        <textarea type="text" placeholder="Description" class="form-control" id="fairdesc"></textarea><br />
-    </div>
-    <div class="col-md-2">
-        <label for="satisfactory">Satisfactory</label>
-        <input type="text" placeholder="Points" class="form-control" id="satisfactory" style="width:40%" /><br />
-        <textarea type="text" placeholder="Description" class="form-control" id="satisfactorydesc"></textarea><br />
-    </div>
-    <div class="col-md-2">
-        <label for="excellent">Excellent</label>
-        <input type="text" placeholder="Points" class="form-control" id="excellent" style="width:40%" /><br />
-        <textarea type="text" placeholder="Description" class="form-control" id="excellentdesc"></textarea><br />
-    </div>
-    <div class="col-md-2">
-        <label for="maxpoints">Points</label>
-        <input type="text" placeholder="Points" class="form-control" id="maxpoints" style="width:40%" /><br />
-        <button class="btn btn-success">Add Criteria</button>
-    </div>
+    <form method="post" action="../Syllabus/AddNewCriteria">
+        <input type="hidden" class="form-control" id="criteriaID" readonly/>
+        <div class="col-md-2">
+            <label for="criteria">Criteria</label>
+            <input name="n_criterianame" type="text" class="form-control" id="criteria" />
+        </div>
+        <div class="col-md-2">
+            <label for="poor">Poor</label>
+            <input name="n_poorpts" type="text" placeholder="Points" class="form-control" id="poor" style="width:40%" /><br />
+            <textarea name="n_poordesc" type="text" placeholder="Description" class="form-control" id="poordesc"></textarea><br />
+        </div>
+        <div class="col-md-2">
+            <label for="fair">Fair</label>
+            <input name="n_fairpts" type="text" placeholder="Points" class="form-control" id="fair" style="width:40%" /><br />
+            <textarea name="n_fairdesc" type="text" placeholder="Description" class="form-control" id="fairdesc"></textarea><br />
+        </div>
+        <div class="col-md-2">
+            <label for="satisfactory">Satisfactory</label>
+            <input name="n_spts" type="text" placeholder="Points" class="form-control" id="satisfactory" style="width:40%" /><br />
+            <textarea name="n_sdesc" type="text" placeholder="Description" class="form-control" id="satisfactorydesc"></textarea><br />
+        </div>
+        <div class="col-md-2">
+            <label for="excellent">Excellent</label>
+            <input name="n_epts" type="text" placeholder="Points" class="form-control" id="excellent" style="width:40%" /><br />
+            <textarea name="n_edesc" type="text" placeholder="Description" class="form-control" id="excellentdesc"></textarea><br />
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-success">Add Criteria</button>
+        </div>
+    </form>
 </div>
 <br />
-<table style="border:1px solid black">
-    <tr style="border:1px solid black">
-        <th colspan="6" style="border:1px solid black">Grading Rubrics</th>
-    </tr>
-    <tr style="border:1px solid black">
-        <th style="border:1px solid black">Criteria</th>
-        <th style="border:1px solid black">Poor</th>
-        <th style="border:1px solid black">Fair</th>
-        <th style="border:1px solid black">Satisfactory</th>
-        <th style="border:1px solid black">Excellent</th>
-        <th style="border:1px solid black">Points</th>
-    </tr>
-</table>
+<div class="text-center">
+        <table class="table table-hover" style="border:1px solid black;" id="CriteriaTable">
+            <thead>
+                <tr style="border:1px solid black">
+                    <th colspan="8" style="border:1px solid black" class="text-center">Grading Rubrics</th>
+                </tr>
+                <tr style="border:1px solid black" class="text-center">
+                    <th style="border:1px solid black" class="text-center" hidden>ID</th>
+                    <th style="border:1px solid black" class="text-center">Criteria</th>
+                    <th style="border:1px solid black" class="text-center">Poor</th>
+                    <th style="border:1px solid black" class="text-center">Fair</th>
+                    <th style="border:1px solid black" class="text-center">Satisfactory</th>
+                    <th style="border:1px solid black" class="text-center">Excellent</th>
+                    <th style="border:1px solid black" class="text-center">Points</th>
+                    <th style="border:1px solid black" class="text-center">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                foreach (var c_item in criterion)
+                {
+                    <tr>
+                        <td style="border:1px solid black" rowspan="2" hidden>@c_item.assesmentCriteria_ID</td>
+                        <td style="border:1px solid black" rowspan="2">@c_item.criteriaName</td>
+                        <td style="border:1px solid black">@c_item.poor_pts points</td>
+                        <td style="border:1px solid black">@c_item.fair_pts points</td>
+                        <td style="border:1px solid black">@c_item.satisfactory_pts points</td>
+                        <td style="border:1px solid black">@c_item.excellent_pts points</td>
+                        <td style="border:1px solid black" rowspan="2">@c_item.highestPoints points</td>
+                        <td style="border:1px solid black" rowspan="2">
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a type="submit" href="../Syllabus/UpdateCriteria?WebID=@c_item.assesmentCriteria_ID" class="btn btn-warning editCriteria"><span class="glyphicon glyphicon-edit"></span></a>
+                                <a type="submit" href="../Syllabus/DeleteCriteria?WebID=@c_item.assesmentCriteria_ID" class="btn btn-danger delbtn_web"><span class="glyphicon glyphicon-trash"></span></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black"><pre>@c_item.poor_desc.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td style="border:1px solid black"><pre>@c_item.fair_desc.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td style="border:1px solid black"><pre>@c_item.satisfactory_desc.Replace("<br />", System.Environment.NewLine)</pre></td>
+                        <td style="border:1px solid black"><pre>@c_item.excellent_desc.Replace("<br />", System.Environment.NewLine)</pre></td>
+                    </tr>
+                }
+                }
+            </tbody>
+
+        </table>
+</div>
+
 

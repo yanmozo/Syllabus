@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Syllabus_ManagementEntities4.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DCIS_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Active_Values">
           <Key>
             <PropertyRef Name="activeValues_ID" />
@@ -701,7 +701,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Syllabus_ManagementEntities4StoreContainer">
+        <EntityContainer Name="DCIS_DBModelStoreContainer">
           <EntitySet Name="Active_Values" EntityType="Self.Active_Values" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Assessment_Criteria" EntityType="Self.Assessment_Criteria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bibliography" EntityType="Self.Bibliography" Schema="dbo" store:Type="Tables" />
@@ -856,7 +856,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Syllabus_ManagementEntities4" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DCIS_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Active_Values">
           <Key>
             <PropertyRef Name="activeValues_ID" />
@@ -1611,7 +1611,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DCIS_DBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Syllabus_ManagementEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Active_Values" EntityType="Self.Active_Values" />
           <EntitySet Name="Assessment_Criteria" EntityType="Self.Assessment_Criteria" />
           <EntitySet Name="Bibliographies" EntityType="Self.Bibliography" />
@@ -1767,9 +1767,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Syllabus_ManagementEntities4StoreContainer" CdmEntityContainer="DCIS_DBEntities">
+        <EntityContainerMapping StorageEntityContainer="DCIS_DBModelStoreContainer" CdmEntityContainer="Syllabus_ManagementEntities4">
           <EntitySetMapping Name="Active_Values">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Active_Values">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Active_Values">
               <MappingFragment StoreEntitySet="Active_Values">
                 <ScalarProperty Name="activeValues_ID" ColumnName="activeValues_ID" />
                 <ScalarProperty Name="columnName" ColumnName="columnName" />
@@ -1780,7 +1780,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Assessment_Criteria">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Assessment_Criteria">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Assessment_Criteria">
               <MappingFragment StoreEntitySet="Assessment_Criteria">
                 <ScalarProperty Name="assesmentCriteria_ID" ColumnName="assesmentCriteria_ID" />
                 <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
@@ -1798,7 +1798,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Bibliographies">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Bibliography">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Bibliography">
               <MappingFragment StoreEntitySet="Bibliography">
                 <ScalarProperty Name="bibliography_id" ColumnName="bibliography_id" />
                 <ScalarProperty Name="syllabus_id_fk" ColumnName="syllabus_id_fk" />
@@ -1807,7 +1807,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Books">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Book">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Book">
               <MappingFragment StoreEntitySet="Book">
                 <ScalarProperty Name="book_id" ColumnName="book_id" />
                 <ScalarProperty Name="course_fk" ColumnName="course_fk" />
@@ -1819,7 +1819,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Class_Policy">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Class_Policy">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Class_Policy">
               <MappingFragment StoreEntitySet="Class_Policy">
                 <ScalarProperty Name="policy_ID" ColumnName="policy_ID" />
                 <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
@@ -1828,7 +1828,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Consultations">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Consultation">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Consultation">
               <MappingFragment StoreEntitySet="Consultation">
                 <ScalarProperty Name="consultationId" ColumnName="consultationId" />
                 <ScalarProperty Name="schoolId" ColumnName="schoolId" />
@@ -1843,7 +1843,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Core_Value">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Core_Value">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Core_Value">
               <MappingFragment StoreEntitySet="Core_Value">
                 <ScalarProperty Name="coreValue_ID" ColumnName="coreValue_ID" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1851,7 +1851,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Core_Value_Attribute">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Core_Value_Attribute">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Core_Value_Attribute">
               <MappingFragment StoreEntitySet="Core_Value_Attribute">
                 <ScalarProperty Name="coreValueAttrib_ID" ColumnName="coreValueAttrib_ID" />
                 <ScalarProperty Name="coreValue_FK" ColumnName="coreValue_FK" />
@@ -1860,7 +1860,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Course_Deliverable">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Course_Deliverable">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Course_Deliverable">
               <MappingFragment StoreEntitySet="Course_Deliverable">
                 <ScalarProperty Name="courseDeliverables_ID" ColumnName="courseDeliverables_ID" />
                 <ScalarProperty Name="courseOutcomeAddressed_FK" ColumnName="courseOutcomeAddressed_FK" />
@@ -1873,7 +1873,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Course_Information">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Course_Information">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Course_Information">
               <MappingFragment StoreEntitySet="Course_Information">
                 <ScalarProperty Name="course_ID" ColumnName="course_ID" />
                 <ScalarProperty Name="courseCode" ColumnName="courseCode" />
@@ -1890,7 +1890,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Course_Outcome_Addressed">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Course_Outcome_Addressed">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Course_Outcome_Addressed">
               <MappingFragment StoreEntitySet="Course_Outcome_Addressed">
                 <ScalarProperty Name="courseOutcomeAddressed_ID" ColumnName="courseOutcomeAddressed_ID" />
                 <ScalarProperty Name="courseOutcome_FK" ColumnName="courseOutcome_FK" />
@@ -1899,7 +1899,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Course_Outcomes">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Course_Outcomes">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Course_Outcomes">
               <MappingFragment StoreEntitySet="Course_Outcomes">
                 <ScalarProperty Name="courseOutcomes_ID" ColumnName="courseOutcomes_ID" />
                 <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
@@ -1910,7 +1910,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Degrees">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Degree">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Degree">
               <MappingFragment StoreEntitySet="Degree">
                 <ScalarProperty Name="degreeId" ColumnName="degreeId" />
                 <ScalarProperty Name="schoolId" ColumnName="schoolId" />
@@ -1920,7 +1920,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Deliverables">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Deliverable">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Deliverable">
               <MappingFragment StoreEntitySet="Deliverable">
                 <ScalarProperty Name="DeliverableId" ColumnName="DeliverableId" />
                 <ScalarProperty Name="GroupId" ColumnName="GroupId" />
@@ -1932,7 +1932,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Grading_Rubrics">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Grading_Rubrics">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Grading_Rubrics">
               <MappingFragment StoreEntitySet="Grading_Rubrics">
                 <ScalarProperty Name="gradingRubrics_ID" ColumnName="gradingRubrics_ID" />
                 <ScalarProperty Name="assessmentCriteria_FK" ColumnName="assessmentCriteria_FK" />
@@ -1943,7 +1943,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Grading_System">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Grading_System">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Grading_System">
               <MappingFragment StoreEntitySet="Grading_System">
                 <ScalarProperty Name="gradingSystem_ID" ColumnName="gradingSystem_ID" />
                 <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
@@ -1954,7 +1954,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Groupings">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Grouping">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Grouping">
               <MappingFragment StoreEntitySet="Groupings">
                 <ScalarProperty Name="GroupId" ColumnName="GroupId" />
                 <ScalarProperty Name="GroupName" ColumnName="GroupName" />
@@ -1962,7 +1962,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Learning_Plan">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Learning_Plan">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Learning_Plan">
               <MappingFragment StoreEntitySet="Learning_Plan">
                 <ScalarProperty Name="learning_ID" ColumnName="learning_ID" />
                 <ScalarProperty Name="courseOutcome_FK" ColumnName="courseOutcome_FK" />
@@ -1979,7 +1979,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Members">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Member">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Member">
               <MappingFragment StoreEntitySet="Member">
                 <ScalarProperty Name="schoolId" ColumnName="schoolId" />
                 <ScalarProperty Name="memberId" ColumnName="memberId" />
@@ -1988,7 +1988,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Online_Sources">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Online_Sources">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Online_Sources">
               <MappingFragment StoreEntitySet="Online_Sources">
                 <ScalarProperty Name="onlineSource_ID" ColumnName="onlineSource_ID" />
                 <ScalarProperty Name="course_FK" ColumnName="course_FK" />
@@ -1998,7 +1998,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Program_Educational_Objs">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Program_Educational_Objs">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Program_Educational_Objs">
               <MappingFragment StoreEntitySet="Program_Educational_Objs">
                 <ScalarProperty Name="programEduOutcome_ID" ColumnName="programEduOutcome_ID" />
                 <ScalarProperty Name="coreValue_FK" ColumnName="coreValue_FK" />
@@ -2009,7 +2009,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Program_Outcomes">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Program_Outcomes">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Program_Outcomes">
               <MappingFragment StoreEntitySet="Program_Outcomes">
                 <ScalarProperty Name="programOutcomes_ID" ColumnName="programOutcomes_ID" />
                 <ScalarProperty Name="coreValue_FK" ColumnName="coreValue_FK" />
@@ -2021,7 +2021,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Quarters">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Quarter">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Quarter">
               <MappingFragment StoreEntitySet="Quarter">
                 <ScalarProperty Name="quarter_ID" ColumnName="quarter_ID" />
                 <ScalarProperty Name="quarter_name" ColumnName="quarter_name" />
@@ -2029,7 +2029,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Revisions">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Revision">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Revision">
               <MappingFragment StoreEntitySet="Revision">
                 <ScalarProperty Name="revision_ID" ColumnName="revision_ID" />
                 <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
@@ -2043,7 +2043,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Revisions_Log">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Revisions_Log">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Revisions_Log">
               <MappingFragment StoreEntitySet="Revisions_Log">
                 <ScalarProperty Name="log_ID" ColumnName="log_ID" />
                 <ScalarProperty Name="revision_id_fk" ColumnName="revision_id_fk" />
@@ -2053,7 +2053,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Role">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="role_ID" ColumnName="role_ID" />
                 <ScalarProperty Name="users_FK" ColumnName="users_FK" />
@@ -2062,7 +2062,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Software_Used">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Software_Used">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Software_Used">
               <MappingFragment StoreEntitySet="Software_Used">
                 <ScalarProperty Name="softwareUsed_ID" ColumnName="softwareUsed_ID" />
                 <ScalarProperty Name="course_FK" ColumnName="course_FK" />
@@ -2072,7 +2072,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sources">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Source">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Source">
               <MappingFragment StoreEntitySet="Sources">
                 <ScalarProperty Name="sources_ID" ColumnName="sources_ID" />
                 <ScalarProperty Name="type_of_resource" ColumnName="type_of_resource" />
@@ -2081,7 +2081,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Syllabus">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Syllabu">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Syllabu">
               <MappingFragment StoreEntitySet="Syllabus">
                 <ScalarProperty Name="syllabus_ID" ColumnName="syllabus_ID" />
                 <ScalarProperty Name="madeBy_FK" ColumnName="madeBy_FK" />
@@ -2094,7 +2094,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFiles">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.tblFile">
+            <EntityTypeMapping TypeName="DCIS_DBModel.tblFile">
               <MappingFragment StoreEntitySet="tblFiles">
                 <ScalarProperty Name="FileId" ColumnName="FileId" />
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
@@ -2105,7 +2105,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Topic_Discussion_Entry">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Topic_Discussion_Entry">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Topic_Discussion_Entry">
               <MappingFragment StoreEntitySet="Topic_Discussion_Entry">
                 <ScalarProperty Name="topic_discussion_entry_id" ColumnName="topic_discussion_entry_id" />
                 <ScalarProperty Name="topic_id" ColumnName="topic_id" />
@@ -2116,7 +2116,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Topic_Discussion_Reply">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.Topic_Discussion_Reply">
+            <EntityTypeMapping TypeName="DCIS_DBModel.Topic_Discussion_Reply">
               <MappingFragment StoreEntitySet="Topic_Discussion_Reply">
                 <ScalarProperty Name="topic_discussion_reply_id" ColumnName="topic_discussion_reply_id" />
                 <ScalarProperty Name="topic_discussion_entry_id" ColumnName="topic_discussion_entry_id" />
@@ -2127,7 +2127,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="Syllabus_ManagementEntities4.User">
+            <EntityTypeMapping TypeName="DCIS_DBModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="schoolId" ColumnName="schoolId" />
                 <ScalarProperty Name="username" ColumnName="username" />

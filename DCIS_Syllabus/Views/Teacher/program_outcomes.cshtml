@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "program_outcomes";
+}
+
+<br />
+<br />
+<br />
+<h2>Program Outcomes</h2>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <form method="post" action="add_programOutcomes">
+        <table id="myTable" class=" table revision-list">
+
+            <thead>
+                <tr>
+                    <td>Code</td>
+                    <td>P.O Attribute</td>
+                    <td>Program Outcomes</td>
+                    <td>Core Values Activated</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-sm-1">
+                        <input type="text" name="code_PO" class="form-control" />
+                    </td>
+                    <td class="col-sm-1">
+                        <input type="text" name="attribute_PO" class="form-control" />
+                    </td>
+                    <td class="col-sm-1">
+                        <input type="text" name="outcomes_PO" class="form-control" />
+                    </td>
+                    <td class="col-sm-1">
+                        <input type="text" name="scientia" class="form-control" />
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+        </table>
+        <br />
+        <br />
+        <button type="submit" class="btn btn-default" value="Add Row">Add Row</button>
+    </form>
+</div>
+
+
+
+
+
+@{
+    ViewBag.Title = "program_outcomes";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+    var programOut = (List<DCIS_Syllabus.Models.ProgramOutcome>)ViewData["PO"];
+    var programOutCV = (List<DCIS_Syllabus.Models.CoreValuePO>)ViewData["POCoreValue"];
+
+}
+
+<br />
+<br />
+<br />
+<h2>Program Outcomes</h2>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <form method="post" action="add_programOutcomes">
+        <table id="myTable" class=" table revision-list">
+
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>P.O Attribute</th>
+                    <th>Program Outcomes</th>
+                    <th rowspan="3">Core Values Activated</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var po in programOut)
+                {
+                    var code = po.CodeO;
+                    <tr>
+                        @if(po.CodeO == code) {
+                            <td class="col-sm-1">
+                                @po.CodeO
+                            </td>
+                            <td class="col-sm-1">
+                                @po.AttributeName
+                            </td>
+                            <td class="col-sm-1">
+                                @po.OutcomeDesc
+                            </td>
+                        }
+                        <td class="col-sm-1">
+                            @foreach (var cv in programOutCV)
+                            {
+                                if(cv.CodeOutcome == code)
+                                {
+                                    @cv.CoreValueName
+                                    <br />
+                                }
+                                
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+        </table>
+        <br />
+        <br />
+        <button type="submit" class="btn btn-default" value="Add Row">Add Row</button>
+    </form>
+</div>
+
+
+
+
