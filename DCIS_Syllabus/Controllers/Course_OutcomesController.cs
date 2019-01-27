@@ -57,16 +57,49 @@ namespace DCIS_Syllabus.Controllers
             {
                 db.Course_Outcomes.Add(course_Outcomes);
                 db.SaveChanges();
-                /*var newCourse = new CourseOutcomesActiveValues();
-                newCourse.courses = db.Course_Outcomes.Where(i => i.courseOutcomes_ID == newID);
-                int id = newCourse.courses.ElementAt(1).courseOutcomes_ID;*/
+
                 db.Entry(course_Outcomes).GetDatabaseValues();
                 int newID = course_Outcomes.courseOutcomes_ID;
-                return RedirectToAction("CreateActiveValues", "Active_Values", new { id = newID});
+                int numOfPO = db.Program_Outcomes.Select(d => d.code_outcome).Distinct().Count();
+                int syllabusID = course_Outcomes.syllabus_FK;
+                PopulateModels(numOfPO, newID);
+
+                return RedirectToAction("ShowResults", "Active_Values", new { id = syllabusID});
             }
 
             ViewBag.syllabus_FK = new SelectList(db.Syllabus, "syllabus_ID", "title", course_Outcomes.syllabus_FK);
             return View(course_Outcomes);
+        }
+        
+
+        private void PopulateModels(int numOfPO, int courseOutcomes_ID)
+        {
+            //List<Active_Values> modelActiveModels = new List<Active_Values>();
+
+            string[] colName = { "S", "V", "D" };
+            int j = 1;
+            for (int i = 0; i < numOfPO; i++) //the first three does not have columnName
+            {
+                Active_Values av = new Active_Values();
+                if (i < 3)
+                {
+                    av.columnName = colName[i];
+                }
+                else
+                {
+                    av.columnName = j.ToString();
+                    
+                    j++;
+                }
+
+                av.programOutcomeAbbr = " ";
+                av.activeStatus = "false";
+                av.courseOutcomes_FK = courseOutcomes_ID;
+                db.Active_Values.Add(av);
+                db.SaveChanges();
+            }
+
+
         }
 
         // GET: Course_Outcomes/Edit/5

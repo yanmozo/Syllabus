@@ -22,7 +22,12 @@ namespace DCIS_Syllabus.Controllers
             return View(active_Values.ToList());
         }
 
-        public ActionResult ShowResults(Active_Values activeModel)//find all activeValues of courseID
+        /// <summary>
+        /// This looks for a specific course outcome with all active values d
+        /// </summary>
+        /// <param name="activeModel"></param>
+        /// <returns></returns>
+       /* public ActionResult ShowResults(Active_Values activeModel)//find all activeValues of courseID
         {
             var viewModel = new CourseOutcomesIndex
             {
@@ -34,6 +39,22 @@ namespace DCIS_Syllabus.Controllers
 
             ViewBag.course_ID = activeModel.courseOutcomes_FK;
             return View("ShowResults", viewModel);
+        }*/
+
+        public ActionResult ShowResults(int id)//find all activeValues of courseID
+        {
+            //if(id != null)
+            //{
+
+            var viewmodel1 = new CourseOutcomesIndex();
+            viewmodel1.courses = db.Course_Outcomes.Include(i => i.Active_Values)
+                          .Where(i => i.syllabus_FK == id);
+            //}
+            viewmodel1.activeValues = db.Active_Values
+                                    .Join(db.Course_Outcomes, a => a.courseOutcomes_FK, b => b.courseOutcomes_ID, 
+                                    (a, b) => a);
+            //ViewBag.course_ID = viewModel.ElementAt(1).activeValues.ElementAt(1).courseOutcomes_FK;     
+            return View("ShowResults", viewmodel1);
         }
 
         // GET: Active_Values/Details/5

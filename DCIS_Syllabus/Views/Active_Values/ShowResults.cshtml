@@ -5,20 +5,14 @@
 }
 
 <h2>ShowResults</h2>
-<p>
-    @ViewBag.course_ID;
-</p>
 
-<div>
-    @Html.ActionLink("Create New Core Values", "CreateActiveValues", new { id = @ViewBag.course_ID })
-</div>
+
+
 <table id="myTable" class=" table" border="1">
     <thead>
         <tr>
             <th colspan="1">Code</th>
             <th colspan="1">Course Outcomes</th>
-            <th colspan="3">Core Values Activated</th>
-            <th colspan="10">Program Outcomes (POs) Activated</th>
             <th colspan="1">Domain of Learning & Level</th>
         </tr>
         <tr>
@@ -35,38 +29,48 @@
             </td>
         </tr>
     </thead>
+
     <tr>
         @foreach (var item in Model.courses)
         {
-
+        <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.codeName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.outcomeDescription)
             </td>
-        }
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.domainLearningLVL)
+            </td>
+            }
 
-        @foreach (var activeItem in Model.activeValues)
-         {
-            <td>
-                @Html.DisplayFor(modelItem => activeItem.columnName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => activeItem.activeStatus)
-            </td>
-        }  
-        
-        @foreach(var item1 in Model.courses)
-        {
-            <td>
-                @Html.DisplayFor(modelItem => item1.domainLearningLVL)
-            </td>
-        }
+        </tr>
+
+            }
 
 
     </tr>
+    </table>
+<table>
+    <thead>
+        <tr>
+         <th colspan="3">Core Values Activated</th>
+         <th colspan="10">Program Outcomes (POs) Activated</th>
+        </tr>
+    </thead>
+    <tr>
+        @foreach (var activeItem in Model.activeValues)
+        {
+            
+            <td>
+                @Html.DisplayFor(modelItem => activeItem.columnName)
+            </td>
 
+
+        }
+    </tr>
 </table>
 
 
