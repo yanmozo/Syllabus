@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "EditProgramOutcomes";
+    var programOutCV = (List<DCIS_Syllabus.Models.CoreValuePO>)ViewData["ListOfCoreValues"];
+}
+
+<br />
+<br />
+
+<h2>EditProgramOutcomes</h2>
+<form method="post" action="UpdatedProgramDetails">
+
+    <div class="form-group">
+        <label>Code:</label>
+        <input type="text" name="code_prog" class="form-control" value="@ViewBag.code" required>
+    </div>
+
+    <div class="form-group">
+        <label>P.O Attribute:</label>
+        <input type="text" name="attribute_prog" class="form-control" value="@ViewBag.attrib" required>
+    </div>
+
+    <div class="form-group">
+        <label>Program Outcome:</label>
+        <textarea rows="4" cols="50" name="desc_prog" class="form-control" required>@ViewBag.desc </textarea>
+    </div>
+
+    
+        <input type="checkbox" name="_PO" value="Scientia"
+               @foreach (var cv in programOutCV)
+               {
+                   if (@cv.CoreValueName == "Scientia")
+                   {
+                       ViewBag.CheckS = "checked";
+                   }
+               }
+                @ViewBag.CheckS
+        > Scientia <br />
+        <input type="checkbox" name="_PO" value="Virtus" 
+               @foreach (var cv in programOutCV)
+               {
+                   if (@cv.CoreValueName == "Virtus")
+                   {
+                       ViewBag.CheckV = "checked";
+                   }
+               }
+               @ViewBag.CheckV
+        > Virtus <br />
+        <input type="checkbox" name="_PO" value="Devotio" 
+               @foreach (var cv in programOutCV)
+               {
+                   if (@cv.CoreValueName == "Devotio")
+                   {
+                       ViewBag.CheckD = "checked";
+                   }
+               }
+               @ViewBag.CheckD
+        > Devotio <br />
+
+    <button type="submit" class="btn btn-danger" value="Save Changes">Back</button>
+    <button type="submit" class="btn btn-success" value="Save Changes">Submit</button>
+</form>
+

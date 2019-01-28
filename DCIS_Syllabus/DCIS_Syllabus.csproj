@@ -374,6 +374,8 @@
     <Content Include="SyllabusManagement.edmx.diagram">
       <DependentUpon>SyllabusManagement.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Teacher\UpdateGradingSystem.cshtml" />
+    <Content Include="Views\Teacher\EditProgramOutcomes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

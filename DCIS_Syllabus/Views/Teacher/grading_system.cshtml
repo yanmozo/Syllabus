@@ -28,30 +28,37 @@
                     <th colspan="1">Requirements</th>
                     <th rowspan="1">Type</th>
                     <th colspan="1">Weight  </th>
+                    <th colspan="1">Action  </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in gradSys)
                 {
-                    <tr>
-                        <td class="col-sm-2">
-                            @item.requirementsName
-                        </td>
-                        <td class="col-sm-2">
-                            @item.typeOfGrading
-                        </td>
-                        <td class="col-sm-2">
-                            @item.weight%
-                        </td>
-                    </tr>
+                <tr>
+                    <td class="col-sm-2">
+                        @item.requirementsName
+                    </td>
+                    <td class="col-sm-2">
+                        @item.typeOfGrading
+                    </td>
+                    <td class="col-sm-2">
+                        @item.weight%
+                    </td>
+
+                    <td class="col-sm-2">
+                        <input type="hidden" name="id_gradingSystem" class="form-control" value="@item.gradingSystem_ID" />
+                        <a href="UpdateGradingSystem?gradingSystem_ID=@item.gradingSystem_ID"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="DeleteGradingSystem?gradingSystem_ID=@item.gradingSystem_ID"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
                 }
                     <tr>
                         <td class="col-sm-2" colspan="2">
                                 <center>Total</center>
                         </td>
 
-                        <td class="col-sm-2">
-                            <input type="text" id="styleText" name="weight" class="form-control" value="@ViewBag.Result" />
+                        <td class="col-sm-2" colspan="2">
+                            <center><input type="text" id="styleText" name="weight" class="form-control" value="@ViewBag.Result" /></center>
                         </td>
                     </tr>
             </tbody>
@@ -60,6 +67,7 @@
             </tfoot>
         </table>
         <button type="submit" class="btn btn-success" value="Add Row">Add Row</button>
+
 
     </form>
 
