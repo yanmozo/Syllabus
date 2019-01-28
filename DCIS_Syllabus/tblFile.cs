@@ -12,13 +12,12 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class tblFile
     {
-        public int role_ID { get; set; }
-        public int users_FK { get; set; }
-        public string position { get; set; }
-    
-        public virtual Role Role1 { get; set; }
-        public virtual Role Role2 { get; set; }
+        public int FileId { get; set; }
+        public string FileName { get; set; }
+        public string ContentType { get; set; }
+        public byte[] FileData { get; set; }
+        public int DeliverableId { get; set; }
     }
 }

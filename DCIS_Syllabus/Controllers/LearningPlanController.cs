@@ -117,7 +117,7 @@ namespace DCIS_Syllabus.Controllers
             }
             catch (Exception e)
             {
-                ViewBag.Result = "Not Saved";
+                ViewBag.Result = "Not Saved" + e.Message;
             }
 
 
