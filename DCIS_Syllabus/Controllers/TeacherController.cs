@@ -41,6 +41,18 @@ namespace DCIS_Syllabus.Controllers
             return View("Creation");
         }
 
+        public ActionResult populateCourses()
+        {
+
+            //List<Course_Information> listCourses = new List<Course_Information>();
+            var getData = (from courses in sm.Course_Information
+                           select courses);
+            
+
+            ViewData["ListofCourses"] = getData.ToList();
+            return View();
+        }
+
         public ActionResult ViewSyllabus()
         {
 
@@ -121,6 +133,11 @@ namespace DCIS_Syllabus.Controllers
 
         public ActionResult Creation()
         {
+            var getData = (from courses in sm.Course_Information
+                           select courses);
+
+
+            ViewData["ListofCourses"] = getData.ToList();
             return View();
         }
 
@@ -163,7 +180,7 @@ namespace DCIS_Syllabus.Controllers
             }
             catch (Exception e)
             {
-                ViewBag.Result = "Error! ";
+                ViewBag.Result = "Error! " + e.Message;
             }
             return RedirectToAction("grading_system", "Teacher");
         }
@@ -292,10 +309,13 @@ namespace DCIS_Syllabus.Controllers
 
             return View(); 
         }
+
+
         public ActionResult add_programOutcomes()
         {
-            return View(); 
+            return View();
         }
+
 
         public ActionResult insert_programOutcomes(FormCollection detailsPO)
         {
@@ -305,6 +325,7 @@ namespace DCIS_Syllabus.Controllers
             string attribute = detailsPO["attribute_programOutcomes"].ToString();
             string program_outcomes = detailsPO["desc_programOutcomes"].ToString();
             string[] arrCoreValues = coreValuesScientia.Split(',');
+            int[] id = new int[3];
             Syllabus_ManagementEntities4 db = new Syllabus_ManagementEntities4();
 
             Core_Value get_coreValue = new Core_Value(); //gets the core value table 
@@ -334,11 +355,10 @@ namespace DCIS_Syllabus.Controllers
                 }
                 catch (Exception e)
                 {
-                    ViewBag.Result = "Error! ";
+                    ViewBag.Result = "Error! " + e.Message;
                 }
             }
             return RedirectToAction("program_outcomes", "Teacher");
         }
-
     }
 }

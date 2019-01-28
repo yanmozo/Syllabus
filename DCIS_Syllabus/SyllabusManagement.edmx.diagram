@@ -55,6 +55,7 @@
         <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Software_Used" />
         <AssociationConnector Association="DCIS_DBModel.FK_Sources_Sources" />
         <AssociationConnector Association="DCIS_DBModel.made_by_fk_IN_Syllabus" />
+        <AssociationConnector Association="DCIS_DBModel.FK_Role_Role" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
