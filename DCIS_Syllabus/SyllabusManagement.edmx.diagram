@@ -4,69 +4,58 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="86d1d70f8e16443382479bdd94013cbf" Name="Diagram1">
-        <EntityTypeShape EntityType="DCIS_DBModel.Active_Values" Width="1.5" PointX="7.5" PointY="24.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Assessment_Criteria" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Bibliography" Width="1.5" PointX="5.25" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Book" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Class_Policy" Width="1.5" PointX="5.25" PointY="18.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Consultation" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Core_Value" Width="1.5" PointX="8" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Core_Value_Attribute" Width="1.5" PointX="10.25" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Course_Deliverable" Width="1.5" PointX="9.75" PointY="23" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Course_Information" Width="1.5" PointX="0.75" PointY="20.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Course_Outcome_Addressed" Width="1.5" PointX="7.5" PointY="27.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Course_Outcomes" Width="1.5" PointX="5.25" PointY="25.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Degree" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Deliverable" Width="1.5" PointX="10" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Grading_Rubrics" Width="1.5" PointX="7.5" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Grading_System" Width="1.5" PointX="5.25" PointY="30.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Grouping" Width="1.5" PointX="7.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Learning_Plan" Width="1.5" PointX="8.25" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Member" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Online_Sources" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Program_Educational_Objs" Width="1.5" PointX="11.25" PointY="19.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Program_Outcomes" Width="1.5" PointX="10.25" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Quarter" Width="1.5" PointX="6" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Revision" Width="1.5" PointX="5.25" PointY="43.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Revisions_Log" Width="1.5" PointX="7.5" PointY="44.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Role" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Software_Used" Width="1.5" PointX="5.25" PointY="47.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Source" Width="1.5" PointX="3" PointY="25.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Syllabu" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.tblFile" Width="1.5" PointX="9.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Topic_Discussion_Entry" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.Topic_Discussion_Reply" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DCIS_DBModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="DCIS_DBModel.FK_ActiveValues_TO_CourseOutcomes" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.assessment_Criteria_fk_IN_Grading_Rubrics" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Assessment_Criteria" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.FK_Bibliography_Sources" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Bibliography" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Class_Policy" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.FK_Consultation_Member" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.core_value_id_fk_IN_Program_EO" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.core_value_id_fk_IN_Program_Outcomes" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.coreValueFK_IN_CoreValueAttribute" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.FK_Course_Outcome_Addressed1" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.syllabus_FK_IN_Course_Deliverable" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.FK_Syllabus_Course_Information" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.FK_courseOutcomeAddressed_TO_courseOutcome" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.FK_CourseOutcome_TO_Syllabus" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.FK_Deliverable_Groupings" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.syllabus_FK_IN_Grading_System" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.quarter_id_fk_IN_Learning_Plan" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Learning_Plan" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Program_EO" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Program_Outcomes" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.revision_id_fk_IN_Revision_Log" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Revision" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.FK_Role_Role" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Software_Used" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.FK_Sources_Sources" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.FK_Topic_Discussion_Entry_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.FK_Topic_Discussion_Reply_Topic_Discussion_Entry" ManuallyRouted="false" />
-        <AssociationConnector Association="DCIS_DBModel.FK_Topic_Discussion_Reply_Users" ManuallyRouted="false" />
+      <Diagram DiagramId="5038713d76ae4dd39688ce80b6a9cdb4" Name="Diagram1">
+        <EntityTypeShape EntityType="DCIS_DBModel.Active_Values" Width="1.5" PointX="7.5" PointY="45.875" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Assessment_Criteria" Width="1.5" PointX="5.25" PointY="34.25" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Bibliography" Width="1.5" PointX="5.25" PointY="24.25" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Book" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Class_Policy" Width="1.5" PointX="5.25" PointY="12.625" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Core_Value" Width="1.5" PointX="6" PointY="9.25" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Core_Value_Attribute" Width="1.5" PointX="8.25" PointY="9.375" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Course_Deliverable" Width="1.5" PointX="9.75" PointY="34.375" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Course_Information" Width="1.5" PointX="0.75" PointY="17.5" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Course_Outcome_Addressed" Width="1.5" PointX="7.5" PointY="48.75" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Course_Outcomes" Width="1.5" PointX="5.25" PointY="47" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Grading_Rubrics" Width="1.5" PointX="7.5" PointY="35" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Grading_System" Width="1.5" PointX="5.25" PointY="15.125" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Learning_Plan" Width="1.5" PointX="8.25" PointY="25.5" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Online_Sources" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Program_Educational_Objs" Width="1.5" PointX="8.25" PointY="18" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Program_Outcomes" Width="1.5" PointX="8.25" PointY="21.875" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Quarter" Width="1.5" PointX="6" PointY="27.375" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Revision" Width="1.5" PointX="5.25" PointY="42.125" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Revisions_Log" Width="1.5" PointX="7.5" PointY="42.625" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Role" Width="1.5" PointX="3" PointY="44.375" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Software_Used" Width="1.5" PointX="5.25" PointY="20.75" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Source" Width="1.5" PointX="3" PointY="27.125" />
+        <EntityTypeShape EntityType="DCIS_DBModel.Syllabu" Width="1.5" PointX="3" PointY="20.75" />
+        <EntityTypeShape EntityType="DCIS_DBModel.User" Width="1.5" PointX="0.75" PointY="21.875" />
+        <AssociationConnector Association="DCIS_DBModel.FK_ActiveValues_TO_CourseOutcomes" />
+        <AssociationConnector Association="DCIS_DBModel.assessment_Criteria_fk_IN_Grading_Rubrics" />
+        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Assessment_Criteria" />
+        <AssociationConnector Association="DCIS_DBModel.FK_Bibliography_Sources" />
+        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Bibliography" />
+        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Class_Policy" />
+        <AssociationConnector Association="DCIS_DBModel.core_value_id_fk_IN_Program_EO" />
+        <AssociationConnector Association="DCIS_DBModel.core_value_id_fk_IN_Program_Outcomes" />
+        <AssociationConnector Association="DCIS_DBModel.coreValueFK_IN_CoreValueAttribute" />
+        <AssociationConnector Association="DCIS_DBModel.FK_Course_Outcome_Addressed1" />
+        <AssociationConnector Association="DCIS_DBModel.syllabus_FK_IN_Course_Deliverable" />
+        <AssociationConnector Association="DCIS_DBModel.FK_Syllabus_Course_Information" />
+        <AssociationConnector Association="DCIS_DBModel.FK_courseOutcomeAddressed_TO_courseOutcome" />
+        <AssociationConnector Association="DCIS_DBModel.FK_CourseOutcome_TO_Syllabus" />
+        <AssociationConnector Association="DCIS_DBModel.syllabus_FK_IN_Grading_System" />
+        <AssociationConnector Association="DCIS_DBModel.quarter_id_fk_IN_Learning_Plan" />
+        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Learning_Plan" />
+        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Program_EO" />
+        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Program_Outcomes" />
+        <AssociationConnector Association="DCIS_DBModel.revision_id_fk_IN_Revision_Log" />
+        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Revision" />
+        <AssociationConnector Association="DCIS_DBModel.FK_Role_TO_Users" />
+        <AssociationConnector Association="DCIS_DBModel.syllabus_id_fk_IN_Software_Used" />
+        <AssociationConnector Association="DCIS_DBModel.FK_Sources_Sources" />
+        <AssociationConnector Association="DCIS_DBModel.made_by_fk_IN_Syllabus" />
+        <AssociationConnector Association="DCIS_DBModel.FK_Role_Role" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

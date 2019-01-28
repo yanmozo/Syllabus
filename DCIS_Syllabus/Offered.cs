@@ -12,22 +12,27 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Topic_Discussion_Entry
+    public partial class Offered
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Topic_Discussion_Entry()
+        public Offered()
         {
-            this.Topic_Discussion_Reply = new HashSet<Topic_Discussion_Reply>();
+            this.Teachers = new HashSet<Teacher>();
+            this.Topics = new HashSet<Topic>();
         }
     
-        public int topic_discussion_entry_id { get; set; }
-        public int topic_id { get; set; }
-        public int user_id { get; set; }
-        public string time { get; set; }
-        public string topic_discussion_post { get; set; }
+        public int offered_id { get; set; }
+        public int start_time { get; set; }
+        public int end_time { get; set; }
+        public string day { get; set; }
+        public int course_id { get; set; }
+        public int room_id { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual Course Course { get; set; }
+        public virtual Room Room { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Topic_Discussion_Reply> Topic_Discussion_Reply { get; set; }
+        public virtual ICollection<Teacher> Teachers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Topic> Topics { get; set; }
     }
 }

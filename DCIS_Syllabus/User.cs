@@ -17,7 +17,12 @@ namespace DCIS_Syllabus
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            this.Groups = new HashSet<Group>();
+            this.Group_Discussion_Entry = new HashSet<Group_Discussion_Entry>();
+            this.Group_Discussion_Reply = new HashSet<Group_Discussion_Reply>();
+            this.Students_in_offered_courses = new HashSet<Students_in_offered_courses>();
             this.Topic_Discussion_Entry = new HashSet<Topic_Discussion_Entry>();
+            this.Users_In_Group = new HashSet<Users_In_Group>();
         }
     
         public int schoolId { get; set; }
@@ -39,7 +44,17 @@ namespace DCIS_Syllabus
         public string email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Group> Groups { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Group_Discussion_Entry> Group_Discussion_Entry { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Group_Discussion_Reply> Group_Discussion_Reply { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Students_in_offered_courses> Students_in_offered_courses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Topic_Discussion_Entry> Topic_Discussion_Entry { get; set; }
         public virtual Topic_Discussion_Reply Topic_Discussion_Reply { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Users_In_Group> Users_In_Group { get; set; }
     }
 }

@@ -12,22 +12,20 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Topic_Discussion_Entry
+    public partial class Teacher
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Topic_Discussion_Entry()
+        public Teacher()
         {
-            this.Topic_Discussion_Reply = new HashSet<Topic_Discussion_Reply>();
+            this.Students_in_offered_courses = new HashSet<Students_in_offered_courses>();
         }
     
-        public int topic_discussion_entry_id { get; set; }
-        public int topic_id { get; set; }
+        public int teacher_id { get; set; }
+        public int offered_id { get; set; }
         public int user_id { get; set; }
-        public string time { get; set; }
-        public string topic_discussion_post { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual Offered Offered { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Topic_Discussion_Reply> Topic_Discussion_Reply { get; set; }
+        public virtual ICollection<Students_in_offered_courses> Students_in_offered_courses { get; set; }
     }
 }
