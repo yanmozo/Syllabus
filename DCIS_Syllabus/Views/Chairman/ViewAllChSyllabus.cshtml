@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "ViewAllChSyllabus";
+    var syllabusList = (List<Syllabu>)ViewData["ListofSyllabus_C"];
 }
 
 
@@ -28,6 +29,27 @@
             </thead>
             <tbody>
                 @* Create a loop here for the list of all syllabus *@
+                @{ 
+                    foreach(var item in syllabusList)
+                    {
+                        <tr class="clickable-row" data-href="ViewSyllabus?SyllabusID=@item.syllabus_ID" title="Click to View">
+                            <td>@item.course_FK</td>
+                            <td>@item.title</td>
+                            if(@item.status == "draft"){
+                                <td class="text-center"><span class="label label-default"></span>Draft</td>
+                            }
+                            else if (@item.status == "needs_editing") 
+                            {
+                                <td class="text-center"><span class="label label-warning"></span>Needs Approval</td>
+                            }
+                            else if (@item.status == "final")
+                            {
+                                <td class="text-center"><span class="label label-success"></span>Ready to Print</td>
+                            }
+                            
+                        </tr>
+                    }
+                }
                 <tr class="clickable-row" data-href="ViewSyllabus" title="Click to view">
                     <td>IT5008</td>
                     <td>Platform Technologies</td>

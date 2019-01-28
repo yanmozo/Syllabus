@@ -10,9 +10,9 @@
             <PropertyRef Name="activeValues_ID" />
           </Key>
           <Property Name="activeValues_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="columnName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="programOutcomeAbbr" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="activeStatus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="columnName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="programOutcomeAbbr" Type="varchar" MaxLength="50" />
+          <Property Name="activeStatus" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="courseOutcomes_FK" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Assessment_Criteria">
@@ -252,17 +252,6 @@
           <Property Name="academicPeriod" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="user_ID" />
-          </Key>
-          <Property Name="user_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <Association Name="assessment_Criteria_fk_IN_Grading_Rubrics">
           <End Role="Assessment_Criteria" Type="Self.Assessment_Criteria" Multiplicity="1" />
           <End Role="Grading_Rubrics" Type="Self.Grading_Rubrics" Multiplicity="*" />
@@ -371,15 +360,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Role_TO_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+        <Association Name="FK_Role_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Role1" Type="Self.Role" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="user_ID" />
+            <Principal Role="Role">
+              <PropertyRef Name="role_ID" />
             </Principal>
-            <Dependent Role="Role">
-              <PropertyRef Name="users_FK" />
+            <Dependent Role="Role1">
+              <PropertyRef Name="role_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -404,18 +393,6 @@
             </Principal>
             <Dependent Role="Syllabus">
               <PropertyRef Name="course_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="made_by_fk_IN_Syllabus">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="user_ID" />
-            </Principal>
-            <Dependent Role="Syllabus">
-              <PropertyRef Name="madeBy_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -588,7 +565,6 @@
           <EntitySet Name="Software_Used" EntityType="Self.Software_Used" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sources" EntityType="Self.Sources" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Syllabus" EntityType="Self.Syllabus" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="assessment_Criteria_fk_IN_Grading_Rubrics" Association="Self.assessment_Criteria_fk_IN_Grading_Rubrics">
             <End Role="Assessment_Criteria" EntitySet="Assessment_Criteria" />
             <End Role="Grading_Rubrics" EntitySet="Grading_Rubrics" />
@@ -625,9 +601,9 @@
             <End Role="Course_Outcomes" EntitySet="Course_Outcomes" />
             <End Role="Course_Outcome_Addressed" EntitySet="Course_Outcome_Addressed" />
           </AssociationSet>
-          <AssociationSet Name="FK_Role_TO_Users" Association="Self.FK_Role_TO_Users">
-            <End Role="Users" EntitySet="Users" />
+          <AssociationSet Name="FK_Role_Role" Association="Self.FK_Role_Role">
             <End Role="Role" EntitySet="Role" />
+            <End Role="Role1" EntitySet="Role" />
           </AssociationSet>
           <AssociationSet Name="FK_Sources_Sources" Association="Self.FK_Sources_Sources">
             <End Role="Sources" EntitySet="Sources" />
@@ -635,10 +611,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Syllabus_Course_Information" Association="Self.FK_Syllabus_Course_Information">
             <End Role="Course_Information" EntitySet="Course_Information" />
-            <End Role="Syllabus" EntitySet="Syllabus" />
-          </AssociationSet>
-          <AssociationSet Name="made_by_fk_IN_Syllabus" Association="Self.made_by_fk_IN_Syllabus">
-            <End Role="Users" EntitySet="Users" />
             <End Role="Syllabus" EntitySet="Syllabus" />
           </AssociationSet>
           <AssociationSet Name="quarter_id_fk_IN_Learning_Plan" Association="Self.quarter_id_fk_IN_Learning_Plan">
@@ -820,15 +792,19 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Syllabu" EntitySet="Syllabus" />
           </AssociationSet>
+          <AssociationSet Name="FK_Role_Role" Association="DCIS_DBModel.FK_Role_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Role1" EntitySet="Roles" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Active_Values">
           <Key>
             <PropertyRef Name="activeValues_ID" />
           </Key>
           <Property Name="activeValues_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="columnName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="programOutcomeAbbr" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="activeStatus" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="columnName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="programOutcomeAbbr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activeStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="courseOutcomes_FK" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Course_Outcomes" Relationship="DCIS_DBModel.FK_ActiveValues_TO_CourseOutcomes" FromRole="Active_Values" ToRole="Course_Outcomes" />
         </EntityType>
@@ -1069,6 +1045,8 @@
           <Property Name="users_FK" Type="Int32" Nullable="false" />
           <Property Name="position" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="DCIS_DBModel.FK_Role_TO_Users" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="Role1" Relationship="DCIS_DBModel.FK_Role_Role" FromRole="Role" ToRole="Role1" />
+          <NavigationProperty Name="Role2" Relationship="DCIS_DBModel.FK_Role_Role" FromRole="Role1" ToRole="Role" />
         </EntityType>
         <EntityType Name="Software_Used">
           <Key>
@@ -1429,6 +1407,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Role_Role">
+          <End Type="DCIS_DBModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="DCIS_DBModel.Role" Role="Role1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="role_ID" />
+            </Principal>
+            <Dependent Role="Role1">
+              <PropertyRef Name="role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1703,18 +1693,6 @@
                 <ScalarProperty Name="course_FK" ColumnName="course_FK" />
                 <ScalarProperty Name="madeBy_FK" ColumnName="madeBy_FK" />
                 <ScalarProperty Name="syllabus_ID" ColumnName="syllabus_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="DCIS_DBModel.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="lastName" ColumnName="lastName" />
-                <ScalarProperty Name="firstName" ColumnName="firstName" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
