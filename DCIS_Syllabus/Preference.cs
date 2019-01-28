@@ -12,13 +12,12 @@ namespace DCIS_Syllabus
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Preference
     {
-        public int role_ID { get; set; }
-        public int users_FK { get; set; }
-        public string position { get; set; }
-    
-        public virtual Role Role1 { get; set; }
-        public virtual Role Role2 { get; set; }
+        public int preference_id { get; set; }
+        public int start_time { get; set; }
+        public int end_time { get; set; }
+        public string day { get; set; }
+        public int user_id { get; set; }
     }
 }

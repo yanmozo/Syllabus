@@ -165,6 +165,9 @@
     <Compile Include="Class_Policy.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
+    <Compile Include="Consultation.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ChairmanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstGradAttrbController.cs" />
@@ -176,6 +179,9 @@
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Core_Value_Attribute.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Course.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Course_Deliverable.cs">
@@ -190,6 +196,15 @@
     <Compile Include="Course_Outcome_Addressed.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
+    <Compile Include="Degree.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Deliverable.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Expertise.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -199,14 +214,35 @@
     <Compile Include="Grading_System.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
+    <Compile Include="Group.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Grouping.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Group_Discussion_Entry.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Group_Discussion_Reply.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
     <Compile Include="Learning_Plan.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Member.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CoreValue.cs" />
     <Compile Include="Models\CoreValuePO.cs" />
     <Compile Include="Models\LearningPlan.cs" />
     <Compile Include="Models\ProgramOutcome.cs" />
+    <Compile Include="Offered.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
     <Compile Include="Online_Sources.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Preference.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Program_Educational_Objs.cs">
@@ -228,10 +264,16 @@
     <Compile Include="Role.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
+    <Compile Include="Room.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
     <Compile Include="Software_Used.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Source.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Students_in_offered_courses.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
     <Compile Include="Syllabu.cs">
@@ -252,7 +294,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Syllabus.edmx</DependentUpon>
     </Compile>
+    <Compile Include="tblFile.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Topic.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Topic_Discussion_Entry.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Topic_Discussion_Reply.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
+      <DependentUpon>Syllabus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users_In_Group.cs">
       <DependentUpon>Syllabus.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -342,6 +402,9 @@
     <Content Include="Views\Teacher\insert_course_outcomes.cshtml" />
     <Content Include="Views\LearningPlan\LearningPlanUpdate.cshtml" />
     <Content Include="Views\SoftwareUsed\SoftwareUsedUpdate.cshtml" />
+    <Content Include="Views\Teacher\program_outcomes.cshtml" />
+    <Content Include="Views\Teacher\add_grading.cshtml" />
+    <Content Include="Views\InstGradAttrb\InstGradAttrbViewTC.cshtml" />
     <EntityDeploy Include="Syllabus.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Syllabus.Designer.cs</LastGenOutput>
@@ -349,8 +412,6 @@
     <Content Include="Syllabus.edmx.diagram">
       <DependentUpon>Syllabus.edmx</DependentUpon>
     </Content>
-    <Content Include="Views\Teacher\program_outcomes.cshtml" />
-    <Content Include="Views\Teacher\add_grading.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
