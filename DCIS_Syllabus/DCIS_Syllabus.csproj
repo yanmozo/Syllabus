@@ -203,7 +203,9 @@
       <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CoreValue.cs" />
+    <Compile Include="Models\CoreValuePO.cs" />
     <Compile Include="Models\LearningPlan.cs" />
+    <Compile Include="Models\ProgramOutcome.cs" />
     <Compile Include="Online_Sources.cs">
       <DependentUpon>SyllabusManagement.tt</DependentUpon>
     </Compile>
