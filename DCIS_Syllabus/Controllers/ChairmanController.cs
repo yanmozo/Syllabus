@@ -11,6 +11,12 @@ namespace DCIS_Syllabus.Controllers
         // GET: Chairman
         public ActionResult ViewAllChSyllabus()
         {
+            Syllabus_ManagementEntities4 sm = new Syllabus_ManagementEntities4();
+            Syllabu s = new Syllabu();
+
+            var syllabusList = (from u in sm.Syllabus
+                                select u);
+            ViewData["ListofSyllabus_C"] = syllabusList.ToList();
             return View();
         }
 

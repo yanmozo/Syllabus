@@ -1,0 +1,76 @@
+﻿@model DCIS_Syllabus.ViewModel.CourseOutcomesIndex
+@{
+    ViewBag.Title = "ShowResults";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+}
+
+<h2>ShowResults</h2>
+
+
+
+<table id="myTable" class=" table" border="1">
+    <thead>
+        <tr>
+            <th colspan="1">Code</th>
+            <th colspan="1">Course Outcomes</th>
+            <th colspan="1">Domain of Learning & Level</th>
+        </tr>
+        <tr>
+            <td><p>Upon completion</p></td>
+            <td></td>
+            <td>
+                S
+            </td>
+            <td>
+                V
+            </td>
+            <td>
+                D
+            </td>
+        </tr>
+    </thead>
+
+    <tr>
+        @foreach (var item in Model.courses)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.outcomeDescription)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.domainLearningLVL)
+            </td>
+            }
+
+        </tr>
+
+            }
+
+
+    </tr>
+    </table>
+<table>
+    <thead>
+        <tr>
+         <th colspan="3">Core Values Activated</th>
+         <th colspan="10">Program Outcomes (POs) Activated</th>
+        </tr>
+    </thead>
+    <tr>
+        @foreach (var activeItem in Model.activeValues)
+        {
+            
+            <td>
+                @Html.DisplayFor(modelItem => activeItem.columnName)
+            </td>
+
+
+        }
+    </tr>
+</table>
+
+

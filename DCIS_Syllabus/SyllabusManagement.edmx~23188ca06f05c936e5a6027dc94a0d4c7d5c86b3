@@ -1,0 +1,1745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Syllabus_ManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Active_Values">
+          <Key>
+            <PropertyRef Name="activeValues_ID" />
+          </Key>
+          <Property Name="activeValues_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="columnName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="programOutcomeAbbr" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="activeStatus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="courseOutcomes_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Assessment_Criteria">
+          <Key>
+            <PropertyRef Name="assesmentCriteria_ID" />
+          </Key>
+          <Property Name="assesmentCriteria_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="syllabus_FK" Type="int" Nullable="false" />
+          <Property Name="criteriaName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="highestPoints" Type="int" Nullable="false" />
+          <Property Name="poor_pts" Type="int" Nullable="false" />
+          <Property Name="poor_desc" Type="varchar(max)" Nullable="false" />
+          <Property Name="fair_pts" Type="int" Nullable="false" />
+          <Property Name="fair_desc" Type="varchar(max)" Nullable="false" />
+          <Property Name="satisfactory_pts" Type="int" Nullable="false" />
+          <Property Name="satisfactory_desc" Type="varchar(max)" Nullable="false" />
+          <Property Name="excellent_pts" Type="int" Nullable="false" />
+          <Property Name="excellent_desc" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bibliography">
+          <Key>
+            <PropertyRef Name="bibliography_id" />
+          </Key>
+          <Property Name="bibliography_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="syllabus_id_fk" Type="int" Nullable="false" />
+          <Property Name="sources_fk" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="book_id" />
+          </Key>
+          <Property Name="book_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="course_fk" Type="int" Nullable="false" />
+          <Property Name="callNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="author" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class_Policy">
+          <Key>
+            <PropertyRef Name="policy_ID" />
+          </Key>
+          <Property Name="policy_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="syllabus_FK" Type="int" Nullable="false" />
+          <Property Name="policyItem" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Core_Value">
+          <Key>
+            <PropertyRef Name="coreValue_ID" />
+          </Key>
+          <Property Name="coreValue_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Core_Value_Attribute">
+          <Key>
+            <PropertyRef Name="coreValueAttrib_ID" />
+          </Key>
+          <Property Name="coreValueAttrib_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="coreValue_FK" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_Deliverable">
+          <Key>
+            <PropertyRef Name="courseDeliverables_ID" />
+          </Key>
+          <Property Name="courseDeliverables_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="courseOutcomeAddressed_FK" Type="int" Nullable="false" />
+          <Property Name="syllabus_FK" Type="int" Nullable="false" />
+          <Property Name="outputName" Type="varchar(max)" Nullable="false" />
+          <Property Name="output_description" Type="varchar(max)" Nullable="false" />
+          <Property Name="assessmentTypeA" Type="varchar(max)" Nullable="false" />
+          <Property Name="assessmentTypeB" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_Information">
+          <Key>
+            <PropertyRef Name="course_ID" />
+          </Key>
+          <Property Name="course_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="courseCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="credits" Type="varchar(max)" Nullable="false" />
+          <Property Name="equivalent" Type="varchar(max)" Nullable="false" />
+          <Property Name="preRequisites" Type="varchar(max)" Nullable="false" />
+          <Property Name="coRequisites" Type="varchar(max)" Nullable="false" />
+          <Property Name="term" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="room" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="day" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_Outcome_Addressed">
+          <Key>
+            <PropertyRef Name="courseOutcomeAddressed_ID" />
+          </Key>
+          <Property Name="courseOutcomeAddressed_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="courseOutcome_FK" Type="int" Nullable="false" />
+          <Property Name="addressedCO_Num" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_Outcomes">
+          <Key>
+            <PropertyRef Name="courseOutcomes_ID" />
+          </Key>
+          <Property Name="courseOutcomes_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="syllabus_FK" Type="int" Nullable="false" />
+          <Property Name="codeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="outcomeDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="domainLearningLVL" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grading_Rubrics">
+          <Key>
+            <PropertyRef Name="gradingRubrics_ID" />
+          </Key>
+          <Property Name="gradingRubrics_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="assessmentCriteria_FK" Type="int" Nullable="false" />
+          <Property Name="rubricStatus" Type="varchar(max)" Nullable="false" />
+          <Property Name="points" Type="varchar(max)" Nullable="false" />
+          <Property Name="description" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grading_System">
+          <Key>
+            <PropertyRef Name="gradingSystem_ID" />
+          </Key>
+          <Property Name="gradingSystem_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="syllabus_FK" Type="int" Nullable="false" />
+          <Property Name="typeOfGrading" Type="varchar(max)" Nullable="false" />
+          <Property Name="weight" Type="float" Nullable="false" />
+          <Property Name="requirementsName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Learning_Plan">
+          <Key>
+            <PropertyRef Name="learning_ID" />
+          </Key>
+          <Property Name="learning_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="courseOutcome_FK" Type="int" />
+          <Property Name="course_id_fk" Type="int" Nullable="false" />
+          <Property Name="quarter_FK" Type="int" Nullable="false" />
+          <Property Name="syllabus_FK" Type="int" Nullable="false" />
+          <Property Name="learningOutcomeDesc" Type="varchar(max)" />
+          <Property Name="hours" Type="int" Nullable="false" />
+          <Property Name="topics" Type="varchar(max)" Nullable="false" />
+          <Property Name="teacherActivity" Type="varchar(max)" />
+          <Property Name="learnerActivity" Type="varchar(max)" />
+          <Property Name="assessmentActivity" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Online_Sources">
+          <Key>
+            <PropertyRef Name="onlineSource_ID" />
+          </Key>
+          <Property Name="onlineSource_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="course_FK" Type="int" Nullable="false" />
+          <Property Name="webpageName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="weblink" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Program_Educational_Objs">
+          <Key>
+            <PropertyRef Name="programEduOutcome_ID" />
+          </Key>
+          <Property Name="programEduOutcome_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="coreValue_FK" Type="int" Nullable="false" />
+          <Property Name="syllabus_FK" Type="int" Nullable="false" />
+          <Property Name="objectives" Type="varchar(max)" Nullable="false" />
+          <Property Name="codeName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Program_Outcomes">
+          <Key>
+            <PropertyRef Name="programOutcomes_ID" />
+          </Key>
+          <Property Name="programOutcomes_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="coreValue_FK" Type="int" Nullable="false" />
+          <Property Name="syllabus_FK" Type="int" Nullable="false" />
+          <Property Name="attributeName" Type="varchar(max)" Nullable="false" />
+          <Property Name="outcomeDesc" Type="varchar(max)" Nullable="false" />
+          <Property Name="code_outcome" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quarter">
+          <Key>
+            <PropertyRef Name="quarter_ID" />
+          </Key>
+          <Property Name="quarter_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="quarter_name" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Revision">
+          <Key>
+            <PropertyRef Name="revision_ID" />
+          </Key>
+          <Property Name="revision_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="syllabus_FK" Type="int" Nullable="false" />
+          <Property Name="versionNum" Type="float" Nullable="false" />
+          <Property Name="fieldsRevised" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="dateRevised" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="approvedDate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="revisedBy" Type="varchar" MaxLength="50" />
+          <Property Name="approvedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Revisions_Log">
+          <Key>
+            <PropertyRef Name="log_ID" />
+          </Key>
+          <Property Name="log_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="revision_id_fk" Type="int" Nullable="false" />
+          <Property Name="who_revised" Type="int" Nullable="false" />
+          <Property Name="who_next" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="role_ID" />
+          </Key>
+          <Property Name="role_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="users_FK" Type="int" Nullable="false" />
+          <Property Name="position" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Software_Used">
+          <Key>
+            <PropertyRef Name="softwareUsed_ID" />
+          </Key>
+          <Property Name="softwareUsed_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="course_FK" Type="int" Nullable="false" />
+          <Property Name="syllabus_FK" Type="int" Nullable="false" />
+          <Property Name="software" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sources">
+          <Key>
+            <PropertyRef Name="sources_ID" />
+          </Key>
+          <Property Name="sources_ID" Type="int" Nullable="false" />
+          <Property Name="type_of_resource" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="resource_fk" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Syllabus">
+          <Key>
+            <PropertyRef Name="syllabus_ID" />
+          </Key>
+          <Property Name="syllabus_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="madeBy_FK" Type="int" Nullable="false" />
+          <Property Name="course_FK" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="academicYear" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="academicPeriod" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="assessment_Criteria_fk_IN_Grading_Rubrics">
+          <End Role="Assessment_Criteria" Type="Self.Assessment_Criteria" Multiplicity="1" />
+          <End Role="Grading_Rubrics" Type="Self.Grading_Rubrics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment_Criteria">
+              <PropertyRef Name="assesmentCriteria_ID" />
+            </Principal>
+            <Dependent Role="Grading_Rubrics">
+              <PropertyRef Name="assessmentCriteria_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="core_value_id_fk_IN_Program_EO">
+          <End Role="Core_Value" Type="Self.Core_Value" Multiplicity="1" />
+          <End Role="Program_Educational_Objs" Type="Self.Program_Educational_Objs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Core_Value">
+              <PropertyRef Name="coreValue_ID" />
+            </Principal>
+            <Dependent Role="Program_Educational_Objs">
+              <PropertyRef Name="coreValue_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="core_value_id_fk_IN_Program_Outcomes">
+          <End Role="Core_Value" Type="Self.Core_Value" Multiplicity="1" />
+          <End Role="Program_Outcomes" Type="Self.Program_Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Core_Value">
+              <PropertyRef Name="coreValue_ID" />
+            </Principal>
+            <Dependent Role="Program_Outcomes">
+              <PropertyRef Name="coreValue_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="coreValueFK_IN_CoreValueAttribute">
+          <End Role="Core_Value" Type="Self.Core_Value" Multiplicity="1" />
+          <End Role="Core_Value_Attribute" Type="Self.Core_Value_Attribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Core_Value">
+              <PropertyRef Name="coreValue_ID" />
+            </Principal>
+            <Dependent Role="Core_Value_Attribute">
+              <PropertyRef Name="coreValue_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActiveValues_TO_CourseOutcomes">
+          <End Role="Course_Outcomes" Type="Self.Course_Outcomes" Multiplicity="1" />
+          <End Role="Active_Values" Type="Self.Active_Values" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_Outcomes">
+              <PropertyRef Name="courseOutcomes_ID" />
+            </Principal>
+            <Dependent Role="Active_Values">
+              <PropertyRef Name="courseOutcomes_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bibliography_Sources">
+          <End Role="Sources" Type="Self.Sources" Multiplicity="1" />
+          <End Role="Bibliography" Type="Self.Bibliography" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sources">
+              <PropertyRef Name="sources_ID" />
+            </Principal>
+            <Dependent Role="Bibliography">
+              <PropertyRef Name="sources_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_Outcome_Addressed1">
+          <End Role="Course_Outcome_Addressed" Type="Self.Course_Outcome_Addressed" Multiplicity="1" />
+          <End Role="Course_Deliverable" Type="Self.Course_Deliverable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_Outcome_Addressed">
+              <PropertyRef Name="courseOutcomeAddressed_ID" />
+            </Principal>
+            <Dependent Role="Course_Deliverable">
+              <PropertyRef Name="courseOutcomeAddressed_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseOutcome_TO_Syllabus">
+          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="1" />
+          <End Role="Course_Outcomes" Type="Self.Course_Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Course_Outcomes">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_courseOutcomeAddressed_TO_courseOutcome">
+          <End Role="Course_Outcomes" Type="Self.Course_Outcomes" Multiplicity="1" />
+          <End Role="Course_Outcome_Addressed" Type="Self.Course_Outcome_Addressed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_Outcomes">
+              <PropertyRef Name="courseOutcomes_ID" />
+            </Principal>
+            <Dependent Role="Course_Outcome_Addressed">
+              <PropertyRef Name="courseOutcome_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_TO_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="users_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sources_Sources">
+          <End Role="Sources" Type="Self.Sources" Multiplicity="1" />
+          <End Role="Sources1" Type="Self.Sources" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Sources">
+              <PropertyRef Name="sources_ID" />
+            </Principal>
+            <Dependent Role="Sources1">
+              <PropertyRef Name="sources_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Syllabus_Course_Information">
+          <End Role="Course_Information" Type="Self.Course_Information" Multiplicity="1" />
+          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_Information">
+              <PropertyRef Name="course_ID" />
+            </Principal>
+            <Dependent Role="Syllabus">
+              <PropertyRef Name="course_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="made_by_fk_IN_Syllabus">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="Syllabus">
+              <PropertyRef Name="madeBy_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quarter_id_fk_IN_Learning_Plan">
+          <End Role="Quarter" Type="Self.Quarter" Multiplicity="1" />
+          <End Role="Learning_Plan" Type="Self.Learning_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quarter">
+              <PropertyRef Name="quarter_ID" />
+            </Principal>
+            <Dependent Role="Learning_Plan">
+              <PropertyRef Name="quarter_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="revision_id_fk_IN_Revision_Log">
+          <End Role="Revision" Type="Self.Revision" Multiplicity="1" />
+          <End Role="Revisions_Log" Type="Self.Revisions_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Revision">
+              <PropertyRef Name="revision_ID" />
+            </Principal>
+            <Dependent Role="Revisions_Log">
+              <PropertyRef Name="revision_id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_FK_IN_Course_Deliverable">
+          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="1" />
+          <End Role="Course_Deliverable" Type="Self.Course_Deliverable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Course_Deliverable">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_FK_IN_Grading_System">
+          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="1" />
+          <End Role="Grading_System" Type="Self.Grading_System" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Grading_System">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Assessment_Criteria">
+          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="1" />
+          <End Role="Assessment_Criteria" Type="Self.Assessment_Criteria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Assessment_Criteria">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Bibliography">
+          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="1" />
+          <End Role="Bibliography" Type="Self.Bibliography" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Bibliography">
+              <PropertyRef Name="syllabus_id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Class_Policy">
+          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="1" />
+          <End Role="Class_Policy" Type="Self.Class_Policy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Class_Policy">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Learning_Plan">
+          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="1" />
+          <End Role="Learning_Plan" Type="Self.Learning_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Learning_Plan">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Program_EO">
+          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="1" />
+          <End Role="Program_Educational_Objs" Type="Self.Program_Educational_Objs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Program_Educational_Objs">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Program_Outcomes">
+          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="1" />
+          <End Role="Program_Outcomes" Type="Self.Program_Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Program_Outcomes">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Revision">
+          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="1" />
+          <End Role="Revision" Type="Self.Revision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Revision">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Software_Used">
+          <End Role="Syllabus" Type="Self.Syllabus" Multiplicity="1" />
+          <End Role="Software_Used" Type="Self.Software_Used" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Software_Used">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Syllabus_ManagementModelStoreContainer">
+          <EntitySet Name="Active_Values" EntityType="Self.Active_Values" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Assessment_Criteria" EntityType="Self.Assessment_Criteria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bibliography" EntityType="Self.Bibliography" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class_Policy" EntityType="Self.Class_Policy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Core_Value" EntityType="Self.Core_Value" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Core_Value_Attribute" EntityType="Self.Core_Value_Attribute" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_Deliverable" EntityType="Self.Course_Deliverable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_Information" EntityType="Self.Course_Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_Outcome_Addressed" EntityType="Self.Course_Outcome_Addressed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_Outcomes" EntityType="Self.Course_Outcomes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grading_Rubrics" EntityType="Self.Grading_Rubrics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grading_System" EntityType="Self.Grading_System" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Learning_Plan" EntityType="Self.Learning_Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Online_Sources" EntityType="Self.Online_Sources" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Program_Educational_Objs" EntityType="Self.Program_Educational_Objs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Program_Outcomes" EntityType="Self.Program_Outcomes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quarter" EntityType="Self.Quarter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Revision" EntityType="Self.Revision" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Revisions_Log" EntityType="Self.Revisions_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Software_Used" EntityType="Self.Software_Used" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sources" EntityType="Self.Sources" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Syllabus" EntityType="Self.Syllabus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="assessment_Criteria_fk_IN_Grading_Rubrics" Association="Self.assessment_Criteria_fk_IN_Grading_Rubrics">
+            <End Role="Assessment_Criteria" EntitySet="Assessment_Criteria" />
+            <End Role="Grading_Rubrics" EntitySet="Grading_Rubrics" />
+          </AssociationSet>
+          <AssociationSet Name="core_value_id_fk_IN_Program_EO" Association="Self.core_value_id_fk_IN_Program_EO">
+            <End Role="Core_Value" EntitySet="Core_Value" />
+            <End Role="Program_Educational_Objs" EntitySet="Program_Educational_Objs" />
+          </AssociationSet>
+          <AssociationSet Name="core_value_id_fk_IN_Program_Outcomes" Association="Self.core_value_id_fk_IN_Program_Outcomes">
+            <End Role="Core_Value" EntitySet="Core_Value" />
+            <End Role="Program_Outcomes" EntitySet="Program_Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="coreValueFK_IN_CoreValueAttribute" Association="Self.coreValueFK_IN_CoreValueAttribute">
+            <End Role="Core_Value" EntitySet="Core_Value" />
+            <End Role="Core_Value_Attribute" EntitySet="Core_Value_Attribute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActiveValues_TO_CourseOutcomes" Association="Self.FK_ActiveValues_TO_CourseOutcomes">
+            <End Role="Course_Outcomes" EntitySet="Course_Outcomes" />
+            <End Role="Active_Values" EntitySet="Active_Values" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bibliography_Sources" Association="Self.FK_Bibliography_Sources">
+            <End Role="Sources" EntitySet="Sources" />
+            <End Role="Bibliography" EntitySet="Bibliography" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_Outcome_Addressed1" Association="Self.FK_Course_Outcome_Addressed1">
+            <End Role="Course_Outcome_Addressed" EntitySet="Course_Outcome_Addressed" />
+            <End Role="Course_Deliverable" EntitySet="Course_Deliverable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseOutcome_TO_Syllabus" Association="Self.FK_CourseOutcome_TO_Syllabus">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Course_Outcomes" EntitySet="Course_Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_courseOutcomeAddressed_TO_courseOutcome" Association="Self.FK_courseOutcomeAddressed_TO_courseOutcome">
+            <End Role="Course_Outcomes" EntitySet="Course_Outcomes" />
+            <End Role="Course_Outcome_Addressed" EntitySet="Course_Outcome_Addressed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_TO_Users" Association="Self.FK_Role_TO_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sources_Sources" Association="Self.FK_Sources_Sources">
+            <End Role="Sources" EntitySet="Sources" />
+            <End Role="Sources1" EntitySet="Sources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Syllabus_Course_Information" Association="Self.FK_Syllabus_Course_Information">
+            <End Role="Course_Information" EntitySet="Course_Information" />
+            <End Role="Syllabus" EntitySet="Syllabus" />
+          </AssociationSet>
+          <AssociationSet Name="made_by_fk_IN_Syllabus" Association="Self.made_by_fk_IN_Syllabus">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Syllabus" EntitySet="Syllabus" />
+          </AssociationSet>
+          <AssociationSet Name="quarter_id_fk_IN_Learning_Plan" Association="Self.quarter_id_fk_IN_Learning_Plan">
+            <End Role="Quarter" EntitySet="Quarter" />
+            <End Role="Learning_Plan" EntitySet="Learning_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="revision_id_fk_IN_Revision_Log" Association="Self.revision_id_fk_IN_Revision_Log">
+            <End Role="Revision" EntitySet="Revision" />
+            <End Role="Revisions_Log" EntitySet="Revisions_Log" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_FK_IN_Course_Deliverable" Association="Self.syllabus_FK_IN_Course_Deliverable">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Course_Deliverable" EntitySet="Course_Deliverable" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_FK_IN_Grading_System" Association="Self.syllabus_FK_IN_Grading_System">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Grading_System" EntitySet="Grading_System" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Assessment_Criteria" Association="Self.syllabus_id_fk_IN_Assessment_Criteria">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Assessment_Criteria" EntitySet="Assessment_Criteria" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Bibliography" Association="Self.syllabus_id_fk_IN_Bibliography">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Bibliography" EntitySet="Bibliography" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Class_Policy" Association="Self.syllabus_id_fk_IN_Class_Policy">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Class_Policy" EntitySet="Class_Policy" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Learning_Plan" Association="Self.syllabus_id_fk_IN_Learning_Plan">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Learning_Plan" EntitySet="Learning_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Program_EO" Association="Self.syllabus_id_fk_IN_Program_EO">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Program_Educational_Objs" EntitySet="Program_Educational_Objs" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Program_Outcomes" Association="Self.syllabus_id_fk_IN_Program_Outcomes">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Program_Outcomes" EntitySet="Program_Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Revision" Association="Self.syllabus_id_fk_IN_Revision">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Revision" EntitySet="Revision" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Software_Used" Association="Self.syllabus_id_fk_IN_Software_Used">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Software_Used" EntitySet="Software_Used" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Syllabus_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Active_Values">
+          <Key>
+            <PropertyRef Name="activeValues_ID" />
+          </Key>
+          <Property Name="activeValues_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="columnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="programOutcomeAbbr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="activeStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="courseOutcomes_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Course_Outcomes" Relationship="Self.FK_ActiveValues_TO_CourseOutcomes" FromRole="Active_Values" ToRole="Course_Outcomes" />
+        </EntityType>
+        <EntityType Name="Assessment_Criteria">
+          <Key>
+            <PropertyRef Name="assesmentCriteria_ID" />
+          </Key>
+          <Property Name="assesmentCriteria_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
+          <Property Name="criteriaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="highestPoints" Type="Int32" Nullable="false" />
+          <Property Name="poor_pts" Type="Int32" Nullable="false" />
+          <Property Name="poor_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fair_pts" Type="Int32" Nullable="false" />
+          <Property Name="fair_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="satisfactory_pts" Type="Int32" Nullable="false" />
+          <Property Name="satisfactory_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="excellent_pts" Type="Int32" Nullable="false" />
+          <Property Name="excellent_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Grading_Rubrics" Relationship="Self.assessment_Criteria_fk_IN_Grading_Rubrics" FromRole="Assessment_Criteria" ToRole="Grading_Rubrics" />
+          <NavigationProperty Name="Syllabu" Relationship="Self.syllabus_id_fk_IN_Assessment_Criteria" FromRole="Assessment_Criteria" ToRole="Syllabus" />
+        </EntityType>
+        <EntityType Name="Bibliography">
+          <Key>
+            <PropertyRef Name="bibliography_id" />
+          </Key>
+          <Property Name="bibliography_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="syllabus_id_fk" Type="Int32" Nullable="false" />
+          <Property Name="sources_fk" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Source" Relationship="Self.FK_Bibliography_Sources" FromRole="Bibliography" ToRole="Sources" />
+          <NavigationProperty Name="Syllabu" Relationship="Self.syllabus_id_fk_IN_Bibliography" FromRole="Bibliography" ToRole="Syllabus" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="book_id" />
+          </Key>
+          <Property Name="book_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="course_fk" Type="Int32" Nullable="false" />
+          <Property Name="callNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class_Policy">
+          <Key>
+            <PropertyRef Name="policy_ID" />
+          </Key>
+          <Property Name="policy_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
+          <Property Name="policyItem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Syllabu" Relationship="Self.syllabus_id_fk_IN_Class_Policy" FromRole="Class_Policy" ToRole="Syllabus" />
+        </EntityType>
+        <EntityType Name="Core_Value">
+          <Key>
+            <PropertyRef Name="coreValue_ID" />
+          </Key>
+          <Property Name="coreValue_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Program_Educational_Objs" Relationship="Self.core_value_id_fk_IN_Program_EO" FromRole="Core_Value" ToRole="Program_Educational_Objs" />
+          <NavigationProperty Name="Program_Outcomes" Relationship="Self.core_value_id_fk_IN_Program_Outcomes" FromRole="Core_Value" ToRole="Program_Outcomes" />
+          <NavigationProperty Name="Core_Value_Attribute" Relationship="Self.coreValueFK_IN_CoreValueAttribute" FromRole="Core_Value" ToRole="Core_Value_Attribute" />
+        </EntityType>
+        <EntityType Name="Core_Value_Attribute">
+          <Key>
+            <PropertyRef Name="coreValueAttrib_ID" />
+          </Key>
+          <Property Name="coreValueAttrib_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="coreValue_FK" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Core_Value" Relationship="Self.coreValueFK_IN_CoreValueAttribute" FromRole="Core_Value_Attribute" ToRole="Core_Value" />
+        </EntityType>
+        <EntityType Name="Course_Deliverable">
+          <Key>
+            <PropertyRef Name="courseDeliverables_ID" />
+          </Key>
+          <Property Name="courseDeliverables_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="courseOutcomeAddressed_FK" Type="Int32" Nullable="false" />
+          <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
+          <Property Name="outputName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="output_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="assessmentTypeA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="assessmentTypeB" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Course_Outcome_Addressed" Relationship="Self.FK_Course_Outcome_Addressed1" FromRole="Course_Deliverable" ToRole="Course_Outcome_Addressed" />
+          <NavigationProperty Name="Syllabu" Relationship="Self.syllabus_FK_IN_Course_Deliverable" FromRole="Course_Deliverable" ToRole="Syllabus" />
+        </EntityType>
+        <EntityType Name="Course_Information">
+          <Key>
+            <PropertyRef Name="course_ID" />
+          </Key>
+          <Property Name="course_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="courseCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="credits" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="equivalent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="preRequisites" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="coRequisites" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="term" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="room" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Syllabus" Relationship="Self.FK_Syllabus_Course_Information" FromRole="Course_Information" ToRole="Syllabus" />
+        </EntityType>
+        <EntityType Name="Course_Outcome_Addressed">
+          <Key>
+            <PropertyRef Name="courseOutcomeAddressed_ID" />
+          </Key>
+          <Property Name="courseOutcomeAddressed_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="courseOutcome_FK" Type="Int32" Nullable="false" />
+          <Property Name="addressedCO_Num" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Course_Deliverable" Relationship="Self.FK_Course_Outcome_Addressed1" FromRole="Course_Outcome_Addressed" ToRole="Course_Deliverable" />
+          <NavigationProperty Name="Course_Outcomes" Relationship="Self.FK_courseOutcomeAddressed_TO_courseOutcome" FromRole="Course_Outcome_Addressed" ToRole="Course_Outcomes" />
+        </EntityType>
+        <EntityType Name="Course_Outcomes">
+          <Key>
+            <PropertyRef Name="courseOutcomes_ID" />
+          </Key>
+          <Property Name="courseOutcomes_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
+          <Property Name="codeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="outcomeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="domainLearningLVL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Active_Values" Relationship="Self.FK_ActiveValues_TO_CourseOutcomes" FromRole="Course_Outcomes" ToRole="Active_Values" />
+          <NavigationProperty Name="Course_Outcome_Addressed" Relationship="Self.FK_courseOutcomeAddressed_TO_courseOutcome" FromRole="Course_Outcomes" ToRole="Course_Outcome_Addressed" />
+          <NavigationProperty Name="Syllabu" Relationship="Self.FK_CourseOutcome_TO_Syllabus" FromRole="Course_Outcomes" ToRole="Syllabus" />
+        </EntityType>
+        <EntityType Name="Grading_Rubrics">
+          <Key>
+            <PropertyRef Name="gradingRubrics_ID" />
+          </Key>
+          <Property Name="gradingRubrics_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="assessmentCriteria_FK" Type="Int32" Nullable="false" />
+          <Property Name="rubricStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="points" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Assessment_Criteria" Relationship="Self.assessment_Criteria_fk_IN_Grading_Rubrics" FromRole="Grading_Rubrics" ToRole="Assessment_Criteria" />
+        </EntityType>
+        <EntityType Name="Grading_System">
+          <Key>
+            <PropertyRef Name="gradingSystem_ID" />
+          </Key>
+          <Property Name="gradingSystem_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
+          <Property Name="typeOfGrading" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="weight" Type="Double" Nullable="false" />
+          <Property Name="requirementsName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Syllabu" Relationship="Self.syllabus_FK_IN_Grading_System" FromRole="Grading_System" ToRole="Syllabus" />
+        </EntityType>
+        <EntityType Name="Learning_Plan">
+          <Key>
+            <PropertyRef Name="learning_ID" />
+          </Key>
+          <Property Name="learning_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="courseOutcome_FK" Type="Int32" />
+          <Property Name="course_id_fk" Type="Int32" Nullable="false" />
+          <Property Name="quarter_FK" Type="Int32" Nullable="false" />
+          <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
+          <Property Name="learningOutcomeDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hours" Type="Int32" Nullable="false" />
+          <Property Name="topics" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="teacherActivity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="learnerActivity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="assessmentActivity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Quarter" Relationship="Self.quarter_id_fk_IN_Learning_Plan" FromRole="Learning_Plan" ToRole="Quarter" />
+          <NavigationProperty Name="Syllabu" Relationship="Self.syllabus_id_fk_IN_Learning_Plan" FromRole="Learning_Plan" ToRole="Syllabus" />
+        </EntityType>
+        <EntityType Name="Online_Sources">
+          <Key>
+            <PropertyRef Name="onlineSource_ID" />
+          </Key>
+          <Property Name="onlineSource_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="course_FK" Type="Int32" Nullable="false" />
+          <Property Name="webpageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="weblink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Program_Educational_Objs">
+          <Key>
+            <PropertyRef Name="programEduOutcome_ID" />
+          </Key>
+          <Property Name="programEduOutcome_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="coreValue_FK" Type="Int32" Nullable="false" />
+          <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
+          <Property Name="objectives" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Core_Value" Relationship="Self.core_value_id_fk_IN_Program_EO" FromRole="Program_Educational_Objs" ToRole="Core_Value" />
+          <NavigationProperty Name="Syllabu" Relationship="Self.syllabus_id_fk_IN_Program_EO" FromRole="Program_Educational_Objs" ToRole="Syllabus" />
+        </EntityType>
+        <EntityType Name="Program_Outcomes">
+          <Key>
+            <PropertyRef Name="programOutcomes_ID" />
+          </Key>
+          <Property Name="programOutcomes_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="coreValue_FK" Type="Int32" Nullable="false" />
+          <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
+          <Property Name="attributeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="outcomeDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="code_outcome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Core_Value" Relationship="Self.core_value_id_fk_IN_Program_Outcomes" FromRole="Program_Outcomes" ToRole="Core_Value" />
+          <NavigationProperty Name="Syllabu" Relationship="Self.syllabus_id_fk_IN_Program_Outcomes" FromRole="Program_Outcomes" ToRole="Syllabus" />
+        </EntityType>
+        <EntityType Name="Quarter">
+          <Key>
+            <PropertyRef Name="quarter_ID" />
+          </Key>
+          <Property Name="quarter_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="quarter_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Learning_Plan" Relationship="Self.quarter_id_fk_IN_Learning_Plan" FromRole="Quarter" ToRole="Learning_Plan" />
+        </EntityType>
+        <EntityType Name="Revision">
+          <Key>
+            <PropertyRef Name="revision_ID" />
+          </Key>
+          <Property Name="revision_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
+          <Property Name="versionNum" Type="Double" Nullable="false" />
+          <Property Name="fieldsRevised" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateRevised" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="approvedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="revisedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="approvedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Revisions_Log" Relationship="Self.revision_id_fk_IN_Revision_Log" FromRole="Revision" ToRole="Revisions_Log" />
+          <NavigationProperty Name="Syllabu" Relationship="Self.syllabus_id_fk_IN_Revision" FromRole="Revision" ToRole="Syllabus" />
+        </EntityType>
+        <EntityType Name="Revisions_Log">
+          <Key>
+            <PropertyRef Name="log_ID" />
+          </Key>
+          <Property Name="log_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="revision_id_fk" Type="Int32" Nullable="false" />
+          <Property Name="who_revised" Type="Int32" Nullable="false" />
+          <Property Name="who_next" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Revision" Relationship="Self.revision_id_fk_IN_Revision_Log" FromRole="Revisions_Log" ToRole="Revision" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="role_ID" />
+          </Key>
+          <Property Name="role_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="users_FK" Type="Int32" Nullable="false" />
+          <Property Name="position" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Role_TO_Users" FromRole="Role" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Software_Used">
+          <Key>
+            <PropertyRef Name="softwareUsed_ID" />
+          </Key>
+          <Property Name="softwareUsed_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="course_FK" Type="Int32" Nullable="false" />
+          <Property Name="syllabus_FK" Type="Int32" Nullable="false" />
+          <Property Name="software" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Syllabu" Relationship="Self.syllabus_id_fk_IN_Software_Used" FromRole="Software_Used" ToRole="Syllabus" />
+        </EntityType>
+        <EntityType Name="Source">
+          <Key>
+            <PropertyRef Name="sources_ID" />
+          </Key>
+          <Property Name="sources_ID" Type="Int32" Nullable="false" />
+          <Property Name="type_of_resource" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="resource_fk" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bibliographies" Relationship="Self.FK_Bibliography_Sources" FromRole="Sources" ToRole="Bibliography" />
+          <NavigationProperty Name="Sources1" Relationship="Self.FK_Sources_Sources" FromRole="Sources" ToRole="Sources1" />
+          <NavigationProperty Name="Source1" Relationship="Self.FK_Sources_Sources" FromRole="Sources1" ToRole="Sources" />
+        </EntityType>
+        <EntityType Name="Syllabu">
+          <Key>
+            <PropertyRef Name="syllabus_ID" />
+          </Key>
+          <Property Name="syllabus_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="madeBy_FK" Type="Int32" Nullable="false" />
+          <Property Name="course_FK" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="academicYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="academicPeriod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Assessment_Criteria" Relationship="Self.syllabus_id_fk_IN_Assessment_Criteria" FromRole="Syllabus" ToRole="Assessment_Criteria" />
+          <NavigationProperty Name="Bibliographies" Relationship="Self.syllabus_id_fk_IN_Bibliography" FromRole="Syllabus" ToRole="Bibliography" />
+          <NavigationProperty Name="Class_Policy" Relationship="Self.syllabus_id_fk_IN_Class_Policy" FromRole="Syllabus" ToRole="Class_Policy" />
+          <NavigationProperty Name="Course_Deliverable" Relationship="Self.syllabus_FK_IN_Course_Deliverable" FromRole="Syllabus" ToRole="Course_Deliverable" />
+          <NavigationProperty Name="Course_Information" Relationship="Self.FK_Syllabus_Course_Information" FromRole="Syllabus" ToRole="Course_Information" />
+          <NavigationProperty Name="Course_Outcomes" Relationship="Self.FK_CourseOutcome_TO_Syllabus" FromRole="Syllabus" ToRole="Course_Outcomes" />
+          <NavigationProperty Name="Grading_System" Relationship="Self.syllabus_FK_IN_Grading_System" FromRole="Syllabus" ToRole="Grading_System" />
+          <NavigationProperty Name="Learning_Plan" Relationship="Self.syllabus_id_fk_IN_Learning_Plan" FromRole="Syllabus" ToRole="Learning_Plan" />
+          <NavigationProperty Name="Program_Educational_Objs" Relationship="Self.syllabus_id_fk_IN_Program_EO" FromRole="Syllabus" ToRole="Program_Educational_Objs" />
+          <NavigationProperty Name="Program_Outcomes" Relationship="Self.syllabus_id_fk_IN_Program_Outcomes" FromRole="Syllabus" ToRole="Program_Outcomes" />
+          <NavigationProperty Name="Revisions" Relationship="Self.syllabus_id_fk_IN_Revision" FromRole="Syllabus" ToRole="Revision" />
+          <NavigationProperty Name="Software_Used" Relationship="Self.syllabus_id_fk_IN_Software_Used" FromRole="Syllabus" ToRole="Software_Used" />
+          <NavigationProperty Name="User" Relationship="Self.made_by_fk_IN_Syllabus" FromRole="Syllabus" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Role_TO_Users" FromRole="Users" ToRole="Role" />
+          <NavigationProperty Name="Syllabus" Relationship="Self.made_by_fk_IN_Syllabus" FromRole="Users" ToRole="Syllabus" />
+        </EntityType>
+        <Association Name="FK_ActiveValues_TO_CourseOutcomes">
+          <End Role="Course_Outcomes" Type="Self.Course_Outcomes" Multiplicity="1" />
+          <End Role="Active_Values" Type="Self.Active_Values" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_Outcomes">
+              <PropertyRef Name="courseOutcomes_ID" />
+            </Principal>
+            <Dependent Role="Active_Values">
+              <PropertyRef Name="courseOutcomes_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="assessment_Criteria_fk_IN_Grading_Rubrics">
+          <End Role="Assessment_Criteria" Type="Self.Assessment_Criteria" Multiplicity="1" />
+          <End Role="Grading_Rubrics" Type="Self.Grading_Rubrics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment_Criteria">
+              <PropertyRef Name="assesmentCriteria_ID" />
+            </Principal>
+            <Dependent Role="Grading_Rubrics">
+              <PropertyRef Name="assessmentCriteria_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Assessment_Criteria">
+          <End Role="Syllabus" Type="Self.Syllabu" Multiplicity="1" />
+          <End Role="Assessment_Criteria" Type="Self.Assessment_Criteria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Assessment_Criteria">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bibliography_Sources">
+          <End Role="Sources" Type="Self.Source" Multiplicity="1" />
+          <End Role="Bibliography" Type="Self.Bibliography" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sources">
+              <PropertyRef Name="sources_ID" />
+            </Principal>
+            <Dependent Role="Bibliography">
+              <PropertyRef Name="sources_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Bibliography">
+          <End Role="Syllabus" Type="Self.Syllabu" Multiplicity="1" />
+          <End Role="Bibliography" Type="Self.Bibliography" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Bibliography">
+              <PropertyRef Name="syllabus_id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Class_Policy">
+          <End Role="Syllabus" Type="Self.Syllabu" Multiplicity="1" />
+          <End Role="Class_Policy" Type="Self.Class_Policy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Class_Policy">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="core_value_id_fk_IN_Program_EO">
+          <End Role="Core_Value" Type="Self.Core_Value" Multiplicity="1" />
+          <End Role="Program_Educational_Objs" Type="Self.Program_Educational_Objs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Core_Value">
+              <PropertyRef Name="coreValue_ID" />
+            </Principal>
+            <Dependent Role="Program_Educational_Objs">
+              <PropertyRef Name="coreValue_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="core_value_id_fk_IN_Program_Outcomes">
+          <End Role="Core_Value" Type="Self.Core_Value" Multiplicity="1" />
+          <End Role="Program_Outcomes" Type="Self.Program_Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Core_Value">
+              <PropertyRef Name="coreValue_ID" />
+            </Principal>
+            <Dependent Role="Program_Outcomes">
+              <PropertyRef Name="coreValue_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="coreValueFK_IN_CoreValueAttribute">
+          <End Role="Core_Value" Type="Self.Core_Value" Multiplicity="1" />
+          <End Role="Core_Value_Attribute" Type="Self.Core_Value_Attribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Core_Value">
+              <PropertyRef Name="coreValue_ID" />
+            </Principal>
+            <Dependent Role="Core_Value_Attribute">
+              <PropertyRef Name="coreValue_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_Outcome_Addressed1">
+          <End Role="Course_Outcome_Addressed" Type="Self.Course_Outcome_Addressed" Multiplicity="1" />
+          <End Role="Course_Deliverable" Type="Self.Course_Deliverable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_Outcome_Addressed">
+              <PropertyRef Name="courseOutcomeAddressed_ID" />
+            </Principal>
+            <Dependent Role="Course_Deliverable">
+              <PropertyRef Name="courseOutcomeAddressed_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_FK_IN_Course_Deliverable">
+          <End Role="Syllabus" Type="Self.Syllabu" Multiplicity="1" />
+          <End Role="Course_Deliverable" Type="Self.Course_Deliverable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Course_Deliverable">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Syllabus_Course_Information">
+          <End Role="Course_Information" Type="Self.Course_Information" Multiplicity="1" />
+          <End Role="Syllabus" Type="Self.Syllabu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_Information">
+              <PropertyRef Name="course_ID" />
+            </Principal>
+            <Dependent Role="Syllabus">
+              <PropertyRef Name="course_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_courseOutcomeAddressed_TO_courseOutcome">
+          <End Role="Course_Outcomes" Type="Self.Course_Outcomes" Multiplicity="1" />
+          <End Role="Course_Outcome_Addressed" Type="Self.Course_Outcome_Addressed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_Outcomes">
+              <PropertyRef Name="courseOutcomes_ID" />
+            </Principal>
+            <Dependent Role="Course_Outcome_Addressed">
+              <PropertyRef Name="courseOutcome_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseOutcome_TO_Syllabus">
+          <End Role="Syllabus" Type="Self.Syllabu" Multiplicity="1" />
+          <End Role="Course_Outcomes" Type="Self.Course_Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Course_Outcomes">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_FK_IN_Grading_System">
+          <End Role="Syllabus" Type="Self.Syllabu" Multiplicity="1" />
+          <End Role="Grading_System" Type="Self.Grading_System" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Grading_System">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quarter_id_fk_IN_Learning_Plan">
+          <End Role="Quarter" Type="Self.Quarter" Multiplicity="1" />
+          <End Role="Learning_Plan" Type="Self.Learning_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quarter">
+              <PropertyRef Name="quarter_ID" />
+            </Principal>
+            <Dependent Role="Learning_Plan">
+              <PropertyRef Name="quarter_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Learning_Plan">
+          <End Role="Syllabus" Type="Self.Syllabu" Multiplicity="1" />
+          <End Role="Learning_Plan" Type="Self.Learning_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Learning_Plan">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Program_EO">
+          <End Role="Syllabus" Type="Self.Syllabu" Multiplicity="1" />
+          <End Role="Program_Educational_Objs" Type="Self.Program_Educational_Objs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Program_Educational_Objs">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Program_Outcomes">
+          <End Role="Syllabus" Type="Self.Syllabu" Multiplicity="1" />
+          <End Role="Program_Outcomes" Type="Self.Program_Outcomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Program_Outcomes">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="revision_id_fk_IN_Revision_Log">
+          <End Role="Revision" Type="Self.Revision" Multiplicity="1" />
+          <End Role="Revisions_Log" Type="Self.Revisions_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Revision">
+              <PropertyRef Name="revision_ID" />
+            </Principal>
+            <Dependent Role="Revisions_Log">
+              <PropertyRef Name="revision_id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Revision">
+          <End Role="Syllabus" Type="Self.Syllabu" Multiplicity="1" />
+          <End Role="Revision" Type="Self.Revision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Revision">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_TO_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="users_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="syllabus_id_fk_IN_Software_Used">
+          <End Role="Syllabus" Type="Self.Syllabu" Multiplicity="1" />
+          <End Role="Software_Used" Type="Self.Software_Used" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Syllabus">
+              <PropertyRef Name="syllabus_ID" />
+            </Principal>
+            <Dependent Role="Software_Used">
+              <PropertyRef Name="syllabus_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sources_Sources">
+          <End Role="Sources" Type="Self.Source" Multiplicity="1" />
+          <End Role="Sources1" Type="Self.Source" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Sources">
+              <PropertyRef Name="sources_ID" />
+            </Principal>
+            <Dependent Role="Sources1">
+              <PropertyRef Name="sources_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="made_by_fk_IN_Syllabus">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Syllabus" Type="Self.Syllabu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="Syllabus">
+              <PropertyRef Name="madeBy_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Syllabus_ManagementEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Active_Values" EntityType="Self.Active_Values" />
+          <EntitySet Name="Assessment_Criteria" EntityType="Self.Assessment_Criteria" />
+          <EntitySet Name="Bibliographies" EntityType="Self.Bibliography" />
+          <EntitySet Name="Books" EntityType="Self.Book" />
+          <EntitySet Name="Class_Policy" EntityType="Self.Class_Policy" />
+          <EntitySet Name="Core_Value" EntityType="Self.Core_Value" />
+          <EntitySet Name="Core_Value_Attribute" EntityType="Self.Core_Value_Attribute" />
+          <EntitySet Name="Course_Deliverable" EntityType="Self.Course_Deliverable" />
+          <EntitySet Name="Course_Information" EntityType="Self.Course_Information" />
+          <EntitySet Name="Course_Outcome_Addressed" EntityType="Self.Course_Outcome_Addressed" />
+          <EntitySet Name="Course_Outcomes" EntityType="Self.Course_Outcomes" />
+          <EntitySet Name="Grading_Rubrics" EntityType="Self.Grading_Rubrics" />
+          <EntitySet Name="Grading_System" EntityType="Self.Grading_System" />
+          <EntitySet Name="Learning_Plan" EntityType="Self.Learning_Plan" />
+          <EntitySet Name="Online_Sources" EntityType="Self.Online_Sources" />
+          <EntitySet Name="Program_Educational_Objs" EntityType="Self.Program_Educational_Objs" />
+          <EntitySet Name="Program_Outcomes" EntityType="Self.Program_Outcomes" />
+          <EntitySet Name="Quarters" EntityType="Self.Quarter" />
+          <EntitySet Name="Revisions" EntityType="Self.Revision" />
+          <EntitySet Name="Revisions_Log" EntityType="Self.Revisions_Log" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Software_Used" EntityType="Self.Software_Used" />
+          <EntitySet Name="Sources" EntityType="Self.Source" />
+          <EntitySet Name="Syllabus" EntityType="Self.Syllabu" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_ActiveValues_TO_CourseOutcomes" Association="Self.FK_ActiveValues_TO_CourseOutcomes">
+            <End Role="Course_Outcomes" EntitySet="Course_Outcomes" />
+            <End Role="Active_Values" EntitySet="Active_Values" />
+          </AssociationSet>
+          <AssociationSet Name="assessment_Criteria_fk_IN_Grading_Rubrics" Association="Self.assessment_Criteria_fk_IN_Grading_Rubrics">
+            <End Role="Assessment_Criteria" EntitySet="Assessment_Criteria" />
+            <End Role="Grading_Rubrics" EntitySet="Grading_Rubrics" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Assessment_Criteria" Association="Self.syllabus_id_fk_IN_Assessment_Criteria">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Assessment_Criteria" EntitySet="Assessment_Criteria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bibliography_Sources" Association="Self.FK_Bibliography_Sources">
+            <End Role="Sources" EntitySet="Sources" />
+            <End Role="Bibliography" EntitySet="Bibliographies" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Bibliography" Association="Self.syllabus_id_fk_IN_Bibliography">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Bibliography" EntitySet="Bibliographies" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Class_Policy" Association="Self.syllabus_id_fk_IN_Class_Policy">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Class_Policy" EntitySet="Class_Policy" />
+          </AssociationSet>
+          <AssociationSet Name="core_value_id_fk_IN_Program_EO" Association="Self.core_value_id_fk_IN_Program_EO">
+            <End Role="Core_Value" EntitySet="Core_Value" />
+            <End Role="Program_Educational_Objs" EntitySet="Program_Educational_Objs" />
+          </AssociationSet>
+          <AssociationSet Name="core_value_id_fk_IN_Program_Outcomes" Association="Self.core_value_id_fk_IN_Program_Outcomes">
+            <End Role="Core_Value" EntitySet="Core_Value" />
+            <End Role="Program_Outcomes" EntitySet="Program_Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="coreValueFK_IN_CoreValueAttribute" Association="Self.coreValueFK_IN_CoreValueAttribute">
+            <End Role="Core_Value" EntitySet="Core_Value" />
+            <End Role="Core_Value_Attribute" EntitySet="Core_Value_Attribute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_Outcome_Addressed1" Association="Self.FK_Course_Outcome_Addressed1">
+            <End Role="Course_Outcome_Addressed" EntitySet="Course_Outcome_Addressed" />
+            <End Role="Course_Deliverable" EntitySet="Course_Deliverable" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_FK_IN_Course_Deliverable" Association="Self.syllabus_FK_IN_Course_Deliverable">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Course_Deliverable" EntitySet="Course_Deliverable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Syllabus_Course_Information" Association="Self.FK_Syllabus_Course_Information">
+            <End Role="Course_Information" EntitySet="Course_Information" />
+            <End Role="Syllabus" EntitySet="Syllabus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_courseOutcomeAddressed_TO_courseOutcome" Association="Self.FK_courseOutcomeAddressed_TO_courseOutcome">
+            <End Role="Course_Outcomes" EntitySet="Course_Outcomes" />
+            <End Role="Course_Outcome_Addressed" EntitySet="Course_Outcome_Addressed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseOutcome_TO_Syllabus" Association="Self.FK_CourseOutcome_TO_Syllabus">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Course_Outcomes" EntitySet="Course_Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_FK_IN_Grading_System" Association="Self.syllabus_FK_IN_Grading_System">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Grading_System" EntitySet="Grading_System" />
+          </AssociationSet>
+          <AssociationSet Name="quarter_id_fk_IN_Learning_Plan" Association="Self.quarter_id_fk_IN_Learning_Plan">
+            <End Role="Quarter" EntitySet="Quarters" />
+            <End Role="Learning_Plan" EntitySet="Learning_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Learning_Plan" Association="Self.syllabus_id_fk_IN_Learning_Plan">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Learning_Plan" EntitySet="Learning_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Program_EO" Association="Self.syllabus_id_fk_IN_Program_EO">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Program_Educational_Objs" EntitySet="Program_Educational_Objs" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Program_Outcomes" Association="Self.syllabus_id_fk_IN_Program_Outcomes">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Program_Outcomes" EntitySet="Program_Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="revision_id_fk_IN_Revision_Log" Association="Self.revision_id_fk_IN_Revision_Log">
+            <End Role="Revision" EntitySet="Revisions" />
+            <End Role="Revisions_Log" EntitySet="Revisions_Log" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Revision" Association="Self.syllabus_id_fk_IN_Revision">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Revision" EntitySet="Revisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_TO_Users" Association="Self.FK_Role_TO_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="syllabus_id_fk_IN_Software_Used" Association="Self.syllabus_id_fk_IN_Software_Used">
+            <End Role="Syllabus" EntitySet="Syllabus" />
+            <End Role="Software_Used" EntitySet="Software_Used" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sources_Sources" Association="Self.FK_Sources_Sources">
+            <End Role="Sources" EntitySet="Sources" />
+            <End Role="Sources1" EntitySet="Sources" />
+          </AssociationSet>
+          <AssociationSet Name="made_by_fk_IN_Syllabus" Association="Self.made_by_fk_IN_Syllabus">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Syllabus" EntitySet="Syllabus" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Syllabus_ManagementModelStoreContainer" CdmEntityContainer="Syllabus_ManagementEntities4">
+          <EntitySetMapping Name="Active_Values">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Active_Values">
+              <MappingFragment StoreEntitySet="Active_Values">
+                <ScalarProperty Name="activeValues_ID" ColumnName="activeValues_ID" />
+                <ScalarProperty Name="columnName" ColumnName="columnName" />
+                <ScalarProperty Name="programOutcomeAbbr" ColumnName="programOutcomeAbbr" />
+                <ScalarProperty Name="activeStatus" ColumnName="activeStatus" />
+                <ScalarProperty Name="courseOutcomes_FK" ColumnName="courseOutcomes_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Assessment_Criteria">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Assessment_Criteria">
+              <MappingFragment StoreEntitySet="Assessment_Criteria">
+                <ScalarProperty Name="assesmentCriteria_ID" ColumnName="assesmentCriteria_ID" />
+                <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
+                <ScalarProperty Name="criteriaName" ColumnName="criteriaName" />
+                <ScalarProperty Name="highestPoints" ColumnName="highestPoints" />
+                <ScalarProperty Name="poor_pts" ColumnName="poor_pts" />
+                <ScalarProperty Name="poor_desc" ColumnName="poor_desc" />
+                <ScalarProperty Name="fair_pts" ColumnName="fair_pts" />
+                <ScalarProperty Name="fair_desc" ColumnName="fair_desc" />
+                <ScalarProperty Name="satisfactory_pts" ColumnName="satisfactory_pts" />
+                <ScalarProperty Name="satisfactory_desc" ColumnName="satisfactory_desc" />
+                <ScalarProperty Name="excellent_pts" ColumnName="excellent_pts" />
+                <ScalarProperty Name="excellent_desc" ColumnName="excellent_desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bibliographies">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Bibliography">
+              <MappingFragment StoreEntitySet="Bibliography">
+                <ScalarProperty Name="bibliography_id" ColumnName="bibliography_id" />
+                <ScalarProperty Name="syllabus_id_fk" ColumnName="syllabus_id_fk" />
+                <ScalarProperty Name="sources_fk" ColumnName="sources_fk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="book_id" ColumnName="book_id" />
+                <ScalarProperty Name="course_fk" ColumnName="course_fk" />
+                <ScalarProperty Name="callNumber" ColumnName="callNumber" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="year" ColumnName="year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Class_Policy">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Class_Policy">
+              <MappingFragment StoreEntitySet="Class_Policy">
+                <ScalarProperty Name="policy_ID" ColumnName="policy_ID" />
+                <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
+                <ScalarProperty Name="policyItem" ColumnName="policyItem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Core_Value">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Core_Value">
+              <MappingFragment StoreEntitySet="Core_Value">
+                <ScalarProperty Name="coreValue_ID" ColumnName="coreValue_ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Core_Value_Attribute">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Core_Value_Attribute">
+              <MappingFragment StoreEntitySet="Core_Value_Attribute">
+                <ScalarProperty Name="coreValueAttrib_ID" ColumnName="coreValueAttrib_ID" />
+                <ScalarProperty Name="coreValue_FK" ColumnName="coreValue_FK" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_Deliverable">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Course_Deliverable">
+              <MappingFragment StoreEntitySet="Course_Deliverable">
+                <ScalarProperty Name="courseDeliverables_ID" ColumnName="courseDeliverables_ID" />
+                <ScalarProperty Name="courseOutcomeAddressed_FK" ColumnName="courseOutcomeAddressed_FK" />
+                <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
+                <ScalarProperty Name="outputName" ColumnName="outputName" />
+                <ScalarProperty Name="output_description" ColumnName="output_description" />
+                <ScalarProperty Name="assessmentTypeA" ColumnName="assessmentTypeA" />
+                <ScalarProperty Name="assessmentTypeB" ColumnName="assessmentTypeB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_Information">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Course_Information">
+              <MappingFragment StoreEntitySet="Course_Information">
+                <ScalarProperty Name="course_ID" ColumnName="course_ID" />
+                <ScalarProperty Name="courseCode" ColumnName="courseCode" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="credits" ColumnName="credits" />
+                <ScalarProperty Name="equivalent" ColumnName="equivalent" />
+                <ScalarProperty Name="preRequisites" ColumnName="preRequisites" />
+                <ScalarProperty Name="coRequisites" ColumnName="coRequisites" />
+                <ScalarProperty Name="term" ColumnName="term" />
+                <ScalarProperty Name="room" ColumnName="room" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="day" ColumnName="day" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_Outcome_Addressed">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Course_Outcome_Addressed">
+              <MappingFragment StoreEntitySet="Course_Outcome_Addressed">
+                <ScalarProperty Name="courseOutcomeAddressed_ID" ColumnName="courseOutcomeAddressed_ID" />
+                <ScalarProperty Name="courseOutcome_FK" ColumnName="courseOutcome_FK" />
+                <ScalarProperty Name="addressedCO_Num" ColumnName="addressedCO_Num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_Outcomes">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Course_Outcomes">
+              <MappingFragment StoreEntitySet="Course_Outcomes">
+                <ScalarProperty Name="courseOutcomes_ID" ColumnName="courseOutcomes_ID" />
+                <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
+                <ScalarProperty Name="codeName" ColumnName="codeName" />
+                <ScalarProperty Name="outcomeDescription" ColumnName="outcomeDescription" />
+                <ScalarProperty Name="domainLearningLVL" ColumnName="domainLearningLVL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grading_Rubrics">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Grading_Rubrics">
+              <MappingFragment StoreEntitySet="Grading_Rubrics">
+                <ScalarProperty Name="gradingRubrics_ID" ColumnName="gradingRubrics_ID" />
+                <ScalarProperty Name="assessmentCriteria_FK" ColumnName="assessmentCriteria_FK" />
+                <ScalarProperty Name="rubricStatus" ColumnName="rubricStatus" />
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grading_System">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Grading_System">
+              <MappingFragment StoreEntitySet="Grading_System">
+                <ScalarProperty Name="gradingSystem_ID" ColumnName="gradingSystem_ID" />
+                <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
+                <ScalarProperty Name="typeOfGrading" ColumnName="typeOfGrading" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="requirementsName" ColumnName="requirementsName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Learning_Plan">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Learning_Plan">
+              <MappingFragment StoreEntitySet="Learning_Plan">
+                <ScalarProperty Name="learning_ID" ColumnName="learning_ID" />
+                <ScalarProperty Name="courseOutcome_FK" ColumnName="courseOutcome_FK" />
+                <ScalarProperty Name="course_id_fk" ColumnName="course_id_fk" />
+                <ScalarProperty Name="quarter_FK" ColumnName="quarter_FK" />
+                <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
+                <ScalarProperty Name="learningOutcomeDesc" ColumnName="learningOutcomeDesc" />
+                <ScalarProperty Name="hours" ColumnName="hours" />
+                <ScalarProperty Name="topics" ColumnName="topics" />
+                <ScalarProperty Name="teacherActivity" ColumnName="teacherActivity" />
+                <ScalarProperty Name="learnerActivity" ColumnName="learnerActivity" />
+                <ScalarProperty Name="assessmentActivity" ColumnName="assessmentActivity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Online_Sources">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Online_Sources">
+              <MappingFragment StoreEntitySet="Online_Sources">
+                <ScalarProperty Name="onlineSource_ID" ColumnName="onlineSource_ID" />
+                <ScalarProperty Name="course_FK" ColumnName="course_FK" />
+                <ScalarProperty Name="webpageName" ColumnName="webpageName" />
+                <ScalarProperty Name="weblink" ColumnName="weblink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Program_Educational_Objs">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Program_Educational_Objs">
+              <MappingFragment StoreEntitySet="Program_Educational_Objs">
+                <ScalarProperty Name="programEduOutcome_ID" ColumnName="programEduOutcome_ID" />
+                <ScalarProperty Name="coreValue_FK" ColumnName="coreValue_FK" />
+                <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
+                <ScalarProperty Name="objectives" ColumnName="objectives" />
+                <ScalarProperty Name="codeName" ColumnName="codeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Program_Outcomes">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Program_Outcomes">
+              <MappingFragment StoreEntitySet="Program_Outcomes">
+                <ScalarProperty Name="programOutcomes_ID" ColumnName="programOutcomes_ID" />
+                <ScalarProperty Name="coreValue_FK" ColumnName="coreValue_FK" />
+                <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
+                <ScalarProperty Name="attributeName" ColumnName="attributeName" />
+                <ScalarProperty Name="outcomeDesc" ColumnName="outcomeDesc" />
+                <ScalarProperty Name="code_outcome" ColumnName="code_outcome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quarters">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Quarter">
+              <MappingFragment StoreEntitySet="Quarter">
+                <ScalarProperty Name="quarter_ID" ColumnName="quarter_ID" />
+                <ScalarProperty Name="quarter_name" ColumnName="quarter_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Revisions">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Revision">
+              <MappingFragment StoreEntitySet="Revision">
+                <ScalarProperty Name="revision_ID" ColumnName="revision_ID" />
+                <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
+                <ScalarProperty Name="versionNum" ColumnName="versionNum" />
+                <ScalarProperty Name="fieldsRevised" ColumnName="fieldsRevised" />
+                <ScalarProperty Name="dateRevised" ColumnName="dateRevised" />
+                <ScalarProperty Name="approvedDate" ColumnName="approvedDate" />
+                <ScalarProperty Name="revisedBy" ColumnName="revisedBy" />
+                <ScalarProperty Name="approvedBy" ColumnName="approvedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Revisions_Log">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Revisions_Log">
+              <MappingFragment StoreEntitySet="Revisions_Log">
+                <ScalarProperty Name="log_ID" ColumnName="log_ID" />
+                <ScalarProperty Name="revision_id_fk" ColumnName="revision_id_fk" />
+                <ScalarProperty Name="who_revised" ColumnName="who_revised" />
+                <ScalarProperty Name="who_next" ColumnName="who_next" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="role_ID" ColumnName="role_ID" />
+                <ScalarProperty Name="users_FK" ColumnName="users_FK" />
+                <ScalarProperty Name="position" ColumnName="position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Software_Used">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Software_Used">
+              <MappingFragment StoreEntitySet="Software_Used">
+                <ScalarProperty Name="softwareUsed_ID" ColumnName="softwareUsed_ID" />
+                <ScalarProperty Name="course_FK" ColumnName="course_FK" />
+                <ScalarProperty Name="syllabus_FK" ColumnName="syllabus_FK" />
+                <ScalarProperty Name="software" ColumnName="software" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sources">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Source">
+              <MappingFragment StoreEntitySet="Sources">
+                <ScalarProperty Name="sources_ID" ColumnName="sources_ID" />
+                <ScalarProperty Name="type_of_resource" ColumnName="type_of_resource" />
+                <ScalarProperty Name="resource_fk" ColumnName="resource_fk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Syllabus">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.Syllabu">
+              <MappingFragment StoreEntitySet="Syllabus">
+                <ScalarProperty Name="syllabus_ID" ColumnName="syllabus_ID" />
+                <ScalarProperty Name="madeBy_FK" ColumnName="madeBy_FK" />
+                <ScalarProperty Name="course_FK" ColumnName="course_FK" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="academicYear" ColumnName="academicYear" />
+                <ScalarProperty Name="academicPeriod" ColumnName="academicPeriod" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Syllabus_ManagementModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

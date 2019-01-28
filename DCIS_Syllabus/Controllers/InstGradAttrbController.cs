@@ -15,7 +15,7 @@ namespace DCIS_Syllabus.Controllers
             return View();
         }
 
-        // Teacher and Coordinator View
+        // Chair View
         public ActionResult InstGradAttrb()
         {
             //connect to db
@@ -33,7 +33,7 @@ namespace DCIS_Syllabus.Controllers
             return View();
         }
 
-        // Teacher and Coordinator View
+        // Chair Create
         public ActionResult AddCoreValue(FormCollection cv_info)
         {
             //retrieve data from URL because passed through form
@@ -70,6 +70,7 @@ namespace DCIS_Syllabus.Controllers
             return RedirectToAction("InstGradAttrb", "InstGradAttrb");
         }
 
+        // Chair Update
         public ActionResult UpdateCoreValue(FormCollection cv_info)
         {
             //connect to db
@@ -85,6 +86,7 @@ namespace DCIS_Syllabus.Controllers
             return View();
         }
 
+        // Chair Update
         public ActionResult UpdatedCoreValue(FormCollection cv_info)
         {
             //retrieve the Id passed from the update page (Method = "GET")
@@ -114,6 +116,7 @@ namespace DCIS_Syllabus.Controllers
             //return View();
         }
 
+        // Chair Delete
         public ActionResult DeleteCoreValue(FormCollection cv_info)
         {
             //connect to db
@@ -127,6 +130,24 @@ namespace DCIS_Syllabus.Controllers
             syllabus.Core_Value_Attribute.Remove(delData);
             syllabus.SaveChanges();
             return RedirectToAction("InstGradAttrb", "InstGradAttrb");
+        }
+
+        // Teacher and Coordinator View
+        public ActionResult InstGradAttrbViewTC()
+        {
+            //connect to db
+            Syllabus_ManagementEntities4 syllabus = new Syllabus_ManagementEntities4();
+            //retrieve table details (firstName, lastName, etc.) -- what table?
+            //Core_Value value = new Core_Value();
+
+            //from the table friends, select all in descending order by age
+            var core_valueList = (from cv in syllabus.Core_Value
+                                  join cva in syllabus.Core_Value_Attribute on cv.coreValue_ID equals cva.coreValue_FK
+                                  select new CoreValue { CoreValueName = cv.name, Attribute = cva.description, CoreValueAttrb_Id = cva.coreValueAttrib_ID }).ToList();
+
+            //converting all the retrieved data (friends) into a list object
+            ViewData["CoreValueList"] = core_valueList;
+            return View(core_valueList);
         }
     }
 }

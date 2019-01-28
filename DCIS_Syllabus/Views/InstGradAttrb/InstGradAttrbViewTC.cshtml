@@ -1,0 +1,94 @@
+﻿<style>
+    pre {
+        background-color: #ffffff;
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+</style>
+@{
+    ViewBag.Title = "InstGradAttrbViewTC";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+    var core_valueList = (List<DCIS_Syllabus.Models.CoreValue>)ViewData["CoreValueList"];
+
+    var scientia = 1;
+    var virtus = 1;
+    var devotio = 1;
+
+    foreach (var cv_attr in core_valueList)
+    {
+        if (cv_attr.CoreValueName == "Scientia")
+        {
+            scientia++;
+        }
+        else if (cv_attr.CoreValueName == "Virtus")
+        {
+            virtus++;
+        }
+        else if (cv_attr.CoreValueName == "Devotio")
+        {
+            devotio++;
+        }
+    }
+}
+
+<h2>Institutional Graduate Attributes</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="text-center">Core Values</th>
+            <th class="text-center">Attributes</th>
+        </tr>
+    </thead>
+    <tr>
+        <td style="vertical-align: middle" rowspan="@scientia" class="text-center core_value_name">Scientia</td>
+    </tr>
+
+    @foreach (var cv_attr in core_valueList)
+    {
+        if (cv_attr.CoreValueName == "Scientia")
+        {
+            <tr>
+                <td><pre>@cv_attr.Attribute.Replace("<br />", System.Environment.NewLine)</pre></td>
+            </tr>
+
+        }
+    }
+
+    <tr>
+        <td style="vertical-align: middle" rowspan="@virtus" class="text-center core_value_name">Virtus</td>
+    </tr>
+
+    @foreach (var cv_attr in core_valueList)
+    {
+        if (cv_attr.CoreValueName == "Virtus")
+        {
+            <tr>
+                <td><pre>@cv_attr.Attribute.Replace("<br />", System.Environment.NewLine)</pre></td>
+            </tr>
+
+        }
+    }
+
+    <tr>
+        <td style="vertical-align: middle" rowspan="@devotio" class="text-center core_value_name">Devotio</td>
+    </tr>
+
+    @foreach (var cv_attr in core_valueList)
+    {
+        if (cv_attr.CoreValueName == "Devotio")
+        {
+            <tr>
+                <td><pre>@cv_attr.Attribute.Replace("<br />", System.Environment.NewLine)</pre></td>
+            </tr>
+
+        }
+    }
+
+</table>
+
+
+
+
+
