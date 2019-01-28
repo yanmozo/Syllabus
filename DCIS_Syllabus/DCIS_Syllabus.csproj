@@ -346,12 +346,10 @@
     <Content Include="Scripts\TeacherScript.js" />
     <Content Include="Syllabus.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Syllabus.edmx</DependentUpon>
       <LastGenOutput>Syllabus.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Syllabus.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Syllabus.edmx</DependentUpon>
       <LastGenOutput>Syllabus.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
